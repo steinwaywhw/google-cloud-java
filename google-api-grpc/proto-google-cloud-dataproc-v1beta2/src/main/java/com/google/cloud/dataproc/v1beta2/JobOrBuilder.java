@@ -56,7 +56,9 @@ public interface JobOrBuilder
    * run the job.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.JobPlacement placement = 2;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.JobPlacement placement = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasPlacement();
   /**
@@ -67,7 +69,9 @@ public interface JobOrBuilder
    * run the job.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.JobPlacement placement = 2;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.JobPlacement placement = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dataproc.v1beta2.JobPlacement getPlacement();
   /**
@@ -78,7 +82,9 @@ public interface JobOrBuilder
    * run the job.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.JobPlacement placement = 2;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.JobPlacement placement = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dataproc.v1beta2.JobPlacementOrBuilder getPlacementOrBuilder();
 
@@ -236,6 +242,37 @@ public interface JobOrBuilder
    * <code>.google.cloud.dataproc.v1beta2.PigJob pig_job = 7;</code>
    */
   com.google.cloud.dataproc.v1beta2.PigJobOrBuilder getPigJobOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Job is a SparkR job.
+   * </pre>
+   *
+   * <code>.google.cloud.dataproc.v1beta2.SparkRJob spark_r_job = 21;</code>
+   */
+  boolean hasSparkRJob();
+  /**
+   *
+   *
+   * <pre>
+   * Job is a SparkR job.
+   * </pre>
+   *
+   * <code>.google.cloud.dataproc.v1beta2.SparkRJob spark_r_job = 21;</code>
+   */
+  com.google.cloud.dataproc.v1beta2.SparkRJob getSparkRJob();
+  /**
+   *
+   *
+   * <pre>
+   * Job is a SparkR job.
+   * </pre>
+   *
+   * <code>.google.cloud.dataproc.v1beta2.SparkRJob spark_r_job = 21;</code>
+   */
+  com.google.cloud.dataproc.v1beta2.SparkRJobOrBuilder getSparkRJobOrBuilder();
 
   /**
    *

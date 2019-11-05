@@ -50,7 +50,7 @@ public interface InputAudioConfigOrBuilder
    * <pre>
    * Required. The language of the supplied audio. Dialogflow does not do
    * translations. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
@@ -64,7 +64,7 @@ public interface InputAudioConfigOrBuilder
    * <pre>
    * Required. The language of the supplied audio. Dialogflow does not do
    * translations. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
@@ -77,10 +77,9 @@ public interface InputAudioConfigOrBuilder
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -92,10 +91,9 @@ public interface InputAudioConfigOrBuilder
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -107,10 +105,9 @@ public interface InputAudioConfigOrBuilder
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -122,10 +119,9 @@ public interface InputAudioConfigOrBuilder
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -154,4 +150,24 @@ public interface InputAudioConfigOrBuilder
    * <code>.google.cloud.dialogflow.v2.SpeechModelVariant model_variant = 10;</code>
    */
   com.google.cloud.dialogflow.v2.SpeechModelVariant getModelVariant();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional. If `false` (default), recognition does not cease until the
+   * client closes the stream.
+   * If `true`, the recognizer will detect a single spoken utterance in input
+   * audio. Recognition ceases when it detects the audio's voice has
+   * stopped or paused. In this case, once a detected intent is received, the
+   * client should close the stream and start a new request with a new stream as
+   * needed.
+   * Note: This setting is relevant only for streaming methods.
+   * Note: When specified, InputAudioConfig.single_utterance takes precedence
+   * over StreamingDetectIntentRequest.single_utterance.
+   * </pre>
+   *
+   * <code>bool single_utterance = 8;</code>
+   */
+  boolean getSingleUtterance();
 }

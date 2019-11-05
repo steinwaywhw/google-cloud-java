@@ -27,6 +27,7 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
     pageToken_ = "";
     orderBy_ = "";
     histogramQueries_ = java.util.Collections.emptyList();
+    resultSetId_ = "";
   }
 
   @java.lang.Override
@@ -138,6 +139,18 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
                       com.google.cloud.talent.v4beta1.HistogramQuery.parser(), extensionRegistry));
               break;
             }
+          case 98:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              resultSetId_ = s;
+              break;
+            }
+          case 104:
+            {
+              strictKeywordsSearch_ = input.readBool();
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -182,13 +195,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant to search within.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenants/foo".
+   * Required. The resource name of the tenant to search within.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenants/bar".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -205,13 +217,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant to search within.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenants/foo".
+   * Required. The resource name of the tenant to search within.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenants/bar".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -231,13 +242,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The meta information collected about the profile search user. This is used
-   * to improve the search quality of the service. These values are provided by
-   * users, and must be precise and consistent.
+   * Required. The meta information collected about the profile search user.
+   * This is used to improve the search quality of the service. These values are
+   * provided by users, and must be precise and consistent.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasRequestMetadata() {
     return requestMetadata_ != null;
@@ -246,13 +258,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The meta information collected about the profile search user. This is used
-   * to improve the search quality of the service. These values are provided by
-   * users, and must be precise and consistent.
+   * Required. The meta information collected about the profile search user.
+   * This is used to improve the search quality of the service. These values are
+   * provided by users, and must be precise and consistent.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.RequestMetadata getRequestMetadata() {
     return requestMetadata_ == null
@@ -263,13 +276,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The meta information collected about the profile search user. This is used
-   * to improve the search quality of the service. These values are provided by
-   * users, and must be precise and consistent.
+   * Required. The meta information collected about the profile search user.
+   * This is used to improve the search quality of the service. These values are
+   * provided by users, and must be precise and consistent.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.RequestMetadataOrBuilder getRequestMetadataOrBuilder() {
     return getRequestMetadata();
@@ -281,8 +295,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
-   * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+   * Search query to execute. See
+   * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -294,8 +308,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
-   * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+   * Search query to execute. See
+   * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -309,8 +323,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
-   * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+   * Search query to execute. See
+   * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -325,7 +339,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A limit on the number of profiles returned in the search results.
    * A value above the default value 10 can increase search response time.
    * The maximum value allowed is 100. Otherwise an error is thrown.
@@ -343,14 +356,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The pageToken, similar to offset enables users of the API to paginate
    * through the search results. To retrieve the first page of results, set the
    * pageToken to empty. The search response includes a
-   * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-   * used to populate the pageToken field for the next page of results. Using
-   * pageToken instead of offset increases the performance of the API,
-   * especially compared to larger offset values.
+   * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+   * field that can be used to populate the pageToken field for the next page of
+   * results. Using pageToken instead of offset increases the performance of the
+   * API, especially compared to larger offset values.
    * </pre>
    *
    * <code>string page_token = 5;</code>
@@ -370,14 +382,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The pageToken, similar to offset enables users of the API to paginate
    * through the search results. To retrieve the first page of results, set the
    * pageToken to empty. The search response includes a
-   * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-   * used to populate the pageToken field for the next page of results. Using
-   * pageToken instead of offset increases the performance of the API,
-   * especially compared to larger offset values.
+   * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+   * field that can be used to populate the pageToken field for the next page of
+   * results. Using pageToken instead of offset increases the performance of the
+   * API, especially compared to larger offset values.
    * </pre>
    *
    * <code>string page_token = 5;</code>
@@ -400,9 +411,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * An integer that specifies the current offset (that is, starting result) in
-   * search results. This field is only considered if [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token] is unset.
+   * search results. This field is only considered if
+   * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+   * is unset.
    * The maximum allowed value is 5000. Otherwise an error is thrown.
    * For example, 0 means to search from the first profile, and 10 means to
    * search from the 11th profile. This can be used for pagination, for example
@@ -421,7 +433,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * This flag controls the spell-check feature. If `false`, the
    * service attempts to correct a misspelled query.
    * For example, "enginee" is corrected to "engineer".
@@ -439,24 +450,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The criteria that determines how search results are sorted.
    * Defaults is "relevance desc" if no value is specified.
    * Supported options are:
    * * "relevance desc": By descending relevance, as determined by the API
    *    algorithms.
-   * * "update_date desc": Sort by [Profile.update_date][] in descending order
+   * * "update_date desc": Sort by
+   * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+   * descending order
    *   (recently updated profiles first).
-   * * "create_date desc": Sort by [Profile.create_date][] in descending order
+   * * "create_date desc": Sort by
+   * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+   * descending order
    *   (recently created profiles first).
-   * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-   *   order.
-   * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-   *   descending order.
-   * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-   *   order.
-   * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+   * * "first_name": Sort by
+   * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+   * in
    *   ascending order.
+   * * "first_name desc": Sort by
+   * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+   *   in descending order.
+   * * "last_name": Sort by
+   * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+   * in
+   *   ascending order.
+   * * "last_name desc": Sort by
+   * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+   *   in ascending order.
    * </pre>
    *
    * <code>string order_by = 8;</code>
@@ -476,24 +496,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The criteria that determines how search results are sorted.
    * Defaults is "relevance desc" if no value is specified.
    * Supported options are:
    * * "relevance desc": By descending relevance, as determined by the API
    *    algorithms.
-   * * "update_date desc": Sort by [Profile.update_date][] in descending order
+   * * "update_date desc": Sort by
+   * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+   * descending order
    *   (recently updated profiles first).
-   * * "create_date desc": Sort by [Profile.create_date][] in descending order
+   * * "create_date desc": Sort by
+   * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+   * descending order
    *   (recently created profiles first).
-   * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-   *   order.
-   * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-   *   descending order.
-   * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-   *   order.
-   * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+   * * "first_name": Sort by
+   * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+   * in
    *   ascending order.
+   * * "first_name desc": Sort by
+   * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+   *   in descending order.
+   * * "last_name": Sort by
+   * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+   * in
+   *   ascending order.
+   * * "last_name desc": Sort by
+   * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+   *   in ascending order.
    * </pre>
    *
    * <code>string order_by = 8;</code>
@@ -516,7 +545,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * When sort by field is based on alphabetical order, sort values case
    * sensitively (based on ASCII) when the value is set to true. Default value
    * is case in-sensitive sort (false).
@@ -534,11 +562,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A list of expressions specifies histogram requests against matching
-   * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-   * The expression syntax looks like a function definition with optional
-   * parameters.
+   * profiles for
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The expression syntax looks like a function definition with parameters.
    * Function syntax: function_name(histogram_facet[, list of buckets])
    * Data types:
    * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -579,19 +606,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    * * experience_in_months: experience in months. 0 means 0 month to 1 month
    * (exclusive).
    * * application_date: The application date specifies application start dates.
-   * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+   * See
+   * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+   * for more details.
    * * application_outcome_notes: The application outcome reason specifies the
    * reasons behind the outcome of the job application.
-   * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-   * * application_last_stage: The application last stage specifies the last
-   * stage of job application.
-   * See [ApplicationLastStageFilter][] for more details.
+   * See
+   * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+   * for more details.
    * * application_job_title: The application job title specifies the job
    * applied for in the application.
-   * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-   * * application_status: The application status specifies the status of job
-   * application.
-   * See [ApplicationStatusFilter][] for more details.
+   * See
+   * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+   * for more details.
    * * hirable_status: Hirable status specifies the profile's hirable status.
    * * string_custom_attribute: String custom attributes. Values can be accessed
    * via square bracket notation like string_custom_attribute["key1"].
@@ -615,11 +642,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A list of expressions specifies histogram requests against matching
-   * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-   * The expression syntax looks like a function definition with optional
-   * parameters.
+   * profiles for
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The expression syntax looks like a function definition with parameters.
    * Function syntax: function_name(histogram_facet[, list of buckets])
    * Data types:
    * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -660,19 +686,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    * * experience_in_months: experience in months. 0 means 0 month to 1 month
    * (exclusive).
    * * application_date: The application date specifies application start dates.
-   * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+   * See
+   * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+   * for more details.
    * * application_outcome_notes: The application outcome reason specifies the
    * reasons behind the outcome of the job application.
-   * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-   * * application_last_stage: The application last stage specifies the last
-   * stage of job application.
-   * See [ApplicationLastStageFilter][] for more details.
+   * See
+   * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+   * for more details.
    * * application_job_title: The application job title specifies the job
    * applied for in the application.
-   * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-   * * application_status: The application status specifies the status of job
-   * application.
-   * See [ApplicationStatusFilter][] for more details.
+   * See
+   * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+   * for more details.
    * * hirable_status: Hirable status specifies the profile's hirable status.
    * * string_custom_attribute: String custom attributes. Values can be accessed
    * via square bracket notation like string_custom_attribute["key1"].
@@ -697,11 +723,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A list of expressions specifies histogram requests against matching
-   * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-   * The expression syntax looks like a function definition with optional
-   * parameters.
+   * profiles for
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The expression syntax looks like a function definition with parameters.
    * Function syntax: function_name(histogram_facet[, list of buckets])
    * Data types:
    * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -742,19 +767,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    * * experience_in_months: experience in months. 0 means 0 month to 1 month
    * (exclusive).
    * * application_date: The application date specifies application start dates.
-   * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+   * See
+   * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+   * for more details.
    * * application_outcome_notes: The application outcome reason specifies the
    * reasons behind the outcome of the job application.
-   * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-   * * application_last_stage: The application last stage specifies the last
-   * stage of job application.
-   * See [ApplicationLastStageFilter][] for more details.
+   * See
+   * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+   * for more details.
    * * application_job_title: The application job title specifies the job
    * applied for in the application.
-   * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-   * * application_status: The application status specifies the status of job
-   * application.
-   * See [ApplicationStatusFilter][] for more details.
+   * See
+   * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+   * for more details.
    * * hirable_status: Hirable status specifies the profile's hirable status.
    * * string_custom_attribute: String custom attributes. Values can be accessed
    * via square bracket notation like string_custom_attribute["key1"].
@@ -778,11 +803,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A list of expressions specifies histogram requests against matching
-   * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-   * The expression syntax looks like a function definition with optional
-   * parameters.
+   * profiles for
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The expression syntax looks like a function definition with parameters.
    * Function syntax: function_name(histogram_facet[, list of buckets])
    * Data types:
    * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -823,19 +847,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    * * experience_in_months: experience in months. 0 means 0 month to 1 month
    * (exclusive).
    * * application_date: The application date specifies application start dates.
-   * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+   * See
+   * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+   * for more details.
    * * application_outcome_notes: The application outcome reason specifies the
    * reasons behind the outcome of the job application.
-   * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-   * * application_last_stage: The application last stage specifies the last
-   * stage of job application.
-   * See [ApplicationLastStageFilter][] for more details.
+   * See
+   * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+   * for more details.
    * * application_job_title: The application job title specifies the job
    * applied for in the application.
-   * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-   * * application_status: The application status specifies the status of job
-   * application.
-   * See [ApplicationStatusFilter][] for more details.
+   * See
+   * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+   * for more details.
    * * hirable_status: Hirable status specifies the profile's hirable status.
    * * string_custom_attribute: String custom attributes. Values can be accessed
    * via square bracket notation like string_custom_attribute["key1"].
@@ -859,11 +883,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * A list of expressions specifies histogram requests against matching
-   * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-   * The expression syntax looks like a function definition with optional
-   * parameters.
+   * profiles for
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The expression syntax looks like a function definition with parameters.
    * Function syntax: function_name(histogram_facet[, list of buckets])
    * Data types:
    * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -904,19 +927,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
    * * experience_in_months: experience in months. 0 means 0 month to 1 month
    * (exclusive).
    * * application_date: The application date specifies application start dates.
-   * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+   * See
+   * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+   * for more details.
    * * application_outcome_notes: The application outcome reason specifies the
    * reasons behind the outcome of the job application.
-   * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-   * * application_last_stage: The application last stage specifies the last
-   * stage of job application.
-   * See [ApplicationLastStageFilter][] for more details.
+   * See
+   * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+   * for more details.
    * * application_job_title: The application job title specifies the job
    * applied for in the application.
-   * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-   * * application_status: The application status specifies the status of job
-   * application.
-   * See [ApplicationStatusFilter][] for more details.
+   * See
+   * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+   * for more details.
    * * hirable_status: Hirable status specifies the profile's hirable status.
    * * string_custom_attribute: String custom attributes. Values can be accessed
    * via square bracket notation like string_custom_attribute["key1"].
@@ -936,6 +959,125 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
   public com.google.cloud.talent.v4beta1.HistogramQueryOrBuilder getHistogramQueriesOrBuilder(
       int index) {
     return histogramQueries_.get(index);
+  }
+
+  public static final int RESULT_SET_ID_FIELD_NUMBER = 12;
+  private volatile java.lang.Object resultSetId_;
+  /**
+   *
+   *
+   * <pre>
+   * An id that uniquely identifies the result set of a
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+   * call. The id should be retrieved from the
+   * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+   * message returned from a previous invocation of
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+   * A result set is an ordered list of search results.
+   * If this field is not set, a new result set is computed based on the
+   * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+   * A new
+   * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+   * is returned as a handle to access this result set.
+   * If this field is set, the service will ignore the resource and
+   * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+   * values, and simply retrieve a page of results from the corresponding result
+   * set.  In this case, one and only one of
+   * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+   * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+   * be set.
+   * A typical use case is to invoke
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+   * without this field, then use the resulting
+   * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+   * in
+   * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+   * to page through the results.
+   * </pre>
+   *
+   * <code>string result_set_id = 12;</code>
+   */
+  public java.lang.String getResultSetId() {
+    java.lang.Object ref = resultSetId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      resultSetId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * An id that uniquely identifies the result set of a
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+   * call. The id should be retrieved from the
+   * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+   * message returned from a previous invocation of
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+   * A result set is an ordered list of search results.
+   * If this field is not set, a new result set is computed based on the
+   * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+   * A new
+   * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+   * is returned as a handle to access this result set.
+   * If this field is set, the service will ignore the resource and
+   * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+   * values, and simply retrieve a page of results from the corresponding result
+   * set.  In this case, one and only one of
+   * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+   * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+   * be set.
+   * A typical use case is to invoke
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+   * without this field, then use the resulting
+   * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+   * in
+   * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+   * to page through the results.
+   * </pre>
+   *
+   * <code>string result_set_id = 12;</code>
+   */
+  public com.google.protobuf.ByteString getResultSetIdBytes() {
+    java.lang.Object ref = resultSetId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      resultSetId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int STRICT_KEYWORDS_SEARCH_FIELD_NUMBER = 13;
+  private boolean strictKeywordsSearch_;
+  /**
+   *
+   *
+   * <pre>
+   * This flag is used to indicate whether the service will attempt to
+   * understand synonyms and terms related to the search query or treat the
+   * query "as is" when it generates a set of results. By default this flag is
+   * set to false, thus allowing expanded results to also be returned. For
+   * example a search for "software engineer" might also return candidates who
+   * have experience in jobs similar to software engineer positions. By setting
+   * this flag to true, the service will only attempt to deliver candidates has
+   * software engineer in his/her global fields by treating "software engineer"
+   * as a keyword.
+   * It is recommended to provide a feature in the UI (such as a checkbox) to
+   * allow recruiters to set this flag to true if they intend to search for
+   * longer boolean strings.
+   * </pre>
+   *
+   * <code>bool strict_keywords_search = 13;</code>
+   */
+  public boolean getStrictKeywordsSearch() {
+    return strictKeywordsSearch_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -982,6 +1124,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
     for (int i = 0; i < histogramQueries_.size(); i++) {
       output.writeMessage(10, histogramQueries_.get(i));
     }
+    if (!getResultSetIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, resultSetId_);
+    }
+    if (strictKeywordsSearch_ != false) {
+      output.writeBool(13, strictKeywordsSearch_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -1022,6 +1170,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
       size +=
           com.google.protobuf.CodedOutputStream.computeMessageSize(10, histogramQueries_.get(i));
     }
+    if (!getResultSetIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, resultSetId_);
+    }
+    if (strictKeywordsSearch_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(13, strictKeywordsSearch_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1054,6 +1208,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
     if (!getOrderBy().equals(other.getOrderBy())) return false;
     if (getCaseSensitiveSort() != other.getCaseSensitiveSort()) return false;
     if (!getHistogramQueriesList().equals(other.getHistogramQueriesList())) return false;
+    if (!getResultSetId().equals(other.getResultSetId())) return false;
+    if (getStrictKeywordsSearch() != other.getStrictKeywordsSearch()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1091,6 +1247,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
       hash = (37 * hash) + HISTOGRAM_QUERIES_FIELD_NUMBER;
       hash = (53 * hash) + getHistogramQueriesList().hashCode();
     }
+    hash = (37 * hash) + RESULT_SET_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getResultSetId().hashCode();
+    hash = (37 * hash) + STRICT_KEYWORDS_SEARCH_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getStrictKeywordsSearch());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1271,6 +1431,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
       } else {
         histogramQueriesBuilder_.clear();
       }
+      resultSetId_ = "";
+
+      strictKeywordsSearch_ = false;
+
       return this;
     }
 
@@ -1326,6 +1490,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
       } else {
         result.histogramQueries_ = histogramQueriesBuilder_.build();
       }
+      result.resultSetId_ = resultSetId_;
+      result.strictKeywordsSearch_ = strictKeywordsSearch_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -1434,6 +1600,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
           }
         }
       }
+      if (!other.getResultSetId().isEmpty()) {
+        resultSetId_ = other.resultSetId_;
+        onChanged();
+      }
+      if (other.getStrictKeywordsSearch() != false) {
+        setStrictKeywordsSearch(other.getStrictKeywordsSearch());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1471,13 +1644,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant to search within.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant to search within.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -1494,13 +1666,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant to search within.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant to search within.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -1517,13 +1688,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant to search within.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant to search within.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -1538,13 +1708,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant to search within.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant to search within.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearParent() {
 
@@ -1556,13 +1725,12 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant to search within.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant to search within.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1585,13 +1753,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasRequestMetadata() {
       return requestMetadataBuilder_ != null || requestMetadata_ != null;
@@ -1600,13 +1769,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.RequestMetadata getRequestMetadata() {
       if (requestMetadataBuilder_ == null) {
@@ -1621,13 +1791,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setRequestMetadata(com.google.cloud.talent.v4beta1.RequestMetadata value) {
       if (requestMetadataBuilder_ == null) {
@@ -1646,13 +1817,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setRequestMetadata(
         com.google.cloud.talent.v4beta1.RequestMetadata.Builder builderForValue) {
@@ -1669,13 +1841,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeRequestMetadata(com.google.cloud.talent.v4beta1.RequestMetadata value) {
       if (requestMetadataBuilder_ == null) {
@@ -1698,13 +1871,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearRequestMetadata() {
       if (requestMetadataBuilder_ == null) {
@@ -1721,13 +1895,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.RequestMetadata.Builder getRequestMetadataBuilder() {
 
@@ -1738,13 +1913,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.RequestMetadataOrBuilder getRequestMetadataOrBuilder() {
       if (requestMetadataBuilder_ != null) {
@@ -1759,13 +1935,14 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The meta information collected about the profile search user. This is used
-     * to improve the search quality of the service. These values are provided by
-     * users, and must be precise and consistent.
+     * Required. The meta information collected about the profile search user.
+     * This is used to improve the search quality of the service. These values are
+     * provided by users, and must be precise and consistent.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.RequestMetadata request_metadata = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.talent.v4beta1.RequestMetadata,
@@ -1794,8 +1971,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1807,8 +1984,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1826,8 +2003,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1849,8 +2026,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1870,8 +2047,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1897,8 +2074,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1918,8 +2095,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1933,8 +2110,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1952,8 +2129,8 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
-     * Search query to execute. See [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
+     * Search query to execute. See
+     * [ProfileQuery][google.cloud.talent.v4beta1.ProfileQuery] for more details.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.ProfileQuery profile_query = 3;</code>
@@ -1980,7 +2157,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A limit on the number of profiles returned in the search results.
      * A value above the default value 10 can increase search response time.
      * The maximum value allowed is 100. Otherwise an error is thrown.
@@ -1995,7 +2171,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A limit on the number of profiles returned in the search results.
      * A value above the default value 10 can increase search response time.
      * The maximum value allowed is 100. Otherwise an error is thrown.
@@ -2013,7 +2188,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A limit on the number of profiles returned in the search results.
      * A value above the default value 10 can increase search response time.
      * The maximum value allowed is 100. Otherwise an error is thrown.
@@ -2033,14 +2207,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The pageToken, similar to offset enables users of the API to paginate
      * through the search results. To retrieve the first page of results, set the
      * pageToken to empty. The search response includes a
-     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-     * used to populate the pageToken field for the next page of results. Using
-     * pageToken instead of offset increases the performance of the API,
-     * especially compared to larger offset values.
+     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+     * field that can be used to populate the pageToken field for the next page of
+     * results. Using pageToken instead of offset increases the performance of the
+     * API, especially compared to larger offset values.
      * </pre>
      *
      * <code>string page_token = 5;</code>
@@ -2060,14 +2233,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The pageToken, similar to offset enables users of the API to paginate
      * through the search results. To retrieve the first page of results, set the
      * pageToken to empty. The search response includes a
-     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-     * used to populate the pageToken field for the next page of results. Using
-     * pageToken instead of offset increases the performance of the API,
-     * especially compared to larger offset values.
+     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+     * field that can be used to populate the pageToken field for the next page of
+     * results. Using pageToken instead of offset increases the performance of the
+     * API, especially compared to larger offset values.
      * </pre>
      *
      * <code>string page_token = 5;</code>
@@ -2087,14 +2259,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The pageToken, similar to offset enables users of the API to paginate
      * through the search results. To retrieve the first page of results, set the
      * pageToken to empty. The search response includes a
-     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-     * used to populate the pageToken field for the next page of results. Using
-     * pageToken instead of offset increases the performance of the API,
-     * especially compared to larger offset values.
+     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+     * field that can be used to populate the pageToken field for the next page of
+     * results. Using pageToken instead of offset increases the performance of the
+     * API, especially compared to larger offset values.
      * </pre>
      *
      * <code>string page_token = 5;</code>
@@ -2112,14 +2283,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The pageToken, similar to offset enables users of the API to paginate
      * through the search results. To retrieve the first page of results, set the
      * pageToken to empty. The search response includes a
-     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-     * used to populate the pageToken field for the next page of results. Using
-     * pageToken instead of offset increases the performance of the API,
-     * especially compared to larger offset values.
+     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+     * field that can be used to populate the pageToken field for the next page of
+     * results. Using pageToken instead of offset increases the performance of the
+     * API, especially compared to larger offset values.
      * </pre>
      *
      * <code>string page_token = 5;</code>
@@ -2134,14 +2304,13 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The pageToken, similar to offset enables users of the API to paginate
      * through the search results. To retrieve the first page of results, set the
      * pageToken to empty. The search response includes a
-     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token] field that can be
-     * used to populate the pageToken field for the next page of results. Using
-     * pageToken instead of offset increases the performance of the API,
-     * especially compared to larger offset values.
+     * [nextPageToken][google.cloud.talent.v4beta1.SearchProfilesResponse.next_page_token]
+     * field that can be used to populate the pageToken field for the next page of
+     * results. Using pageToken instead of offset increases the performance of the
+     * API, especially compared to larger offset values.
      * </pre>
      *
      * <code>string page_token = 5;</code>
@@ -2162,9 +2331,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * An integer that specifies the current offset (that is, starting result) in
-     * search results. This field is only considered if [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token] is unset.
+     * search results. This field is only considered if
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * is unset.
      * The maximum allowed value is 5000. Otherwise an error is thrown.
      * For example, 0 means to search from the first profile, and 10 means to
      * search from the 11th profile. This can be used for pagination, for example
@@ -2180,9 +2350,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * An integer that specifies the current offset (that is, starting result) in
-     * search results. This field is only considered if [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token] is unset.
+     * search results. This field is only considered if
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * is unset.
      * The maximum allowed value is 5000. Otherwise an error is thrown.
      * For example, 0 means to search from the first profile, and 10 means to
      * search from the 11th profile. This can be used for pagination, for example
@@ -2201,9 +2372,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * An integer that specifies the current offset (that is, starting result) in
-     * search results. This field is only considered if [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token] is unset.
+     * search results. This field is only considered if
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * is unset.
      * The maximum allowed value is 5000. Otherwise an error is thrown.
      * For example, 0 means to search from the first profile, and 10 means to
      * search from the 11th profile. This can be used for pagination, for example
@@ -2224,7 +2396,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * This flag controls the spell-check feature. If `false`, the
      * service attempts to correct a misspelled query.
      * For example, "enginee" is corrected to "engineer".
@@ -2239,7 +2410,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * This flag controls the spell-check feature. If `false`, the
      * service attempts to correct a misspelled query.
      * For example, "enginee" is corrected to "engineer".
@@ -2257,7 +2427,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * This flag controls the spell-check feature. If `false`, the
      * service attempts to correct a misspelled query.
      * For example, "enginee" is corrected to "engineer".
@@ -2277,24 +2446,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The criteria that determines how search results are sorted.
      * Defaults is "relevance desc" if no value is specified.
      * Supported options are:
      * * "relevance desc": By descending relevance, as determined by the API
      *    algorithms.
-     * * "update_date desc": Sort by [Profile.update_date][] in descending order
+     * * "update_date desc": Sort by
+     * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+     * descending order
      *   (recently updated profiles first).
-     * * "create_date desc": Sort by [Profile.create_date][] in descending order
+     * * "create_date desc": Sort by
+     * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+     * descending order
      *   (recently created profiles first).
-     * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-     *   order.
-     * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-     *   descending order.
-     * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-     *   order.
-     * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+     * * "first_name": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     * in
      *   ascending order.
+     * * "first_name desc": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     *   in descending order.
+     * * "last_name": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     * in
+     *   ascending order.
+     * * "last_name desc": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     *   in ascending order.
      * </pre>
      *
      * <code>string order_by = 8;</code>
@@ -2314,24 +2492,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The criteria that determines how search results are sorted.
      * Defaults is "relevance desc" if no value is specified.
      * Supported options are:
      * * "relevance desc": By descending relevance, as determined by the API
      *    algorithms.
-     * * "update_date desc": Sort by [Profile.update_date][] in descending order
+     * * "update_date desc": Sort by
+     * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+     * descending order
      *   (recently updated profiles first).
-     * * "create_date desc": Sort by [Profile.create_date][] in descending order
+     * * "create_date desc": Sort by
+     * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+     * descending order
      *   (recently created profiles first).
-     * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-     *   order.
-     * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-     *   descending order.
-     * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-     *   order.
-     * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+     * * "first_name": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     * in
      *   ascending order.
+     * * "first_name desc": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     *   in descending order.
+     * * "last_name": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     * in
+     *   ascending order.
+     * * "last_name desc": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     *   in ascending order.
      * </pre>
      *
      * <code>string order_by = 8;</code>
@@ -2351,24 +2538,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The criteria that determines how search results are sorted.
      * Defaults is "relevance desc" if no value is specified.
      * Supported options are:
      * * "relevance desc": By descending relevance, as determined by the API
      *    algorithms.
-     * * "update_date desc": Sort by [Profile.update_date][] in descending order
+     * * "update_date desc": Sort by
+     * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+     * descending order
      *   (recently updated profiles first).
-     * * "create_date desc": Sort by [Profile.create_date][] in descending order
+     * * "create_date desc": Sort by
+     * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+     * descending order
      *   (recently created profiles first).
-     * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-     *   order.
-     * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-     *   descending order.
-     * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-     *   order.
-     * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+     * * "first_name": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     * in
      *   ascending order.
+     * * "first_name desc": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     *   in descending order.
+     * * "last_name": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     * in
+     *   ascending order.
+     * * "last_name desc": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     *   in ascending order.
      * </pre>
      *
      * <code>string order_by = 8;</code>
@@ -2386,24 +2582,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The criteria that determines how search results are sorted.
      * Defaults is "relevance desc" if no value is specified.
      * Supported options are:
      * * "relevance desc": By descending relevance, as determined by the API
      *    algorithms.
-     * * "update_date desc": Sort by [Profile.update_date][] in descending order
+     * * "update_date desc": Sort by
+     * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+     * descending order
      *   (recently updated profiles first).
-     * * "create_date desc": Sort by [Profile.create_date][] in descending order
+     * * "create_date desc": Sort by
+     * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+     * descending order
      *   (recently created profiles first).
-     * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-     *   order.
-     * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-     *   descending order.
-     * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-     *   order.
-     * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+     * * "first_name": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     * in
      *   ascending order.
+     * * "first_name desc": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     *   in descending order.
+     * * "last_name": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     * in
+     *   ascending order.
+     * * "last_name desc": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     *   in ascending order.
      * </pre>
      *
      * <code>string order_by = 8;</code>
@@ -2418,24 +2623,33 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The criteria that determines how search results are sorted.
      * Defaults is "relevance desc" if no value is specified.
      * Supported options are:
      * * "relevance desc": By descending relevance, as determined by the API
      *    algorithms.
-     * * "update_date desc": Sort by [Profile.update_date][] in descending order
+     * * "update_date desc": Sort by
+     * [Profile.update_time][google.cloud.talent.v4beta1.Profile.update_time] in
+     * descending order
      *   (recently updated profiles first).
-     * * "create_date desc": Sort by [Profile.create_date][] in descending order
+     * * "create_date desc": Sort by
+     * [Profile.create_time][google.cloud.talent.v4beta1.Profile.create_time] in
+     * descending order
      *   (recently created profiles first).
-     * * "first_name": Sort by [PersonStrcuturedName.given_name][] in ascending
-     *   order.
-     * * "first_name desc": Sort by [PersonStrcuturedName.given_name][] in
-     *   descending order.
-     * * "last_name": Sort by [PersonStrcuturedName.family_name][] in ascending
-     *   order.
-     * * "last_name desc": Sort by [PersonStrcuturedName.family_name][] in
+     * * "first_name": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     * in
      *   ascending order.
+     * * "first_name desc": Sort by
+     * [PersonName.PersonStructuredName.given_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.given_name]
+     *   in descending order.
+     * * "last_name": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     * in
+     *   ascending order.
+     * * "last_name desc": Sort by
+     * [PersonName.PersonStructuredName.family_name][google.cloud.talent.v4beta1.PersonName.PersonStructuredName.family_name]
+     *   in ascending order.
      * </pre>
      *
      * <code>string order_by = 8;</code>
@@ -2456,7 +2670,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * When sort by field is based on alphabetical order, sort values case
      * sensitively (based on ASCII) when the value is set to true. Default value
      * is case in-sensitive sort (false).
@@ -2471,7 +2684,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * When sort by field is based on alphabetical order, sort values case
      * sensitively (based on ASCII) when the value is set to true. Default value
      * is case in-sensitive sort (false).
@@ -2489,7 +2701,6 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * When sort by field is based on alphabetical order, sort values case
      * sensitively (based on ASCII) when the value is set to true. Default value
      * is case in-sensitive sort (false).
@@ -2526,11 +2737,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -2571,19 +2781,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -2612,11 +2822,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -2657,19 +2866,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -2697,11 +2906,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -2742,19 +2950,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -2782,11 +2990,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -2827,19 +3034,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -2874,11 +3081,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -2919,19 +3125,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -2963,11 +3169,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3008,19 +3213,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3054,11 +3259,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3099,19 +3303,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3146,11 +3350,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3191,19 +3394,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3235,11 +3438,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3280,19 +3482,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3324,11 +3526,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3369,19 +3570,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3413,11 +3614,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3458,19 +3658,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3501,11 +3701,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3546,19 +3745,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3589,11 +3788,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3634,19 +3832,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3671,11 +3869,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3716,19 +3913,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3757,11 +3954,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3802,19 +3998,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3843,11 +4039,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3888,19 +4083,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -3925,11 +4120,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -3970,19 +4164,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -4008,11 +4202,10 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * A list of expressions specifies histogram requests against matching
-     * profiles for [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
-     * The expression syntax looks like a function definition with optional
-     * parameters.
+     * profiles for
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The expression syntax looks like a function definition with parameters.
      * Function syntax: function_name(histogram_facet[, list of buckets])
      * Data types:
      * * Histogram facet: facet names with format [a-zA-Z][a-zA-Z0-9_]+.
@@ -4053,19 +4246,19 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
      * * experience_in_months: experience in months. 0 means 0 month to 1 month
      * (exclusive).
      * * application_date: The application date specifies application start dates.
-     * See [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter] for more details.
+     * See
+     * [ApplicationDateFilter][google.cloud.talent.v4beta1.ApplicationDateFilter]
+     * for more details.
      * * application_outcome_notes: The application outcome reason specifies the
      * reasons behind the outcome of the job application.
-     * See [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter] for more details.
-     * * application_last_stage: The application last stage specifies the last
-     * stage of job application.
-     * See [ApplicationLastStageFilter][] for more details.
+     * See
+     * [ApplicationOutcomeNotesFilter][google.cloud.talent.v4beta1.ApplicationOutcomeNotesFilter]
+     * for more details.
      * * application_job_title: The application job title specifies the job
      * applied for in the application.
-     * See [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter] for more details.
-     * * application_status: The application status specifies the status of job
-     * application.
-     * See [ApplicationStatusFilter][] for more details.
+     * See
+     * [ApplicationJobFilter][google.cloud.talent.v4beta1.ApplicationJobFilter]
+     * for more details.
      * * hirable_status: Hirable status specifies the profile's hirable status.
      * * string_custom_attribute: String custom attributes. Values can be accessed
      * via square bracket notation like string_custom_attribute["key1"].
@@ -4105,6 +4298,302 @@ public final class SearchProfilesRequest extends com.google.protobuf.GeneratedMe
         histogramQueries_ = null;
       }
       return histogramQueriesBuilder_;
+    }
+
+    private java.lang.Object resultSetId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call. The id should be retrieved from the
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * message returned from a previous invocation of
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+     * A result set is an ordered list of search results.
+     * If this field is not set, a new result set is computed based on the
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+     * A new
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * is returned as a handle to access this result set.
+     * If this field is set, the service will ignore the resource and
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+     * values, and simply retrieve a page of results from the corresponding result
+     * set.  In this case, one and only one of
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+     * be set.
+     * A typical use case is to invoke
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+     * without this field, then use the resulting
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * in
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * to page through the results.
+     * </pre>
+     *
+     * <code>string result_set_id = 12;</code>
+     */
+    public java.lang.String getResultSetId() {
+      java.lang.Object ref = resultSetId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resultSetId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call. The id should be retrieved from the
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * message returned from a previous invocation of
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+     * A result set is an ordered list of search results.
+     * If this field is not set, a new result set is computed based on the
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+     * A new
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * is returned as a handle to access this result set.
+     * If this field is set, the service will ignore the resource and
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+     * values, and simply retrieve a page of results from the corresponding result
+     * set.  In this case, one and only one of
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+     * be set.
+     * A typical use case is to invoke
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+     * without this field, then use the resulting
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * in
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * to page through the results.
+     * </pre>
+     *
+     * <code>string result_set_id = 12;</code>
+     */
+    public com.google.protobuf.ByteString getResultSetIdBytes() {
+      java.lang.Object ref = resultSetId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        resultSetId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call. The id should be retrieved from the
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * message returned from a previous invocation of
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+     * A result set is an ordered list of search results.
+     * If this field is not set, a new result set is computed based on the
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+     * A new
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * is returned as a handle to access this result set.
+     * If this field is set, the service will ignore the resource and
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+     * values, and simply retrieve a page of results from the corresponding result
+     * set.  In this case, one and only one of
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+     * be set.
+     * A typical use case is to invoke
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+     * without this field, then use the resulting
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * in
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * to page through the results.
+     * </pre>
+     *
+     * <code>string result_set_id = 12;</code>
+     */
+    public Builder setResultSetId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      resultSetId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call. The id should be retrieved from the
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * message returned from a previous invocation of
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+     * A result set is an ordered list of search results.
+     * If this field is not set, a new result set is computed based on the
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+     * A new
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * is returned as a handle to access this result set.
+     * If this field is set, the service will ignore the resource and
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+     * values, and simply retrieve a page of results from the corresponding result
+     * set.  In this case, one and only one of
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+     * be set.
+     * A typical use case is to invoke
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+     * without this field, then use the resulting
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * in
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * to page through the results.
+     * </pre>
+     *
+     * <code>string result_set_id = 12;</code>
+     */
+    public Builder clearResultSetId() {
+
+      resultSetId_ = getDefaultInstance().getResultSetId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call. The id should be retrieved from the
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * message returned from a previous invocation of
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles].
+     * A result set is an ordered list of search results.
+     * If this field is not set, a new result set is computed based on the
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query].
+     * A new
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * is returned as a handle to access this result set.
+     * If this field is set, the service will ignore the resource and
+     * [profile_query][google.cloud.talent.v4beta1.SearchProfilesRequest.profile_query]
+     * values, and simply retrieve a page of results from the corresponding result
+     * set.  In this case, one and only one of
+     * [page_token][google.cloud.talent.v4beta1.SearchProfilesRequest.page_token]
+     * or [offset][google.cloud.talent.v4beta1.SearchProfilesRequest.offset] must
+     * be set.
+     * A typical use case is to invoke
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest]
+     * without this field, then use the resulting
+     * [result_set_id][google.cloud.talent.v4beta1.SearchProfilesRequest.result_set_id]
+     * in
+     * [SearchProfilesResponse][google.cloud.talent.v4beta1.SearchProfilesResponse]
+     * to page through the results.
+     * </pre>
+     *
+     * <code>string result_set_id = 12;</code>
+     */
+    public Builder setResultSetIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      resultSetId_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean strictKeywordsSearch_;
+    /**
+     *
+     *
+     * <pre>
+     * This flag is used to indicate whether the service will attempt to
+     * understand synonyms and terms related to the search query or treat the
+     * query "as is" when it generates a set of results. By default this flag is
+     * set to false, thus allowing expanded results to also be returned. For
+     * example a search for "software engineer" might also return candidates who
+     * have experience in jobs similar to software engineer positions. By setting
+     * this flag to true, the service will only attempt to deliver candidates has
+     * software engineer in his/her global fields by treating "software engineer"
+     * as a keyword.
+     * It is recommended to provide a feature in the UI (such as a checkbox) to
+     * allow recruiters to set this flag to true if they intend to search for
+     * longer boolean strings.
+     * </pre>
+     *
+     * <code>bool strict_keywords_search = 13;</code>
+     */
+    public boolean getStrictKeywordsSearch() {
+      return strictKeywordsSearch_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This flag is used to indicate whether the service will attempt to
+     * understand synonyms and terms related to the search query or treat the
+     * query "as is" when it generates a set of results. By default this flag is
+     * set to false, thus allowing expanded results to also be returned. For
+     * example a search for "software engineer" might also return candidates who
+     * have experience in jobs similar to software engineer positions. By setting
+     * this flag to true, the service will only attempt to deliver candidates has
+     * software engineer in his/her global fields by treating "software engineer"
+     * as a keyword.
+     * It is recommended to provide a feature in the UI (such as a checkbox) to
+     * allow recruiters to set this flag to true if they intend to search for
+     * longer boolean strings.
+     * </pre>
+     *
+     * <code>bool strict_keywords_search = 13;</code>
+     */
+    public Builder setStrictKeywordsSearch(boolean value) {
+
+      strictKeywordsSearch_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * This flag is used to indicate whether the service will attempt to
+     * understand synonyms and terms related to the search query or treat the
+     * query "as is" when it generates a set of results. By default this flag is
+     * set to false, thus allowing expanded results to also be returned. For
+     * example a search for "software engineer" might also return candidates who
+     * have experience in jobs similar to software engineer positions. By setting
+     * this flag to true, the service will only attempt to deliver candidates has
+     * software engineer in his/her global fields by treating "software engineer"
+     * as a keyword.
+     * It is recommended to provide a feature in the UI (such as a checkbox) to
+     * allow recruiters to set this flag to true if they intend to search for
+     * longer boolean strings.
+     * </pre>
+     *
+     * <code>bool strict_keywords_search = 13;</code>
+     */
+    public Builder clearStrictKeywordsSearch() {
+
+      strictKeywordsSearch_ = false;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

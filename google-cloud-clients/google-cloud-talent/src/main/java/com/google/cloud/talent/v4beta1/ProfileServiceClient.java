@@ -171,10 +171,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   * @param parent Required. The resource name of the tenant under which the profile is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListProfilesPagedResponse listProfiles(TenantName parent) {
@@ -200,10 +199,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   * @param parent Required. The resource name of the tenant under which the profile is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListProfilesPagedResponse listProfiles(String parent) {
@@ -306,12 +304,10 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The name of the tenant this profile belongs to.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
-   * @param profile Required.
-   *     <p>The profile to be created.
+   * @param parent Required. The name of the tenant this profile belongs to.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenants/bar".
+   * @param profile Required. The profile to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Profile createProfile(TenantName parent, Profile profile) {
@@ -338,12 +334,10 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The name of the tenant this profile belongs to.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
-   * @param profile Required.
-   *     <p>The profile to be created.
+   * @param parent Required. The name of the tenant this profile belongs to.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenants/bar".
+   * @param profile Required. The profile to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Profile createProfile(String parent, Profile profile) {
@@ -415,10 +409,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>Resource name of the profile to get.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   *     example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * @param name Required. Resource name of the profile to get.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   *     example, "projects/foo/tenants/bar/profiles/baz".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Profile getProfile(ProfileName name) {
@@ -441,10 +434,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>Resource name of the profile to get.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   *     example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * @param name Required. Resource name of the profile to get.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   *     example, "projects/foo/tenants/bar/profiles/baz".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Profile getProfile(String name) {
@@ -511,8 +503,7 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param profile Required.
-   *     <p>Profile to be updated.
+   * @param profile Required. Profile to be updated.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Profile updateProfile(Profile profile) {
@@ -580,10 +571,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>Resource name of the profile to be deleted.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   *     example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * @param name Required. Resource name of the profile to be deleted.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   *     example, "projects/foo/tenants/bar/profiles/baz".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteProfile(ProfileName name) {
@@ -607,10 +597,9 @@ public class ProfileServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>Resource name of the profile to be deleted.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   *     example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * @param name Required. Resource name of the profile to be deleted.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   *     example, "projects/foo/tenants/bar/profiles/baz".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteProfile(String name) {
@@ -686,7 +675,7 @@ public class ProfileServiceClient implements BackgroundResource {
    *     .setParent(parent.toString())
    *     .setRequestMetadata(requestMetadata)
    *     .build();
-   *   for (HistogramQueryResult element : profileServiceClient.searchProfiles(request).iterateAll()) {
+   *   for (SummarizedProfile element : profileServiceClient.searchProfiles(request).iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -721,7 +710,7 @@ public class ProfileServiceClient implements BackgroundResource {
    *     .build();
    *   ApiFuture&lt;SearchProfilesPagedResponse&gt; future = profileServiceClient.searchProfilesPagedCallable().futureCall(request);
    *   // Do something
-   *   for (HistogramQueryResult element : future.get().iterateAll()) {
+   *   for (SummarizedProfile element : future.get().iterateAll()) {
    *     // doThingsWith(element);
    *   }
    * }
@@ -754,7 +743,7 @@ public class ProfileServiceClient implements BackgroundResource {
    *     .build();
    *   while (true) {
    *     SearchProfilesResponse response = profileServiceClient.searchProfilesCallable().call(request);
-   *     for (HistogramQueryResult element : response.getHistogramQueryResultsList()) {
+   *     for (SummarizedProfile element : response.getSummarizedProfilesList()) {
    *       // doThingsWith(element);
    *     }
    *     String nextPageToken = response.getNextPageToken();
@@ -886,12 +875,12 @@ public class ProfileServiceClient implements BackgroundResource {
       extends AbstractPagedListResponse<
           SearchProfilesRequest,
           SearchProfilesResponse,
-          HistogramQueryResult,
+          SummarizedProfile,
           SearchProfilesPage,
           SearchProfilesFixedSizeCollection> {
 
     public static ApiFuture<SearchProfilesPagedResponse> createAsync(
-        PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult> context,
+        PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile> context,
         ApiFuture<SearchProfilesResponse> futureResponse) {
       ApiFuture<SearchProfilesPage> futurePage =
           SearchProfilesPage.createEmptyPage().createPageAsync(context, futureResponse);
@@ -913,10 +902,10 @@ public class ProfileServiceClient implements BackgroundResource {
 
   public static class SearchProfilesPage
       extends AbstractPage<
-          SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult, SearchProfilesPage> {
+          SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile, SearchProfilesPage> {
 
     private SearchProfilesPage(
-        PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult> context,
+        PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile> context,
         SearchProfilesResponse response) {
       super(context, response);
     }
@@ -927,14 +916,14 @@ public class ProfileServiceClient implements BackgroundResource {
 
     @Override
     protected SearchProfilesPage createPage(
-        PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult> context,
+        PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile> context,
         SearchProfilesResponse response) {
       return new SearchProfilesPage(context, response);
     }
 
     @Override
     public ApiFuture<SearchProfilesPage> createPageAsync(
-        PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult> context,
+        PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile> context,
         ApiFuture<SearchProfilesResponse> futureResponse) {
       return super.createPageAsync(context, futureResponse);
     }
@@ -944,7 +933,7 @@ public class ProfileServiceClient implements BackgroundResource {
       extends AbstractFixedSizeCollection<
           SearchProfilesRequest,
           SearchProfilesResponse,
-          HistogramQueryResult,
+          SummarizedProfile,
           SearchProfilesPage,
           SearchProfilesFixedSizeCollection> {
 

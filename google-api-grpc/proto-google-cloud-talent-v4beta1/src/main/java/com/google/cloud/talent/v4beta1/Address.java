@@ -174,7 +174,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -187,7 +186,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -205,7 +203,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Unstructured address.
    * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
    * "Sunnyvale, California".
@@ -234,7 +231,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Unstructured address.
    * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
    * "Sunnyvale, California".
@@ -265,7 +261,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -279,7 +274,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -296,7 +290,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -316,7 +309,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *
@@ -329,7 +321,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *
@@ -342,7 +333,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *
@@ -785,7 +775,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -798,7 +787,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -813,7 +801,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -831,7 +818,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -850,7 +836,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -867,7 +852,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Unstructured address.
      * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
      * "Sunnyvale, California".
@@ -896,7 +880,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Unstructured address.
      * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
      * "Sunnyvale, California".
@@ -925,7 +908,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Unstructured address.
      * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
      * "Sunnyvale, California".
@@ -947,7 +929,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Unstructured address.
      * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
      * "Sunnyvale, California".
@@ -968,7 +949,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Unstructured address.
      * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
      * "Sunnyvale, California".
@@ -997,7 +977,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1011,7 +990,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1035,7 +1013,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1059,7 +1036,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1080,7 +1056,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1111,7 +1086,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1138,7 +1112,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1152,7 +1125,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1173,7 +1145,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Structured address that contains street address, city, state, country,
      * and so on.
      * </pre>
@@ -1213,7 +1184,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1226,7 +1196,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1243,7 +1212,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1266,7 +1234,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1286,7 +1253,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1311,7 +1277,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1332,7 +1297,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1347,7 +1311,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *
@@ -1364,7 +1327,6 @@ public final class Address extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Indicates if it's the person's current address.
      * </pre>
      *

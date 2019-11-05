@@ -26,7 +26,16 @@ import javax.annotation.Nullable;
 @Generated("by GAPIC")
 @BetaApi
 /**
- * An Operation resource, used to manage asynchronous API requests. (== resource_for
+ * Represents an Operation resource.
+ *
+ * <p>You can use an operation resource to manage asynchronous API requests. For more information,
+ * read Handling API responses.
+ *
+ * <p>Operations can be global, regional or zonal. - For global operations, use the globalOperations
+ * resource. - For regional operations, use the regionOperations resource. - For zonal operations,
+ * use the zonalOperations resource.
+ *
+ * <p>For more information, read Global, Regional, and Zonal Resources. (== resource_for
  * v1.globalOperations ==) (== resource_for beta.globalOperations ==) (== resource_for
  * v1.regionOperations ==) (== resource_for beta.regionOperations ==) (== resource_for
  * v1.zoneOperations ==) (== resource_for beta.zoneOperations ==)
@@ -276,7 +285,8 @@ public final class Operation implements ApiMessage {
   }
 
   /**
-   * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+   * [Output Only] The unique identifier for the operation. This identifier is defined by the
+   * server.
    */
   public String getId() {
     return id;
@@ -294,7 +304,7 @@ public final class Operation implements ApiMessage {
     return kind;
   }
 
-  /** [Output Only] Name of the resource. */
+  /** [Output Only] Name of the operation. */
   public String getName() {
     return name;
   }
@@ -315,9 +325,8 @@ public final class Operation implements ApiMessage {
   }
 
   /**
-   * [Output Only] The URL of the region where the operation resides. Only available when performing
-   * regional operations. You must specify this field as part of the HTTP request URL. It is not
-   * settable as a field in the request body.
+   * [Output Only] The URL of the region where the operation resides. Only applicable when
+   * performing regional operations.
    */
   public String getRegion() {
     return region;
@@ -379,9 +388,8 @@ public final class Operation implements ApiMessage {
   }
 
   /**
-   * [Output Only] The URL of the zone where the operation resides. Only available when performing
-   * per-zone operations. You must specify this field as part of the HTTP request URL. It is not
-   * settable as a field in the request body.
+   * [Output Only] The URL of the zone where the operation resides. Only applicable when performing
+   * per-zone operations.
    */
   public String getZone() {
     return zone;
@@ -650,7 +658,7 @@ public final class Operation implements ApiMessage {
     }
 
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the
+     * [Output Only] The unique identifier for the operation. This identifier is defined by the
      * server.
      */
     public String getId() {
@@ -658,7 +666,7 @@ public final class Operation implements ApiMessage {
     }
 
     /**
-     * [Output Only] The unique identifier for the resource. This identifier is defined by the
+     * [Output Only] The unique identifier for the operation. This identifier is defined by the
      * server.
      */
     public Builder setId(String id) {
@@ -694,12 +702,12 @@ public final class Operation implements ApiMessage {
       return this;
     }
 
-    /** [Output Only] Name of the resource. */
+    /** [Output Only] Name of the operation. */
     public String getName() {
       return name;
     }
 
-    /** [Output Only] Name of the resource. */
+    /** [Output Only] Name of the operation. */
     public Builder setName(String name) {
       this.name = name;
       return this;
@@ -738,18 +746,16 @@ public final class Operation implements ApiMessage {
     }
 
     /**
-     * [Output Only] The URL of the region where the operation resides. Only available when
-     * performing regional operations. You must specify this field as part of the HTTP request URL.
-     * It is not settable as a field in the request body.
+     * [Output Only] The URL of the region where the operation resides. Only applicable when
+     * performing regional operations.
      */
     public String getRegion() {
       return region;
     }
 
     /**
-     * [Output Only] The URL of the region where the operation resides. Only available when
-     * performing regional operations. You must specify this field as part of the HTTP request URL.
-     * It is not settable as a field in the request body.
+     * [Output Only] The URL of the region where the operation resides. Only applicable when
+     * performing regional operations.
      */
     public Builder setRegion(String region) {
       this.region = region;
@@ -890,18 +896,16 @@ public final class Operation implements ApiMessage {
     }
 
     /**
-     * [Output Only] The URL of the zone where the operation resides. Only available when performing
-     * per-zone operations. You must specify this field as part of the HTTP request URL. It is not
-     * settable as a field in the request body.
+     * [Output Only] The URL of the zone where the operation resides. Only applicable when
+     * performing per-zone operations.
      */
     public String getZone() {
       return zone;
     }
 
     /**
-     * [Output Only] The URL of the zone where the operation resides. Only available when performing
-     * per-zone operations. You must specify this field as part of the HTTP request URL. It is not
-     * settable as a field in the request body.
+     * [Output Only] The URL of the zone where the operation resides. Only applicable when
+     * performing per-zone operations.
      */
     public Builder setZone(String zone) {
       this.zone = zone;

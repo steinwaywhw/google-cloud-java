@@ -15,6 +15,10 @@
 
 set -eo pipefail
 
+# Start the releasetool reporter
+python3 -m pip install gcp-releasetool
+python3 -m releasetool publish-reporter-script > /tmp/publisher-script; source /tmp/publisher-script
+
 source $(dirname "$0")/common.sh
 MAVEN_SETTINGS_FILE=$(realpath $(dirname "$0")/../../)/settings.xml
 pushd $(dirname "$0")/../../
@@ -29,3 +33,10 @@ mvn clean deploy -B \
   -Dgpg.passphrase=${GPG_PASSPHRASE} \
   -Dgpg.homedir=${GPG_HOMEDIR} \
   -P release
+
+if [[ -n "${AUTORELEASE_PR}" ]]
+then
+  mvn nexus-staging:release -B \
+    -DperformRelease=true \
+    --settings=settings.xml
+fi

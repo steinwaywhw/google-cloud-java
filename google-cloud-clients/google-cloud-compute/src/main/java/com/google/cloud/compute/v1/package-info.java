@@ -121,9 +121,23 @@
  * <code>
  * try (DiskClient diskClient = DiskClient.create()) {
  *   ProjectZoneDiskName disk = ProjectZoneDiskName.of("[PROJECT]", "[ZONE]", "[DISK]");
- *   Boolean guestFlush = false;
- *   Snapshot snapshotResource = Snapshot.newBuilder().build();
- *   Operation response = diskClient.createSnapshotDisk(disk, guestFlush, snapshotResource);
+ *   DisksAddResourcePoliciesRequest disksAddResourcePoliciesRequestResource = DisksAddResourcePoliciesRequest.newBuilder().build();
+ *   Operation response = diskClient.addResourcePoliciesDisk(disk, disksAddResourcePoliciesRequestResource);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ======================== ExternalVpnGatewayClient ========================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for ExternalVpnGatewayClient:
+ *
+ * <pre>
+ * <code>
+ * try (ExternalVpnGatewayClient externalVpnGatewayClient = ExternalVpnGatewayClient.create()) {
+ *   ProjectGlobalExternalVpnGatewayName externalVpnGateway = ProjectGlobalExternalVpnGatewayName.of("[PROJECT]", "[EXTERNAL_VPN_GATEWAY]");
+ *   Operation response = externalVpnGatewayClient.deleteExternalVpnGateway(externalVpnGateway);
  * }
  * </code>
  * </pre>
@@ -580,8 +594,23 @@
  * <code>
  * try (RegionDiskClient regionDiskClient = RegionDiskClient.create()) {
  *   ProjectRegionDiskName disk = ProjectRegionDiskName.of("[PROJECT]", "[REGION]", "[DISK]");
- *   Snapshot snapshotResource = Snapshot.newBuilder().build();
- *   Operation response = regionDiskClient.createSnapshotRegionDisk(disk, snapshotResource);
+ *   RegionDisksAddResourcePoliciesRequest regionDisksAddResourcePoliciesRequestResource = RegionDisksAddResourcePoliciesRequest.newBuilder().build();
+ *   Operation response = regionDiskClient.addResourcePoliciesRegionDisk(disk, regionDisksAddResourcePoliciesRequestResource);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ======================= RegionHealthCheckClient =======================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for RegionHealthCheckClient:
+ *
+ * <pre>
+ * <code>
+ * try (RegionHealthCheckClient regionHealthCheckClient = RegionHealthCheckClient.create()) {
+ *   ProjectRegionHealthCheckName healthCheck = ProjectRegionHealthCheckName.of("[PROJECT]", "[REGION]", "[HEALTH_CHECK]");
+ *   Operation response = regionHealthCheckClient.deleteRegionHealthCheck(healthCheck);
  * }
  * </code>
  * </pre>
@@ -633,6 +662,67 @@
  * </code>
  * </pre>
  *
+ * ========================== RegionSslCertificateClient ==========================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for RegionSslCertificateClient:
+ *
+ * <pre>
+ * <code>
+ * try (RegionSslCertificateClient regionSslCertificateClient = RegionSslCertificateClient.create()) {
+ *   ProjectRegionSslCertificateName sslCertificate = ProjectRegionSslCertificateName.of("[PROJECT]", "[REGION]", "[SSL_CERTIFICATE]");
+ *   Operation response = regionSslCertificateClient.deleteRegionSslCertificate(sslCertificate);
+ * }
+ * </code>
+ * </pre>
+ *
+ * =========================== RegionTargetHttpProxyClient ===========================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for RegionTargetHttpProxyClient:
+ *
+ * <pre>
+ * <code>
+ * try (RegionTargetHttpProxyClient regionTargetHttpProxyClient = RegionTargetHttpProxyClient.create()) {
+ *   ProjectRegionTargetHttpProxyName targetHttpProxy = ProjectRegionTargetHttpProxyName.of("[PROJECT]", "[REGION]", "[TARGET_HTTP_PROXY]");
+ *   Operation response = regionTargetHttpProxyClient.deleteRegionTargetHttpProxy(targetHttpProxy);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ============================ RegionTargetHttpsProxyClient ============================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for RegionTargetHttpsProxyClient:
+ *
+ * <pre>
+ * <code>
+ * try (RegionTargetHttpsProxyClient regionTargetHttpsProxyClient = RegionTargetHttpsProxyClient.create()) {
+ *   ProjectRegionTargetHttpsProxyName targetHttpsProxy = ProjectRegionTargetHttpsProxyName.of("[PROJECT]", "[REGION]", "[TARGET_HTTPS_PROXY]");
+ *   Operation response = regionTargetHttpsProxyClient.deleteRegionTargetHttpsProxy(targetHttpsProxy);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ================== RegionUrlMapClient ==================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for RegionUrlMapClient:
+ *
+ * <pre>
+ * <code>
+ * try (RegionUrlMapClient regionUrlMapClient = RegionUrlMapClient.create()) {
+ *   ProjectRegionUrlMapName urlMap = ProjectRegionUrlMapName.of("[PROJECT]", "[REGION]", "[URL_MAP]");
+ *   String requestId = "";
+ *   Operation response = regionUrlMapClient.deleteRegionUrlMap(urlMap, requestId);
+ * }
+ * </code>
+ * </pre>
+ *
  * ============ RegionClient ============
  *
  * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
@@ -644,6 +734,36 @@
  * try (RegionClient regionClient = RegionClient.create()) {
  *   ProjectRegionName region = ProjectRegionName.of("[PROJECT]", "[REGION]");
  *   Region response = regionClient.getRegion(region);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ================= ReservationClient =================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for ReservationClient:
+ *
+ * <pre>
+ * <code>
+ * try (ReservationClient reservationClient = ReservationClient.create()) {
+ *   ProjectZoneReservationName reservation = ProjectZoneReservationName.of("[PROJECT]", "[ZONE]", "[RESERVATION]");
+ *   Operation response = reservationClient.deleteReservation(reservation);
+ * }
+ * </code>
+ * </pre>
+ *
+ * ==================== ResourcePolicyClient ====================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for ResourcePolicyClient:
+ *
+ * <pre>
+ * <code>
+ * try (ResourcePolicyClient resourcePolicyClient = ResourcePolicyClient.create()) {
+ *   ProjectRegionResourcePolicyName resourcePolicy = ProjectRegionResourcePolicyName.of("[PROJECT]", "[REGION]", "[RESOURCE_POLICY]");
+ *   Operation response = resourcePolicyClient.deleteResourcePolicy(resourcePolicy);
  * }
  * </code>
  * </pre>
@@ -875,6 +995,21 @@
  * </code>
  * </pre>
  *
+ * ================ VpnGatewayClient ================
+ *
+ * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
+ *
+ * <p>Sample for VpnGatewayClient:
+ *
+ * <pre>
+ * <code>
+ * try (VpnGatewayClient vpnGatewayClient = VpnGatewayClient.create()) {
+ *   ProjectRegionVpnGatewayName vpnGateway = ProjectRegionVpnGatewayName.of("[PROJECT]", "[REGION]", "[VPN_GATEWAY]");
+ *   Operation response = vpnGatewayClient.deleteVpnGateway(vpnGateway);
+ * }
+ * </code>
+ * </pre>
+ *
  * =============== VpnTunnelClient ===============
  *
  * <p>Service Description: Creates and runs virtual machines on Google Cloud Platform.
@@ -920,4 +1055,7 @@
  * </code>
  * </pre>
  */
+@Generated("by gapic-generator")
 package com.google.cloud.compute.v1;
+
+import javax.annotation.Generated;

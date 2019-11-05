@@ -26,7 +26,13 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-/** An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==) */
+/**
+ * Represents an Instance resource.
+ *
+ * <p>An instance is a virtual machine that is hosted on Google Cloud Platform. For more
+ * information, read Virtual Machine Instances. (== resource_for beta.instances ==) (== resource_for
+ * v1.instances ==)
+ */
 public final class Instance implements ApiMessage {
   private final Boolean canIpForward;
   private final String cpuPlatform;
@@ -34,6 +40,7 @@ public final class Instance implements ApiMessage {
   private final Boolean deletionProtection;
   private final String description;
   private final List<AttachedDisk> disks;
+  private final DisplayDevice displayDevice;
   private final List<AcceleratorConfig> guestAccelerators;
   private final String hostname;
   private final String id;
@@ -45,6 +52,7 @@ public final class Instance implements ApiMessage {
   private final String minCpuPlatform;
   private final String name;
   private final List<NetworkInterface> networkInterfaces;
+  private final ReservationAffinity reservationAffinity;
   private final Scheduling scheduling;
   private final String selfLink;
   private final List<ServiceAccount> serviceAccounts;
@@ -63,6 +71,7 @@ public final class Instance implements ApiMessage {
     this.deletionProtection = null;
     this.description = null;
     this.disks = null;
+    this.displayDevice = null;
     this.guestAccelerators = null;
     this.hostname = null;
     this.id = null;
@@ -74,6 +83,7 @@ public final class Instance implements ApiMessage {
     this.minCpuPlatform = null;
     this.name = null;
     this.networkInterfaces = null;
+    this.reservationAffinity = null;
     this.scheduling = null;
     this.selfLink = null;
     this.serviceAccounts = null;
@@ -93,6 +103,7 @@ public final class Instance implements ApiMessage {
       Boolean deletionProtection,
       String description,
       List<AttachedDisk> disks,
+      DisplayDevice displayDevice,
       List<AcceleratorConfig> guestAccelerators,
       String hostname,
       String id,
@@ -104,6 +115,7 @@ public final class Instance implements ApiMessage {
       String minCpuPlatform,
       String name,
       List<NetworkInterface> networkInterfaces,
+      ReservationAffinity reservationAffinity,
       Scheduling scheduling,
       String selfLink,
       List<ServiceAccount> serviceAccounts,
@@ -120,6 +132,7 @@ public final class Instance implements ApiMessage {
     this.deletionProtection = deletionProtection;
     this.description = description;
     this.disks = disks;
+    this.displayDevice = displayDevice;
     this.guestAccelerators = guestAccelerators;
     this.hostname = hostname;
     this.id = id;
@@ -131,6 +144,7 @@ public final class Instance implements ApiMessage {
     this.minCpuPlatform = minCpuPlatform;
     this.name = name;
     this.networkInterfaces = networkInterfaces;
+    this.reservationAffinity = reservationAffinity;
     this.scheduling = scheduling;
     this.selfLink = selfLink;
     this.serviceAccounts = serviceAccounts;
@@ -162,6 +176,9 @@ public final class Instance implements ApiMessage {
     }
     if ("disks".equals(fieldName)) {
       return disks;
+    }
+    if ("displayDevice".equals(fieldName)) {
+      return displayDevice;
     }
     if ("guestAccelerators".equals(fieldName)) {
       return guestAccelerators;
@@ -195,6 +212,9 @@ public final class Instance implements ApiMessage {
     }
     if ("networkInterfaces".equals(fieldName)) {
       return networkInterfaces;
+    }
+    if ("reservationAffinity".equals(fieldName)) {
+      return reservationAffinity;
     }
     if ("scheduling".equals(fieldName)) {
       return scheduling;
@@ -286,11 +306,21 @@ public final class Instance implements ApiMessage {
     return disks;
   }
 
+  /** Enables display device for the instance. */
+  public DisplayDevice getDisplayDevice() {
+    return displayDevice;
+  }
+
   /** A list of the type and count of accelerator cards attached to the instance. */
   public List<AcceleratorConfig> getGuestAcceleratorsList() {
     return guestAccelerators;
   }
 
+  /**
+   * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If
+   * hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when
+   * using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
+   */
   public String getHostname() {
     return hostname;
   }
@@ -378,6 +408,11 @@ public final class Instance implements ApiMessage {
    */
   public List<NetworkInterface> getNetworkInterfacesList() {
     return networkInterfaces;
+  }
+
+  /** Specifies the reservations that this instance can consume from. */
+  public ReservationAffinity getReservationAffinity() {
+    return reservationAffinity;
   }
 
   /** Sets the scheduling options for this instance. */
@@ -477,6 +512,7 @@ public final class Instance implements ApiMessage {
     private Boolean deletionProtection;
     private String description;
     private List<AttachedDisk> disks;
+    private DisplayDevice displayDevice;
     private List<AcceleratorConfig> guestAccelerators;
     private String hostname;
     private String id;
@@ -488,6 +524,7 @@ public final class Instance implements ApiMessage {
     private String minCpuPlatform;
     private String name;
     private List<NetworkInterface> networkInterfaces;
+    private ReservationAffinity reservationAffinity;
     private Scheduling scheduling;
     private String selfLink;
     private List<ServiceAccount> serviceAccounts;
@@ -521,6 +558,9 @@ public final class Instance implements ApiMessage {
       if (other.getDisksList() != null) {
         this.disks = other.disks;
       }
+      if (other.getDisplayDevice() != null) {
+        this.displayDevice = other.displayDevice;
+      }
       if (other.getGuestAcceleratorsList() != null) {
         this.guestAccelerators = other.guestAccelerators;
       }
@@ -553,6 +593,9 @@ public final class Instance implements ApiMessage {
       }
       if (other.getNetworkInterfacesList() != null) {
         this.networkInterfaces = other.networkInterfaces;
+      }
+      if (other.getReservationAffinity() != null) {
+        this.reservationAffinity = other.reservationAffinity;
       }
       if (other.getScheduling() != null) {
         this.scheduling = other.scheduling;
@@ -594,6 +637,7 @@ public final class Instance implements ApiMessage {
       this.deletionProtection = source.deletionProtection;
       this.description = source.description;
       this.disks = source.disks;
+      this.displayDevice = source.displayDevice;
       this.guestAccelerators = source.guestAccelerators;
       this.hostname = source.hostname;
       this.id = source.id;
@@ -605,6 +649,7 @@ public final class Instance implements ApiMessage {
       this.minCpuPlatform = source.minCpuPlatform;
       this.name = source.name;
       this.networkInterfaces = source.networkInterfaces;
+      this.reservationAffinity = source.reservationAffinity;
       this.scheduling = source.scheduling;
       this.selfLink = source.selfLink;
       this.serviceAccounts = source.serviceAccounts;
@@ -716,6 +761,17 @@ public final class Instance implements ApiMessage {
       return this;
     }
 
+    /** Enables display device for the instance. */
+    public DisplayDevice getDisplayDevice() {
+      return displayDevice;
+    }
+
+    /** Enables display device for the instance. */
+    public Builder setDisplayDevice(DisplayDevice displayDevice) {
+      this.displayDevice = displayDevice;
+      return this;
+    }
+
     /** A list of the type and count of accelerator cards attached to the instance. */
     public List<AcceleratorConfig> getGuestAcceleratorsList() {
       return guestAccelerators;
@@ -739,10 +795,22 @@ public final class Instance implements ApiMessage {
       return this;
     }
 
+    /**
+     * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If
+     * hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal
+     * when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using
+     * zonal DNS.
+     */
     public String getHostname() {
       return hostname;
     }
 
+    /**
+     * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If
+     * hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal
+     * when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using
+     * zonal DNS.
+     */
     public Builder setHostname(String hostname) {
       this.hostname = hostname;
       return this;
@@ -947,6 +1015,17 @@ public final class Instance implements ApiMessage {
       return this;
     }
 
+    /** Specifies the reservations that this instance can consume from. */
+    public ReservationAffinity getReservationAffinity() {
+      return reservationAffinity;
+    }
+
+    /** Specifies the reservations that this instance can consume from. */
+    public Builder setReservationAffinity(ReservationAffinity reservationAffinity) {
+      this.reservationAffinity = reservationAffinity;
+      return this;
+    }
+
     /** Sets the scheduling options for this instance. */
     public Scheduling getScheduling() {
       return scheduling;
@@ -1124,6 +1203,7 @@ public final class Instance implements ApiMessage {
           deletionProtection,
           description,
           disks,
+          displayDevice,
           guestAccelerators,
           hostname,
           id,
@@ -1135,6 +1215,7 @@ public final class Instance implements ApiMessage {
           minCpuPlatform,
           name,
           networkInterfaces,
+          reservationAffinity,
           scheduling,
           selfLink,
           serviceAccounts,
@@ -1155,6 +1236,7 @@ public final class Instance implements ApiMessage {
       newBuilder.setDeletionProtection(this.deletionProtection);
       newBuilder.setDescription(this.description);
       newBuilder.addAllDisks(this.disks);
+      newBuilder.setDisplayDevice(this.displayDevice);
       newBuilder.addAllGuestAccelerators(this.guestAccelerators);
       newBuilder.setHostname(this.hostname);
       newBuilder.setId(this.id);
@@ -1166,6 +1248,7 @@ public final class Instance implements ApiMessage {
       newBuilder.setMinCpuPlatform(this.minCpuPlatform);
       newBuilder.setName(this.name);
       newBuilder.addAllNetworkInterfaces(this.networkInterfaces);
+      newBuilder.setReservationAffinity(this.reservationAffinity);
       newBuilder.setScheduling(this.scheduling);
       newBuilder.setSelfLink(this.selfLink);
       newBuilder.addAllServiceAccounts(this.serviceAccounts);
@@ -1201,6 +1284,9 @@ public final class Instance implements ApiMessage {
         + "disks="
         + disks
         + ", "
+        + "displayDevice="
+        + displayDevice
+        + ", "
         + "guestAccelerators="
         + guestAccelerators
         + ", "
@@ -1233,6 +1319,9 @@ public final class Instance implements ApiMessage {
         + ", "
         + "networkInterfaces="
         + networkInterfaces
+        + ", "
+        + "reservationAffinity="
+        + reservationAffinity
         + ", "
         + "scheduling="
         + scheduling
@@ -1279,6 +1368,7 @@ public final class Instance implements ApiMessage {
           && Objects.equals(this.deletionProtection, that.getDeletionProtection())
           && Objects.equals(this.description, that.getDescription())
           && Objects.equals(this.disks, that.getDisksList())
+          && Objects.equals(this.displayDevice, that.getDisplayDevice())
           && Objects.equals(this.guestAccelerators, that.getGuestAcceleratorsList())
           && Objects.equals(this.hostname, that.getHostname())
           && Objects.equals(this.id, that.getId())
@@ -1290,6 +1380,7 @@ public final class Instance implements ApiMessage {
           && Objects.equals(this.minCpuPlatform, that.getMinCpuPlatform())
           && Objects.equals(this.name, that.getName())
           && Objects.equals(this.networkInterfaces, that.getNetworkInterfacesList())
+          && Objects.equals(this.reservationAffinity, that.getReservationAffinity())
           && Objects.equals(this.scheduling, that.getScheduling())
           && Objects.equals(this.selfLink, that.getSelfLink())
           && Objects.equals(this.serviceAccounts, that.getServiceAccountsList())
@@ -1314,6 +1405,7 @@ public final class Instance implements ApiMessage {
         deletionProtection,
         description,
         disks,
+        displayDevice,
         guestAccelerators,
         hostname,
         id,
@@ -1325,6 +1417,7 @@ public final class Instance implements ApiMessage {
         minCpuPlatform,
         name,
         networkInterfaces,
+        reservationAffinity,
         scheduling,
         selfLink,
         serviceAccounts,

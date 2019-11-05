@@ -16,7 +16,7 @@ public interface TextInputOrBuilder
    * Text length must not exceed 256 characters.
    * </pre>
    *
-   * <code>string text = 1;</code>
+   * <code>string text = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getText();
   /**
@@ -27,7 +27,7 @@ public interface TextInputOrBuilder
    * Text length must not exceed 256 characters.
    * </pre>
    *
-   * <code>string text = 1;</code>
+   * <code>string text = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getTextBytes();
 
@@ -36,12 +36,12 @@ public interface TextInputOrBuilder
    *
    * <pre>
    * Required. The language of this conversational query. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getLanguageCode();
   /**
@@ -49,12 +49,12 @@ public interface TextInputOrBuilder
    *
    * <pre>
    * Required. The language of this conversational query. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getLanguageCodeBytes();
 }

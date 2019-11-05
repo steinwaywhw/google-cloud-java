@@ -12,7 +12,7 @@ public interface TemplateParameterOrBuilder
    *
    *
    * <pre>
-   * Required.  Parameter name.
+   * Required. Parameter name.
    * The parameter name is used as the key, and paired with the
    * parameter value, which are passed to the template when the template
    * is instantiated.
@@ -21,14 +21,14 @@ public interface TemplateParameterOrBuilder
    * 40 characters.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getName();
   /**
    *
    *
    * <pre>
-   * Required.  Parameter name.
+   * Required. Parameter name.
    * The parameter name is used as the key, and paired with the
    * parameter value, which are passed to the template when the template
    * is instantiated.
@@ -37,7 +37,7 @@ public interface TemplateParameterOrBuilder
    * 40 characters.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getNameBytes();
 
@@ -48,10 +48,10 @@ public interface TemplateParameterOrBuilder
    * Required. Paths to all fields that the parameter replaces.
    * A field is allowed to appear in at most one parameter's list of field
    * paths.
-   * A field path is similar in syntax to a
-   * [google.protobuf.FieldMask][google.protobuf.FieldMask]. For example, a
-   * field path that references the zone field of a workflow template's cluster
-   * selector would be specified as `placement.clusterSelector.zone`.
+   * A field path is similar in syntax to a [google.protobuf.FieldMask][google.protobuf.FieldMask].
+   * For example, a field path that references the zone field of a workflow
+   * template's cluster selector would be specified as
+   * `placement.clusterSelector.zone`.
    * Also, field paths can reference fields using the following syntax:
    * * Values in maps can be referenced by key:
    *     * labels['key']
@@ -83,7 +83,7 @@ public interface TemplateParameterOrBuilder
    * - jobs['step-id'].sparkJob.args
    * </pre>
    *
-   * <code>repeated string fields = 2;</code>
+   * <code>repeated string fields = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.util.List<java.lang.String> getFieldsList();
   /**
@@ -93,10 +93,10 @@ public interface TemplateParameterOrBuilder
    * Required. Paths to all fields that the parameter replaces.
    * A field is allowed to appear in at most one parameter's list of field
    * paths.
-   * A field path is similar in syntax to a
-   * [google.protobuf.FieldMask][google.protobuf.FieldMask]. For example, a
-   * field path that references the zone field of a workflow template's cluster
-   * selector would be specified as `placement.clusterSelector.zone`.
+   * A field path is similar in syntax to a [google.protobuf.FieldMask][google.protobuf.FieldMask].
+   * For example, a field path that references the zone field of a workflow
+   * template's cluster selector would be specified as
+   * `placement.clusterSelector.zone`.
    * Also, field paths can reference fields using the following syntax:
    * * Values in maps can be referenced by key:
    *     * labels['key']
@@ -128,7 +128,7 @@ public interface TemplateParameterOrBuilder
    * - jobs['step-id'].sparkJob.args
    * </pre>
    *
-   * <code>repeated string fields = 2;</code>
+   * <code>repeated string fields = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   int getFieldsCount();
   /**
@@ -138,10 +138,10 @@ public interface TemplateParameterOrBuilder
    * Required. Paths to all fields that the parameter replaces.
    * A field is allowed to appear in at most one parameter's list of field
    * paths.
-   * A field path is similar in syntax to a
-   * [google.protobuf.FieldMask][google.protobuf.FieldMask]. For example, a
-   * field path that references the zone field of a workflow template's cluster
-   * selector would be specified as `placement.clusterSelector.zone`.
+   * A field path is similar in syntax to a [google.protobuf.FieldMask][google.protobuf.FieldMask].
+   * For example, a field path that references the zone field of a workflow
+   * template's cluster selector would be specified as
+   * `placement.clusterSelector.zone`.
    * Also, field paths can reference fields using the following syntax:
    * * Values in maps can be referenced by key:
    *     * labels['key']
@@ -173,7 +173,7 @@ public interface TemplateParameterOrBuilder
    * - jobs['step-id'].sparkJob.args
    * </pre>
    *
-   * <code>repeated string fields = 2;</code>
+   * <code>repeated string fields = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getFields(int index);
   /**
@@ -183,10 +183,10 @@ public interface TemplateParameterOrBuilder
    * Required. Paths to all fields that the parameter replaces.
    * A field is allowed to appear in at most one parameter's list of field
    * paths.
-   * A field path is similar in syntax to a
-   * [google.protobuf.FieldMask][google.protobuf.FieldMask]. For example, a
-   * field path that references the zone field of a workflow template's cluster
-   * selector would be specified as `placement.clusterSelector.zone`.
+   * A field path is similar in syntax to a [google.protobuf.FieldMask][google.protobuf.FieldMask].
+   * For example, a field path that references the zone field of a workflow
+   * template's cluster selector would be specified as
+   * `placement.clusterSelector.zone`.
    * Also, field paths can reference fields using the following syntax:
    * * Values in maps can be referenced by key:
    *     * labels['key']
@@ -218,7 +218,7 @@ public interface TemplateParameterOrBuilder
    * - jobs['step-id'].sparkJob.args
    * </pre>
    *
-   * <code>repeated string fields = 2;</code>
+   * <code>repeated string fields = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getFieldsBytes(int index);
 
@@ -230,7 +230,7 @@ public interface TemplateParameterOrBuilder
    * Must not exceed 1024 characters.
    * </pre>
    *
-   * <code>string description = 3;</code>
+   * <code>string description = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getDescription();
   /**
@@ -241,7 +241,7 @@ public interface TemplateParameterOrBuilder
    * Must not exceed 1024 characters.
    * </pre>
    *
-   * <code>string description = 3;</code>
+   * <code>string description = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getDescriptionBytes();
 
@@ -252,7 +252,9 @@ public interface TemplateParameterOrBuilder
    * Optional. Validation rules to be applied to this parameter's value.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.ParameterValidation validation = 4;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.ParameterValidation validation = 4 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasValidation();
   /**
@@ -262,7 +264,9 @@ public interface TemplateParameterOrBuilder
    * Optional. Validation rules to be applied to this parameter's value.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.ParameterValidation validation = 4;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.ParameterValidation validation = 4 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.ParameterValidation getValidation();
   /**
@@ -272,7 +276,9 @@ public interface TemplateParameterOrBuilder
    * Optional. Validation rules to be applied to this parameter's value.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.ParameterValidation validation = 4;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.ParameterValidation validation = 4 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.ParameterValidationOrBuilder getValidationOrBuilder();
 }

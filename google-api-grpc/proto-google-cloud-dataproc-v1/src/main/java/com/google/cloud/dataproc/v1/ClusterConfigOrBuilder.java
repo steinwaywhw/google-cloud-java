@@ -12,30 +12,36 @@ public interface ClusterConfigOrBuilder
    *
    *
    * <pre>
-   * Optional. A Cloud Storage staging bucket used for sharing generated
-   * SSH keys and config. If you do not specify a staging bucket, Cloud
-   * Dataproc will determine an appropriate Cloud Storage location (US,
+   * Optional. A Google Cloud Storage bucket used to stage job
+   * dependencies, config files, and job driver console output.
+   * If you do not specify a staging bucket, Cloud
+   * Dataproc will determine a Cloud Storage location (US,
    * ASIA, or EU) for your cluster's staging bucket according to the Google
-   * Compute Engine zone where your cluster is deployed, and then it will create
-   * and manage this project-level, per-location bucket for you.
+   * Compute Engine zone where your cluster is deployed, and then create
+   * and manage this project-level, per-location bucket (see
+   * [Cloud Dataproc staging
+   * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
    * </pre>
    *
-   * <code>string config_bucket = 1;</code>
+   * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getConfigBucket();
   /**
    *
    *
    * <pre>
-   * Optional. A Cloud Storage staging bucket used for sharing generated
-   * SSH keys and config. If you do not specify a staging bucket, Cloud
-   * Dataproc will determine an appropriate Cloud Storage location (US,
+   * Optional. A Google Cloud Storage bucket used to stage job
+   * dependencies, config files, and job driver console output.
+   * If you do not specify a staging bucket, Cloud
+   * Dataproc will determine a Cloud Storage location (US,
    * ASIA, or EU) for your cluster's staging bucket according to the Google
-   * Compute Engine zone where your cluster is deployed, and then it will create
-   * and manage this project-level, per-location bucket for you.
+   * Compute Engine zone where your cluster is deployed, and then create
+   * and manage this project-level, per-location bucket (see
+   * [Cloud Dataproc staging
+   * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
    * </pre>
    *
-   * <code>string config_bucket = 1;</code>
+   * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getConfigBucketBytes();
 
@@ -43,33 +49,39 @@ public interface ClusterConfigOrBuilder
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasGceClusterConfig();
   /**
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.GceClusterConfig getGceClusterConfig();
   /**
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.GceClusterConfigOrBuilder getGceClusterConfigOrBuilder();
 
@@ -81,7 +93,9 @@ public interface ClusterConfigOrBuilder
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasMasterConfig();
   /**
@@ -92,7 +106,9 @@ public interface ClusterConfigOrBuilder
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfig getMasterConfig();
   /**
@@ -103,7 +119,9 @@ public interface ClusterConfigOrBuilder
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getMasterConfigOrBuilder();
 
@@ -115,7 +133,9 @@ public interface ClusterConfigOrBuilder
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasWorkerConfig();
   /**
@@ -126,7 +146,9 @@ public interface ClusterConfigOrBuilder
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfig getWorkerConfig();
   /**
@@ -137,7 +159,9 @@ public interface ClusterConfigOrBuilder
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getWorkerConfigOrBuilder();
 
@@ -149,7 +173,9 @@ public interface ClusterConfigOrBuilder
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasSecondaryWorkerConfig();
   /**
@@ -160,7 +186,9 @@ public interface ClusterConfigOrBuilder
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfig getSecondaryWorkerConfig();
   /**
@@ -171,7 +199,9 @@ public interface ClusterConfigOrBuilder
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getSecondaryWorkerConfigOrBuilder();
 
@@ -182,7 +212,9 @@ public interface ClusterConfigOrBuilder
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasSoftwareConfig();
   /**
@@ -192,7 +224,9 @@ public interface ClusterConfigOrBuilder
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.SoftwareConfig getSoftwareConfig();
   /**
@@ -202,7 +236,9 @@ public interface ClusterConfigOrBuilder
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.SoftwareConfigOrBuilder getSoftwareConfigOrBuilder();
 
@@ -224,7 +260,8 @@ public interface ClusterConfigOrBuilder
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   java.util.List<com.google.cloud.dataproc.v1.NodeInitializationAction>
@@ -247,7 +284,8 @@ public interface ClusterConfigOrBuilder
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   com.google.cloud.dataproc.v1.NodeInitializationAction getInitializationActions(int index);
@@ -269,7 +307,8 @@ public interface ClusterConfigOrBuilder
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   int getInitializationActionsCount();
@@ -291,7 +330,8 @@ public interface ClusterConfigOrBuilder
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   java.util.List<? extends com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder>
@@ -314,7 +354,8 @@ public interface ClusterConfigOrBuilder
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder getInitializationActionsOrBuilder(
@@ -327,7 +368,9 @@ public interface ClusterConfigOrBuilder
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasEncryptionConfig();
   /**
@@ -337,7 +380,9 @@ public interface ClusterConfigOrBuilder
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.EncryptionConfig getEncryptionConfig();
   /**
@@ -347,7 +392,86 @@ public interface ClusterConfigOrBuilder
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dataproc.v1.EncryptionConfigOrBuilder getEncryptionConfigOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  boolean hasAutoscalingConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  com.google.cloud.dataproc.v1.AutoscalingConfig getAutoscalingConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder getAutoscalingConfigOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  boolean hasSecurityConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  com.google.cloud.dataproc.v1.SecurityConfig getSecurityConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  com.google.cloud.dataproc.v1.SecurityConfigOrBuilder getSecurityConfigOrBuilder();
 }

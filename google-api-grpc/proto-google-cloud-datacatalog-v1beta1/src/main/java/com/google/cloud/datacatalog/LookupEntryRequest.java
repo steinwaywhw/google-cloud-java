@@ -144,11 +144,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
    * <pre>
    * The full name of the Google Cloud Platform resource the Data Catalog
    * entry represents. See:
-   * https://cloud.google.com/apis/design/resource_names#full_resource_name
+   * https://cloud.google.com/apis/design/resource_names#full_resource_name.
    * Full names are case-sensitive.
    * Examples:
-   * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-   * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+   *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+   *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
    * </pre>
    *
    * <code>string linked_resource = 1;</code>
@@ -175,11 +175,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
    * <pre>
    * The full name of the Google Cloud Platform resource the Data Catalog
    * entry represents. See:
-   * https://cloud.google.com/apis/design/resource_names#full_resource_name
+   * https://cloud.google.com/apis/design/resource_names#full_resource_name.
    * Full names are case-sensitive.
    * Examples:
-   * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-   * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+   *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+   *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
    * </pre>
    *
    * <code>string linked_resource = 1;</code>
@@ -208,9 +208,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
    * <pre>
    * The SQL name of the entry. SQL names are case-sensitive.
    * Examples:
-   * 1. cloud_pubsub.project_id.topic_id
-   * 2. bigquery.project_id.dataset_id.table_id
-   * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+   *   * `cloud_pubsub.project_id.topic_id`
+   *   * ``pubsub.project_id.`topic.id.with.dots` ``
+   *   * `bigquery.project_id.dataset_id.table_id`
+   *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+   * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+   * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
    * </pre>
    *
    * <code>string sql_resource = 3;</code>
@@ -237,9 +240,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
    * <pre>
    * The SQL name of the entry. SQL names are case-sensitive.
    * Examples:
-   * 1. cloud_pubsub.project_id.topic_id
-   * 2. bigquery.project_id.dataset_id.table_id
-   * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+   *   * `cloud_pubsub.project_id.topic_id`
+   *   * ``pubsub.project_id.`topic.id.with.dots` ``
+   *   * `bigquery.project_id.dataset_id.table_id`
+   *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+   * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+   * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
    * </pre>
    *
    * <code>string sql_resource = 3;</code>
@@ -647,11 +653,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The full name of the Google Cloud Platform resource the Data Catalog
      * entry represents. See:
-     * https://cloud.google.com/apis/design/resource_names#full_resource_name
+     * https://cloud.google.com/apis/design/resource_names#full_resource_name.
      * Full names are case-sensitive.
      * Examples:
-     * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-     * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+     *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+     *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
      * </pre>
      *
      * <code>string linked_resource = 1;</code>
@@ -678,11 +684,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The full name of the Google Cloud Platform resource the Data Catalog
      * entry represents. See:
-     * https://cloud.google.com/apis/design/resource_names#full_resource_name
+     * https://cloud.google.com/apis/design/resource_names#full_resource_name.
      * Full names are case-sensitive.
      * Examples:
-     * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-     * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+     *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+     *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
      * </pre>
      *
      * <code>string linked_resource = 1;</code>
@@ -709,11 +715,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The full name of the Google Cloud Platform resource the Data Catalog
      * entry represents. See:
-     * https://cloud.google.com/apis/design/resource_names#full_resource_name
+     * https://cloud.google.com/apis/design/resource_names#full_resource_name.
      * Full names are case-sensitive.
      * Examples:
-     * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-     * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+     *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+     *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
      * </pre>
      *
      * <code>string linked_resource = 1;</code>
@@ -733,11 +739,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The full name of the Google Cloud Platform resource the Data Catalog
      * entry represents. See:
-     * https://cloud.google.com/apis/design/resource_names#full_resource_name
+     * https://cloud.google.com/apis/design/resource_names#full_resource_name.
      * Full names are case-sensitive.
      * Examples:
-     * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-     * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+     *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+     *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
      * </pre>
      *
      * <code>string linked_resource = 1;</code>
@@ -756,11 +762,11 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The full name of the Google Cloud Platform resource the Data Catalog
      * entry represents. See:
-     * https://cloud.google.com/apis/design/resource_names#full_resource_name
+     * https://cloud.google.com/apis/design/resource_names#full_resource_name.
      * Full names are case-sensitive.
      * Examples:
-     * "//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId".
-     * "//pubsub.googleapis.com/projects/projectId/topics/topicId"
+     *  * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId
+     *  * //pubsub.googleapis.com/projects/projectId/topics/topicId
      * </pre>
      *
      * <code>string linked_resource = 1;</code>
@@ -782,9 +788,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The SQL name of the entry. SQL names are case-sensitive.
      * Examples:
-     * 1. cloud_pubsub.project_id.topic_id
-     * 2. bigquery.project_id.dataset_id.table_id
-     * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+     *   * `cloud_pubsub.project_id.topic_id`
+     *   * ``pubsub.project_id.`topic.id.with.dots` ``
+     *   * `bigquery.project_id.dataset_id.table_id`
+     *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+     * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+     * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
      * </pre>
      *
      * <code>string sql_resource = 3;</code>
@@ -811,9 +820,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The SQL name of the entry. SQL names are case-sensitive.
      * Examples:
-     * 1. cloud_pubsub.project_id.topic_id
-     * 2. bigquery.project_id.dataset_id.table_id
-     * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+     *   * `cloud_pubsub.project_id.topic_id`
+     *   * ``pubsub.project_id.`topic.id.with.dots` ``
+     *   * `bigquery.project_id.dataset_id.table_id`
+     *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+     * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+     * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
      * </pre>
      *
      * <code>string sql_resource = 3;</code>
@@ -840,9 +852,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The SQL name of the entry. SQL names are case-sensitive.
      * Examples:
-     * 1. cloud_pubsub.project_id.topic_id
-     * 2. bigquery.project_id.dataset_id.table_id
-     * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+     *   * `cloud_pubsub.project_id.topic_id`
+     *   * ``pubsub.project_id.`topic.id.with.dots` ``
+     *   * `bigquery.project_id.dataset_id.table_id`
+     *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+     * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+     * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
      * </pre>
      *
      * <code>string sql_resource = 3;</code>
@@ -862,9 +877,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The SQL name of the entry. SQL names are case-sensitive.
      * Examples:
-     * 1. cloud_pubsub.project_id.topic_id
-     * 2. bigquery.project_id.dataset_id.table_id
-     * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+     *   * `cloud_pubsub.project_id.topic_id`
+     *   * ``pubsub.project_id.`topic.id.with.dots` ``
+     *   * `bigquery.project_id.dataset_id.table_id`
+     *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+     * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+     * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
      * </pre>
      *
      * <code>string sql_resource = 3;</code>
@@ -883,9 +901,12 @@ public final class LookupEntryRequest extends com.google.protobuf.GeneratedMessa
      * <pre>
      * The SQL name of the entry. SQL names are case-sensitive.
      * Examples:
-     * 1. cloud_pubsub.project_id.topic_id
-     * 2. bigquery.project_id.dataset_id.table_id
-     * 3. datacatalog.project_id.location_id.entry_group_id.entry_id
+     *   * `cloud_pubsub.project_id.topic_id`
+     *   * ``pubsub.project_id.`topic.id.with.dots` ``
+     *   * `bigquery.project_id.dataset_id.table_id`
+     *   * `datacatalog.project_id.location_id.entry_group_id.entry_id`
+     * `*_id`s shoud satisfy the standard SQL rules for identifiers.
+     * https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical.
      * </pre>
      *
      * <code>string sql_resource = 3;</code>

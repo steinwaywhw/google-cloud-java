@@ -39,7 +39,11 @@ import com.google.cloud.storage.BlobInfo;
 import com.google.cloud.storage.Bucket;
 import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.CopyWriter;
+import com.google.cloud.storage.HmacKey;
+import com.google.cloud.storage.HmacKey.HmacKeyMetadata;
+import com.google.cloud.storage.HmacKey.HmacKeyState;
 import com.google.cloud.storage.HttpMethod;
+import com.google.cloud.storage.ServiceAccount;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.Storage.BlobGetOption;
 import com.google.cloud.storage.Storage.BlobListOption;
@@ -51,6 +55,7 @@ import com.google.cloud.storage.Storage.BucketListOption;
 import com.google.cloud.storage.Storage.BucketSourceOption;
 import com.google.cloud.storage.Storage.ComposeRequest;
 import com.google.cloud.storage.Storage.CopyRequest;
+import com.google.cloud.storage.Storage.ListHmacKeysOption;
 import com.google.cloud.storage.Storage.SignUrlOption;
 import com.google.cloud.storage.StorageBatch;
 import com.google.cloud.storage.StorageBatchResult;
@@ -1126,6 +1131,44 @@ public class StorageSnippets {
     return bucket;
   }
 
+  /** Example of displaying Bucket metadata */
+  public void getBucketMetadata(String bucketName) throws StorageException {
+    // [START storage_get_bucket_metadata]
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The name of a bucket, e.g. "my-bucket"
+    // String bucketName = "my-bucket";
+
+    // Select all fields
+    // Fields can be selected individually e.g. Storage.BucketField.NAME
+    Bucket bucket = storage.get(bucketName, BucketGetOption.fields(Storage.BucketField.values()));
+
+    // Print bucket metadata
+    System.out.println("BucketName: " + bucket.getName());
+    System.out.println("DefaultEventBasedHold: " + bucket.getDefaultEventBasedHold());
+    System.out.println("DefaultKmsKeyName: " + bucket.getDefaultKmsKeyName());
+    System.out.println("Id: " + bucket.getGeneratedId());
+    System.out.println("IndexPage: " + bucket.getIndexPage());
+    System.out.println("Location: " + bucket.getLocation());
+    System.out.println("LocationType: " + bucket.getLocationType());
+    System.out.println("Metageneration: " + bucket.getMetageneration());
+    System.out.println("NotFoundPage: " + bucket.getNotFoundPage());
+    System.out.println("RetentionEffectiveTime: " + bucket.getRetentionEffectiveTime());
+    System.out.println("RetentionPeriod: " + bucket.getRetentionPeriod());
+    System.out.println("RetentionPolicyIsLocked: " + bucket.retentionPolicyIsLocked());
+    System.out.println("RequesterPays: " + bucket.requesterPays());
+    System.out.println("SelfLink: " + bucket.getSelfLink());
+    System.out.println("StorageClass: " + bucket.getStorageClass().name());
+    System.out.println("TimeCreated: " + bucket.getCreateTime());
+    System.out.println("VersioningEnabled: " + bucket.versioningEnabled());
+    if (bucket.getLabels() != null) {
+      System.out.println("\n\n\nLabels:");
+      for (Map.Entry<String, String> label : bucket.getLabels().entrySet()) {
+        System.out.println(label.getKey() + "=" + label.getValue());
+      }
+    }
+    // [END storage_get_bucket_metadata]
+  }
   /** Example of displaying Blob metadata */
   public void getBlobMetadata(String bucketName, String blobName) throws StorageException {
     // [START storage_get_metadata]
@@ -1411,9 +1454,9 @@ public class StorageSnippets {
     return blob;
   }
 
-  /** Example of how to enable Bucket Policy Only for a bucket */
-  public Bucket enableBucketPolicyOnly(String bucketName) throws StorageException {
-    // [START storage_enable_bucket_policy_only]
+  /** Example of how to enable uniform bucket-level access for a bucket */
+  public Bucket enableUniformBucketLevelAccess(String bucketName) throws StorageException {
+    // [START storage_enable_uniform_bucket_level_access]
     // Instantiate a Google Cloud Storage client
     Storage storage = StorageOptions.getDefaultInstance().getService();
 
@@ -1421,19 +1464,19 @@ public class StorageSnippets {
     // String bucketName = "my-bucket";
 
     BucketInfo.IamConfiguration iamConfiguration =
-        BucketInfo.IamConfiguration.newBuilder().setIsBucketPolicyOnlyEnabled(true).build();
+        BucketInfo.IamConfiguration.newBuilder().setIsUniformBucketLevelAccessEnabled(true).build();
     Bucket bucket =
         storage.update(
             BucketInfo.newBuilder(bucketName).setIamConfiguration(iamConfiguration).build());
 
-    System.out.println("Bucket Policy Only was enabled for " + bucketName);
-    // [END storage_enable_bucket_policy_only]
+    System.out.println("Uniform bucket-level access was enabled for " + bucketName);
+    // [END storage_enable_uniform_bucket_level_access]
     return bucket;
   }
 
-  /** Example of how to disable Bucket Policy Only for a bucket */
-  public Bucket disableBucketPolicyOnly(String bucketName) throws StorageException {
-    // [START storage_disable_bucket_policy_only]
+  /** Example of how to disable uniform bucket-level access for a bucket */
+  public Bucket disableUniformBucketLevelAccess(String bucketName) throws StorageException {
+    // [START storage_disable_uniform_bucket_level_access]
     // Instantiate a Google Cloud Storage client
     Storage storage = StorageOptions.getDefaultInstance().getService();
 
@@ -1441,19 +1484,21 @@ public class StorageSnippets {
     // String bucketName = "my-bucket";
 
     BucketInfo.IamConfiguration iamConfiguration =
-        BucketInfo.IamConfiguration.newBuilder().setIsBucketPolicyOnlyEnabled(false).build();
+        BucketInfo.IamConfiguration.newBuilder()
+            .setIsUniformBucketLevelAccessEnabled(false)
+            .build();
     Bucket bucket =
         storage.update(
             BucketInfo.newBuilder(bucketName).setIamConfiguration(iamConfiguration).build());
 
-    System.out.println("Bucket Policy Only was disabled for " + bucketName);
-    // [END storage_disable_bucket_policy_only]
+    System.out.println("Uniform bucket-level access was disabled for " + bucketName);
+    // [END storage_disable_uniform_bucket_level_access]
     return bucket;
   }
 
-  /** Example of how to get Bucket Policy Only metadata for a bucket */
-  public Bucket getBucketPolicyOnly(String bucketName) throws StorageException {
-    // [START storage_get_bucket_policy_only]
+  /** Example of how to get uniform bucket-level access metadata for a bucket */
+  public Bucket getUniformBucketLevelAccess(String bucketName) throws StorageException {
+    // [START storage_get_uniform_bucket_level_access]
     // Instantiate a Google Cloud Storage client
     Storage storage = StorageOptions.getDefaultInstance().getService();
 
@@ -1463,16 +1508,16 @@ public class StorageSnippets {
     Bucket bucket = storage.get(bucketName, BucketGetOption.fields(BucketField.IAMCONFIGURATION));
     BucketInfo.IamConfiguration iamConfiguration = bucket.getIamConfiguration();
 
-    Boolean enabled = iamConfiguration.isBucketPolicyOnlyEnabled();
-    Date lockedTime = new Date(iamConfiguration.getBucketPolicyOnlyLockedTime());
+    Boolean enabled = iamConfiguration.isUniformBucketLevelAccessEnabled();
+    Date lockedTime = new Date(iamConfiguration.getUniformBucketLevelAccessLockedTime());
 
     if (enabled != null && enabled) {
-      System.out.println("Bucket Policy Only is enabled for " + bucketName);
+      System.out.println("Uniform bucket-level access is enabled for " + bucketName);
       System.out.println("Bucket will be locked on " + lockedTime);
     } else {
-      System.out.println("Bucket Policy Only is disabled for " + bucketName);
+      System.out.println("Uniform bucket-level access is disabled for " + bucketName);
     }
-    // [END storage_get_bucket_policy_only]
+    // [END storage_get_uniform_bucket_level_access]
     return bucket;
   }
 
@@ -1537,10 +1582,169 @@ public class StorageSnippets {
     System.out.println(url);
     System.out.println("You can use this URL with any user agent, for example:");
     System.out.println(
-        "curl -X PUT -H 'Content-Type: application/octet-stream'--upload-file my-file '"
+        "curl -X PUT -H 'Content-Type: application/octet-stream' --upload-file my-file '"
             + url
             + "'");
     // [END storage_generate_upload_signed_url_v4]
     return url;
+  }
+
+  /** Example of creating an HMAC key for a service account * */
+  public HmacKey createHmacKey(String serviceAccountEmail, String projectId)
+      throws StorageException {
+    // [START storage_create_hmac_key]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The service account email for which the new HMAC key will be created.
+    // String serviceAccountEmail = "service-account@iam.gserviceaccount.com";
+    //
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+
+    ServiceAccount account = ServiceAccount.of(serviceAccountEmail);
+    HmacKey hmacKey =
+        storage.createHmacKey(account, Storage.CreateHmacKeyOption.projectId(projectId));
+
+    String secret = hmacKey.getSecretKey();
+    HmacKeyMetadata metadata = hmacKey.getMetadata();
+
+    System.out.println("The Base64 encoded secret is: " + secret);
+    System.out.println("Do not miss that secret, there is no API to recover it.");
+    System.out.println("The HMAC key metadata is:");
+    System.out.println("ID: " + metadata.getId());
+    System.out.println("Access ID: " + metadata.getAccessId());
+    System.out.println("Project ID: " + metadata.getProjectId());
+    System.out.println("Service Account Email: " + metadata.getServiceAccount().getEmail());
+    System.out.println("State: " + metadata.getState().toString());
+    System.out.println("Time Created: " + new Date(metadata.getCreateTime()).toString());
+    System.out.println("Time Updated: " + new Date(metadata.getUpdateTime()).toString());
+    System.out.println("ETag: " + metadata.getEtag());
+    // [END storage_create_hmac_key]
+    return hmacKey;
+  }
+
+  /** Example of retrieving the metadata of an existing HMAC key. * */
+  public HmacKeyMetadata getHmacKey(String accessId, String projectId) throws StorageException {
+    // [START storage_get_hmac_key]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The access ID of the HMAC key, e.g. "GOOG0234230X00"
+    // String accessId = "GOOG0234230X00";
+    //
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+    HmacKeyMetadata metadata =
+        storage.getHmacKey(accessId, Storage.GetHmacKeyOption.projectId(projectId));
+
+    System.out.println("The HMAC key metadata is:");
+    System.out.println("ID: " + metadata.getId());
+    System.out.println("Access ID: " + metadata.getAccessId());
+    System.out.println("Project ID: " + metadata.getProjectId());
+    System.out.println("Service Account Email: " + metadata.getServiceAccount().getEmail());
+    System.out.println("State: " + metadata.getState().toString());
+    System.out.println("Time Created: " + new Date(metadata.getCreateTime()).toString());
+    System.out.println("Time Updated: " + new Date(metadata.getUpdateTime()).toString());
+    System.out.println("ETag: " + metadata.getEtag());
+    // [END storage_get_hmac_key]
+    return metadata;
+  }
+
+  /** Example of deleting an existing inactive HMAC key. * */
+  public void deleteHmacKey(String accessId, String projectId) throws StorageException {
+    // [START storage_delete_hmac_key]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The access ID of the HMAC key, e.g. "GOOG0234230X00"
+    // String accessId = "GOOG0234230X00";
+    //
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+    HmacKeyMetadata metadata =
+        storage.getHmacKey(accessId, Storage.GetHmacKeyOption.projectId(projectId));
+    storage.deleteHmacKey(metadata);
+
+    System.out.println(
+        "The key is deleted, though it will still appear in getHmacKeys() results given showDeletedKey is true.");
+    // [END storage_delete_hmac_key]
+  }
+
+  /** Example of activating a previously deactivated HMAC key. * */
+  public HmacKeyMetadata activateHmacKey(String accessId, String projectId)
+      throws StorageException {
+    // [START storage_activate_hmac_key]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The access ID of the HMAC key, e.g. "GOOG0234230X00"
+    // String accessId = "GOOG0234230X00";
+    //
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+    HmacKeyMetadata metadata =
+        storage.getHmacKey(accessId, Storage.GetHmacKeyOption.projectId(projectId));
+    HmacKeyMetadata newMetadata = storage.updateHmacKeyState(metadata, HmacKeyState.ACTIVE);
+
+    System.out.println("The HMAC key is now active.");
+    System.out.println("The HMAC key metadata is:");
+    System.out.println("ID: " + newMetadata.getId());
+    System.out.println("Access ID: " + newMetadata.getAccessId());
+    System.out.println("Project ID: " + newMetadata.getProjectId());
+    System.out.println("Service Account Email: " + newMetadata.getServiceAccount().getEmail());
+    System.out.println("State: " + newMetadata.getState().toString());
+    System.out.println("Time Created: " + new Date(newMetadata.getCreateTime()).toString());
+    System.out.println("Time Updated: " + new Date(newMetadata.getUpdateTime()).toString());
+    System.out.println("ETag: " + newMetadata.getEtag());
+    // [END storage_activate_hmac_key]
+    return newMetadata;
+  }
+
+  /** Example of deactivating an HMAC key. * */
+  public HmacKeyMetadata deactivateHmacKey(String accessId, String projectId)
+      throws StorageException {
+    // [START storage_deactivate_hmac_key]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The access ID of the HMAC key, e.g. "GOOG0234230X00"
+    // String accessId = "GOOG0234230X00";
+    //
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+    HmacKeyMetadata metadata =
+        storage.getHmacKey(accessId, Storage.GetHmacKeyOption.projectId(projectId));
+    HmacKeyMetadata newMetadata = storage.updateHmacKeyState(metadata, HmacKeyState.INACTIVE);
+
+    System.out.println("The HMAC key is now inactive.");
+    System.out.println("The HMAC key metadata is:");
+    System.out.println("ID: " + newMetadata.getId());
+    System.out.println("Access ID: " + newMetadata.getAccessId());
+    System.out.println("Project ID: " + newMetadata.getProjectId());
+    System.out.println("Service Account Email: " + newMetadata.getServiceAccount().getEmail());
+    System.out.println("State: " + newMetadata.getState().toString());
+    System.out.println("Time Created: " + new Date(newMetadata.getCreateTime()).toString());
+    System.out.println("Time Updated: " + new Date(newMetadata.getUpdateTime()).toString());
+    System.out.println("ETag: " + newMetadata.getEtag());
+    // [END storage_deactivate_hmac_key]
+    return newMetadata;
+  }
+
+  public Page<HmacKeyMetadata> listHmacKeys(String projectId) throws StorageException {
+    // [START storage_list_hmac_keys]
+    // Instantiate a Google Cloud Storage client
+    Storage storage = StorageOptions.getDefaultInstance().getService();
+
+    // The ID of the project to which the service account belongs.
+    // String projectId = "project-id";
+    Page<HmacKeyMetadata> page = storage.listHmacKeys(ListHmacKeysOption.projectId(projectId));
+
+    for (HmacKeyMetadata metadata : page.iterateAll()) {
+      System.out.println("Service Account Email: " + metadata.getServiceAccount().getEmail());
+      System.out.println("Access ID: " + metadata.getAccessId());
+    }
+    // [END storage_list_hmac_keys]
+    return page;
   }
 }

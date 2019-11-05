@@ -16,7 +16,9 @@ public interface ListIntentsRequestOrBuilder
    * Format: `projects/&lt;Project ID&gt;/agent`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   java.lang.String getParent();
   /**
@@ -27,7 +29,9 @@ public interface ListIntentsRequestOrBuilder
    * Format: `projects/&lt;Project ID&gt;/agent`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -38,12 +42,12 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The language to list training phrases, parameters and rich
    * messages for. If not specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getLanguageCode();
   /**
@@ -53,12 +57,12 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The language to list training phrases, parameters and rich
    * messages for. If not specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getLanguageCodeBytes();
 
@@ -69,7 +73,9 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The resource view to apply to the returned intent.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 3;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.IntentView intent_view = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   int getIntentViewValue();
   /**
@@ -79,7 +85,9 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The resource view to apply to the returned intent.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 3;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.IntentView intent_view = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.cloud.dialogflow.v2.IntentView getIntentView();
 
@@ -91,7 +99,7 @@ public interface ListIntentsRequestOrBuilder
    * default 100 and at most 1000.
    * </pre>
    *
-   * <code>int32 page_size = 4;</code>
+   * <code>int32 page_size = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   int getPageSize();
 
@@ -102,7 +110,7 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The next_page_token value returned from a previous list request.
    * </pre>
    *
-   * <code>string page_token = 5;</code>
+   * <code>string page_token = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getPageToken();
   /**
@@ -112,7 +120,7 @@ public interface ListIntentsRequestOrBuilder
    * Optional. The next_page_token value returned from a previous list request.
    * </pre>
    *
-   * <code>string page_token = 5;</code>
+   * <code>string page_token = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getPageTokenBytes();
 }

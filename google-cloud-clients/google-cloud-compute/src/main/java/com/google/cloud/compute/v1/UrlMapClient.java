@@ -153,6 +153,149 @@ public class UrlMapClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
+   * Retrieves the list of all UrlMap resources, regional and global, available to the specified
+   * project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (UrlMapsScopedList element : urlMapClient.aggregatedListUrlMaps(project).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListUrlMapsPagedResponse aggregatedListUrlMaps(ProjectName project) {
+    AggregatedListUrlMapsHttpRequest request =
+        AggregatedListUrlMapsHttpRequest.newBuilder()
+            .setProject(project == null ? null : project.toString())
+            .build();
+    return aggregatedListUrlMaps(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all UrlMap resources, regional and global, available to the specified
+   * project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (UrlMapsScopedList element : urlMapClient.aggregatedListUrlMaps(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListUrlMapsPagedResponse aggregatedListUrlMaps(String project) {
+    AggregatedListUrlMapsHttpRequest request =
+        AggregatedListUrlMapsHttpRequest.newBuilder().setProject(project).build();
+    return aggregatedListUrlMaps(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all UrlMap resources, regional and global, available to the specified
+   * project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListUrlMapsHttpRequest request = AggregatedListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (UrlMapsScopedList element : urlMapClient.aggregatedListUrlMaps(request).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListUrlMapsPagedResponse aggregatedListUrlMaps(
+      AggregatedListUrlMapsHttpRequest request) {
+    return aggregatedListUrlMapsPagedCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all UrlMap resources, regional and global, available to the specified
+   * project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListUrlMapsHttpRequest request = AggregatedListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListUrlMapsPagedResponse&gt; future = urlMapClient.aggregatedListUrlMapsPagedCallable().futureCall(request);
+   *   // Do something
+   *   for (UrlMapsScopedList element : future.get().iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<AggregatedListUrlMapsHttpRequest, AggregatedListUrlMapsPagedResponse>
+      aggregatedListUrlMapsPagedCallable() {
+    return stub.aggregatedListUrlMapsPagedCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all UrlMap resources, regional and global, available to the specified
+   * project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (UrlMapClient urlMapClient = UrlMapClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListUrlMapsHttpRequest request = AggregatedListUrlMapsHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   while (true) {
+   *     UrlMapsAggregatedList response = urlMapClient.aggregatedListUrlMapsCallable().call(request);
+   *     for (UrlMapsScopedList element : response.getItemsMap()) {
+   *       // doThingsWith(element);
+   *     }
+   *     String nextPageToken = response.getNextPageToken();
+   *     if (!Strings.isNullOrEmpty(nextPageToken)) {
+   *       request = request.toBuilder().setPageToken(nextPageToken).build();
+   *     } else {
+   *       break;
+   *     }
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<AggregatedListUrlMapsHttpRequest, UrlMapsAggregatedList>
+      aggregatedListUrlMapsCallable() {
+    return stub.aggregatedListUrlMapsCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
    * Deletes the specified UrlMap resource.
    *
    * <p>Sample code:
@@ -363,8 +506,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -393,8 +541,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -728,8 +881,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to patch.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -766,8 +924,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to patch.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -859,8 +1022,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to update.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -896,8 +1064,13 @@ public class UrlMapClient implements BackgroundResource {
    * </code></pre>
    *
    * @param urlMap Name of the UrlMap resource to update.
-   * @param urlMapResource A UrlMap resource. This resource defines the mapping from URL to the
-   *     BackendService resource, based on the "longest-match" of the URL's host and path.
+   * @param urlMapResource Represents a URL Map resource.
+   *     <p>A URL map resource is a component of certain types of load balancers. This resource
+   *     defines mappings from host names and URL paths to either a backend service or a backend
+   *     bucket.
+   *     <p>To use this resource, the backend service must have a loadBalancingScheme of either
+   *     EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED For more information, read URL Map
+   *     Concepts.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -1116,6 +1289,95 @@ public class UrlMapClient implements BackgroundResource {
   @Override
   public boolean awaitTermination(long duration, TimeUnit unit) throws InterruptedException {
     return stub.awaitTermination(duration, unit);
+  }
+
+  public static class AggregatedListUrlMapsPagedResponse
+      extends AbstractPagedListResponse<
+          AggregatedListUrlMapsHttpRequest,
+          UrlMapsAggregatedList,
+          UrlMapsScopedList,
+          AggregatedListUrlMapsPage,
+          AggregatedListUrlMapsFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListUrlMapsPagedResponse> createAsync(
+        PageContext<AggregatedListUrlMapsHttpRequest, UrlMapsAggregatedList, UrlMapsScopedList>
+            context,
+        ApiFuture<UrlMapsAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListUrlMapsPage> futurePage =
+          AggregatedListUrlMapsPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<AggregatedListUrlMapsPage, AggregatedListUrlMapsPagedResponse>() {
+            @Override
+            public AggregatedListUrlMapsPagedResponse apply(AggregatedListUrlMapsPage input) {
+              return new AggregatedListUrlMapsPagedResponse(input);
+            }
+          },
+          MoreExecutors.directExecutor());
+    }
+
+    private AggregatedListUrlMapsPagedResponse(AggregatedListUrlMapsPage page) {
+      super(page, AggregatedListUrlMapsFixedSizeCollection.createEmptyCollection());
+    }
+  }
+
+  public static class AggregatedListUrlMapsPage
+      extends AbstractPage<
+          AggregatedListUrlMapsHttpRequest,
+          UrlMapsAggregatedList,
+          UrlMapsScopedList,
+          AggregatedListUrlMapsPage> {
+
+    private AggregatedListUrlMapsPage(
+        PageContext<AggregatedListUrlMapsHttpRequest, UrlMapsAggregatedList, UrlMapsScopedList>
+            context,
+        UrlMapsAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListUrlMapsPage createEmptyPage() {
+      return new AggregatedListUrlMapsPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListUrlMapsPage createPage(
+        PageContext<AggregatedListUrlMapsHttpRequest, UrlMapsAggregatedList, UrlMapsScopedList>
+            context,
+        UrlMapsAggregatedList response) {
+      return new AggregatedListUrlMapsPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListUrlMapsPage> createPageAsync(
+        PageContext<AggregatedListUrlMapsHttpRequest, UrlMapsAggregatedList, UrlMapsScopedList>
+            context,
+        ApiFuture<UrlMapsAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+  }
+
+  public static class AggregatedListUrlMapsFixedSizeCollection
+      extends AbstractFixedSizeCollection<
+          AggregatedListUrlMapsHttpRequest,
+          UrlMapsAggregatedList,
+          UrlMapsScopedList,
+          AggregatedListUrlMapsPage,
+          AggregatedListUrlMapsFixedSizeCollection> {
+
+    private AggregatedListUrlMapsFixedSizeCollection(
+        List<AggregatedListUrlMapsPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListUrlMapsFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListUrlMapsFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListUrlMapsFixedSizeCollection createCollection(
+        List<AggregatedListUrlMapsPage> pages, int collectionSize) {
+      return new AggregatedListUrlMapsFixedSizeCollection(pages, collectionSize);
+    }
   }
 
   public static class ListUrlMapsPagedResponse

@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
 public final class NetworkPeering implements ApiMessage {
   private final Boolean autoCreateRoutes;
   private final Boolean exchangeSubnetRoutes;
+  private final Boolean exportCustomRoutes;
+  private final Boolean importCustomRoutes;
   private final String name;
   private final String network;
   private final String state;
@@ -40,6 +42,8 @@ public final class NetworkPeering implements ApiMessage {
   private NetworkPeering() {
     this.autoCreateRoutes = null;
     this.exchangeSubnetRoutes = null;
+    this.exportCustomRoutes = null;
+    this.importCustomRoutes = null;
     this.name = null;
     this.network = null;
     this.state = null;
@@ -49,12 +53,16 @@ public final class NetworkPeering implements ApiMessage {
   private NetworkPeering(
       Boolean autoCreateRoutes,
       Boolean exchangeSubnetRoutes,
+      Boolean exportCustomRoutes,
+      Boolean importCustomRoutes,
       String name,
       String network,
       String state,
       String stateDetails) {
     this.autoCreateRoutes = autoCreateRoutes;
     this.exchangeSubnetRoutes = exchangeSubnetRoutes;
+    this.exportCustomRoutes = exportCustomRoutes;
+    this.importCustomRoutes = importCustomRoutes;
     this.name = name;
     this.network = network;
     this.state = state;
@@ -68,6 +76,12 @@ public final class NetworkPeering implements ApiMessage {
     }
     if ("exchangeSubnetRoutes".equals(fieldName)) {
       return exchangeSubnetRoutes;
+    }
+    if ("exportCustomRoutes".equals(fieldName)) {
+      return exportCustomRoutes;
+    }
+    if ("importCustomRoutes".equals(fieldName)) {
+      return importCustomRoutes;
     }
     if ("name".equals(fieldName)) {
       return name;
@@ -103,32 +117,41 @@ public final class NetworkPeering implements ApiMessage {
   }
 
   /**
-   * This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates
-   * whether full mesh connectivity is created and managed automatically. When it is set to true,
-   * Google Compute Engine will automatically create and manage the routes between two networks when
-   * the state is ACTIVE. Otherwise, user needs to create routes manually to route packets to peer
-   * network.
+   * This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates
+   * whether full mesh connectivity is created and managed automatically between peered networks.
+   * Currently this field should always be true since Google Compute Engine will automatically
+   * create and manage subnetwork routes between two networks when peering state is ACTIVE.
    */
   public Boolean getAutoCreateRoutes() {
     return autoCreateRoutes;
   }
 
   /**
-   * Whether full mesh connectivity is created and managed automatically. When it is set to true,
-   * Google Compute Engine will automatically create and manage the routes between two networks when
-   * the peering state is ACTIVE. Otherwise, user needs to create routes manually to route packets
-   * to peer network.
+   * Indicates whether full mesh connectivity is created and managed automatically between peered
+   * networks. Currently this field should always be true since Google Compute Engine will
+   * automatically create and manage subnetwork routes between two networks when peering state is
+   * ACTIVE.
    */
   public Boolean getExchangeSubnetRoutes() {
     return exchangeSubnetRoutes;
   }
 
+  /** Whether to export the custom routes to peer network. */
+  public Boolean getExportCustomRoutes() {
+    return exportCustomRoutes;
+  }
+
+  /** Whether to import the custom routes from peer network. */
+  public Boolean getImportCustomRoutes() {
+    return importCustomRoutes;
+  }
+
   /**
    * Name of this peering. Provided by the client when the peering is created. The name must comply
    * with RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
-   * `[a-z]([-a-z0-9]&#42;[a-z0-9])?` which means the first character must be a lowercase letter,
-   * and all the following characters must be a dash, lowercase letter, or digit, except the last
-   * character, which cannot be a dash.
+   * `[a-z]([-a-z0-9]&#42;[a-z0-9])?`. The first character must be a lowercase letter, and all the
+   * following characters must be a dash, lowercase letter, or digit, except the last character,
+   * which cannot be a dash.
    */
   public String getName() {
     return name;
@@ -143,7 +166,10 @@ public final class NetworkPeering implements ApiMessage {
     return network;
   }
 
-  /** [Output Only] State for the peering. */
+  /**
+   * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE`
+   * when there's a matching configuration in the peer network.
+   */
   public String getState() {
     return state;
   }
@@ -178,6 +204,8 @@ public final class NetworkPeering implements ApiMessage {
   public static class Builder {
     private Boolean autoCreateRoutes;
     private Boolean exchangeSubnetRoutes;
+    private Boolean exportCustomRoutes;
+    private Boolean importCustomRoutes;
     private String name;
     private String network;
     private String state;
@@ -192,6 +220,12 @@ public final class NetworkPeering implements ApiMessage {
       }
       if (other.getExchangeSubnetRoutes() != null) {
         this.exchangeSubnetRoutes = other.exchangeSubnetRoutes;
+      }
+      if (other.getExportCustomRoutes() != null) {
+        this.exportCustomRoutes = other.exportCustomRoutes;
+      }
+      if (other.getImportCustomRoutes() != null) {
+        this.importCustomRoutes = other.importCustomRoutes;
       }
       if (other.getName() != null) {
         this.name = other.name;
@@ -211,6 +245,8 @@ public final class NetworkPeering implements ApiMessage {
     Builder(NetworkPeering source) {
       this.autoCreateRoutes = source.autoCreateRoutes;
       this.exchangeSubnetRoutes = source.exchangeSubnetRoutes;
+      this.exportCustomRoutes = source.exportCustomRoutes;
+      this.importCustomRoutes = source.importCustomRoutes;
       this.name = source.name;
       this.network = source.network;
       this.state = source.state;
@@ -218,22 +254,20 @@ public final class NetworkPeering implements ApiMessage {
     }
 
     /**
-     * This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates
-     * whether full mesh connectivity is created and managed automatically. When it is set to true,
-     * Google Compute Engine will automatically create and manage the routes between two networks
-     * when the state is ACTIVE. Otherwise, user needs to create routes manually to route packets to
-     * peer network.
+     * This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates
+     * whether full mesh connectivity is created and managed automatically between peered networks.
+     * Currently this field should always be true since Google Compute Engine will automatically
+     * create and manage subnetwork routes between two networks when peering state is ACTIVE.
      */
     public Boolean getAutoCreateRoutes() {
       return autoCreateRoutes;
     }
 
     /**
-     * This field will be deprecated soon. Prefer using exchange_subnet_routes instead. Indicates
-     * whether full mesh connectivity is created and managed automatically. When it is set to true,
-     * Google Compute Engine will automatically create and manage the routes between two networks
-     * when the state is ACTIVE. Otherwise, user needs to create routes manually to route packets to
-     * peer network.
+     * This field will be deprecated soon. Use the exchange_subnet_routes field instead. Indicates
+     * whether full mesh connectivity is created and managed automatically between peered networks.
+     * Currently this field should always be true since Google Compute Engine will automatically
+     * create and manage subnetwork routes between two networks when peering state is ACTIVE.
      */
     public Builder setAutoCreateRoutes(Boolean autoCreateRoutes) {
       this.autoCreateRoutes = autoCreateRoutes;
@@ -241,32 +275,54 @@ public final class NetworkPeering implements ApiMessage {
     }
 
     /**
-     * Whether full mesh connectivity is created and managed automatically. When it is set to true,
-     * Google Compute Engine will automatically create and manage the routes between two networks
-     * when the peering state is ACTIVE. Otherwise, user needs to create routes manually to route
-     * packets to peer network.
+     * Indicates whether full mesh connectivity is created and managed automatically between peered
+     * networks. Currently this field should always be true since Google Compute Engine will
+     * automatically create and manage subnetwork routes between two networks when peering state is
+     * ACTIVE.
      */
     public Boolean getExchangeSubnetRoutes() {
       return exchangeSubnetRoutes;
     }
 
     /**
-     * Whether full mesh connectivity is created and managed automatically. When it is set to true,
-     * Google Compute Engine will automatically create and manage the routes between two networks
-     * when the peering state is ACTIVE. Otherwise, user needs to create routes manually to route
-     * packets to peer network.
+     * Indicates whether full mesh connectivity is created and managed automatically between peered
+     * networks. Currently this field should always be true since Google Compute Engine will
+     * automatically create and manage subnetwork routes between two networks when peering state is
+     * ACTIVE.
      */
     public Builder setExchangeSubnetRoutes(Boolean exchangeSubnetRoutes) {
       this.exchangeSubnetRoutes = exchangeSubnetRoutes;
       return this;
     }
 
+    /** Whether to export the custom routes to peer network. */
+    public Boolean getExportCustomRoutes() {
+      return exportCustomRoutes;
+    }
+
+    /** Whether to export the custom routes to peer network. */
+    public Builder setExportCustomRoutes(Boolean exportCustomRoutes) {
+      this.exportCustomRoutes = exportCustomRoutes;
+      return this;
+    }
+
+    /** Whether to import the custom routes from peer network. */
+    public Boolean getImportCustomRoutes() {
+      return importCustomRoutes;
+    }
+
+    /** Whether to import the custom routes from peer network. */
+    public Builder setImportCustomRoutes(Boolean importCustomRoutes) {
+      this.importCustomRoutes = importCustomRoutes;
+      return this;
+    }
+
     /**
      * Name of this peering. Provided by the client when the peering is created. The name must
      * comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular
-     * expression `[a-z]([-a-z0-9]&#42;[a-z0-9])?` which means the first character must be a
-     * lowercase letter, and all the following characters must be a dash, lowercase letter, or
-     * digit, except the last character, which cannot be a dash.
+     * expression `[a-z]([-a-z0-9]&#42;[a-z0-9])?`. The first character must be a lowercase letter,
+     * and all the following characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public String getName() {
       return name;
@@ -275,9 +331,9 @@ public final class NetworkPeering implements ApiMessage {
     /**
      * Name of this peering. Provided by the client when the peering is created. The name must
      * comply with RFC1035. Specifically, the name must be 1-63 characters long and match regular
-     * expression `[a-z]([-a-z0-9]&#42;[a-z0-9])?` which means the first character must be a
-     * lowercase letter, and all the following characters must be a dash, lowercase letter, or
-     * digit, except the last character, which cannot be a dash.
+     * expression `[a-z]([-a-z0-9]&#42;[a-z0-9])?`. The first character must be a lowercase letter,
+     * and all the following characters must be a dash, lowercase letter, or digit, except the last
+     * character, which cannot be a dash.
      */
     public Builder setName(String name) {
       this.name = name;
@@ -303,12 +359,18 @@ public final class NetworkPeering implements ApiMessage {
       return this;
     }
 
-    /** [Output Only] State for the peering. */
+    /**
+     * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE`
+     * when there's a matching configuration in the peer network.
+     */
     public String getState() {
       return state;
     }
 
-    /** [Output Only] State for the peering. */
+    /**
+     * [Output Only] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is `ACTIVE`
+     * when there's a matching configuration in the peer network.
+     */
     public Builder setState(String state) {
       this.state = state;
       return this;
@@ -328,13 +390,22 @@ public final class NetworkPeering implements ApiMessage {
     public NetworkPeering build() {
 
       return new NetworkPeering(
-          autoCreateRoutes, exchangeSubnetRoutes, name, network, state, stateDetails);
+          autoCreateRoutes,
+          exchangeSubnetRoutes,
+          exportCustomRoutes,
+          importCustomRoutes,
+          name,
+          network,
+          state,
+          stateDetails);
     }
 
     public Builder clone() {
       Builder newBuilder = new Builder();
       newBuilder.setAutoCreateRoutes(this.autoCreateRoutes);
       newBuilder.setExchangeSubnetRoutes(this.exchangeSubnetRoutes);
+      newBuilder.setExportCustomRoutes(this.exportCustomRoutes);
+      newBuilder.setImportCustomRoutes(this.importCustomRoutes);
       newBuilder.setName(this.name);
       newBuilder.setNetwork(this.network);
       newBuilder.setState(this.state);
@@ -351,6 +422,12 @@ public final class NetworkPeering implements ApiMessage {
         + ", "
         + "exchangeSubnetRoutes="
         + exchangeSubnetRoutes
+        + ", "
+        + "exportCustomRoutes="
+        + exportCustomRoutes
+        + ", "
+        + "importCustomRoutes="
+        + importCustomRoutes
         + ", "
         + "name="
         + name
@@ -375,6 +452,8 @@ public final class NetworkPeering implements ApiMessage {
       NetworkPeering that = (NetworkPeering) o;
       return Objects.equals(this.autoCreateRoutes, that.getAutoCreateRoutes())
           && Objects.equals(this.exchangeSubnetRoutes, that.getExchangeSubnetRoutes())
+          && Objects.equals(this.exportCustomRoutes, that.getExportCustomRoutes())
+          && Objects.equals(this.importCustomRoutes, that.getImportCustomRoutes())
           && Objects.equals(this.name, that.getName())
           && Objects.equals(this.network, that.getNetwork())
           && Objects.equals(this.state, that.getState())
@@ -385,6 +464,14 @@ public final class NetworkPeering implements ApiMessage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(autoCreateRoutes, exchangeSubnetRoutes, name, network, state, stateDetails);
+    return Objects.hash(
+        autoCreateRoutes,
+        exchangeSubnetRoutes,
+        exportCustomRoutes,
+        importCustomRoutes,
+        name,
+        network,
+        state,
+        stateDetails);
   }
 }

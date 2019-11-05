@@ -36,12 +36,14 @@ import com.google.cloud.logging.LoggingOptions;
 import com.google.cloud.logging.Payload.StringPayload;
 import com.google.cloud.logging.Severity;
 import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 import org.easymock.Capture;
 import org.easymock.EasyMock;
 import org.easymock.EasyMockRunner;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.MDC;
 
 @RunWith(EasyMockRunner.class)
 public class LoggingAppenderTest {
@@ -84,6 +86,7 @@ public class LoggingAppenderTest {
                 new ImmutableMap.Builder<String, String>()
                     .put("levelName", "WARN")
                     .put("levelValue", String.valueOf(30000L))
+                    .put("loggerName", this.getClass().getName())
                     .build())
             .build();
     logging.setFlushSeverity(Severity.WARNING);
@@ -111,6 +114,7 @@ public class LoggingAppenderTest {
                 new ImmutableMap.Builder<String, String>()
                     .put("levelName", "ERROR")
                     .put("levelValue", String.valueOf(40000L))
+                    .put("loggerName", this.getClass().getName())
                     .build())
             .build();
     logging.setFlushSeverity(Severity.ERROR);
@@ -145,6 +149,7 @@ public class LoggingAppenderTest {
                 new ImmutableMap.Builder<String, String>()
                     .put("levelName", "WARN")
                     .put("levelValue", String.valueOf(30000L))
+                    .put("loggerName", this.getClass().getName())
                     .put("test-label-1", "test-value-1")
                     .put("test-label-2", "test-value-2")
                     .build())
@@ -193,6 +198,7 @@ public class LoggingAppenderTest {
                 new ImmutableMap.Builder<String, String>()
                     .put("levelName", "INFO")
                     .put("levelValue", String.valueOf(20000L))
+                    .put("loggerName", this.getClass().getName())
                     .put("mdc1", "value1")
                     .put("mdc2", "value2")
                     .build())
@@ -244,6 +250,31 @@ public class LoggingAppenderTest {
     loggingEvent.setMessage("this is a test");
     loggingEvent.setLevel(level);
     loggingEvent.setTimeStamp(timestamp);
+    loggingEvent.setLoggerName(this.getClass().getName());
     return loggingEvent;
+  }
+
+  @Test
+  public void testMdcValuesAreConvertedToLabelsWithPassingNullValues() {
+    MDC.put("mdc1", "value1");
+    MDC.put("mdc2", null);
+    MDC.put("mdc3", "value3");
+    logging.setFlushSeverity(Severity.ERROR);
+    Capture<Iterable<LogEntry>> capturedArgument = Capture.newInstance();
+    logging.write(capture(capturedArgument), (WriteOption) anyObject(), (WriteOption) anyObject());
+    expectLastCall().once();
+    replay(logging);
+    Timestamp timestamp = Timestamp.ofTimeSecondsAndNanos(100000, 0);
+    LoggingEvent loggingEvent = createLoggingEvent(Level.INFO, timestamp.getSeconds());
+    loggingAppender.start();
+    loggingAppender.doAppend(loggingEvent);
+    verify(logging);
+    MDC.remove("mdc1");
+    MDC.remove("mdc3");
+    Map<String, String> capturedArgumentMap =
+        capturedArgument.getValue().iterator().next().getLabels();
+    assertThat(capturedArgumentMap.get("mdc1")).isEqualTo("value1");
+    assertThat(capturedArgumentMap.get("mdc2")).isNull();
+    assertThat(capturedArgumentMap.get("mdc3")).isEqualTo("value3");
   }
 }

@@ -8,15 +8,27 @@ package com.google.cloud.dialogflow.v2beta1;
  *
  * <pre>
  * The top-level message sent by the client to the
- * `StreamingDetectIntent` method.
+ * [StreamingDetectIntent][] method.
  * Multiple request messages should be sent in order:
- * 1.  The first message must contain `session`, `query_input` plus optionally
- *     `query_params` and/or `single_utterance`. If the client wants to receive
- *     an audio response, it should also contain `output_audio_config`.
- *     The message must not contain `input_audio`.
- * 2.  If `query_input` was set to a streaming input audio config,
- *     all subsequent messages must contain only `input_audio`.
- *     Otherwise, finish the request stream.
+ * 1.  The first message must contain [StreamingDetectIntentRequest.session][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.session],
+ *     [StreamingDetectIntentRequest.query_input] plus optionally
+ *     [StreamingDetectIntentRequest.query_params]. If the client wants to
+ *     receive an audio response, it should also contain
+ *     [StreamingDetectIntentRequest.output_audio_config][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.output_audio_config]. The message
+ *     must not contain [StreamingDetectIntentRequest.input_audio][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.input_audio].
+ * 2.  If [StreamingDetectIntentRequest.query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] was set to
+ *     [StreamingDetectIntentRequest.query_input.audio_config][], all subsequent
+ *     messages must contain [StreamingDetectIntentRequest.input_audio] to
+ *     continue with Speech recognition.
+ *     If you decide to rather detect an intent from text input after you
+ *     already started Speech recognition, please send a message with
+ *     [StreamingDetectIntentRequest.query_input.text][].
+ *     However, note that:
+ *     * Dialogflow will bill you for the audio duration so far.
+ *     * Dialogflow discards all Speech recognition results in favor of the
+ *       input text.
+ *     * Dialogflow will use the language code from the first message.
+ * After you sent all input, you must half-close or abort the request stream.
  * </pre>
  *
  * Protobuf type {@code google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest}
@@ -173,8 +185,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
    * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
    * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
    * default 'draft' environment. If `User ID` is not specified, we are using
-   * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-   * `User Id`. They can be a random numbers or some type of user and session
+   * "-". It's up to the API caller to choose an appropriate `Session ID` and
+   * `User Id`. They can be a random number or some type of user and session
    * identifiers (preferably hashed). The length of the `Session ID` and
    * `User ID` must not exceed 36 characters.
    * </pre>
@@ -202,8 +214,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
    * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
    * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
    * default 'draft' environment. If `User ID` is not specified, we are using
-   * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-   * `User Id`. They can be a random numbers or some type of user and session
+   * "-". It's up to the API caller to choose an appropriate `Session ID` and
+   * `User Id`. They can be a random number or some type of user and session
    * identifiers (preferably hashed). The length of the `Session ID` and
    * `User ID` must not exceed 36 characters.
    * </pre>
@@ -322,6 +334,7 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
    *
    *
    * <pre>
+   * DEPRECATED. Please use [InputAudioConfig.single_utterance][google.cloud.dialogflow.v2beta1.InputAudioConfig.single_utterance] instead.
    * Optional. If `false` (default), recognition does not cease until the
    * client closes the stream.
    * If `true`, the recognizer will detect a single spoken utterance in input
@@ -628,15 +641,27 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
    *
    * <pre>
    * The top-level message sent by the client to the
-   * `StreamingDetectIntent` method.
+   * [StreamingDetectIntent][] method.
    * Multiple request messages should be sent in order:
-   * 1.  The first message must contain `session`, `query_input` plus optionally
-   *     `query_params` and/or `single_utterance`. If the client wants to receive
-   *     an audio response, it should also contain `output_audio_config`.
-   *     The message must not contain `input_audio`.
-   * 2.  If `query_input` was set to a streaming input audio config,
-   *     all subsequent messages must contain only `input_audio`.
-   *     Otherwise, finish the request stream.
+   * 1.  The first message must contain [StreamingDetectIntentRequest.session][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.session],
+   *     [StreamingDetectIntentRequest.query_input] plus optionally
+   *     [StreamingDetectIntentRequest.query_params]. If the client wants to
+   *     receive an audio response, it should also contain
+   *     [StreamingDetectIntentRequest.output_audio_config][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.output_audio_config]. The message
+   *     must not contain [StreamingDetectIntentRequest.input_audio][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.input_audio].
+   * 2.  If [StreamingDetectIntentRequest.query_input][google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest.query_input] was set to
+   *     [StreamingDetectIntentRequest.query_input.audio_config][], all subsequent
+   *     messages must contain [StreamingDetectIntentRequest.input_audio] to
+   *     continue with Speech recognition.
+   *     If you decide to rather detect an intent from text input after you
+   *     already started Speech recognition, please send a message with
+   *     [StreamingDetectIntentRequest.query_input.text][].
+   *     However, note that:
+   *     * Dialogflow will bill you for the audio duration so far.
+   *     * Dialogflow discards all Speech recognition results in favor of the
+   *       input text.
+   *     * Dialogflow will use the language code from the first message.
+   * After you sent all input, you must half-close or abort the request stream.
    * </pre>
    *
    * Protobuf type {@code google.cloud.dialogflow.v2beta1.StreamingDetectIntentRequest}
@@ -860,8 +885,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
      * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
      * default 'draft' environment. If `User ID` is not specified, we are using
-     * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-     * `User Id`. They can be a random numbers or some type of user and session
+     * "-". It's up to the API caller to choose an appropriate `Session ID` and
+     * `User Id`. They can be a random number or some type of user and session
      * identifiers (preferably hashed). The length of the `Session ID` and
      * `User ID` must not exceed 36 characters.
      * </pre>
@@ -889,8 +914,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
      * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
      * default 'draft' environment. If `User ID` is not specified, we are using
-     * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-     * `User Id`. They can be a random numbers or some type of user and session
+     * "-". It's up to the API caller to choose an appropriate `Session ID` and
+     * `User Id`. They can be a random number or some type of user and session
      * identifiers (preferably hashed). The length of the `Session ID` and
      * `User ID` must not exceed 36 characters.
      * </pre>
@@ -918,8 +943,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
      * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
      * default 'draft' environment. If `User ID` is not specified, we are using
-     * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-     * `User Id`. They can be a random numbers or some type of user and session
+     * "-". It's up to the API caller to choose an appropriate `Session ID` and
+     * `User Id`. They can be a random number or some type of user and session
      * identifiers (preferably hashed). The length of the `Session ID` and
      * `User ID` must not exceed 36 characters.
      * </pre>
@@ -945,8 +970,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
      * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
      * default 'draft' environment. If `User ID` is not specified, we are using
-     * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-     * `User Id`. They can be a random numbers or some type of user and session
+     * "-". It's up to the API caller to choose an appropriate `Session ID` and
+     * `User Id`. They can be a random number or some type of user and session
      * identifiers (preferably hashed). The length of the `Session ID` and
      * `User ID` must not exceed 36 characters.
      * </pre>
@@ -969,8 +994,8 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      * `projects/&lt;Project ID&gt;/agent/environments/&lt;Environment ID&gt;/users/&lt;User
      * ID&gt;/sessions/&lt;Session ID&gt;`. If `Environment ID` is not specified, we assume
      * default 'draft' environment. If `User ID` is not specified, we are using
-     * "-". It’s up to the API caller to choose an appropriate `Session ID` and
-     * `User Id`. They can be a random numbers or some type of user and session
+     * "-". It's up to the API caller to choose an appropriate `Session ID` and
+     * `User Id`. They can be a random number or some type of user and session
      * identifiers (preferably hashed). The length of the `Session ID` and
      * `User ID` must not exceed 36 characters.
      * </pre>
@@ -1393,6 +1418,7 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
+     * DEPRECATED. Please use [InputAudioConfig.single_utterance][google.cloud.dialogflow.v2beta1.InputAudioConfig.single_utterance] instead.
      * Optional. If `false` (default), recognition does not cease until the
      * client closes the stream.
      * If `true`, the recognizer will detect a single spoken utterance in input
@@ -1412,6 +1438,7 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
+     * DEPRECATED. Please use [InputAudioConfig.single_utterance][google.cloud.dialogflow.v2beta1.InputAudioConfig.single_utterance] instead.
      * Optional. If `false` (default), recognition does not cease until the
      * client closes the stream.
      * If `true`, the recognizer will detect a single spoken utterance in input
@@ -1434,6 +1461,7 @@ public final class StreamingDetectIntentRequest extends com.google.protobuf.Gene
      *
      *
      * <pre>
+     * DEPRECATED. Please use [InputAudioConfig.single_utterance][google.cloud.dialogflow.v2beta1.InputAudioConfig.single_utterance] instead.
      * Optional. If `false` (default), recognition does not cease until the
      * client closes the stream.
      * If `true`, the recognizer will detect a single spoken utterance in input

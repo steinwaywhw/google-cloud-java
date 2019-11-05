@@ -154,6 +154,151 @@ public class HealthCheckClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
+   * Retrieves the list of all HealthCheck resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (HealthChecksScopedList element : healthCheckClient.aggregatedListHealthChecks(project).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListHealthChecksPagedResponse aggregatedListHealthChecks(
+      ProjectName project) {
+    AggregatedListHealthChecksHttpRequest request =
+        AggregatedListHealthChecksHttpRequest.newBuilder()
+            .setProject(project == null ? null : project.toString())
+            .build();
+    return aggregatedListHealthChecks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all HealthCheck resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (HealthChecksScopedList element : healthCheckClient.aggregatedListHealthChecks(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListHealthChecksPagedResponse aggregatedListHealthChecks(String project) {
+    AggregatedListHealthChecksHttpRequest request =
+        AggregatedListHealthChecksHttpRequest.newBuilder().setProject(project).build();
+    return aggregatedListHealthChecks(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all HealthCheck resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListHealthChecksHttpRequest request = AggregatedListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (HealthChecksScopedList element : healthCheckClient.aggregatedListHealthChecks(request).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListHealthChecksPagedResponse aggregatedListHealthChecks(
+      AggregatedListHealthChecksHttpRequest request) {
+    return aggregatedListHealthChecksPagedCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all HealthCheck resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListHealthChecksHttpRequest request = AggregatedListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListHealthChecksPagedResponse&gt; future = healthCheckClient.aggregatedListHealthChecksPagedCallable().futureCall(request);
+   *   // Do something
+   *   for (HealthChecksScopedList element : future.get().iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<
+          AggregatedListHealthChecksHttpRequest, AggregatedListHealthChecksPagedResponse>
+      aggregatedListHealthChecksPagedCallable() {
+    return stub.aggregatedListHealthChecksPagedCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all HealthCheck resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (HealthCheckClient healthCheckClient = HealthCheckClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListHealthChecksHttpRequest request = AggregatedListHealthChecksHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   while (true) {
+   *     HealthChecksAggregatedList response = healthCheckClient.aggregatedListHealthChecksCallable().call(request);
+   *     for (HealthChecksScopedList element : response.getItemsMap()) {
+   *       // doThingsWith(element);
+   *     }
+   *     String nextPageToken = response.getNextPageToken();
+   *     if (!Strings.isNullOrEmpty(nextPageToken)) {
+   *       request = request.toBuilder().setPageToken(nextPageToken).build();
+   *     } else {
+   *       break;
+   *     }
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<AggregatedListHealthChecksHttpRequest, HealthChecksAggregatedList>
+      aggregatedListHealthChecksCallable() {
+    return stub.aggregatedListHealthChecksCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
    * Deletes the specified HealthCheck resource.
    *
    * <p>Sample code:
@@ -365,9 +510,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -396,9 +543,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -617,9 +766,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to patch.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -658,9 +809,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to patch.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -753,9 +906,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to update.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -793,9 +948,11 @@ public class HealthCheckClient implements BackgroundResource {
    * </code></pre>
    *
    * @param healthCheck Name of the HealthCheck resource to update.
-   * @param healthCheckResource An HealthCheck resource. This resource defines a template for how
-   *     individual virtual machines should be checked for health, via one of the supported
-   *     protocols.
+   * @param healthCheckResource Represents a Health Check resource.
+   *     <p>Health checks are used for most GCP load balancers and managed instance group
+   *     auto-healing. For more information, read Health Check Concepts.
+   *     <p>To perform health checks on network load balancers, you must use either httpHealthChecks
+   *     or httpsHealthChecks.
    * @param fieldMask The fields that should be serialized (even if they have empty values). If the
    *     containing message object has a non-null fieldmask, then all the fields in the field mask
    *     (and only those fields in the field mask) will be serialized. If the containing object does
@@ -898,6 +1055,109 @@ public class HealthCheckClient implements BackgroundResource {
   @Override
   public boolean awaitTermination(long duration, TimeUnit unit) throws InterruptedException {
     return stub.awaitTermination(duration, unit);
+  }
+
+  public static class AggregatedListHealthChecksPagedResponse
+      extends AbstractPagedListResponse<
+          AggregatedListHealthChecksHttpRequest,
+          HealthChecksAggregatedList,
+          HealthChecksScopedList,
+          AggregatedListHealthChecksPage,
+          AggregatedListHealthChecksFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListHealthChecksPagedResponse> createAsync(
+        PageContext<
+                AggregatedListHealthChecksHttpRequest,
+                HealthChecksAggregatedList,
+                HealthChecksScopedList>
+            context,
+        ApiFuture<HealthChecksAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListHealthChecksPage> futurePage =
+          AggregatedListHealthChecksPage.createEmptyPage().createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<
+              AggregatedListHealthChecksPage, AggregatedListHealthChecksPagedResponse>() {
+            @Override
+            public AggregatedListHealthChecksPagedResponse apply(
+                AggregatedListHealthChecksPage input) {
+              return new AggregatedListHealthChecksPagedResponse(input);
+            }
+          },
+          MoreExecutors.directExecutor());
+    }
+
+    private AggregatedListHealthChecksPagedResponse(AggregatedListHealthChecksPage page) {
+      super(page, AggregatedListHealthChecksFixedSizeCollection.createEmptyCollection());
+    }
+  }
+
+  public static class AggregatedListHealthChecksPage
+      extends AbstractPage<
+          AggregatedListHealthChecksHttpRequest,
+          HealthChecksAggregatedList,
+          HealthChecksScopedList,
+          AggregatedListHealthChecksPage> {
+
+    private AggregatedListHealthChecksPage(
+        PageContext<
+                AggregatedListHealthChecksHttpRequest,
+                HealthChecksAggregatedList,
+                HealthChecksScopedList>
+            context,
+        HealthChecksAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListHealthChecksPage createEmptyPage() {
+      return new AggregatedListHealthChecksPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListHealthChecksPage createPage(
+        PageContext<
+                AggregatedListHealthChecksHttpRequest,
+                HealthChecksAggregatedList,
+                HealthChecksScopedList>
+            context,
+        HealthChecksAggregatedList response) {
+      return new AggregatedListHealthChecksPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListHealthChecksPage> createPageAsync(
+        PageContext<
+                AggregatedListHealthChecksHttpRequest,
+                HealthChecksAggregatedList,
+                HealthChecksScopedList>
+            context,
+        ApiFuture<HealthChecksAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+  }
+
+  public static class AggregatedListHealthChecksFixedSizeCollection
+      extends AbstractFixedSizeCollection<
+          AggregatedListHealthChecksHttpRequest,
+          HealthChecksAggregatedList,
+          HealthChecksScopedList,
+          AggregatedListHealthChecksPage,
+          AggregatedListHealthChecksFixedSizeCollection> {
+
+    private AggregatedListHealthChecksFixedSizeCollection(
+        List<AggregatedListHealthChecksPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListHealthChecksFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListHealthChecksFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListHealthChecksFixedSizeCollection createCollection(
+        List<AggregatedListHealthChecksPage> pages, int collectionSize) {
+      return new AggregatedListHealthChecksFixedSizeCollection(pages, collectionSize);
+    }
   }
 
   public static class ListHealthChecksPagedResponse

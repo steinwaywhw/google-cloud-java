@@ -12,8 +12,7 @@ public interface HttpTargetOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The full URI path that the request will be sent to. This string
+   * Required. The full URI path that the request will be sent to. This string
    * must begin with either "http://" or "https://". Some examples of
    * valid values for [uri][google.cloud.scheduler.v1.HttpTarget.uri] are:
    * `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will
@@ -28,8 +27,7 @@ public interface HttpTargetOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The full URI path that the request will be sent to. This string
+   * Required. The full URI path that the request will be sent to. This string
    * must begin with either "http://" or "https://". Some examples of
    * valid values for [uri][google.cloud.scheduler.v1.HttpTarget.uri] are:
    * `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will
@@ -193,4 +191,102 @@ public interface HttpTargetOrBuilder
    * <code>bytes body = 4;</code>
    */
   com.google.protobuf.ByteString getBody();
+
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+   * will be generated and attached as an `Authorization` header in the HTTP
+   * request.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OAuthToken oauth_token = 5;</code>
+   */
+  boolean hasOauthToken();
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+   * will be generated and attached as an `Authorization` header in the HTTP
+   * request.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OAuthToken oauth_token = 5;</code>
+   */
+  com.google.cloud.scheduler.v1.OAuthToken getOauthToken();
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+   * will be generated and attached as an `Authorization` header in the HTTP
+   * request.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OAuthToken oauth_token = 5;</code>
+   */
+  com.google.cloud.scheduler.v1.OAuthTokenOrBuilder getOauthTokenOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+   * token will be generated and attached as an `Authorization` header in the
+   * HTTP request.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OidcToken oidc_token = 6;</code>
+   */
+  boolean hasOidcToken();
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+   * token will be generated and attached as an `Authorization` header in the
+   * HTTP request.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OidcToken oidc_token = 6;</code>
+   */
+  com.google.cloud.scheduler.v1.OidcToken getOidcToken();
+  /**
+   *
+   *
+   * <pre>
+   * If specified, an
+   * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
+   * token will be generated and attached as an `Authorization` header in the
+   * HTTP request.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
+   * </pre>
+   *
+   * <code>.google.cloud.scheduler.v1.OidcToken oidc_token = 6;</code>
+   */
+  com.google.cloud.scheduler.v1.OidcTokenOrBuilder getOidcTokenOrBuilder();
+
+  public com.google.cloud.scheduler.v1.HttpTarget.AuthorizationHeaderCase
+      getAuthorizationHeaderCase();
 }

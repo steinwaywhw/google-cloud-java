@@ -97,15 +97,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the application to be retrieved.
+   * Required. The resource name of the application to be retrieved.
    * The format is
-   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-   * for example,
-   * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+   * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -122,15 +120,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the application to be retrieved.
+   * Required. The resource name of the application to be retrieved.
    * The format is
-   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-   * for example,
-   * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+   * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -468,15 +464,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the application to be retrieved.
+     * Required. The resource name of the application to be retrieved.
      * The format is
-     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-     * for example,
-     * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+     * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -493,15 +487,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the application to be retrieved.
+     * Required. The resource name of the application to be retrieved.
      * The format is
-     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-     * for example,
-     * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+     * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -518,15 +510,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the application to be retrieved.
+     * Required. The resource name of the application to be retrieved.
      * The format is
-     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-     * for example,
-     * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+     * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -541,15 +531,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the application to be retrieved.
+     * Required. The resource name of the application to be retrieved.
      * The format is
-     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-     * for example,
-     * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+     * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearName() {
 
@@ -561,15 +549,13 @@ public final class GetApplicationRequest extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the application to be retrieved.
+     * Required. The resource name of the application to be retrieved.
      * The format is
-     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}",
-     * for example,
-     * "projects/test-project/tenants/test-tenant/profiles/test-profile/applications/test-application".
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}/applications/{application_id}".
+     * For example, "projects/foo/tenants/bar/profiles/baz/applications/qux".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

@@ -82,6 +82,11 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
               phraseHints_.add(s);
               break;
             }
+          case 64:
+            {
+              singleUtterance_ = input.readBool();
+              break;
+            }
           case 80:
             {
               int rawValue = input.readEnum();
@@ -184,7 +189,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    * <pre>
    * Required. The language of the supplied audio. Dialogflow does not do
    * translations. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
@@ -208,7 +213,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    * <pre>
    * Required. The language of the supplied audio. Dialogflow does not do
    * translations. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
@@ -233,10 +238,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -250,10 +254,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -267,10 +270,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -284,10 +286,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional. The collection of phrase hints which are used to boost accuracy
-   * of speech recognition.
-   * Refer to
-   * [Cloud Speech API
+   * Optional. A list of strings containing words and phrases that the speech
+   * recognizer should recognize with higher likelihood.
+   * See [the Cloud Speech
    * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
    * for more details.
    * </pre>
@@ -328,6 +329,30 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
     return result == null ? com.google.cloud.dialogflow.v2.SpeechModelVariant.UNRECOGNIZED : result;
   }
 
+  public static final int SINGLE_UTTERANCE_FIELD_NUMBER = 8;
+  private boolean singleUtterance_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional. If `false` (default), recognition does not cease until the
+   * client closes the stream.
+   * If `true`, the recognizer will detect a single spoken utterance in input
+   * audio. Recognition ceases when it detects the audio's voice has
+   * stopped or paused. In this case, once a detected intent is received, the
+   * client should close the stream and start a new request with a new stream as
+   * needed.
+   * Note: This setting is relevant only for streaming methods.
+   * Note: When specified, InputAudioConfig.single_utterance takes precedence
+   * over StreamingDetectIntentRequest.single_utterance.
+   * </pre>
+   *
+   * <code>bool single_utterance = 8;</code>
+   */
+  public boolean getSingleUtterance() {
+    return singleUtterance_;
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -354,6 +379,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
     }
     for (int i = 0; i < phraseHints_.size(); i++) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 4, phraseHints_.getRaw(i));
+    }
+    if (singleUtterance_ != false) {
+      output.writeBool(8, singleUtterance_);
     }
     if (modelVariant_
         != com.google.cloud.dialogflow.v2.SpeechModelVariant.SPEECH_MODEL_VARIANT_UNSPECIFIED
@@ -387,6 +415,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
       size += dataSize;
       size += 1 * getPhraseHintsList().size();
     }
+    if (singleUtterance_ != false) {
+      size += com.google.protobuf.CodedOutputStream.computeBoolSize(8, singleUtterance_);
+    }
     if (modelVariant_
         != com.google.cloud.dialogflow.v2.SpeechModelVariant.SPEECH_MODEL_VARIANT_UNSPECIFIED
             .getNumber()) {
@@ -413,6 +444,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
     if (!getLanguageCode().equals(other.getLanguageCode())) return false;
     if (!getPhraseHintsList().equals(other.getPhraseHintsList())) return false;
     if (modelVariant_ != other.modelVariant_) return false;
+    if (getSingleUtterance() != other.getSingleUtterance()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -436,6 +468,8 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
     }
     hash = (37 * hash) + MODEL_VARIANT_FIELD_NUMBER;
     hash = (53 * hash) + modelVariant_;
+    hash = (37 * hash) + SINGLE_UTTERANCE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getSingleUtterance());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -591,6 +625,8 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
       bitField0_ = (bitField0_ & ~0x00000008);
       modelVariant_ = 0;
 
+      singleUtterance_ = false;
+
       return this;
     }
 
@@ -629,6 +665,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
       }
       result.phraseHints_ = phraseHints_;
       result.modelVariant_ = modelVariant_;
+      result.singleUtterance_ = singleUtterance_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -702,6 +739,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
       }
       if (other.modelVariant_ != 0) {
         setModelVariantValue(other.getModelVariantValue());
+      }
+      if (other.getSingleUtterance() != false) {
+        setSingleUtterance(other.getSingleUtterance());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -873,7 +913,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      * <pre>
      * Required. The language of the supplied audio. Dialogflow does not do
      * translations. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
@@ -897,7 +937,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      * <pre>
      * Required. The language of the supplied audio. Dialogflow does not do
      * translations. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
@@ -921,7 +961,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      * <pre>
      * Required. The language of the supplied audio. Dialogflow does not do
      * translations. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
@@ -943,7 +983,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      * <pre>
      * Required. The language of the supplied audio. Dialogflow does not do
      * translations. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
@@ -962,7 +1002,7 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      * <pre>
      * Required. The language of the supplied audio. Dialogflow does not do
      * translations. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
@@ -993,10 +1033,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1010,10 +1049,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1027,10 +1065,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1044,10 +1081,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1061,10 +1097,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1084,10 +1119,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1107,10 +1141,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1127,10 +1160,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1147,10 +1179,9 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional. The collection of phrase hints which are used to boost accuracy
-     * of speech recognition.
-     * Refer to
-     * [Cloud Speech API
+     * Optional. A list of strings containing words and phrases that the speech
+     * recognizer should recognize with higher likelihood.
+     * See [the Cloud Speech
      * documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
      * for more details.
      * </pre>
@@ -1242,6 +1273,77 @@ public final class InputAudioConfig extends com.google.protobuf.GeneratedMessage
     public Builder clearModelVariant() {
 
       modelVariant_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean singleUtterance_;
+    /**
+     *
+     *
+     * <pre>
+     * Optional. If `false` (default), recognition does not cease until the
+     * client closes the stream.
+     * If `true`, the recognizer will detect a single spoken utterance in input
+     * audio. Recognition ceases when it detects the audio's voice has
+     * stopped or paused. In this case, once a detected intent is received, the
+     * client should close the stream and start a new request with a new stream as
+     * needed.
+     * Note: This setting is relevant only for streaming methods.
+     * Note: When specified, InputAudioConfig.single_utterance takes precedence
+     * over StreamingDetectIntentRequest.single_utterance.
+     * </pre>
+     *
+     * <code>bool single_utterance = 8;</code>
+     */
+    public boolean getSingleUtterance() {
+      return singleUtterance_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. If `false` (default), recognition does not cease until the
+     * client closes the stream.
+     * If `true`, the recognizer will detect a single spoken utterance in input
+     * audio. Recognition ceases when it detects the audio's voice has
+     * stopped or paused. In this case, once a detected intent is received, the
+     * client should close the stream and start a new request with a new stream as
+     * needed.
+     * Note: This setting is relevant only for streaming methods.
+     * Note: When specified, InputAudioConfig.single_utterance takes precedence
+     * over StreamingDetectIntentRequest.single_utterance.
+     * </pre>
+     *
+     * <code>bool single_utterance = 8;</code>
+     */
+    public Builder setSingleUtterance(boolean value) {
+
+      singleUtterance_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. If `false` (default), recognition does not cease until the
+     * client closes the stream.
+     * If `true`, the recognizer will detect a single spoken utterance in input
+     * audio. Recognition ceases when it detects the audio's voice has
+     * stopped or paused. In this case, once a detected intent is received, the
+     * client should close the stream and start a new request with a new stream as
+     * needed.
+     * Note: This setting is relevant only for streaming methods.
+     * Note: When specified, InputAudioConfig.single_utterance takes precedence
+     * over StreamingDetectIntentRequest.single_utterance.
+     * </pre>
+     *
+     * <code>bool single_utterance = 8;</code>
+     */
+    public Builder clearSingleUtterance() {
+
+      singleUtterance_ = false;
       onChanged();
       return this;
     }

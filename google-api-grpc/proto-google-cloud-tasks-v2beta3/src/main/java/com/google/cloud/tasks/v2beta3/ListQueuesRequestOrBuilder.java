@@ -12,24 +12,26 @@ public interface ListQueuesRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The location name.
+   * Required. The location name.
    * For example: `projects/PROJECT_ID/locations/LOCATION_ID`
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The location name.
+   * Required. The location name.
    * For example: `projects/PROJECT_ID/locations/LOCATION_ID`
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -41,7 +43,8 @@ public interface ListQueuesRequestOrBuilder
    * field can be used as a filter and several operators as supported.
    * For example: `&lt;=, &lt;, &gt;=, &gt;, !=, =, :`. The filter syntax is the same as
    * described in
-   * [Stackdriver's Advanced Logs Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+   * [Stackdriver's Advanced Logs
+   * Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
    * Sample filter "state: PAUSED".
    * Note that using filters might cause fewer queues than the
    * requested page_size to be returned.
@@ -58,7 +61,8 @@ public interface ListQueuesRequestOrBuilder
    * field can be used as a filter and several operators as supported.
    * For example: `&lt;=, &lt;, &gt;=, &gt;, !=, =, :`. The filter syntax is the same as
    * described in
-   * [Stackdriver's Advanced Logs Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+   * [Stackdriver's Advanced Logs
+   * Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
    * Sample filter "state: PAUSED".
    * Note that using filters might cause fewer queues than the
    * requested page_size to be returned.

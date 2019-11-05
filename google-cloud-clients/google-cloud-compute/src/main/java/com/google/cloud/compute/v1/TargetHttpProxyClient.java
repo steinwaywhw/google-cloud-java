@@ -156,6 +156,153 @@ public class TargetHttpProxyClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
+   * Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetHttpProxiesScopedList element : targetHttpProxyClient.aggregatedListTargetHttpProxies(project).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetHttpProxiesPagedResponse aggregatedListTargetHttpProxies(
+      ProjectName project) {
+    AggregatedListTargetHttpProxiesHttpRequest request =
+        AggregatedListTargetHttpProxiesHttpRequest.newBuilder()
+            .setProject(project == null ? null : project.toString())
+            .build();
+    return aggregatedListTargetHttpProxies(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   ProjectName project = ProjectName.of("[PROJECT]");
+   *   for (TargetHttpProxiesScopedList element : targetHttpProxyClient.aggregatedListTargetHttpProxies(project.toString()).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param project Name of the project scoping this request.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetHttpProxiesPagedResponse aggregatedListTargetHttpProxies(
+      String project) {
+    AggregatedListTargetHttpProxiesHttpRequest request =
+        AggregatedListTargetHttpProxiesHttpRequest.newBuilder().setProject(project).build();
+    return aggregatedListTargetHttpProxies(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListTargetHttpProxiesHttpRequest request = AggregatedListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   for (TargetHttpProxiesScopedList element : targetHttpProxyClient.aggregatedListTargetHttpProxies(request).iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final AggregatedListTargetHttpProxiesPagedResponse aggregatedListTargetHttpProxies(
+      AggregatedListTargetHttpProxiesHttpRequest request) {
+    return aggregatedListTargetHttpProxiesPagedCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListTargetHttpProxiesHttpRequest request = AggregatedListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   ApiFuture&lt;AggregatedListTargetHttpProxiesPagedResponse&gt; future = targetHttpProxyClient.aggregatedListTargetHttpProxiesPagedCallable().futureCall(request);
+   *   // Do something
+   *   for (TargetHttpProxiesScopedList element : future.get().iterateAll()) {
+   *     // doThingsWith(element);
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<
+          AggregatedListTargetHttpProxiesHttpRequest, AggregatedListTargetHttpProxiesPagedResponse>
+      aggregatedListTargetHttpProxiesPagedCallable() {
+    return stub.aggregatedListTargetHttpProxiesPagedCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Retrieves the list of all TargetHttpProxy resources, regional and global, available to the
+   * specified project.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (TargetHttpProxyClient targetHttpProxyClient = TargetHttpProxyClient.create()) {
+   *   String formattedProject = ProjectName.format("[PROJECT]");
+   *   AggregatedListTargetHttpProxiesHttpRequest request = AggregatedListTargetHttpProxiesHttpRequest.newBuilder()
+   *     .setProject(formattedProject)
+   *     .build();
+   *   while (true) {
+   *     TargetHttpProxyAggregatedList response = targetHttpProxyClient.aggregatedListTargetHttpProxiesCallable().call(request);
+   *     for (TargetHttpProxiesScopedList element : response.getItemsMap()) {
+   *       // doThingsWith(element);
+   *     }
+   *     String nextPageToken = response.getNextPageToken();
+   *     if (!Strings.isNullOrEmpty(nextPageToken)) {
+   *       request = request.toBuilder().setPageToken(nextPageToken).build();
+   *     } else {
+   *       break;
+   *     }
+   *   }
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<
+          AggregatedListTargetHttpProxiesHttpRequest, TargetHttpProxyAggregatedList>
+      aggregatedListTargetHttpProxiesCallable() {
+    return stub.aggregatedListTargetHttpProxiesCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
    * Deletes the specified TargetHttpProxy resource.
    *
    * <p>Sample code:
@@ -371,8 +518,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param targetHttpProxyResource A TargetHttpProxy resource. This resource defines an HTTP proxy.
-   *     (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)
+   * @param targetHttpProxyResource Represents a Target HTTP Proxy resource.
+   *     <p>A target HTTP proxy is a component of certain types of load balancers. Global forwarding
+   *     rules reference a target HTTP proxy, and the target proxy then references a URL map. For
+   *     more information, read Using Target Proxies. (== resource_for beta.targetHttpProxies ==)
+   *     (== resource_for v1.targetHttpProxies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -403,8 +553,11 @@ public class TargetHttpProxyClient implements BackgroundResource {
    * </code></pre>
    *
    * @param project Project ID for this request.
-   * @param targetHttpProxyResource A TargetHttpProxy resource. This resource defines an HTTP proxy.
-   *     (== resource_for beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)
+   * @param targetHttpProxyResource Represents a Target HTTP Proxy resource.
+   *     <p>A target HTTP proxy is a component of certain types of load balancers. Global forwarding
+   *     rules reference a target HTTP proxy, and the target proxy then references a URL map. For
+   *     more information, read Using Target Proxies. (== resource_for beta.targetHttpProxies ==)
+   *     (== resource_for v1.targetHttpProxies ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -751,6 +904,110 @@ public class TargetHttpProxyClient implements BackgroundResource {
   @Override
   public boolean awaitTermination(long duration, TimeUnit unit) throws InterruptedException {
     return stub.awaitTermination(duration, unit);
+  }
+
+  public static class AggregatedListTargetHttpProxiesPagedResponse
+      extends AbstractPagedListResponse<
+          AggregatedListTargetHttpProxiesHttpRequest,
+          TargetHttpProxyAggregatedList,
+          TargetHttpProxiesScopedList,
+          AggregatedListTargetHttpProxiesPage,
+          AggregatedListTargetHttpProxiesFixedSizeCollection> {
+
+    public static ApiFuture<AggregatedListTargetHttpProxiesPagedResponse> createAsync(
+        PageContext<
+                AggregatedListTargetHttpProxiesHttpRequest,
+                TargetHttpProxyAggregatedList,
+                TargetHttpProxiesScopedList>
+            context,
+        ApiFuture<TargetHttpProxyAggregatedList> futureResponse) {
+      ApiFuture<AggregatedListTargetHttpProxiesPage> futurePage =
+          AggregatedListTargetHttpProxiesPage.createEmptyPage()
+              .createPageAsync(context, futureResponse);
+      return ApiFutures.transform(
+          futurePage,
+          new ApiFunction<
+              AggregatedListTargetHttpProxiesPage, AggregatedListTargetHttpProxiesPagedResponse>() {
+            @Override
+            public AggregatedListTargetHttpProxiesPagedResponse apply(
+                AggregatedListTargetHttpProxiesPage input) {
+              return new AggregatedListTargetHttpProxiesPagedResponse(input);
+            }
+          },
+          MoreExecutors.directExecutor());
+    }
+
+    private AggregatedListTargetHttpProxiesPagedResponse(AggregatedListTargetHttpProxiesPage page) {
+      super(page, AggregatedListTargetHttpProxiesFixedSizeCollection.createEmptyCollection());
+    }
+  }
+
+  public static class AggregatedListTargetHttpProxiesPage
+      extends AbstractPage<
+          AggregatedListTargetHttpProxiesHttpRequest,
+          TargetHttpProxyAggregatedList,
+          TargetHttpProxiesScopedList,
+          AggregatedListTargetHttpProxiesPage> {
+
+    private AggregatedListTargetHttpProxiesPage(
+        PageContext<
+                AggregatedListTargetHttpProxiesHttpRequest,
+                TargetHttpProxyAggregatedList,
+                TargetHttpProxiesScopedList>
+            context,
+        TargetHttpProxyAggregatedList response) {
+      super(context, response);
+    }
+
+    private static AggregatedListTargetHttpProxiesPage createEmptyPage() {
+      return new AggregatedListTargetHttpProxiesPage(null, null);
+    }
+
+    @Override
+    protected AggregatedListTargetHttpProxiesPage createPage(
+        PageContext<
+                AggregatedListTargetHttpProxiesHttpRequest,
+                TargetHttpProxyAggregatedList,
+                TargetHttpProxiesScopedList>
+            context,
+        TargetHttpProxyAggregatedList response) {
+      return new AggregatedListTargetHttpProxiesPage(context, response);
+    }
+
+    @Override
+    public ApiFuture<AggregatedListTargetHttpProxiesPage> createPageAsync(
+        PageContext<
+                AggregatedListTargetHttpProxiesHttpRequest,
+                TargetHttpProxyAggregatedList,
+                TargetHttpProxiesScopedList>
+            context,
+        ApiFuture<TargetHttpProxyAggregatedList> futureResponse) {
+      return super.createPageAsync(context, futureResponse);
+    }
+  }
+
+  public static class AggregatedListTargetHttpProxiesFixedSizeCollection
+      extends AbstractFixedSizeCollection<
+          AggregatedListTargetHttpProxiesHttpRequest,
+          TargetHttpProxyAggregatedList,
+          TargetHttpProxiesScopedList,
+          AggregatedListTargetHttpProxiesPage,
+          AggregatedListTargetHttpProxiesFixedSizeCollection> {
+
+    private AggregatedListTargetHttpProxiesFixedSizeCollection(
+        List<AggregatedListTargetHttpProxiesPage> pages, int collectionSize) {
+      super(pages, collectionSize);
+    }
+
+    private static AggregatedListTargetHttpProxiesFixedSizeCollection createEmptyCollection() {
+      return new AggregatedListTargetHttpProxiesFixedSizeCollection(null, 0);
+    }
+
+    @Override
+    protected AggregatedListTargetHttpProxiesFixedSizeCollection createCollection(
+        List<AggregatedListTargetHttpProxiesPage> pages, int collectionSize) {
+      return new AggregatedListTargetHttpProxiesFixedSizeCollection(pages, collectionSize);
+    }
   }
 
   public static class ListTargetHttpProxiesPagedResponse

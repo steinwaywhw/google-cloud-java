@@ -8,22 +8,19 @@ package com.google.cloud.tasks.v2beta3;
  *
  * <pre>
  * HTTP request.
- * Warning: This is an [alpha](https://cloud.google.com/terms/launch-stages)
- * feature. If you haven't already joined, you can [use this form to sign
- * up](https://docs.google.com/forms/d/e/1FAIpQLSfc4uEy9CBHKYUSdnY1hdhKDCX7julVZHy3imOiR-XrU7bUNQ/viewform).
  * The task will be pushed to the worker as an HTTP request. If the worker
  * or the redirected worker acknowledges the task by returning a successful HTTP
  * response code ([`200` - `299`]), the task will removed from the queue. If
  * any other HTTP response code is returned or no response is received, the
  * task will be retried according to the following:
- * * User-specified throttling: [retry configuration][Queue.RetryConfig],
- *   [rate limits][Queue.RateLimits], and the [queue's state][google.cloud.tasks.v2beta3.Queue.state].
+ * * User-specified throttling: [retry configuration][google.cloud.tasks.v2beta3.Queue.retry_config],
+ *   [rate limits][google.cloud.tasks.v2beta3.Queue.rate_limits], and the [queue's state][google.cloud.tasks.v2beta3.Queue.state].
  * * System throttling: To prevent the worker from overloading, Cloud Tasks may
  *   temporarily reduce the queue's effective rate. User-specified settings
  *   will not be changed.
  *  System throttling happens because:
- *   * Cloud Tasks backoffs on all errors. Normally the backoff specified in
- *     [rate limits][Queue.RateLimits] will be used. But if the worker returns
+ *   * Cloud Tasks backs off on all errors. Normally the backoff specified in
+ *     [rate limits][google.cloud.tasks.v2beta3.Queue.rate_limits] will be used. But if the worker returns
  *     `429` (Too Many Requests), `503` (Service Unavailable), or the rate of
  *     errors is high, Cloud Tasks will use a higher backoff rate. The retry
  *     specified in the `Retry-After` HTTP response header is considered.
@@ -516,8 +513,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
    * will be generated and attached as an `Authorization` header in the HTTP
    * request.
-   * This type of authorization should be used when sending requests to a GCP
-   * endpoint.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -533,8 +530,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
    * will be generated and attached as an `Authorization` header in the HTTP
    * request.
-   * This type of authorization should be used when sending requests to a GCP
-   * endpoint.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -553,8 +550,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
    * will be generated and attached as an `Authorization` header in the HTTP
    * request.
-   * This type of authorization should be used when sending requests to a GCP
-   * endpoint.
+   * This type of authorization should generally only be used when calling
+   * Google APIs hosted on *.googleapis.com.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -575,8 +572,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
    * token will be generated and attached as an `Authorization` header in the
    * HTTP request.
-   * This type of authorization should be used when sending requests to third
-   * party endpoints.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -592,8 +590,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
    * token will be generated and attached as an `Authorization` header in the
    * HTTP request.
-   * This type of authorization should be used when sending requests to third
-   * party endpoints.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -612,8 +611,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
    * token will be generated and attached as an `Authorization` header in the
    * HTTP request.
-   * This type of authorization should be used when sending requests to third
-   * party endpoints.
+   * This type of authorization can be used for many scenarios, including
+   * calling Cloud Run, or endpoints where you intend to validate the token
+   * yourself.
    * </pre>
    *
    * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -865,22 +865,19 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * HTTP request.
-   * Warning: This is an [alpha](https://cloud.google.com/terms/launch-stages)
-   * feature. If you haven't already joined, you can [use this form to sign
-   * up](https://docs.google.com/forms/d/e/1FAIpQLSfc4uEy9CBHKYUSdnY1hdhKDCX7julVZHy3imOiR-XrU7bUNQ/viewform).
    * The task will be pushed to the worker as an HTTP request. If the worker
    * or the redirected worker acknowledges the task by returning a successful HTTP
    * response code ([`200` - `299`]), the task will removed from the queue. If
    * any other HTTP response code is returned or no response is received, the
    * task will be retried according to the following:
-   * * User-specified throttling: [retry configuration][Queue.RetryConfig],
-   *   [rate limits][Queue.RateLimits], and the [queue's state][google.cloud.tasks.v2beta3.Queue.state].
+   * * User-specified throttling: [retry configuration][google.cloud.tasks.v2beta3.Queue.retry_config],
+   *   [rate limits][google.cloud.tasks.v2beta3.Queue.rate_limits], and the [queue's state][google.cloud.tasks.v2beta3.Queue.state].
    * * System throttling: To prevent the worker from overloading, Cloud Tasks may
    *   temporarily reduce the queue's effective rate. User-specified settings
    *   will not be changed.
    *  System throttling happens because:
-   *   * Cloud Tasks backoffs on all errors. Normally the backoff specified in
-   *     [rate limits][Queue.RateLimits] will be used. But if the worker returns
+   *   * Cloud Tasks backs off on all errors. Normally the backoff specified in
+   *     [rate limits][google.cloud.tasks.v2beta3.Queue.rate_limits] will be used. But if the worker returns
    *     `429` (Too Many Requests), `503` (Service Unavailable), or the rate of
    *     errors is high, Cloud Tasks will use a higher backoff rate. The retry
    *     specified in the `Retry-After` HTTP response header is considered.
@@ -1690,8 +1687,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1707,8 +1704,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1734,8 +1731,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1761,8 +1758,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1786,8 +1783,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1823,8 +1820,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1853,8 +1850,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1870,8 +1867,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1894,8 +1891,8 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
      * will be generated and attached as an `Authorization` header in the HTTP
      * request.
-     * This type of authorization should be used when sending requests to a GCP
-     * endpoint.
+     * This type of authorization should generally only be used when calling
+     * Google APIs hosted on *.googleapis.com.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OAuthToken oauth_token = 5;</code>
@@ -1938,8 +1935,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -1955,8 +1953,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -1982,8 +1981,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2009,8 +2009,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2033,8 +2034,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2070,8 +2072,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2100,8 +2103,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2117,8 +2121,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>
@@ -2141,8 +2146,9 @@ public final class HttpRequest extends com.google.protobuf.GeneratedMessageV3
      * [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect)
      * token will be generated and attached as an `Authorization` header in the
      * HTTP request.
-     * This type of authorization should be used when sending requests to third
-     * party endpoints.
+     * This type of authorization can be used for many scenarios, including
+     * calling Cloud Run, or endpoints where you intend to validate the token
+     * yourself.
      * </pre>
      *
      * <code>.google.cloud.tasks.v2beta3.OidcToken oidc_token = 6;</code>

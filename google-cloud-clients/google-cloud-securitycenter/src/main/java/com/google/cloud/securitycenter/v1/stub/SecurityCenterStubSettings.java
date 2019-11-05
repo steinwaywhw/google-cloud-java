@@ -65,6 +65,7 @@ import com.google.cloud.securitycenter.v1.ListSourcesRequest;
 import com.google.cloud.securitycenter.v1.ListSourcesResponse;
 import com.google.cloud.securitycenter.v1.OrganizationSettings;
 import com.google.cloud.securitycenter.v1.RunAssetDiscoveryRequest;
+import com.google.cloud.securitycenter.v1.RunAssetDiscoveryResponse;
 import com.google.cloud.securitycenter.v1.SecurityMarks;
 import com.google.cloud.securitycenter.v1.SetFindingStateRequest;
 import com.google.cloud.securitycenter.v1.Source;
@@ -102,8 +103,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createSource to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of createSource to 30 seconds:
  *
  * <pre>
  * <code>
@@ -141,7 +143,7 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
   private final PagedCallSettings<ListSourcesRequest, ListSourcesResponse, ListSourcesPagedResponse>
       listSourcesSettings;
   private final UnaryCallSettings<RunAssetDiscoveryRequest, Operation> runAssetDiscoverySettings;
-  private final OperationCallSettings<RunAssetDiscoveryRequest, Empty, Empty>
+  private final OperationCallSettings<RunAssetDiscoveryRequest, RunAssetDiscoveryResponse, Empty>
       runAssetDiscoveryOperationSettings;
   private final UnaryCallSettings<SetFindingStateRequest, Finding> setFindingStateSettings;
   private final UnaryCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings;
@@ -217,7 +219,7 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
 
   /** Returns the object with the settings used for calls to runAssetDiscovery. */
   @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
-  public OperationCallSettings<RunAssetDiscoveryRequest, Empty, Empty>
+  public OperationCallSettings<RunAssetDiscoveryRequest, RunAssetDiscoveryResponse, Empty>
       runAssetDiscoveryOperationSettings() {
     return runAssetDiscoveryOperationSettings;
   }
@@ -294,7 +296,8 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -657,7 +660,8 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
         listSourcesSettings;
     private final UnaryCallSettings.Builder<RunAssetDiscoveryRequest, Operation>
         runAssetDiscoverySettings;
-    private final OperationCallSettings.Builder<RunAssetDiscoveryRequest, Empty, Empty>
+    private final OperationCallSettings.Builder<
+            RunAssetDiscoveryRequest, RunAssetDiscoveryResponse, Empty>
         runAssetDiscoveryOperationSettings;
     private final UnaryCallSettings.Builder<SetFindingStateRequest, Finding>
         setFindingStateSettings;
@@ -879,11 +883,12 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
           .setInitialCallSettings(
               UnaryCallSettings
                   .<RunAssetDiscoveryRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
-                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
           .setResponseTransformer(
-              ProtoOperationTransformers.ResponseTransformer.create(Empty.class))
+              ProtoOperationTransformers.ResponseTransformer.create(
+                  RunAssetDiscoveryResponse.class))
           .setMetadataTransformer(
               ProtoOperationTransformers.MetadataTransformer.create(Empty.class))
           .setPollingAlgorithm(
@@ -1031,7 +1036,7 @@ public class SecurityCenterStubSettings extends StubSettings<SecurityCenterStubS
     /** Returns the builder for the settings used for calls to runAssetDiscovery. */
     @BetaApi(
         "The surface for use by generated code is not stable yet and may change in the future.")
-    public OperationCallSettings.Builder<RunAssetDiscoveryRequest, Empty, Empty>
+    public OperationCallSettings.Builder<RunAssetDiscoveryRequest, RunAssetDiscoveryResponse, Empty>
         runAssetDiscoveryOperationSettings() {
       return runAssetDiscoveryOperationSettings;
     }

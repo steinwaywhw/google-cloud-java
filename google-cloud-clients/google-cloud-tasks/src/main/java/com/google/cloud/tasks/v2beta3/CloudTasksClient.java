@@ -176,8 +176,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`
+   * @param parent Required. The location name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListQueuesPagedResponse listQueues(LocationName parent) {
@@ -203,8 +203,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`
+   * @param parent Required. The location name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListQueuesPagedResponse listQueues(String parent) {
@@ -311,8 +311,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the queue. For example:
+   * @param name Required. The resource name of the queue. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -336,8 +335,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the queue. For example:
+   * @param name Required. The resource name of the queue. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -413,13 +411,11 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The location name in which the queue will be created. For example:
+   * @param parent Required. The location name in which the queue will be created. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID`
    *     <p>The list of allowed locations can be obtained by calling Cloud Tasks' implementation of
    *     [ListLocations][google.cloud.location.Locations.ListLocations].
-   * @param queue Required.
-   *     <p>The queue to create.
+   * @param queue Required. The queue to create.
    *     <p>[Queue's name][google.cloud.tasks.v2beta3.Queue.name] cannot be the same as an existing
    *     queue.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
@@ -455,13 +451,11 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The location name in which the queue will be created. For example:
+   * @param parent Required. The location name in which the queue will be created. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID`
    *     <p>The list of allowed locations can be obtained by calling Cloud Tasks' implementation of
    *     [ListLocations][google.cloud.location.Locations.ListLocations].
-   * @param queue Required.
-   *     <p>The queue to create.
+   * @param queue Required. The queue to create.
    *     <p>[Queue's name][google.cloud.tasks.v2beta3.Queue.name] cannot be the same as an existing
    *     queue.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
@@ -559,8 +553,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param queue Required.
-   *     <p>The queue to create or update.
+   * @param queue Required. The queue to create or update.
    *     <p>The queue's [name][google.cloud.tasks.v2beta3.Queue.name] must be specified.
    *     <p>Output only fields cannot be modified using UpdateQueue. Any value specified for an
    *     output only field will be ignored. The queue's
@@ -660,8 +653,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteQueue(QueueName name) {
@@ -692,8 +685,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteQueue(String name) {
@@ -781,8 +774,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue purgeQueue(QueueName name) {
@@ -810,8 +803,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue purgeQueue(String name) {
@@ -894,8 +887,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue pauseQueue(QueueName name) {
@@ -924,8 +917,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue pauseQueue(String name) {
@@ -1014,8 +1007,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue resumeQueue(QueueName name) {
@@ -1048,8 +1041,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
+   * @param name Required. The queue name. For example:
+   *     `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Queue resumeQueue(String name) {
@@ -1142,9 +1135,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy is being requested. `resource` is
-   *     usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy is being requested. See the
+   *     operation documentation for the appropriate value for this field.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Policy getIamPolicy(QueueName resource) {
@@ -1175,9 +1167,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy is being requested. `resource` is
-   *     usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy is being requested. See the
+   *     operation documentation for the appropriate value for this field.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Policy getIamPolicy(String resource) {
@@ -1266,9 +1257,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy is being specified. `resource` is
-   *     usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy is being specified. See the
+   *     operation documentation for the appropriate value for this field.
    * @param policy REQUIRED: The complete policy to be applied to the `resource`. The size of the
    *     policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud
    *     Platform services (such as Projects) might reject them.
@@ -1307,9 +1297,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy is being specified. `resource` is
-   *     usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy is being specified. See the
+   *     operation documentation for the appropriate value for this field.
    * @param policy REQUIRED: The complete policy to be applied to the `resource`. The size of the
    *     policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Cloud
    *     Platform services (such as Projects) might reject them.
@@ -1409,9 +1398,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy detail is being requested.
-   *     `resource` is usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy detail is being requested. See the
+   *     operation documentation for the appropriate value for this field.
    * @param permissions The set of permissions to check for the `resource`. Permissions with
    *     wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more information see
    *     [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
@@ -1448,9 +1436,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param resource REQUIRED: The resource for which the policy detail is being requested.
-   *     `resource` is usually specified as a path. For example, a Project resource is specified as
-   *     `projects/{project}`.
+   * @param resource REQUIRED: The resource for which the policy detail is being requested. See the
+   *     operation documentation for the appropriate value for this field.
    * @param permissions The set of permissions to check for the `resource`. Permissions with
    *     wildcards (such as '&#42;' or 'storage.&#42;') are not allowed. For more information see
    *     [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
@@ -1551,8 +1538,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param parent Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListTasksPagedResponse listTasks(QueueName parent) {
@@ -1583,8 +1570,8 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param parent Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListTasksPagedResponse listTasks(String parent) {
@@ -1706,8 +1693,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -1731,8 +1717,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -1793,8 +1778,7 @@ public class CloudTasksClient implements BackgroundResource {
    *
    * <p>Tasks cannot be updated after creation; there is no UpdateTask command.
    *
-   * <p>&#42; For [App Engine queues][google.cloud.tasks.v2beta3.AppEngineHttpQueue], the maximum
-   * task size is 100KB.
+   * <p>&#42; The maximum task size is 100KB.
    *
    * <p>Sample code:
    *
@@ -1806,11 +1790,10 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param parent Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    *     <p>The queue must already exist.
-   * @param task Required.
-   *     <p>The task to add.
+   * @param task Required. The task to add.
    *     <p>Task names have the following format:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can
    *     optionally specify a task [name][google.cloud.tasks.v2beta3.Task.name]. If a name is not
@@ -1851,8 +1834,7 @@ public class CloudTasksClient implements BackgroundResource {
    *
    * <p>Tasks cannot be updated after creation; there is no UpdateTask command.
    *
-   * <p>&#42; For [App Engine queues][google.cloud.tasks.v2beta3.AppEngineHttpQueue], the maximum
-   * task size is 100KB.
+   * <p>&#42; The maximum task size is 100KB.
    *
    * <p>Sample code:
    *
@@ -1864,11 +1846,10 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
+   * @param parent Required. The queue name. For example:
+   *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    *     <p>The queue must already exist.
-   * @param task Required.
-   *     <p>The task to add.
+   * @param task Required. The task to add.
    *     <p>Task names have the following format:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can
    *     optionally specify a task [name][google.cloud.tasks.v2beta3.Task.name]. If a name is not
@@ -1906,8 +1887,7 @@ public class CloudTasksClient implements BackgroundResource {
    *
    * <p>Tasks cannot be updated after creation; there is no UpdateTask command.
    *
-   * <p>&#42; For [App Engine queues][google.cloud.tasks.v2beta3.AppEngineHttpQueue], the maximum
-   * task size is 100KB.
+   * <p>&#42; The maximum task size is 100KB.
    *
    * <p>Sample code:
    *
@@ -1936,8 +1916,7 @@ public class CloudTasksClient implements BackgroundResource {
    *
    * <p>Tasks cannot be updated after creation; there is no UpdateTask command.
    *
-   * <p>&#42; For [App Engine queues][google.cloud.tasks.v2beta3.AppEngineHttpQueue], the maximum
-   * task size is 100KB.
+   * <p>&#42; The maximum task size is 100KB.
    *
    * <p>Sample code:
    *
@@ -1975,8 +1954,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -2003,8 +1981,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -2100,8 +2077,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -2147,8 +2123,7 @@ public class CloudTasksClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The task name. For example:
+   * @param name Required. The task name. For example:
    *     `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */

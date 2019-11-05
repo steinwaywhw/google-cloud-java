@@ -26,6 +26,7 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
     nextPageToken_ = "";
     histogramQueryResults_ = java.util.Collections.emptyList();
     summarizedProfiles_ = java.util.Collections.emptyList();
+    resultSetId_ = "";
   }
 
   @java.lang.Override
@@ -121,6 +122,13 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
                   input.readMessage(
                       com.google.cloud.talent.v4beta1.SummarizedProfile.parser(),
                       extensionRegistry));
+              break;
+            }
+          case 58:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              resultSetId_ = s;
               break;
             }
           default:
@@ -393,7 +401,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The profile entities that match the specified
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -406,7 +415,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The profile entities that match the specified
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -419,7 +429,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The profile entities that match the specified
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -431,7 +442,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The profile entities that match the specified
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -443,7 +455,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
    *
    *
    * <pre>
-   * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+   * The profile entities that match the specified
+   * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -451,6 +464,53 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
   public com.google.cloud.talent.v4beta1.SummarizedProfileOrBuilder getSummarizedProfilesOrBuilder(
       int index) {
     return summarizedProfiles_.get(index);
+  }
+
+  public static final int RESULT_SET_ID_FIELD_NUMBER = 7;
+  private volatile java.lang.Object resultSetId_;
+  /**
+   *
+   *
+   * <pre>
+   * An id that uniquely identifies the result set of a
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+   * call for consistent results.
+   * </pre>
+   *
+   * <code>string result_set_id = 7;</code>
+   */
+  public java.lang.String getResultSetId() {
+    java.lang.Object ref = resultSetId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      resultSetId_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * An id that uniquely identifies the result set of a
+   * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+   * call for consistent results.
+   * </pre>
+   *
+   * <code>string result_set_id = 7;</code>
+   */
+  public com.google.protobuf.ByteString getResultSetIdBytes() {
+    java.lang.Object ref = resultSetId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      resultSetId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -485,6 +545,9 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
     for (int i = 0; i < summarizedProfiles_.size(); i++) {
       output.writeMessage(6, summarizedProfiles_.get(i));
     }
+    if (!getResultSetIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, resultSetId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -515,6 +578,9 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
       size +=
           com.google.protobuf.CodedOutputStream.computeMessageSize(6, summarizedProfiles_.get(i));
     }
+    if (!getResultSetIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, resultSetId_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -543,6 +609,7 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
     if (!getNextPageToken().equals(other.getNextPageToken())) return false;
     if (!getHistogramQueryResultsList().equals(other.getHistogramQueryResultsList())) return false;
     if (!getSummarizedProfilesList().equals(other.getSummarizedProfilesList())) return false;
+    if (!getResultSetId().equals(other.getResultSetId())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -574,6 +641,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
       hash = (37 * hash) + SUMMARIZED_PROFILES_FIELD_NUMBER;
       hash = (53 * hash) + getSummarizedProfilesList().hashCode();
     }
+    hash = (37 * hash) + RESULT_SET_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getResultSetId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -751,6 +820,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
       } else {
         summarizedProfilesBuilder_.clear();
       }
+      resultSetId_ = "";
+
       return this;
     }
 
@@ -810,6 +881,7 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
       } else {
         result.summarizedProfiles_ = summarizedProfilesBuilder_.build();
       }
+      result.resultSetId_ = resultSetId_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -927,6 +999,10 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
             summarizedProfilesBuilder_.addAllMessages(other.summarizedProfiles_);
           }
         }
+      }
+      if (!other.getResultSetId().isEmpty()) {
+        resultSetId_ = other.resultSetId_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1903,7 +1979,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -1920,7 +1997,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -1936,7 +2014,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -1952,7 +2031,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -1975,7 +2055,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -1995,7 +2076,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2017,7 +2099,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2040,7 +2123,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2060,7 +2144,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2080,7 +2165,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2100,7 +2186,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2119,7 +2206,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2138,7 +2226,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2151,7 +2240,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2168,7 +2258,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2185,7 +2276,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2199,7 +2291,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2214,7 +2307,8 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
      *
      *
      * <pre>
-     * The profile entities that match the specified [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
+     * The profile entities that match the specified
+     * [SearchProfilesRequest][google.cloud.talent.v4beta1.SearchProfilesRequest].
      * </pre>
      *
      * <code>repeated .google.cloud.talent.v4beta1.SummarizedProfile summarized_profiles = 6;</code>
@@ -2242,6 +2336,110 @@ public final class SearchProfilesResponse extends com.google.protobuf.GeneratedM
         summarizedProfiles_ = null;
       }
       return summarizedProfilesBuilder_;
+    }
+
+    private java.lang.Object resultSetId_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call for consistent results.
+     * </pre>
+     *
+     * <code>string result_set_id = 7;</code>
+     */
+    public java.lang.String getResultSetId() {
+      java.lang.Object ref = resultSetId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        resultSetId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call for consistent results.
+     * </pre>
+     *
+     * <code>string result_set_id = 7;</code>
+     */
+    public com.google.protobuf.ByteString getResultSetIdBytes() {
+      java.lang.Object ref = resultSetId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        resultSetId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call for consistent results.
+     * </pre>
+     *
+     * <code>string result_set_id = 7;</code>
+     */
+    public Builder setResultSetId(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      resultSetId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call for consistent results.
+     * </pre>
+     *
+     * <code>string result_set_id = 7;</code>
+     */
+    public Builder clearResultSetId() {
+
+      resultSetId_ = getDefaultInstance().getResultSetId();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * An id that uniquely identifies the result set of a
+     * [SearchProfiles][google.cloud.talent.v4beta1.ProfileService.SearchProfiles]
+     * call for consistent results.
+     * </pre>
+     *
+     * <code>string result_set_id = 7;</code>
+     */
+    public Builder setResultSetIdBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      resultSetId_ = value;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

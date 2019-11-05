@@ -24,6 +24,7 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
 
   private SoftwareConfig() {
     imageVersion_ = "";
+    optionalComponents_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -72,6 +73,31 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
               properties_.getMutableMap().put(properties__.getKey(), properties__.getValue());
               break;
             }
+          case 24:
+            {
+              int rawValue = input.readEnum();
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                optionalComponents_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000004;
+              }
+              optionalComponents_.add(rawValue);
+              break;
+            }
+          case 26:
+            {
+              int length = input.readRawVarint32();
+              int oldLimit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                int rawValue = input.readEnum();
+                if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+                  optionalComponents_ = new java.util.ArrayList<java.lang.Integer>();
+                  mutable_bitField0_ |= 0x00000004;
+                }
+                optionalComponents_.add(rawValue);
+              }
+              input.popLimit(oldLimit);
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -86,6 +112,9 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
     } catch (java.io.IOException e) {
       throw new com.google.protobuf.InvalidProtocolBufferException(e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        optionalComponents_ = java.util.Collections.unmodifiableList(optionalComponents_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -130,10 +159,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * such as "1.2" (including a subminor version, such as "1.2.29"), or the
    * ["preview"
    * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-   * If unspecified, it defaults to the latest version.
+   * If unspecified, it defaults to the latest Debian version.
    * </pre>
    *
-   * <code>string image_version = 1;</code>
+   * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getImageVersion() {
     java.lang.Object ref = imageVersion_;
@@ -156,10 +185,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * such as "1.2" (including a subminor version, such as "1.2.29"), or the
    * ["preview"
    * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-   * If unspecified, it defaults to the latest version.
+   * If unspecified, it defaults to the latest Debian version.
    * </pre>
    *
-   * <code>string image_version = 1;</code>
+   * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getImageVersionBytes() {
     java.lang.Object ref = imageVersion_;
@@ -203,8 +232,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -219,7 +248,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean containsProperties(java.lang.String key) {
     if (key == null) {
@@ -237,8 +267,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -253,7 +283,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.util.Map<java.lang.String, java.lang.String> getPropertiesMap() {
     return internalGetProperties().getMap();
@@ -263,8 +294,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -279,7 +310,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.lang.String getPropertiesOrDefault(
       java.lang.String key, java.lang.String defaultValue) {
@@ -294,8 +326,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -310,7 +342,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.lang.String getPropertiesOrThrow(java.lang.String key) {
     if (key == null) {
@@ -322,6 +355,87 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
     }
     return map.get(key);
   }
+
+  public static final int OPTIONAL_COMPONENTS_FIELD_NUMBER = 3;
+  private java.util.List<java.lang.Integer> optionalComponents_;
+  private static final com.google.protobuf.Internal.ListAdapter.Converter<
+          java.lang.Integer, com.google.cloud.dataproc.v1beta2.Component>
+      optionalComponents_converter_ =
+          new com.google.protobuf.Internal.ListAdapter.Converter<
+              java.lang.Integer, com.google.cloud.dataproc.v1beta2.Component>() {
+            public com.google.cloud.dataproc.v1beta2.Component convert(java.lang.Integer from) {
+              @SuppressWarnings("deprecation")
+              com.google.cloud.dataproc.v1beta2.Component result =
+                  com.google.cloud.dataproc.v1beta2.Component.valueOf(from);
+              return result == null
+                  ? com.google.cloud.dataproc.v1beta2.Component.UNRECOGNIZED
+                  : result;
+            }
+          };
+  /**
+   *
+   *
+   * <pre>
+   * The set of optional components to activate on the cluster.
+   * </pre>
+   *
+   * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+   */
+  public java.util.List<com.google.cloud.dataproc.v1beta2.Component> getOptionalComponentsList() {
+    return new com.google.protobuf.Internal.ListAdapter<
+        java.lang.Integer, com.google.cloud.dataproc.v1beta2.Component>(
+        optionalComponents_, optionalComponents_converter_);
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The set of optional components to activate on the cluster.
+   * </pre>
+   *
+   * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+   */
+  public int getOptionalComponentsCount() {
+    return optionalComponents_.size();
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The set of optional components to activate on the cluster.
+   * </pre>
+   *
+   * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+   */
+  public com.google.cloud.dataproc.v1beta2.Component getOptionalComponents(int index) {
+    return optionalComponents_converter_.convert(optionalComponents_.get(index));
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The set of optional components to activate on the cluster.
+   * </pre>
+   *
+   * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+   */
+  public java.util.List<java.lang.Integer> getOptionalComponentsValueList() {
+    return optionalComponents_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The set of optional components to activate on the cluster.
+   * </pre>
+   *
+   * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+   */
+  public int getOptionalComponentsValue(int index) {
+    return optionalComponents_.get(index);
+  }
+
+  private int optionalComponentsMemoizedSerializedSize;
 
   private byte memoizedIsInitialized = -1;
 
@@ -337,11 +451,19 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
 
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output) throws java.io.IOException {
+    getSerializedSize();
     if (!getImageVersionBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, imageVersion_);
     }
     com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
         output, internalGetProperties(), PropertiesDefaultEntryHolder.defaultEntry, 2);
+    if (getOptionalComponentsList().size() > 0) {
+      output.writeUInt32NoTag(26);
+      output.writeUInt32NoTag(optionalComponentsMemoizedSerializedSize);
+    }
+    for (int i = 0; i < optionalComponents_.size(); i++) {
+      output.writeEnumNoTag(optionalComponents_.get(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -364,6 +486,19 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
               .build();
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(2, properties__);
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < optionalComponents_.size(); i++) {
+        dataSize +=
+            com.google.protobuf.CodedOutputStream.computeEnumSizeNoTag(optionalComponents_.get(i));
+      }
+      size += dataSize;
+      if (!getOptionalComponentsList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream.computeUInt32SizeNoTag(dataSize);
+      }
+      optionalComponentsMemoizedSerializedSize = dataSize;
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -382,6 +517,7 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
 
     if (!getImageVersion().equals(other.getImageVersion())) return false;
     if (!internalGetProperties().equals(other.internalGetProperties())) return false;
+    if (!optionalComponents_.equals(other.optionalComponents_)) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -398,6 +534,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
     if (!internalGetProperties().getMap().isEmpty()) {
       hash = (37 * hash) + PROPERTIES_FIELD_NUMBER;
       hash = (53 * hash) + internalGetProperties().hashCode();
+    }
+    if (getOptionalComponentsCount() > 0) {
+      hash = (37 * hash) + OPTIONAL_COMPONENTS_FIELD_NUMBER;
+      hash = (53 * hash) + optionalComponents_.hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -567,6 +707,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
       imageVersion_ = "";
 
       internalGetMutableProperties().clear();
+      optionalComponents_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000004);
       return this;
     }
 
@@ -599,6 +741,11 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
       result.imageVersion_ = imageVersion_;
       result.properties_ = internalGetProperties();
       result.properties_.makeImmutable();
+      if (((bitField0_ & 0x00000004) != 0)) {
+        optionalComponents_ = java.util.Collections.unmodifiableList(optionalComponents_);
+        bitField0_ = (bitField0_ & ~0x00000004);
+      }
+      result.optionalComponents_ = optionalComponents_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -655,6 +802,16 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
         onChanged();
       }
       internalGetMutableProperties().mergeFrom(other.internalGetProperties());
+      if (!other.optionalComponents_.isEmpty()) {
+        if (optionalComponents_.isEmpty()) {
+          optionalComponents_ = other.optionalComponents_;
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          ensureOptionalComponentsIsMutable();
+          optionalComponents_.addAll(other.optionalComponents_);
+        }
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -697,10 +854,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * such as "1.2" (including a subminor version, such as "1.2.29"), or the
      * ["preview"
      * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-     * If unspecified, it defaults to the latest version.
+     * If unspecified, it defaults to the latest Debian version.
      * </pre>
      *
-     * <code>string image_version = 1;</code>
+     * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getImageVersion() {
       java.lang.Object ref = imageVersion_;
@@ -723,10 +880,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * such as "1.2" (including a subminor version, such as "1.2.29"), or the
      * ["preview"
      * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-     * If unspecified, it defaults to the latest version.
+     * If unspecified, it defaults to the latest Debian version.
      * </pre>
      *
-     * <code>string image_version = 1;</code>
+     * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getImageVersionBytes() {
       java.lang.Object ref = imageVersion_;
@@ -749,10 +906,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * such as "1.2" (including a subminor version, such as "1.2.29"), or the
      * ["preview"
      * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-     * If unspecified, it defaults to the latest version.
+     * If unspecified, it defaults to the latest Debian version.
      * </pre>
      *
-     * <code>string image_version = 1;</code>
+     * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setImageVersion(java.lang.String value) {
       if (value == null) {
@@ -773,10 +930,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * such as "1.2" (including a subminor version, such as "1.2.29"), or the
      * ["preview"
      * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-     * If unspecified, it defaults to the latest version.
+     * If unspecified, it defaults to the latest Debian version.
      * </pre>
      *
-     * <code>string image_version = 1;</code>
+     * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearImageVersion() {
 
@@ -794,10 +951,10 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * such as "1.2" (including a subminor version, such as "1.2.29"), or the
      * ["preview"
      * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-     * If unspecified, it defaults to the latest version.
+     * If unspecified, it defaults to the latest Debian version.
      * </pre>
      *
-     * <code>string image_version = 1;</code>
+     * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setImageVersionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -843,8 +1000,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -859,7 +1016,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean containsProperties(java.lang.String key) {
       if (key == null) {
@@ -877,8 +1035,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -893,7 +1051,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.util.Map<java.lang.String, java.lang.String> getPropertiesMap() {
       return internalGetProperties().getMap();
@@ -903,8 +1062,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -919,7 +1078,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.lang.String getPropertiesOrDefault(
         java.lang.String key, java.lang.String defaultValue) {
@@ -934,8 +1094,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -950,7 +1110,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.lang.String getPropertiesOrThrow(java.lang.String key) {
       if (key == null) {
@@ -972,8 +1133,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -988,7 +1149,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder removeProperties(java.lang.String key) {
       if (key == null) {
@@ -1007,8 +1169,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -1023,7 +1185,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder putProperties(java.lang.String key, java.lang.String value) {
       if (key == null) {
@@ -1040,8 +1203,8 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Optional. The properties to set on daemon config files.
-     * Property keys are specified in `prefix:property` format, such as
-     * `core:fs.defaultFS`. The following are supported prefixes
+     * Property keys are specified in `prefix:property` format, for example
+     * `core:hadoop.tmp.dir`. The following are supported prefixes
      * and their mappings:
      * * capacity-scheduler: `capacity-scheduler.xml`
      * * core:   `core-site.xml`
@@ -1056,10 +1219,200 @@ public final class SoftwareConfig extends com.google.protobuf.GeneratedMessageV3
      * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
      * </pre>
      *
-     * <code>map&lt;string, string&gt; properties = 2;</code>
+     * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder putAllProperties(java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableProperties().getMutableMap().putAll(values);
+      return this;
+    }
+
+    private java.util.List<java.lang.Integer> optionalComponents_ =
+        java.util.Collections.emptyList();
+
+    private void ensureOptionalComponentsIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        optionalComponents_ = new java.util.ArrayList<java.lang.Integer>(optionalComponents_);
+        bitField0_ |= 0x00000004;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public java.util.List<com.google.cloud.dataproc.v1beta2.Component> getOptionalComponentsList() {
+      return new com.google.protobuf.Internal.ListAdapter<
+          java.lang.Integer, com.google.cloud.dataproc.v1beta2.Component>(
+          optionalComponents_, optionalComponents_converter_);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public int getOptionalComponentsCount() {
+      return optionalComponents_.size();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public com.google.cloud.dataproc.v1beta2.Component getOptionalComponents(int index) {
+      return optionalComponents_converter_.convert(optionalComponents_.get(index));
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder setOptionalComponents(
+        int index, com.google.cloud.dataproc.v1beta2.Component value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureOptionalComponentsIsMutable();
+      optionalComponents_.set(index, value.getNumber());
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder addOptionalComponents(com.google.cloud.dataproc.v1beta2.Component value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      ensureOptionalComponentsIsMutable();
+      optionalComponents_.add(value.getNumber());
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder addAllOptionalComponents(
+        java.lang.Iterable<? extends com.google.cloud.dataproc.v1beta2.Component> values) {
+      ensureOptionalComponentsIsMutable();
+      for (com.google.cloud.dataproc.v1beta2.Component value : values) {
+        optionalComponents_.add(value.getNumber());
+      }
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder clearOptionalComponents() {
+      optionalComponents_ = java.util.Collections.emptyList();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public java.util.List<java.lang.Integer> getOptionalComponentsValueList() {
+      return java.util.Collections.unmodifiableList(optionalComponents_);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public int getOptionalComponentsValue(int index) {
+      return optionalComponents_.get(index);
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder setOptionalComponentsValue(int index, int value) {
+      ensureOptionalComponentsIsMutable();
+      optionalComponents_.set(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder addOptionalComponentsValue(int value) {
+      ensureOptionalComponentsIsMutable();
+      optionalComponents_.add(value);
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The set of optional components to activate on the cluster.
+     * </pre>
+     *
+     * <code>repeated .google.cloud.dataproc.v1beta2.Component optional_components = 3;</code>
+     */
+    public Builder addAllOptionalComponentsValue(java.lang.Iterable<java.lang.Integer> values) {
+      ensureOptionalComponentsIsMutable();
+      for (int value : values) {
+        optionalComponents_.add(value);
+      }
+      onChanged();
       return this;
     }
 

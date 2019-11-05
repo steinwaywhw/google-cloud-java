@@ -17,6 +17,7 @@ package com.google.cloud.kms.v1;
 
 import static com.google.cloud.kms.v1.KeyManagementServiceClient.ListCryptoKeyVersionsPagedResponse;
 import static com.google.cloud.kms.v1.KeyManagementServiceClient.ListCryptoKeysPagedResponse;
+import static com.google.cloud.kms.v1.KeyManagementServiceClient.ListImportJobsPagedResponse;
 import static com.google.cloud.kms.v1.KeyManagementServiceClient.ListKeyRingsPagedResponse;
 
 import com.google.api.core.ApiFunction;
@@ -53,8 +54,9 @@ import javax.annotation.Generated;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of getKeyRing to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of getKeyRing to 30 seconds:
  *
  * <pre>
  * <code>
@@ -73,6 +75,13 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
   public PagedCallSettings<ListKeyRingsRequest, ListKeyRingsResponse, ListKeyRingsPagedResponse>
       listKeyRingsSettings() {
     return ((KeyManagementServiceStubSettings) getStubSettings()).listKeyRingsSettings();
+  }
+
+  /** Returns the object with the settings used for calls to listImportJobs. */
+  public PagedCallSettings<
+          ListImportJobsRequest, ListImportJobsResponse, ListImportJobsPagedResponse>
+      listImportJobsSettings() {
+    return ((KeyManagementServiceStubSettings) getStubSettings()).listImportJobsSettings();
   }
 
   /** Returns the object with the settings used for calls to listCryptoKeys. */
@@ -96,6 +105,11 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
     return ((KeyManagementServiceStubSettings) getStubSettings()).getKeyRingSettings();
   }
 
+  /** Returns the object with the settings used for calls to getImportJob. */
+  public UnaryCallSettings<GetImportJobRequest, ImportJob> getImportJobSettings() {
+    return ((KeyManagementServiceStubSettings) getStubSettings()).getImportJobSettings();
+  }
+
   /** Returns the object with the settings used for calls to getCryptoKey. */
   public UnaryCallSettings<GetCryptoKeyRequest, CryptoKey> getCryptoKeySettings() {
     return ((KeyManagementServiceStubSettings) getStubSettings()).getCryptoKeySettings();
@@ -112,6 +126,11 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
     return ((KeyManagementServiceStubSettings) getStubSettings()).createKeyRingSettings();
   }
 
+  /** Returns the object with the settings used for calls to createImportJob. */
+  public UnaryCallSettings<CreateImportJobRequest, ImportJob> createImportJobSettings() {
+    return ((KeyManagementServiceStubSettings) getStubSettings()).createImportJobSettings();
+  }
+
   /** Returns the object with the settings used for calls to createCryptoKey. */
   public UnaryCallSettings<CreateCryptoKeyRequest, CryptoKey> createCryptoKeySettings() {
     return ((KeyManagementServiceStubSettings) getStubSettings()).createCryptoKeySettings();
@@ -121,6 +140,12 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
   public UnaryCallSettings<CreateCryptoKeyVersionRequest, CryptoKeyVersion>
       createCryptoKeyVersionSettings() {
     return ((KeyManagementServiceStubSettings) getStubSettings()).createCryptoKeyVersionSettings();
+  }
+
+  /** Returns the object with the settings used for calls to importCryptoKeyVersion. */
+  public UnaryCallSettings<ImportCryptoKeyVersionRequest, CryptoKeyVersion>
+      importCryptoKeyVersionSettings() {
+    return ((KeyManagementServiceStubSettings) getStubSettings()).importCryptoKeyVersionSettings();
   }
 
   /** Returns the object with the settings used for calls to updateCryptoKey. */
@@ -300,6 +325,13 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
       return getStubSettingsBuilder().listKeyRingsSettings();
     }
 
+    /** Returns the builder for the settings used for calls to listImportJobs. */
+    public PagedCallSettings.Builder<
+            ListImportJobsRequest, ListImportJobsResponse, ListImportJobsPagedResponse>
+        listImportJobsSettings() {
+      return getStubSettingsBuilder().listImportJobsSettings();
+    }
+
     /** Returns the builder for the settings used for calls to listCryptoKeys. */
     public PagedCallSettings.Builder<
             ListCryptoKeysRequest, ListCryptoKeysResponse, ListCryptoKeysPagedResponse>
@@ -321,6 +353,11 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
       return getStubSettingsBuilder().getKeyRingSettings();
     }
 
+    /** Returns the builder for the settings used for calls to getImportJob. */
+    public UnaryCallSettings.Builder<GetImportJobRequest, ImportJob> getImportJobSettings() {
+      return getStubSettingsBuilder().getImportJobSettings();
+    }
+
     /** Returns the builder for the settings used for calls to getCryptoKey. */
     public UnaryCallSettings.Builder<GetCryptoKeyRequest, CryptoKey> getCryptoKeySettings() {
       return getStubSettingsBuilder().getCryptoKeySettings();
@@ -337,6 +374,11 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
       return getStubSettingsBuilder().createKeyRingSettings();
     }
 
+    /** Returns the builder for the settings used for calls to createImportJob. */
+    public UnaryCallSettings.Builder<CreateImportJobRequest, ImportJob> createImportJobSettings() {
+      return getStubSettingsBuilder().createImportJobSettings();
+    }
+
     /** Returns the builder for the settings used for calls to createCryptoKey. */
     public UnaryCallSettings.Builder<CreateCryptoKeyRequest, CryptoKey> createCryptoKeySettings() {
       return getStubSettingsBuilder().createCryptoKeySettings();
@@ -346,6 +388,12 @@ public class KeyManagementServiceSettings extends ClientSettings<KeyManagementSe
     public UnaryCallSettings.Builder<CreateCryptoKeyVersionRequest, CryptoKeyVersion>
         createCryptoKeyVersionSettings() {
       return getStubSettingsBuilder().createCryptoKeyVersionSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to importCryptoKeyVersion. */
+    public UnaryCallSettings.Builder<ImportCryptoKeyVersionRequest, CryptoKeyVersion>
+        importCryptoKeyVersionSettings() {
+      return getStubSettingsBuilder().importCryptoKeyVersionSettings();
     }
 
     /** Returns the builder for the settings used for calls to updateCryptoKey. */

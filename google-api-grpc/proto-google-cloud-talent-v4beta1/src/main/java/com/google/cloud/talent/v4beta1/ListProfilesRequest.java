@@ -24,6 +24,7 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
 
   private ListProfilesRequest() {
     parent_ = "";
+    filter_ = "";
     pageToken_ = "";
   }
 
@@ -85,6 +86,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
 
               break;
             }
+          case 42:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              filter_ = s;
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -125,13 +133,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenants/foo".
+   * Required. The resource name of the tenant under which the profile is
+   * created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenants/bar".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -148,13 +156,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenants/foo".
+   * Required. The resource name of the tenant under which the profile is
+   * created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenants/bar".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -168,16 +176,79 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
     }
   }
 
+  public static final int FILTER_FIELD_NUMBER = 5;
+  private volatile java.lang.Object filter_;
+  /**
+   *
+   *
+   * <pre>
+   * The filter string specifies the profiles to be enumerated.
+   * Supported operator: =, AND
+   * The field(s) eligible for filtering are:
+   * * `externalId`
+   * * `groupId`
+   * externalId and groupId cannot be specified at the same time. If both
+   * externalId and groupId are provided, the API will return a bad request
+   * error.
+   * Sample Query:
+   * * externalId = "externalId-1"
+   * * groupId = "groupId-1"
+   * </pre>
+   *
+   * <code>string filter = 5;</code>
+   */
+  public java.lang.String getFilter() {
+    java.lang.Object ref = filter_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      filter_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The filter string specifies the profiles to be enumerated.
+   * Supported operator: =, AND
+   * The field(s) eligible for filtering are:
+   * * `externalId`
+   * * `groupId`
+   * externalId and groupId cannot be specified at the same time. If both
+   * externalId and groupId are provided, the API will return a bad request
+   * error.
+   * Sample Query:
+   * * externalId = "externalId-1"
+   * * groupId = "groupId-1"
+   * </pre>
+   *
+   * <code>string filter = 5;</code>
+   */
+  public com.google.protobuf.ByteString getFilterBytes() {
+    java.lang.Object ref = filter_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      filter_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   public static final int PAGE_TOKEN_FIELD_NUMBER = 2;
   private volatile java.lang.Object pageToken_;
   /**
    *
    *
    * <pre>
-   * Optional.
    * The token that specifies the current offset (that is, starting result).
-   * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-   * continue the list.
+   * Please set the value to
+   * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+   * to continue the list.
    * </pre>
    *
    * <code>string page_token = 2;</code>
@@ -197,10 +268,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Optional.
    * The token that specifies the current offset (that is, starting result).
-   * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-   * continue the list.
+   * Please set the value to
+   * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+   * to continue the list.
    * </pre>
    *
    * <code>string page_token = 2;</code>
@@ -223,7 +294,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Optional.
    * The maximum number of profiles to be returned, at most 100.
    * Default is 100 unless a positive number smaller than 100 is specified.
    * </pre>
@@ -240,7 +310,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Optional.
    * A field mask to specify the profile fields to be listed in response.
    * All fields are listed if it is unset.
    * Valid values are:
@@ -256,7 +325,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Optional.
    * A field mask to specify the profile fields to be listed in response.
    * All fields are listed if it is unset.
    * Valid values are:
@@ -272,7 +340,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * Optional.
    * A field mask to specify the profile fields to be listed in response.
    * All fields are listed if it is unset.
    * Valid values are:
@@ -311,6 +378,9 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
     if (readMask_ != null) {
       output.writeMessage(4, getReadMask());
     }
+    if (!getFilterBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, filter_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -332,6 +402,9 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
     if (readMask_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getReadMask());
     }
+    if (!getFilterBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, filter_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -349,6 +422,7 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
         (com.google.cloud.talent.v4beta1.ListProfilesRequest) obj;
 
     if (!getParent().equals(other.getParent())) return false;
+    if (!getFilter().equals(other.getFilter())) return false;
     if (!getPageToken().equals(other.getPageToken())) return false;
     if (getPageSize() != other.getPageSize()) return false;
     if (hasReadMask() != other.hasReadMask()) return false;
@@ -368,6 +442,8 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + PARENT_FIELD_NUMBER;
     hash = (53 * hash) + getParent().hashCode();
+    hash = (37 * hash) + FILTER_FIELD_NUMBER;
+    hash = (53 * hash) + getFilter().hashCode();
     hash = (37 * hash) + PAGE_TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getPageToken().hashCode();
     hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
@@ -523,6 +599,8 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
       super.clear();
       parent_ = "";
 
+      filter_ = "";
+
       pageToken_ = "";
 
       pageSize_ = 0;
@@ -561,6 +639,7 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
       com.google.cloud.talent.v4beta1.ListProfilesRequest result =
           new com.google.cloud.talent.v4beta1.ListProfilesRequest(this);
       result.parent_ = parent_;
+      result.filter_ = filter_;
       result.pageToken_ = pageToken_;
       result.pageSize_ = pageSize_;
       if (readMaskBuilder_ == null) {
@@ -622,6 +701,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
         parent_ = other.parent_;
         onChanged();
       }
+      if (!other.getFilter().isEmpty()) {
+        filter_ = other.filter_;
+        onChanged();
+      }
       if (!other.getPageToken().isEmpty()) {
         pageToken_ = other.pageToken_;
         onChanged();
@@ -667,13 +750,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant under which the profile is
+     * created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -690,13 +773,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant under which the profile is
+     * created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -713,13 +796,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant under which the profile is
+     * created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -734,13 +817,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant under which the profile is
+     * created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearParent() {
 
@@ -752,13 +835,13 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenants/foo".
+     * Required. The resource name of the tenant under which the profile is
+     * created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenants/bar".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -771,15 +854,159 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
       return this;
     }
 
+    private java.lang.Object filter_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * The filter string specifies the profiles to be enumerated.
+     * Supported operator: =, AND
+     * The field(s) eligible for filtering are:
+     * * `externalId`
+     * * `groupId`
+     * externalId and groupId cannot be specified at the same time. If both
+     * externalId and groupId are provided, the API will return a bad request
+     * error.
+     * Sample Query:
+     * * externalId = "externalId-1"
+     * * groupId = "groupId-1"
+     * </pre>
+     *
+     * <code>string filter = 5;</code>
+     */
+    public java.lang.String getFilter() {
+      java.lang.Object ref = filter_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        filter_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The filter string specifies the profiles to be enumerated.
+     * Supported operator: =, AND
+     * The field(s) eligible for filtering are:
+     * * `externalId`
+     * * `groupId`
+     * externalId and groupId cannot be specified at the same time. If both
+     * externalId and groupId are provided, the API will return a bad request
+     * error.
+     * Sample Query:
+     * * externalId = "externalId-1"
+     * * groupId = "groupId-1"
+     * </pre>
+     *
+     * <code>string filter = 5;</code>
+     */
+    public com.google.protobuf.ByteString getFilterBytes() {
+      java.lang.Object ref = filter_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        filter_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The filter string specifies the profiles to be enumerated.
+     * Supported operator: =, AND
+     * The field(s) eligible for filtering are:
+     * * `externalId`
+     * * `groupId`
+     * externalId and groupId cannot be specified at the same time. If both
+     * externalId and groupId are provided, the API will return a bad request
+     * error.
+     * Sample Query:
+     * * externalId = "externalId-1"
+     * * groupId = "groupId-1"
+     * </pre>
+     *
+     * <code>string filter = 5;</code>
+     */
+    public Builder setFilter(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      filter_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The filter string specifies the profiles to be enumerated.
+     * Supported operator: =, AND
+     * The field(s) eligible for filtering are:
+     * * `externalId`
+     * * `groupId`
+     * externalId and groupId cannot be specified at the same time. If both
+     * externalId and groupId are provided, the API will return a bad request
+     * error.
+     * Sample Query:
+     * * externalId = "externalId-1"
+     * * groupId = "groupId-1"
+     * </pre>
+     *
+     * <code>string filter = 5;</code>
+     */
+    public Builder clearFilter() {
+
+      filter_ = getDefaultInstance().getFilter();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The filter string specifies the profiles to be enumerated.
+     * Supported operator: =, AND
+     * The field(s) eligible for filtering are:
+     * * `externalId`
+     * * `groupId`
+     * externalId and groupId cannot be specified at the same time. If both
+     * externalId and groupId are provided, the API will return a bad request
+     * error.
+     * Sample Query:
+     * * externalId = "externalId-1"
+     * * groupId = "groupId-1"
+     * </pre>
+     *
+     * <code>string filter = 5;</code>
+     */
+    public Builder setFilterBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      filter_ = value;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object pageToken_ = "";
     /**
      *
      *
      * <pre>
-     * Optional.
      * The token that specifies the current offset (that is, starting result).
-     * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-     * continue the list.
+     * Please set the value to
+     * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+     * to continue the list.
      * </pre>
      *
      * <code>string page_token = 2;</code>
@@ -799,10 +1026,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The token that specifies the current offset (that is, starting result).
-     * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-     * continue the list.
+     * Please set the value to
+     * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+     * to continue the list.
      * </pre>
      *
      * <code>string page_token = 2;</code>
@@ -822,10 +1049,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The token that specifies the current offset (that is, starting result).
-     * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-     * continue the list.
+     * Please set the value to
+     * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+     * to continue the list.
      * </pre>
      *
      * <code>string page_token = 2;</code>
@@ -843,10 +1070,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The token that specifies the current offset (that is, starting result).
-     * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-     * continue the list.
+     * Please set the value to
+     * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+     * to continue the list.
      * </pre>
      *
      * <code>string page_token = 2;</code>
@@ -861,10 +1088,10 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The token that specifies the current offset (that is, starting result).
-     * Please set the value to [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token] to
-     * continue the list.
+     * Please set the value to
+     * [ListProfilesResponse.next_page_token][google.cloud.talent.v4beta1.ListProfilesResponse.next_page_token]
+     * to continue the list.
      * </pre>
      *
      * <code>string page_token = 2;</code>
@@ -885,7 +1112,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of profiles to be returned, at most 100.
      * Default is 100 unless a positive number smaller than 100 is specified.
      * </pre>
@@ -899,7 +1125,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of profiles to be returned, at most 100.
      * Default is 100 unless a positive number smaller than 100 is specified.
      * </pre>
@@ -916,7 +1141,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of profiles to be returned, at most 100.
      * Default is 100 unless a positive number smaller than 100 is specified.
      * </pre>
@@ -940,7 +1164,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -956,7 +1179,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -976,7 +1198,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1002,7 +1223,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1025,7 +1245,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1053,7 +1272,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1077,7 +1295,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1095,7 +1312,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:
@@ -1115,7 +1331,6 @@ public final class ListProfilesRequest extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * Optional.
      * A field mask to specify the profile fields to be listed in response.
      * All fields are listed if it is unset.
      * Valid values are:

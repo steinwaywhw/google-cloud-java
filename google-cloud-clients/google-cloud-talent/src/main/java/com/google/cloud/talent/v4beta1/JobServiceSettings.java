@@ -27,10 +27,12 @@ import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
 import com.google.api.gax.rpc.ApiClientHeaderProvider;
 import com.google.api.gax.rpc.ClientContext;
 import com.google.api.gax.rpc.ClientSettings;
+import com.google.api.gax.rpc.OperationCallSettings;
 import com.google.api.gax.rpc.PagedCallSettings;
 import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
 import com.google.cloud.talent.v4beta1.stub.JobServiceStubSettings;
+import com.google.longrunning.Operation;
 import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
@@ -49,8 +51,9 @@ import javax.annotation.Generated;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createJob to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of createJob to 30 seconds:
  *
  * <pre>
  * <code>
@@ -106,6 +109,32 @@ public class JobServiceSettings extends ClientSettings<JobServiceSettings> {
   public PagedCallSettings<SearchJobsRequest, SearchJobsResponse, SearchJobsForAlertPagedResponse>
       searchJobsForAlertSettings() {
     return ((JobServiceStubSettings) getStubSettings()).searchJobsForAlertSettings();
+  }
+
+  /** Returns the object with the settings used for calls to batchCreateJobs. */
+  public UnaryCallSettings<BatchCreateJobsRequest, Operation> batchCreateJobsSettings() {
+    return ((JobServiceStubSettings) getStubSettings()).batchCreateJobsSettings();
+  }
+
+  /** Returns the object with the settings used for calls to batchCreateJobs. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<BatchCreateJobsRequest, JobOperationResult, BatchOperationMetadata>
+      batchCreateJobsOperationSettings() {
+    return ((JobServiceStubSettings) getStubSettings()).batchCreateJobsOperationSettings();
+  }
+
+  /** Returns the object with the settings used for calls to batchUpdateJobs. */
+  public UnaryCallSettings<BatchUpdateJobsRequest, Operation> batchUpdateJobsSettings() {
+    return ((JobServiceStubSettings) getStubSettings()).batchUpdateJobsSettings();
+  }
+
+  /** Returns the object with the settings used for calls to batchUpdateJobs. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<BatchUpdateJobsRequest, JobOperationResult, BatchOperationMetadata>
+      batchUpdateJobsOperationSettings() {
+    return ((JobServiceStubSettings) getStubSettings()).batchUpdateJobsOperationSettings();
   }
 
   public static final JobServiceSettings create(JobServiceStubSettings stub) throws IOException {
@@ -246,6 +275,34 @@ public class JobServiceSettings extends ClientSettings<JobServiceSettings> {
             SearchJobsRequest, SearchJobsResponse, SearchJobsForAlertPagedResponse>
         searchJobsForAlertSettings() {
       return getStubSettingsBuilder().searchJobsForAlertSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to batchCreateJobs. */
+    public UnaryCallSettings.Builder<BatchCreateJobsRequest, Operation> batchCreateJobsSettings() {
+      return getStubSettingsBuilder().batchCreateJobsSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to batchCreateJobs. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            BatchCreateJobsRequest, JobOperationResult, BatchOperationMetadata>
+        batchCreateJobsOperationSettings() {
+      return getStubSettingsBuilder().batchCreateJobsOperationSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to batchUpdateJobs. */
+    public UnaryCallSettings.Builder<BatchUpdateJobsRequest, Operation> batchUpdateJobsSettings() {
+      return getStubSettingsBuilder().batchUpdateJobsSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to batchUpdateJobs. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            BatchUpdateJobsRequest, JobOperationResult, BatchOperationMetadata>
+        batchUpdateJobsOperationSettings() {
+      return getStubSettingsBuilder().batchUpdateJobsOperationSettings();
     }
 
     @Override

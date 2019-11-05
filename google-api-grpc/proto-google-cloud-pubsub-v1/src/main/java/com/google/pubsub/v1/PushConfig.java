@@ -145,9 +145,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      * [Service account
      * email](https://cloud.google.com/iam/docs/service-accounts)
      * to be used for generating the OIDC token. The caller (for
-     * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+     * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
      * have the iam.serviceAccounts.actAs permission for the service account.
-     * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
      * </pre>
      *
      * <code>string service_account_email = 1;</code>
@@ -160,9 +159,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      * [Service account
      * email](https://cloud.google.com/iam/docs/service-accounts)
      * to be used for generating the OIDC token. The caller (for
-     * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+     * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
      * have the iam.serviceAccounts.actAs permission for the service account.
-     * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
      * </pre>
      *
      * <code>string service_account_email = 1;</code>
@@ -307,9 +305,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      * [Service account
      * email](https://cloud.google.com/iam/docs/service-accounts)
      * to be used for generating the OIDC token. The caller (for
-     * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+     * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
      * have the iam.serviceAccounts.actAs permission for the service account.
-     * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
      * </pre>
      *
      * <code>string service_account_email = 1;</code>
@@ -332,9 +329,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      * [Service account
      * email](https://cloud.google.com/iam/docs/service-accounts)
      * to be used for generating the OIDC token. The caller (for
-     * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+     * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
      * have the iam.serviceAccounts.actAs permission for the service account.
-     * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
      * </pre>
      *
      * <code>string service_account_email = 1;</code>
@@ -750,9 +746,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
        * [Service account
        * email](https://cloud.google.com/iam/docs/service-accounts)
        * to be used for generating the OIDC token. The caller (for
-       * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+       * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
        * have the iam.serviceAccounts.actAs permission for the service account.
-       * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
        * </pre>
        *
        * <code>string service_account_email = 1;</code>
@@ -775,9 +770,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
        * [Service account
        * email](https://cloud.google.com/iam/docs/service-accounts)
        * to be used for generating the OIDC token. The caller (for
-       * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+       * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
        * have the iam.serviceAccounts.actAs permission for the service account.
-       * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
        * </pre>
        *
        * <code>string service_account_email = 1;</code>
@@ -800,9 +794,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
        * [Service account
        * email](https://cloud.google.com/iam/docs/service-accounts)
        * to be used for generating the OIDC token. The caller (for
-       * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+       * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
        * have the iam.serviceAccounts.actAs permission for the service account.
-       * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
        * </pre>
        *
        * <code>string service_account_email = 1;</code>
@@ -823,9 +816,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
        * [Service account
        * email](https://cloud.google.com/iam/docs/service-accounts)
        * to be used for generating the OIDC token. The caller (for
-       * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+       * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
        * have the iam.serviceAccounts.actAs permission for the service account.
-       * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
        * </pre>
        *
        * <code>string service_account_email = 1;</code>
@@ -843,9 +835,8 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
        * [Service account
        * email](https://cloud.google.com/iam/docs/service-accounts)
        * to be used for generating the OIDC token. The caller (for
-       * CreateSubscription, UpdateSubscription, and ModifyPushConfig calls) must
+       * CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
        * have the iam.serviceAccounts.actAs permission for the service account.
-       * See https://cloud.google.com/iam/docs/understanding-roles#service-accounts-roles.
        * </pre>
        *
        * <code>string service_account_email = 1;</code>
@@ -1144,22 +1135,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Endpoint configuration attributes.
-   * Every endpoint has a set of API supported attributes that can be used to
-   * control different aspects of the message delivery.
-   * The currently supported attribute is `x-goog-version`, which you can
+   * Endpoint configuration attributes that can be used to control different
+   * aspects of the message delivery.
+   * The only currently supported attribute is `x-goog-version`, which you can
    * use to change the format of the pushed message. This attribute
    * indicates the version of the data expected by the endpoint. This
    * controls the shape of the pushed message (i.e., its fields and metadata).
-   * The endpoint version is based on the version of the Pub/Sub API.
    * If not present during the `CreateSubscription` call, it will default to
-   * the version of the API used to make such call. If not present during a
+   * the version of the Pub/Sub API used to make such call. If not present in a
    * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
    * calls will always return a valid version, even if the subscription was
    * created without this attribute.
-   * The possible values for this attribute are:
+   * The only supported values for the `x-goog-version` attribute are:
    * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
    * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+   * For example:
+   * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
    * </pre>
    *
    * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1179,22 +1170,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Endpoint configuration attributes.
-   * Every endpoint has a set of API supported attributes that can be used to
-   * control different aspects of the message delivery.
-   * The currently supported attribute is `x-goog-version`, which you can
+   * Endpoint configuration attributes that can be used to control different
+   * aspects of the message delivery.
+   * The only currently supported attribute is `x-goog-version`, which you can
    * use to change the format of the pushed message. This attribute
    * indicates the version of the data expected by the endpoint. This
    * controls the shape of the pushed message (i.e., its fields and metadata).
-   * The endpoint version is based on the version of the Pub/Sub API.
    * If not present during the `CreateSubscription` call, it will default to
-   * the version of the API used to make such call. If not present during a
+   * the version of the Pub/Sub API used to make such call. If not present in a
    * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
    * calls will always return a valid version, even if the subscription was
    * created without this attribute.
-   * The possible values for this attribute are:
+   * The only supported values for the `x-goog-version` attribute are:
    * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
    * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+   * For example:
+   * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
    * </pre>
    *
    * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1206,22 +1197,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Endpoint configuration attributes.
-   * Every endpoint has a set of API supported attributes that can be used to
-   * control different aspects of the message delivery.
-   * The currently supported attribute is `x-goog-version`, which you can
+   * Endpoint configuration attributes that can be used to control different
+   * aspects of the message delivery.
+   * The only currently supported attribute is `x-goog-version`, which you can
    * use to change the format of the pushed message. This attribute
    * indicates the version of the data expected by the endpoint. This
    * controls the shape of the pushed message (i.e., its fields and metadata).
-   * The endpoint version is based on the version of the Pub/Sub API.
    * If not present during the `CreateSubscription` call, it will default to
-   * the version of the API used to make such call. If not present during a
+   * the version of the Pub/Sub API used to make such call. If not present in a
    * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
    * calls will always return a valid version, even if the subscription was
    * created without this attribute.
-   * The possible values for this attribute are:
+   * The only supported values for the `x-goog-version` attribute are:
    * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
    * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+   * For example:
+   * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
    * </pre>
    *
    * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1238,22 +1229,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Endpoint configuration attributes.
-   * Every endpoint has a set of API supported attributes that can be used to
-   * control different aspects of the message delivery.
-   * The currently supported attribute is `x-goog-version`, which you can
+   * Endpoint configuration attributes that can be used to control different
+   * aspects of the message delivery.
+   * The only currently supported attribute is `x-goog-version`, which you can
    * use to change the format of the pushed message. This attribute
    * indicates the version of the data expected by the endpoint. This
    * controls the shape of the pushed message (i.e., its fields and metadata).
-   * The endpoint version is based on the version of the Pub/Sub API.
    * If not present during the `CreateSubscription` call, it will default to
-   * the version of the API used to make such call. If not present during a
+   * the version of the Pub/Sub API used to make such call. If not present in a
    * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
    * calls will always return a valid version, even if the subscription was
    * created without this attribute.
-   * The possible values for this attribute are:
+   * The only supported values for the `x-goog-version` attribute are:
    * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
    * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+   * For example:
+   * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
    * </pre>
    *
    * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1864,22 +1855,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1899,22 +1890,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1926,22 +1917,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1958,22 +1949,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -1997,22 +1988,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -2033,22 +2024,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>
@@ -2067,22 +2058,22 @@ public final class PushConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Endpoint configuration attributes.
-     * Every endpoint has a set of API supported attributes that can be used to
-     * control different aspects of the message delivery.
-     * The currently supported attribute is `x-goog-version`, which you can
+     * Endpoint configuration attributes that can be used to control different
+     * aspects of the message delivery.
+     * The only currently supported attribute is `x-goog-version`, which you can
      * use to change the format of the pushed message. This attribute
      * indicates the version of the data expected by the endpoint. This
      * controls the shape of the pushed message (i.e., its fields and metadata).
-     * The endpoint version is based on the version of the Pub/Sub API.
      * If not present during the `CreateSubscription` call, it will default to
-     * the version of the API used to make such call. If not present during a
+     * the version of the Pub/Sub API used to make such call. If not present in a
      * `ModifyPushConfig` call, its value will not be changed. `GetSubscription`
      * calls will always return a valid version, even if the subscription was
      * created without this attribute.
-     * The possible values for this attribute are:
+     * The only supported values for the `x-goog-version` attribute are:
      * * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API.
      * * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+     * For example:
+     * &lt;pre&gt;&lt;code&gt;attributes { "x-goog-version": "v1" } &lt;/code&gt;&lt;/pre&gt;
      * </pre>
      *
      * <code>map&lt;string, string&gt; attributes = 2;</code>

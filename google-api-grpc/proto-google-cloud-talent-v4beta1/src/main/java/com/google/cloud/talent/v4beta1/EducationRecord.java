@@ -258,7 +258,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The start date of the education.
    * </pre>
    *
@@ -271,7 +270,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The start date of the education.
    * </pre>
    *
@@ -284,7 +282,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The start date of the education.
    * </pre>
    *
@@ -300,7 +297,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The end date of the education.
    * </pre>
    *
@@ -313,7 +309,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The end date of the education.
    * </pre>
    *
@@ -326,7 +321,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The end date of the education.
    * </pre>
    *
@@ -342,7 +336,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The expected graduation date if currently pursuing a degree.
    * </pre>
    *
@@ -355,7 +348,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The expected graduation date if currently pursuing a degree.
    * </pre>
    *
@@ -370,7 +362,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The expected graduation date if currently pursuing a degree.
    * </pre>
    *
@@ -386,10 +377,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The name of the school or institution.
    * For example, "Stanford University", "UC Berkeley", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string school_name = 4;</code>
@@ -409,10 +399,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The name of the school or institution.
    * For example, "Stanford University", "UC Berkeley", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string school_name = 4;</code>
@@ -435,7 +424,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the education institution.
    * </pre>
    *
@@ -448,7 +436,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the education institution.
    * </pre>
    *
@@ -463,7 +450,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the education institution.
    * </pre>
    *
@@ -478,7 +464,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The full description of the degree.
    * For example, "Master of Science in Computer Science", "B.S in Math".
    * Number of characters allowed is 100.
@@ -506,7 +491,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The full description of the degree.
    * For example, "Master of Science in Computer Science", "B.S in Math".
    * Number of characters allowed is 100.
@@ -536,7 +520,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The structured notation of the degree.
    * </pre>
    *
@@ -549,7 +532,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The structured notation of the degree.
    * </pre>
    *
@@ -565,7 +547,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The structured notation of the degree.
    * </pre>
    *
@@ -584,7 +565,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The description of the education.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -606,7 +586,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The description of the education.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -631,7 +610,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * If this education is current.
    * </pre>
    *
@@ -644,7 +622,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * If this education is current.
    * </pre>
    *
@@ -657,7 +634,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * If this education is current.
    * </pre>
    *
@@ -673,12 +649,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+   * Output only. The school name snippet shows how the
+   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
    * related to a search query in search result. It's empty if the
-   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string school_name_snippet = 10;</code>
+   * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getSchoolNameSnippet() {
     java.lang.Object ref = schoolNameSnippet_;
@@ -695,12 +673,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+   * Output only. The school name snippet shows how the
+   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
    * related to a search query in search result. It's empty if the
-   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+   * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string school_name_snippet = 10;</code>
+   * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getSchoolNameSnippetBytes() {
     java.lang.Object ref = schoolNameSnippet_;
@@ -720,12 +700,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-   * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-   * isn't related to the search query.
+   * Output only. The job description snippet shows how the
+   * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+   * in search result. It's empty if the
+   * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+   * query.
    * </pre>
    *
-   * <code>string degree_snippet = 11;</code>
+   * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getDegreeSnippet() {
     java.lang.Object ref = degreeSnippet_;
@@ -742,12 +724,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-   * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-   * isn't related to the search query.
+   * Output only. The job description snippet shows how the
+   * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+   * in search result. It's empty if the
+   * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+   * query.
    * </pre>
    *
-   * <code>string degree_snippet = 11;</code>
+   * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getDegreeSnippetBytes() {
     java.lang.Object ref = degreeSnippet_;
@@ -1357,7 +1341,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1370,7 +1353,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1387,7 +1369,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1410,7 +1391,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1430,7 +1410,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1454,7 +1433,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1475,7 +1453,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1490,7 +1467,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1507,7 +1483,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The start date of the education.
      * </pre>
      *
@@ -1534,7 +1509,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1547,7 +1521,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1564,7 +1537,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1587,7 +1559,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1607,7 +1578,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1631,7 +1601,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1652,7 +1621,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1667,7 +1635,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1684,7 +1651,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The end date of the education.
      * </pre>
      *
@@ -1711,7 +1677,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1724,7 +1689,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1743,7 +1707,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1766,7 +1729,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1786,7 +1748,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1813,7 +1774,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1834,7 +1794,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1849,7 +1808,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1868,7 +1826,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The expected graduation date if currently pursuing a degree.
      * </pre>
      *
@@ -1892,10 +1849,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The name of the school or institution.
      * For example, "Stanford University", "UC Berkeley", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string school_name = 4;</code>
@@ -1915,10 +1871,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The name of the school or institution.
      * For example, "Stanford University", "UC Berkeley", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string school_name = 4;</code>
@@ -1938,10 +1893,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The name of the school or institution.
      * For example, "Stanford University", "UC Berkeley", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string school_name = 4;</code>
@@ -1959,10 +1913,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The name of the school or institution.
      * For example, "Stanford University", "UC Berkeley", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string school_name = 4;</code>
@@ -1977,10 +1930,9 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The name of the school or institution.
      * For example, "Stanford University", "UC Berkeley", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string school_name = 4;</code>
@@ -2006,7 +1958,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2019,7 +1970,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2038,7 +1988,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2061,7 +2010,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2081,7 +2029,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2108,7 +2055,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2129,7 +2075,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2144,7 +2089,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2163,7 +2107,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the education institution.
      * </pre>
      *
@@ -2190,7 +2133,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The full description of the degree.
      * For example, "Master of Science in Computer Science", "B.S in Math".
      * Number of characters allowed is 100.
@@ -2218,7 +2160,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The full description of the degree.
      * For example, "Master of Science in Computer Science", "B.S in Math".
      * Number of characters allowed is 100.
@@ -2246,7 +2187,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The full description of the degree.
      * For example, "Master of Science in Computer Science", "B.S in Math".
      * Number of characters allowed is 100.
@@ -2267,7 +2207,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The full description of the degree.
      * For example, "Master of Science in Computer Science", "B.S in Math".
      * Number of characters allowed is 100.
@@ -2287,7 +2226,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The full description of the degree.
      * For example, "Master of Science in Computer Science", "B.S in Math".
      * Number of characters allowed is 100.
@@ -2315,7 +2253,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2328,7 +2265,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2351,7 +2287,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2374,7 +2309,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2395,7 +2329,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2427,7 +2360,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2453,7 +2385,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2466,7 +2397,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2486,7 +2416,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The structured notation of the degree.
      * </pre>
      *
@@ -2522,7 +2451,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The description of the education.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2544,7 +2472,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The description of the education.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2566,7 +2493,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The description of the education.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2586,7 +2512,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The description of the education.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2603,7 +2528,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The description of the education.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2631,7 +2555,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2644,7 +2567,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2661,7 +2583,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2684,7 +2605,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2704,7 +2624,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2729,7 +2648,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2750,7 +2668,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2765,7 +2682,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2782,7 +2698,6 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * If this education is current.
      * </pre>
      *
@@ -2810,12 +2725,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+     * Output only. The school name snippet shows how the
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
      * related to a search query in search result. It's empty if the
-     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string school_name_snippet = 10;</code>
+     * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getSchoolNameSnippet() {
       java.lang.Object ref = schoolNameSnippet_;
@@ -2832,12 +2749,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+     * Output only. The school name snippet shows how the
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
      * related to a search query in search result. It's empty if the
-     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string school_name_snippet = 10;</code>
+     * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getSchoolNameSnippetBytes() {
       java.lang.Object ref = schoolNameSnippet_;
@@ -2854,12 +2773,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+     * Output only. The school name snippet shows how the
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
      * related to a search query in search result. It's empty if the
-     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string school_name_snippet = 10;</code>
+     * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setSchoolNameSnippet(java.lang.String value) {
       if (value == null) {
@@ -2874,12 +2795,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+     * Output only. The school name snippet shows how the
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
      * related to a search query in search result. It's empty if the
-     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string school_name_snippet = 10;</code>
+     * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearSchoolNameSnippet() {
 
@@ -2891,12 +2814,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The school name snippet shows how the [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
+     * Output only. The school name snippet shows how the
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] is
      * related to a search query in search result. It's empty if the
-     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name] isn't related to the search query.
+     * [school_name][google.cloud.talent.v4beta1.EducationRecord.school_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string school_name_snippet = 10;</code>
+     * <code>string school_name_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setSchoolNameSnippetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2914,12 +2839,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-     * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-     * isn't related to the search query.
+     * Output only. The job description snippet shows how the
+     * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+     * in search result. It's empty if the
+     * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+     * query.
      * </pre>
      *
-     * <code>string degree_snippet = 11;</code>
+     * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getDegreeSnippet() {
       java.lang.Object ref = degreeSnippet_;
@@ -2936,12 +2863,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-     * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-     * isn't related to the search query.
+     * Output only. The job description snippet shows how the
+     * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+     * in search result. It's empty if the
+     * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+     * query.
      * </pre>
      *
-     * <code>string degree_snippet = 11;</code>
+     * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getDegreeSnippetBytes() {
       java.lang.Object ref = degreeSnippet_;
@@ -2958,12 +2887,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-     * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-     * isn't related to the search query.
+     * Output only. The job description snippet shows how the
+     * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+     * in search result. It's empty if the
+     * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+     * query.
      * </pre>
      *
-     * <code>string degree_snippet = 11;</code>
+     * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setDegreeSnippet(java.lang.String value) {
       if (value == null) {
@@ -2978,12 +2909,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-     * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-     * isn't related to the search query.
+     * Output only. The job description snippet shows how the
+     * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+     * in search result. It's empty if the
+     * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+     * query.
      * </pre>
      *
-     * <code>string degree_snippet = 11;</code>
+     * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearDegreeSnippet() {
 
@@ -2995,12 +2928,14 @@ public final class EducationRecord extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [degree][google.cloud.talent.v4beta1.degree] is
-     * related to a search query in search result. It's empty if the [degree][google.cloud.talent.v4beta1.degree]
-     * isn't related to the search query.
+     * Output only. The job description snippet shows how the
+     * [Degree][google.cloud.talent.v4beta1.Degree] is related to a search query
+     * in search result. It's empty if the
+     * [Degree][google.cloud.talent.v4beta1.Degree] isn't related to the search
+     * query.
      * </pre>
      *
-     * <code>string degree_snippet = 11;</code>
+     * <code>string degree_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setDegreeSnippetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

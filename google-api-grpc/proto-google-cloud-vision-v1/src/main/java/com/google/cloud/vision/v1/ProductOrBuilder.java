@@ -85,24 +85,26 @@ public interface ProductOrBuilder
    *
    *
    * <pre>
-   * The category for the product identified by the reference image. This should
-   * be either "homegoods", "apparel", or "toys".
-   * This field is immutable.
+   * Immutable. The category for the product identified by the reference image. This should
+   * be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+   * "homegoods", "apparel", and "toys" are still supported, but these should
+   * not be used for new products.
    * </pre>
    *
-   * <code>string product_category = 4;</code>
+   * <code>string product_category = 4 [(.google.api.field_behavior) = IMMUTABLE];</code>
    */
   java.lang.String getProductCategory();
   /**
    *
    *
    * <pre>
-   * The category for the product identified by the reference image. This should
-   * be either "homegoods", "apparel", or "toys".
-   * This field is immutable.
+   * Immutable. The category for the product identified by the reference image. This should
+   * be either "homegoods-v2", "apparel-v2", or "toys-v2". The legacy categories
+   * "homegoods", "apparel", and "toys" are still supported, but these should
+   * not be used for new products.
    * </pre>
    *
-   * <code>string product_category = 4;</code>
+   * <code>string product_category = 4 [(.google.api.field_behavior) = IMMUTABLE];</code>
    */
   com.google.protobuf.ByteString getProductCategoryBytes();
 
@@ -116,7 +118,10 @@ public interface ProductOrBuilder
    * strings with integer values can match a range-based restriction which is
    * to be supported soon.
    * Multiple values can be assigned to the same key. One product may have up to
-   * 100 product_labels.
+   * 500 product_labels.
+   * Notice that the total number of distinct product_labels over all products
+   * in one ProductSet cannot exceed 1M, otherwise the product search pipeline
+   * will refuse to work for that ProductSet.
    * </pre>
    *
    * <code>repeated .google.cloud.vision.v1.Product.KeyValue product_labels = 5;</code>
@@ -132,7 +137,10 @@ public interface ProductOrBuilder
    * strings with integer values can match a range-based restriction which is
    * to be supported soon.
    * Multiple values can be assigned to the same key. One product may have up to
-   * 100 product_labels.
+   * 500 product_labels.
+   * Notice that the total number of distinct product_labels over all products
+   * in one ProductSet cannot exceed 1M, otherwise the product search pipeline
+   * will refuse to work for that ProductSet.
    * </pre>
    *
    * <code>repeated .google.cloud.vision.v1.Product.KeyValue product_labels = 5;</code>
@@ -148,7 +156,10 @@ public interface ProductOrBuilder
    * strings with integer values can match a range-based restriction which is
    * to be supported soon.
    * Multiple values can be assigned to the same key. One product may have up to
-   * 100 product_labels.
+   * 500 product_labels.
+   * Notice that the total number of distinct product_labels over all products
+   * in one ProductSet cannot exceed 1M, otherwise the product search pipeline
+   * will refuse to work for that ProductSet.
    * </pre>
    *
    * <code>repeated .google.cloud.vision.v1.Product.KeyValue product_labels = 5;</code>
@@ -164,7 +175,10 @@ public interface ProductOrBuilder
    * strings with integer values can match a range-based restriction which is
    * to be supported soon.
    * Multiple values can be assigned to the same key. One product may have up to
-   * 100 product_labels.
+   * 500 product_labels.
+   * Notice that the total number of distinct product_labels over all products
+   * in one ProductSet cannot exceed 1M, otherwise the product search pipeline
+   * will refuse to work for that ProductSet.
    * </pre>
    *
    * <code>repeated .google.cloud.vision.v1.Product.KeyValue product_labels = 5;</code>
@@ -181,7 +195,10 @@ public interface ProductOrBuilder
    * strings with integer values can match a range-based restriction which is
    * to be supported soon.
    * Multiple values can be assigned to the same key. One product may have up to
-   * 100 product_labels.
+   * 500 product_labels.
+   * Notice that the total number of distinct product_labels over all products
+   * in one ProductSet cannot exceed 1M, otherwise the product search pipeline
+   * will refuse to work for that ProductSet.
    * </pre>
    *
    * <code>repeated .google.cloud.vision.v1.Product.KeyValue product_labels = 5;</code>

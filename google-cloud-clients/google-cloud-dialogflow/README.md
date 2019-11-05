@@ -17,24 +17,22 @@ Java idiomatic client for [Dialogflow][dialogflow].
 Quickstart
 ----------
 
-[//]: # ({x-version-update-start:google-cloud-dialogflow:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-dialogflow</artifactId>
-  <version>0.90.0-alpha</version>
+  <version>0.117.0-alpha</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-dialogflow:0.90.0-alpha'
+compile 'com.google.cloud:google-cloud-dialogflow:0.117.0-alpha'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-dialogflow" % "0.90.0-alpha"
+libraryDependencies += "com.google.cloud" % "google-cloud-dialogflow" % "0.117.0-alpha"
 ```
-[//]: # ({x-version-update-end})
 
 Authentication
 --------------
@@ -99,4 +97,4 @@ Apache 2.0 - See [LICENSE] for more information.
 [dialogflow]: https://dialogflow.com/
 [dialogflow-standard-product-docs]: https://dialogflow.com/docs
 [dialogflow-enterprise-product-docs]: https://cloud.google.com/dialogflow-enterprise/docs/
-[dialogflow-client-lib-docs]: https://googleapis.github.io/google-cloud-java/google-cloud-clients/apidocs/index.html?com/google/cloud/dialogflow/v2beta1/package-summary.html
+[dialogflow-client-lib-docs]: https://googleapis.dev/java/google-cloud-clients/latest/index.html?com/google/cloud/dialogflow/v2beta1/package-summary.html

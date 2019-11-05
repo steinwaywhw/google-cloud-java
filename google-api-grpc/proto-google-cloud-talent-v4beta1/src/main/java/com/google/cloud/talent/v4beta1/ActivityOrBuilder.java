@@ -12,7 +12,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity display name.
    * Number of characters allowed is 100.
    * </pre>
@@ -24,7 +23,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity display name.
    * Number of characters allowed is 100.
    * </pre>
@@ -37,7 +35,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity description.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -49,7 +46,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity description.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -62,7 +58,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity URI.
    * Number of characters allowed is 4,000.
    * </pre>
@@ -74,7 +69,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Activity URI.
    * Number of characters allowed is 4,000.
    * </pre>
@@ -87,7 +81,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The first creation date of the activity.
    * </pre>
    *
@@ -98,7 +91,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The first creation date of the activity.
    * </pre>
    *
@@ -109,7 +101,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The first creation date of the activity.
    * </pre>
    *
@@ -121,7 +112,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last update date of the activity.
    * </pre>
    *
@@ -132,7 +122,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last update date of the activity.
    * </pre>
    *
@@ -143,7 +132,6 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last update date of the activity.
    * </pre>
    *
@@ -155,9 +143,9 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of team members involved in this activity.
    * Number of characters allowed is 100.
+   * The limitation for max number of team members is 50.
    * </pre>
    *
    * <code>repeated string team_members = 6;</code>
@@ -167,9 +155,9 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of team members involved in this activity.
    * Number of characters allowed is 100.
+   * The limitation for max number of team members is 50.
    * </pre>
    *
    * <code>repeated string team_members = 6;</code>
@@ -179,9 +167,9 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of team members involved in this activity.
    * Number of characters allowed is 100.
+   * The limitation for max number of team members is 50.
    * </pre>
    *
    * <code>repeated string team_members = 6;</code>
@@ -191,9 +179,9 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of team members involved in this activity.
    * Number of characters allowed is 100.
+   * The limitation for max number of team members is 50.
    * </pre>
    *
    * <code>repeated string team_members = 6;</code>
@@ -204,8 +192,8 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of skills used in this activity.
+   * The limitation for max number of skills used is 50.
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.Skill skills_used = 7;</code>
@@ -215,8 +203,8 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of skills used in this activity.
+   * The limitation for max number of skills used is 50.
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.Skill skills_used = 7;</code>
@@ -226,8 +214,8 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of skills used in this activity.
+   * The limitation for max number of skills used is 50.
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.Skill skills_used = 7;</code>
@@ -237,8 +225,8 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of skills used in this activity.
+   * The limitation for max number of skills used is 50.
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.Skill skills_used = 7;</code>
@@ -249,8 +237,8 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of skills used in this activity.
+   * The limitation for max number of skills used is 50.
    * </pre>
    *
    * <code>repeated .google.cloud.talent.v4beta1.Skill skills_used = 7;</code>
@@ -261,24 +249,28 @@ public interface ActivityOrBuilder
    *
    *
    * <pre>
-   * Output only. Activity name snippet shows how the [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
-   * related to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't related
-   * to the search query.
+   * Output only. Activity name snippet shows how the
+   * [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
+   * related to a search query. It's empty if the
+   * [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string activity_name_snippet = 8;</code>
+   * <code>string activity_name_snippet = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getActivityNameSnippet();
   /**
    *
    *
    * <pre>
-   * Output only. Activity name snippet shows how the [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
-   * related to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't related
-   * to the search query.
+   * Output only. Activity name snippet shows how the
+   * [display_name][google.cloud.talent.v4beta1.Activity.display_name] is
+   * related to a search query. It's empty if the
+   * [display_name][google.cloud.talent.v4beta1.Activity.display_name] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string activity_name_snippet = 8;</code>
+   * <code>string activity_name_snippet = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getActivityNameSnippetBytes();
 
@@ -287,11 +279,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Activity description snippet shows how the
-   * [description][google.cloud.talent.v4beta1.Activity.description] is related to a search query. It's empty if the
-   * [description][google.cloud.talent.v4beta1.Activity.description] isn't related to the search query.
+   * [description][google.cloud.talent.v4beta1.Activity.description] is related
+   * to a search query. It's empty if the
+   * [description][google.cloud.talent.v4beta1.Activity.description] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string activity_description_snippet = 9;</code>
+   * <code>string activity_description_snippet = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   java.lang.String getActivityDescriptionSnippet();
   /**
@@ -299,11 +294,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Activity description snippet shows how the
-   * [description][google.cloud.talent.v4beta1.Activity.description] is related to a search query. It's empty if the
-   * [description][google.cloud.talent.v4beta1.Activity.description] isn't related to the search query.
+   * [description][google.cloud.talent.v4beta1.Activity.description] is related
+   * to a search query. It's empty if the
+   * [description][google.cloud.talent.v4beta1.Activity.description] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string activity_description_snippet = 9;</code>
+   * <code>string activity_description_snippet = 9 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.ByteString getActivityDescriptionSnippetBytes();
 
@@ -312,11 +310,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Skill used snippet shows how the corresponding
-   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
-   * corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
+   * to a search query. It's empty if the corresponding
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
+   * related to the search query.
    * </pre>
    *
-   * <code>repeated string skills_used_snippet = 10;</code>
+   * <code>repeated string skills_used_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   java.util.List<java.lang.String> getSkillsUsedSnippetList();
   /**
@@ -324,11 +325,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Skill used snippet shows how the corresponding
-   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
-   * corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
+   * to a search query. It's empty if the corresponding
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
+   * related to the search query.
    * </pre>
    *
-   * <code>repeated string skills_used_snippet = 10;</code>
+   * <code>repeated string skills_used_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   int getSkillsUsedSnippetCount();
   /**
@@ -336,11 +340,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Skill used snippet shows how the corresponding
-   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
-   * corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
+   * to a search query. It's empty if the corresponding
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
+   * related to the search query.
    * </pre>
    *
-   * <code>repeated string skills_used_snippet = 10;</code>
+   * <code>repeated string skills_used_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   java.lang.String getSkillsUsedSnippet(int index);
   /**
@@ -348,11 +355,14 @@ public interface ActivityOrBuilder
    *
    * <pre>
    * Output only. Skill used snippet shows how the corresponding
-   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related to a search query. It's empty if the
-   * corresponding [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not related to the search query.
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are related
+   * to a search query. It's empty if the corresponding
+   * [skills_used][google.cloud.talent.v4beta1.Activity.skills_used] are not
+   * related to the search query.
    * </pre>
    *
-   * <code>repeated string skills_used_snippet = 10;</code>
+   * <code>repeated string skills_used_snippet = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.ByteString getSkillsUsedSnippetBytes(int index);
 }

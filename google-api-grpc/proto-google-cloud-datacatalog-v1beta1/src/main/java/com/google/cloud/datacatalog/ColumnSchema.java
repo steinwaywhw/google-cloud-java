@@ -141,7 +141,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    * Required. Name of the column.
    * </pre>
    *
-   * <code>string column = 6;</code>
+   * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getColumn() {
     java.lang.Object ref = column_;
@@ -161,7 +161,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    * Required. Name of the column.
    * </pre>
    *
-   * <code>string column = 6;</code>
+   * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getColumnBytes() {
     java.lang.Object ref = column_;
@@ -184,7 +184,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    * Required. Type of the column.
    * </pre>
    *
-   * <code>string type = 1;</code>
+   * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getType() {
     java.lang.Object ref = type_;
@@ -204,7 +204,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    * Required. Type of the column.
    * </pre>
    *
-   * <code>string type = 1;</code>
+   * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getTypeBytes() {
     java.lang.Object ref = type_;
@@ -224,7 +224,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Description of the column.
+   * Optional. Description of the column. Default value is an empty string.
    * </pre>
    *
    * <code>string description = 2;</code>
@@ -244,7 +244,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Description of the column.
+   * Optional. Description of the column. Default value is an empty string.
    * </pre>
    *
    * <code>string description = 2;</code>
@@ -267,9 +267,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * A column's mode indicates whether the values in this column are
-   * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-   * supported, default mode is 'NULLABLE'.
+   * Optional. A column's mode indicates whether the values in this column are
+   * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+   * supported. Default mode is `NULLABLE`.
    * </pre>
    *
    * <code>string mode = 3;</code>
@@ -289,9 +289,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * A column's mode indicates whether the values in this column are
-   * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-   * supported, default mode is 'NULLABLE'.
+   * Optional. A column's mode indicates whether the values in this column are
+   * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+   * supported. Default mode is `NULLABLE`.
    * </pre>
    *
    * <code>string mode = 3;</code>
@@ -314,7 +314,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of sub-columns.
+   * Optional. Schema of sub-columns. A column can have zero or more
+   * sub-columns.
    * </pre>
    *
    * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -326,7 +327,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of sub-columns.
+   * Optional. Schema of sub-columns. A column can have zero or more
+   * sub-columns.
    * </pre>
    *
    * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -339,7 +341,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of sub-columns.
+   * Optional. Schema of sub-columns. A column can have zero or more
+   * sub-columns.
    * </pre>
    *
    * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -351,7 +354,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of sub-columns.
+   * Optional. Schema of sub-columns. A column can have zero or more
+   * sub-columns.
    * </pre>
    *
    * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -363,7 +367,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of sub-columns.
+   * Optional. Schema of sub-columns. A column can have zero or more
+   * sub-columns.
    * </pre>
    *
    * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -805,7 +810,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Name of the column.
      * </pre>
      *
-     * <code>string column = 6;</code>
+     * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getColumn() {
       java.lang.Object ref = column_;
@@ -825,7 +830,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Name of the column.
      * </pre>
      *
-     * <code>string column = 6;</code>
+     * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getColumnBytes() {
       java.lang.Object ref = column_;
@@ -845,7 +850,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Name of the column.
      * </pre>
      *
-     * <code>string column = 6;</code>
+     * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setColumn(java.lang.String value) {
       if (value == null) {
@@ -863,7 +868,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Name of the column.
      * </pre>
      *
-     * <code>string column = 6;</code>
+     * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearColumn() {
 
@@ -878,7 +883,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Name of the column.
      * </pre>
      *
-     * <code>string column = 6;</code>
+     * <code>string column = 6 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setColumnBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -899,7 +904,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Type of the column.
      * </pre>
      *
-     * <code>string type = 1;</code>
+     * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getType() {
       java.lang.Object ref = type_;
@@ -919,7 +924,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Type of the column.
      * </pre>
      *
-     * <code>string type = 1;</code>
+     * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getTypeBytes() {
       java.lang.Object ref = type_;
@@ -939,7 +944,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Type of the column.
      * </pre>
      *
-     * <code>string type = 1;</code>
+     * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setType(java.lang.String value) {
       if (value == null) {
@@ -957,7 +962,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Type of the column.
      * </pre>
      *
-     * <code>string type = 1;</code>
+     * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearType() {
 
@@ -972,7 +977,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      * Required. Type of the column.
      * </pre>
      *
-     * <code>string type = 1;</code>
+     * <code>string type = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setTypeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -990,7 +995,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Description of the column.
+     * Optional. Description of the column. Default value is an empty string.
      * </pre>
      *
      * <code>string description = 2;</code>
@@ -1010,7 +1015,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Description of the column.
+     * Optional. Description of the column. Default value is an empty string.
      * </pre>
      *
      * <code>string description = 2;</code>
@@ -1030,7 +1035,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Description of the column.
+     * Optional. Description of the column. Default value is an empty string.
      * </pre>
      *
      * <code>string description = 2;</code>
@@ -1048,7 +1053,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Description of the column.
+     * Optional. Description of the column. Default value is an empty string.
      * </pre>
      *
      * <code>string description = 2;</code>
@@ -1063,7 +1068,7 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Description of the column.
+     * Optional. Description of the column. Default value is an empty string.
      * </pre>
      *
      * <code>string description = 2;</code>
@@ -1084,9 +1089,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * A column's mode indicates whether the values in this column are
-     * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-     * supported, default mode is 'NULLABLE'.
+     * Optional. A column's mode indicates whether the values in this column are
+     * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+     * supported. Default mode is `NULLABLE`.
      * </pre>
      *
      * <code>string mode = 3;</code>
@@ -1106,9 +1111,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * A column's mode indicates whether the values in this column are
-     * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-     * supported, default mode is 'NULLABLE'.
+     * Optional. A column's mode indicates whether the values in this column are
+     * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+     * supported. Default mode is `NULLABLE`.
      * </pre>
      *
      * <code>string mode = 3;</code>
@@ -1128,9 +1133,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * A column's mode indicates whether the values in this column are
-     * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-     * supported, default mode is 'NULLABLE'.
+     * Optional. A column's mode indicates whether the values in this column are
+     * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+     * supported. Default mode is `NULLABLE`.
      * </pre>
      *
      * <code>string mode = 3;</code>
@@ -1148,9 +1153,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * A column's mode indicates whether the values in this column are
-     * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-     * supported, default mode is 'NULLABLE'.
+     * Optional. A column's mode indicates whether the values in this column are
+     * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+     * supported. Default mode is `NULLABLE`.
      * </pre>
      *
      * <code>string mode = 3;</code>
@@ -1165,9 +1170,9 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * A column's mode indicates whether the values in this column are
-     * required, nullable, etc. Only 'NULLABLE', 'REQUIRED' and 'REPEATED' are
-     * supported, default mode is 'NULLABLE'.
+     * Optional. A column's mode indicates whether the values in this column are
+     * required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are
+     * supported. Default mode is `NULLABLE`.
      * </pre>
      *
      * <code>string mode = 3;</code>
@@ -1204,7 +1209,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1220,7 +1226,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1236,7 +1243,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1252,7 +1260,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1274,7 +1283,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1294,7 +1304,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1316,7 +1327,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1338,7 +1350,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1358,7 +1371,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1378,7 +1392,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1398,7 +1413,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1417,7 +1433,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1436,7 +1453,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1448,7 +1466,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1464,7 +1483,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1481,7 +1501,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1494,7 +1515,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>
@@ -1507,7 +1529,8 @@ public final class ColumnSchema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of sub-columns.
+     * Optional. Schema of sub-columns. A column can have zero or more
+     * sub-columns.
      * </pre>
      *
      * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema subcolumns = 7;</code>

@@ -16,6 +16,9 @@
 
 package com.google.cloud.bigquery;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import com.google.api.services.bigquery.model.ExternalDataConfiguration;
 import com.google.api.services.bigquery.model.Table;
 import com.google.auto.value.AutoValue;
@@ -295,7 +298,27 @@ public abstract class ExternalTableDefinition extends TableDefinition {
    *     Source Format</a>
    */
   public static Builder newBuilder(String sourceUri, Schema schema, FormatOptions format) {
+    checkArgument(!isNullOrEmpty(sourceUri), "Provided sourceUri is null or empty");
     return newBuilder(ImmutableList.of(sourceUri), schema, format);
+  }
+
+  /**
+   * Creates a builder for an ExternalTableDefinition object.
+   *
+   * @param sourceUri the fully-qualified URIs that point to your data in Google Cloud. For Google
+   *     Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and
+   *     valid HTTPS URL for a Google Cloud Bigtable table. Size limits related to load jobs apply
+   *     to external data sources, plus an additional limit of 10 GB maximum size across all URIs.
+   * @param format the source format of the external data
+   * @return a builder for an ExternalTableDefinition object given source URIs and format
+   * @see <a href="https://cloud.google.com/bigquery/loading-data-into-bigquery#quota">Quota</a>
+   * @see <a
+   *     href="https://cloud.google.com/bigquery/docs/reference/v2/tables#externalDataConfiguration.sourceFormat">
+   *     Source Format</a>
+   */
+  public static Builder newBuilder(String sourceUri, FormatOptions format) {
+    checkArgument(!isNullOrEmpty(sourceUri), "Provided sourceUri is null or empty");
+    return newBuilder().setSourceUris(ImmutableList.of(sourceUri)).setFormatOptions(format);
   }
 
   /**
@@ -334,6 +357,24 @@ public abstract class ExternalTableDefinition extends TableDefinition {
    */
   public static ExternalTableDefinition of(String sourceUri, Schema schema, FormatOptions format) {
     return newBuilder(sourceUri, schema, format).build();
+  }
+
+  /**
+   * Creates a builder for an ExternalTableDefinition object.
+   *
+   * @param sourceUri the fully-qualified URIs that point to your data in Google Cloud. For Google
+   *     Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and
+   *     valid HTTPS URL for a Google Cloud Bigtable table. Size limits related to load jobs apply
+   *     to external data sources, plus an additional limit of 10 GB maximum size across all URIs.
+   * @param format the source format of the external data
+   * @return a builder for an ExternalTableDefinition object given source URIs and format
+   * @see <a href="https://cloud.google.com/bigquery/loading-data-into-bigquery#quota">Quota</a>
+   * @see <a
+   *     href="https://cloud.google.com/bigquery/docs/reference/v2/tables#externalDataConfiguration.sourceFormat">
+   *     Source Format</a>
+   */
+  public static ExternalTableDefinition of(String sourceUri, FormatOptions format) {
+    return newBuilder(sourceUri, format).build();
   }
 
   @SuppressWarnings("unchecked")

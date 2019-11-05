@@ -113,7 +113,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The rating on this interview.
    * </pre>
    *
@@ -126,7 +125,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The rating on this interview.
    * </pre>
    *
@@ -139,7 +137,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The rating on this interview.
    * </pre>
    *
@@ -155,12 +152,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The overall decision resulting from this interview (positive, negative,
-   * nuetral).
+   * Required. The overall decision resulting from this interview (positive,
+   * negative, nuetral).
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public int getOutcomeValue() {
     return outcome_;
@@ -169,12 +167,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The overall decision resulting from this interview (positive, negative,
-   * nuetral).
+   * Required. The overall decision resulting from this interview (positive,
+   * negative, nuetral).
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.Outcome getOutcome() {
     @SuppressWarnings("deprecation")
@@ -536,7 +535,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -549,7 +547,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -568,7 +565,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -591,7 +587,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -611,7 +606,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -638,7 +632,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -659,7 +652,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -674,7 +666,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -693,7 +684,6 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The rating on this interview.
      * </pre>
      *
@@ -721,12 +711,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The overall decision resulting from this interview (positive, negative,
-     * nuetral).
+     * Required. The overall decision resulting from this interview (positive,
+     * negative, nuetral).
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public int getOutcomeValue() {
       return outcome_;
@@ -735,12 +726,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The overall decision resulting from this interview (positive, negative,
-     * nuetral).
+     * Required. The overall decision resulting from this interview (positive,
+     * negative, nuetral).
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setOutcomeValue(int value) {
       outcome_ = value;
@@ -751,12 +743,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The overall decision resulting from this interview (positive, negative,
-     * nuetral).
+     * Required. The overall decision resulting from this interview (positive,
+     * negative, nuetral).
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.Outcome getOutcome() {
       @SuppressWarnings("deprecation")
@@ -768,12 +761,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The overall decision resulting from this interview (positive, negative,
-     * nuetral).
+     * Required. The overall decision resulting from this interview (positive,
+     * negative, nuetral).
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setOutcome(com.google.cloud.talent.v4beta1.Outcome value) {
       if (value == null) {
@@ -788,12 +782,13 @@ public final class Interview extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The overall decision resulting from this interview (positive, negative,
-     * nuetral).
+     * Required. The overall decision resulting from this interview (positive,
+     * negative, nuetral).
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Outcome outcome = 7;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Outcome outcome = 7 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearOutcome() {
 

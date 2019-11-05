@@ -32,28 +32,28 @@ import com.google.spanner.v1.PartitionResponse;
 import com.google.spanner.v1.TransactionSelector;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Callable;
 
 /** Default implementation for Batch Client interface. */
 public class BatchClientImpl implements BatchClient {
-  private final SpannerImpl spanner;
-  private final DatabaseId db;
+  private final SessionClient sessionClient;
 
-  BatchClientImpl(DatabaseId db, SpannerImpl spanner) {
-    this.db = checkNotNull(db);
-    this.spanner = checkNotNull(spanner);
+  BatchClientImpl(SessionClient sessionClient) {
+    this.sessionClient = checkNotNull(sessionClient);
   }
 
   @Override
   public BatchReadOnlyTransaction batchReadOnlyTransaction(TimestampBound bound) {
-    SessionImpl session = (SessionImpl) spanner.createSession(db);
-    return new BatchReadOnlyTransactionImpl(spanner, session, checkNotNull(bound));
+    SessionImpl session = sessionClient.createSession();
+    return new BatchReadOnlyTransactionImpl(
+        sessionClient.getSpanner(), session, checkNotNull(bound));
   }
 
   @Override
   public BatchReadOnlyTransaction batchReadOnlyTransaction(BatchTransactionId batchTransactionId) {
-    SessionImpl session = spanner.sessionWithId(checkNotNull(batchTransactionId).getSessionId());
-    return new BatchReadOnlyTransactionImpl(spanner, session, batchTransactionId);
+    SessionImpl session =
+        sessionClient.sessionWithId(checkNotNull(batchTransactionId).getSessionId());
+    return new BatchReadOnlyTransactionImpl(
+        sessionClient.getSpanner(), session, batchTransactionId);
   }
 
   private static class BatchReadOnlyTransactionImpl extends MultiUseReadOnlyTransaction
@@ -135,14 +135,7 @@ public class BatchClientImpl implements BatchClient {
       builder.setPartitionOptions(pbuilder.build());
 
       final PartitionReadRequest request = builder.build();
-      PartitionResponse response =
-          SpannerImpl.runWithRetries(
-              new Callable<PartitionResponse>() {
-                @Override
-                public PartitionResponse call() throws Exception {
-                  return rpc.partitionRead(request, options);
-                }
-              });
+      PartitionResponse response = rpc.partitionRead(request, options);
       ImmutableList.Builder<Partition> partitions = ImmutableList.builder();
       for (com.google.spanner.v1.Partition p : response.getPartitionsList()) {
         Partition partition =
@@ -180,14 +173,7 @@ public class BatchClientImpl implements BatchClient {
       builder.setPartitionOptions(pbuilder.build());
 
       final PartitionQueryRequest request = builder.build();
-      PartitionResponse response =
-          SpannerImpl.runWithRetries(
-              new Callable<PartitionResponse>() {
-                @Override
-                public PartitionResponse call() throws Exception {
-                  return rpc.partitionQuery(request, options);
-                }
-              });
+      PartitionResponse response = rpc.partitionQuery(request, options);
       ImmutableList.Builder<Partition> partitions = ImmutableList.builder();
       for (com.google.spanner.v1.Partition p : response.getPartitionsList()) {
         Partition partition =

@@ -21,7 +21,6 @@ import com.google.api.gax.batching.BatchingSettings;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
 import com.google.api.gax.retrying.RetrySettings;
-import com.google.api.gax.rpc.BatchingCallSettings;
 import com.google.api.gax.rpc.ServerStreamingCallSettings;
 import com.google.api.gax.rpc.StatusCode.Code;
 import com.google.api.gax.rpc.UnaryCallSettings;
@@ -31,6 +30,7 @@ import com.google.cloud.bigtable.data.v2.models.KeyOffset;
 import com.google.cloud.bigtable.data.v2.models.Query;
 import com.google.cloud.bigtable.data.v2.models.Row;
 import com.google.cloud.bigtable.data.v2.models.RowMutation;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Range;
 import java.util.List;
 import java.util.Set;
@@ -119,7 +119,7 @@ public class EnhancedBigtableStubSettingsTest {
     assertThat(builder.getAppProfileId()).isEqualTo(appProfileId);
     assertThat(builder.getEndpoint()).isEqualTo(endpoint);
     assertThat(builder.getCredentialsProvider()).isEqualTo(credentialsProvider);
-    assertThat(builder.getStreamWatchdogProvider()).isSameAs(watchdogProvider);
+    assertThat(builder.getStreamWatchdogProvider()).isSameInstanceAs(watchdogProvider);
     assertThat(builder.getStreamWatchdogCheckInterval()).isEqualTo(watchdogInterval);
   }
 
@@ -137,7 +137,7 @@ public class EnhancedBigtableStubSettingsTest {
     assertThat(settings.getAppProfileId()).isEqualTo(appProfileId);
     assertThat(settings.getEndpoint()).isEqualTo(endpoint);
     assertThat(settings.getCredentialsProvider()).isEqualTo(credentialsProvider);
-    assertThat(settings.getStreamWatchdogProvider()).isSameAs(watchdogProvider);
+    assertThat(settings.getStreamWatchdogProvider()).isSameInstanceAs(watchdogProvider);
     assertThat(settings.getStreamWatchdogCheckInterval()).isEqualTo(watchdogInterval);
   }
 
@@ -189,19 +189,19 @@ public class EnhancedBigtableStubSettingsTest {
 
     assertThat(builder.readRowsSettings().getIdleTimeout()).isEqualTo(Duration.ofMinutes(5));
     assertThat(builder.readRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.readRowsSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().readRowsSettings().getIdleTimeout())
         .isEqualTo(Duration.ofMinutes(5));
     assertThat(builder.build().readRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().readRowsSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().toBuilder().readRowsSettings().getIdleTimeout())
         .isEqualTo(Duration.ofMinutes(5));
     assertThat(builder.build().toBuilder().readRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().readRowsSettings().getRetrySettings())
         .isEqualTo(retrySettings);
   }
@@ -212,6 +212,9 @@ public class EnhancedBigtableStubSettingsTest {
         EnhancedBigtableStubSettings.newBuilder().readRowsSettings();
 
     verifyRetrySettingAreSane(builder.getRetryableCodes(), builder.getRetrySettings());
+    assertThat(builder.getRetryableCodes())
+        .containsExactlyElementsIn(
+            ImmutableSet.of(Code.DEADLINE_EXCEEDED, Code.UNAVAILABLE, Code.ABORTED));
   }
 
   @Test
@@ -241,15 +244,15 @@ public class EnhancedBigtableStubSettingsTest {
     builder.readRowsSettings().setRetryableCodes(Code.ABORTED, Code.DEADLINE_EXCEEDED);
 
     assertThat(builder.readRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.readRowSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().readRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().readRowSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().toBuilder().readRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().readRowSettings().getRetrySettings())
         .isEqualTo(retrySettings);
   }
@@ -260,6 +263,9 @@ public class EnhancedBigtableStubSettingsTest {
         EnhancedBigtableStubSettings.newBuilder().readRowSettings();
 
     verifyRetrySettingAreSane(builder.getRetryableCodes(), builder.getRetrySettings());
+    assertThat(builder.getRetryableCodes())
+        .containsExactlyElementsIn(
+            ImmutableSet.of(Code.DEADLINE_EXCEEDED, Code.UNAVAILABLE, Code.ABORTED));
   }
 
   @Test
@@ -319,15 +325,15 @@ public class EnhancedBigtableStubSettingsTest {
         .build();
 
     assertThat(builder.sampleRowKeysSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.sampleRowKeysSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().sampleRowKeysSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().sampleRowKeysSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().toBuilder().sampleRowKeysSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().sampleRowKeysSettings().getRetrySettings())
         .isEqualTo(retrySettings);
   }
@@ -366,15 +372,15 @@ public class EnhancedBigtableStubSettingsTest {
         .build();
 
     assertThat(builder.mutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.mutateRowSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().mutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().mutateRowSettings().getRetrySettings()).isEqualTo(retrySettings);
 
     assertThat(builder.build().toBuilder().mutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().mutateRowSettings().getRetrySettings())
         .isEqualTo(retrySettings);
   }
@@ -416,28 +422,29 @@ public class EnhancedBigtableStubSettingsTest {
         .build();
 
     assertThat(builder.bulkMutateRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.bulkMutateRowsSettings().getRetrySettings()).isEqualTo(retrySettings);
-    assertThat(builder.bulkMutateRowsSettings().getBatchingSettings()).isSameAs(batchingSettings);
+    assertThat(builder.bulkMutateRowsSettings().getBatchingSettings())
+        .isSameInstanceAs(batchingSettings);
 
     assertThat(builder.build().bulkMutateRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().bulkMutateRowsSettings().getRetrySettings())
         .isEqualTo(retrySettings);
     assertThat(builder.build().bulkMutateRowsSettings().getBatchingSettings())
-        .isSameAs(batchingSettings);
+        .isSameInstanceAs(batchingSettings);
 
     assertThat(builder.build().toBuilder().bulkMutateRowsSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().bulkMutateRowsSettings().getRetrySettings())
         .isEqualTo(retrySettings);
     assertThat(builder.build().toBuilder().bulkMutateRowsSettings().getBatchingSettings())
-        .isSameAs(batchingSettings);
+        .isSameInstanceAs(batchingSettings);
   }
 
   @Test
   public void mutateRowsHasSaneDefaultsTest() {
-    BatchingCallSettings.Builder<RowMutation, Void> builder =
+    BigtableBatchingCallSettings.Builder builder =
         EnhancedBigtableStubSettings.newBuilder().bulkMutateRowsSettings();
 
     verifyRetrySettingAreSane(builder.getRetryableCodes(), builder.getRetrySettings());
@@ -475,18 +482,19 @@ public class EnhancedBigtableStubSettingsTest {
         .build();
 
     assertThat(builder.checkAndMutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
-    assertThat(builder.checkAndMutateRowSettings().getRetrySettings()).isSameAs(retrySettings);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+    assertThat(builder.checkAndMutateRowSettings().getRetrySettings())
+        .isSameInstanceAs(retrySettings);
 
     assertThat(builder.build().checkAndMutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().checkAndMutateRowSettings().getRetrySettings())
-        .isSameAs(retrySettings);
+        .isSameInstanceAs(retrySettings);
 
     assertThat(builder.build().toBuilder().checkAndMutateRowSettings().getRetryableCodes())
-        .containsAllOf(Code.ABORTED, Code.DEADLINE_EXCEEDED);
+        .containsAtLeast(Code.ABORTED, Code.DEADLINE_EXCEEDED);
     assertThat(builder.build().toBuilder().checkAndMutateRowSettings().getRetrySettings())
-        .isSameAs(retrySettings);
+        .isSameInstanceAs(retrySettings);
   }
 
   @Test
@@ -501,7 +509,7 @@ public class EnhancedBigtableStubSettingsTest {
   }
 
   private void verifyRetrySettingAreSane(Set<Code> retryCodes, RetrySettings retrySettings) {
-    assertThat(retryCodes).containsAllOf(Code.DEADLINE_EXCEEDED, Code.UNAVAILABLE);
+    assertThat(retryCodes).containsAtLeast(Code.DEADLINE_EXCEEDED, Code.UNAVAILABLE);
 
     assertThat(retrySettings.getTotalTimeout()).isGreaterThan(Duration.ZERO);
 

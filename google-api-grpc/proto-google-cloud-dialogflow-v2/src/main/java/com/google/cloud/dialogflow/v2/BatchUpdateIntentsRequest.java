@@ -196,7 +196,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Format: `projects/&lt;Project ID&gt;/agent`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -217,7 +219,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Format: `projects/&lt;Project ID&gt;/agent`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -340,12 +344,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The language of training phrases, parameters and rich messages
    * defined in `intents`. If not specified, the agent's default language is
    * used. [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 4;</code>
+   * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getLanguageCode() {
     java.lang.Object ref = languageCode_;
@@ -365,12 +369,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The language of training phrases, parameters and rich messages
    * defined in `intents`. If not specified, the agent's default language is
    * used. [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 4;</code>
+   * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getLanguageCodeBytes() {
     java.lang.Object ref = languageCode_;
@@ -393,7 +397,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasUpdateMask() {
     return updateMask_ != null;
@@ -405,7 +410,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.protobuf.FieldMask getUpdateMask() {
     return updateMask_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : updateMask_;
@@ -417,7 +423,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder() {
     return getUpdateMask();
@@ -432,7 +439,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The resource view to apply to the returned intent.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public int getIntentViewValue() {
     return intentView_;
@@ -444,7 +453,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
    * Optional. The resource view to apply to the returned intent.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dialogflow.v2.IntentView getIntentView() {
     @SuppressWarnings("deprecation")
@@ -924,7 +935,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Format: `projects/&lt;Project ID&gt;/agent`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -945,7 +958,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Format: `projects/&lt;Project ID&gt;/agent`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -966,7 +981,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Format: `projects/&lt;Project ID&gt;/agent`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -985,7 +1002,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Format: `projects/&lt;Project ID&gt;/agent`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder clearParent() {
 
@@ -1001,7 +1020,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Format: `projects/&lt;Project ID&gt;/agent`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1339,12 +1360,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The language of training phrases, parameters and rich messages
      * defined in `intents`. If not specified, the agent's default language is
      * used. [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 4;</code>
+     * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getLanguageCode() {
       java.lang.Object ref = languageCode_;
@@ -1364,12 +1385,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The language of training phrases, parameters and rich messages
      * defined in `intents`. If not specified, the agent's default language is
      * used. [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 4;</code>
+     * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getLanguageCodeBytes() {
       java.lang.Object ref = languageCode_;
@@ -1389,12 +1410,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The language of training phrases, parameters and rich messages
      * defined in `intents`. If not specified, the agent's default language is
      * used. [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 4;</code>
+     * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLanguageCode(java.lang.String value) {
       if (value == null) {
@@ -1412,12 +1433,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The language of training phrases, parameters and rich messages
      * defined in `intents`. If not specified, the agent's default language is
      * used. [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 4;</code>
+     * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearLanguageCode() {
 
@@ -1432,12 +1453,12 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The language of training phrases, parameters and rich messages
      * defined in `intents`. If not specified, the agent's default language is
      * used. [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 4;</code>
+     * <code>string language_code = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLanguageCodeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1463,7 +1484,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasUpdateMask() {
       return updateMaskBuilder_ != null || updateMask_ != null;
@@ -1475,7 +1497,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.FieldMask getUpdateMask() {
       if (updateMaskBuilder_ == null) {
@@ -1493,7 +1516,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setUpdateMask(com.google.protobuf.FieldMask value) {
       if (updateMaskBuilder_ == null) {
@@ -1515,7 +1539,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setUpdateMask(com.google.protobuf.FieldMask.Builder builderForValue) {
       if (updateMaskBuilder_ == null) {
@@ -1534,7 +1559,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeUpdateMask(com.google.protobuf.FieldMask value) {
       if (updateMaskBuilder_ == null) {
@@ -1558,7 +1584,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearUpdateMask() {
       if (updateMaskBuilder_ == null) {
@@ -1578,7 +1605,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.FieldMask.Builder getUpdateMaskBuilder() {
 
@@ -1592,7 +1620,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder() {
       if (updateMaskBuilder_ != null) {
@@ -1610,7 +1639,8 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The mask to control which fields get updated.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 5;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 5 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.FieldMask,
@@ -1637,7 +1667,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The resource view to apply to the returned intent.
      * </pre>
      *
-     * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+     * <code>
+     * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public int getIntentViewValue() {
       return intentView_;
@@ -1649,7 +1681,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The resource view to apply to the returned intent.
      * </pre>
      *
-     * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+     * <code>
+     * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setIntentViewValue(int value) {
       intentView_ = value;
@@ -1663,7 +1697,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The resource view to apply to the returned intent.
      * </pre>
      *
-     * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+     * <code>
+     * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dialogflow.v2.IntentView getIntentView() {
       @SuppressWarnings("deprecation")
@@ -1678,7 +1714,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The resource view to apply to the returned intent.
      * </pre>
      *
-     * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+     * <code>
+     * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setIntentView(com.google.cloud.dialogflow.v2.IntentView value) {
       if (value == null) {
@@ -1696,7 +1734,9 @@ public final class BatchUpdateIntentsRequest extends com.google.protobuf.Generat
      * Optional. The resource view to apply to the returned intent.
      * </pre>
      *
-     * <code>.google.cloud.dialogflow.v2.IntentView intent_view = 6;</code>
+     * <code>
+     * .google.cloud.dialogflow.v2.IntentView intent_view = 6 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearIntentView() {
 

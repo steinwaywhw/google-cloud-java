@@ -144,7 +144,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The profile is displayed.
+     * Send this event when a
+     * [ProfileEvent.profiles][google.cloud.talent.v4beta1.ProfileEvent.profiles]
+     * was sent as a part of a result set for a CTS API call and was rendered in
+     * the end user's UI (that is, the
+     * [ProfileEvent.recruiter][google.cloud.talent.v4beta1.ProfileEvent.recruiter]).
      * </pre>
      *
      * <code>IMPRESSION = 1;</code>
@@ -154,7 +158,19 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The profile is viewed.
+     * The VIEW event records the action of a candidate's profile being
+     * viewed by an end user. This is critical to tracking product metrics and
+     * should be sent for every profile VIEW that happens in your system,
+     * whether the event is associated with an API call (for example, a
+     * recruiter making a request for a result set and clicking on a profile)
+     * or not (a recruiter using the system to view profile details without
+     * making a request).
+     * For a VIEW events associated with API calls, the
+     * [ClientEvent.request_id][google.cloud.talent.v4beta1.ClientEvent.request_id]
+     * should be populated.  If the VIEW is not associated with an API call,
+     * [request_id][google.cloud.talent.v4beta1.ClientEvent.request_id] should
+     * not be populated.
+     * This event requires a valid recruiter and one valid ID in profiles.
      * </pre>
      *
      * <code>VIEW = 2;</code>
@@ -187,7 +203,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The profile is displayed.
+     * Send this event when a
+     * [ProfileEvent.profiles][google.cloud.talent.v4beta1.ProfileEvent.profiles]
+     * was sent as a part of a result set for a CTS API call and was rendered in
+     * the end user's UI (that is, the
+     * [ProfileEvent.recruiter][google.cloud.talent.v4beta1.ProfileEvent.recruiter]).
      * </pre>
      *
      * <code>IMPRESSION = 1;</code>
@@ -197,7 +217,19 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * The profile is viewed.
+     * The VIEW event records the action of a candidate's profile being
+     * viewed by an end user. This is critical to tracking product metrics and
+     * should be sent for every profile VIEW that happens in your system,
+     * whether the event is associated with an API call (for example, a
+     * recruiter making a request for a result set and clicking on a profile)
+     * or not (a recruiter using the system to view profile details without
+     * making a request).
+     * For a VIEW events associated with API calls, the
+     * [ClientEvent.request_id][google.cloud.talent.v4beta1.ClientEvent.request_id]
+     * should be populated.  If the VIEW is not associated with an API call,
+     * [request_id][google.cloud.talent.v4beta1.ClientEvent.request_id] should
+     * not be populated.
+     * This event requires a valid recruiter and one valid ID in profiles.
      * </pre>
      *
      * <code>VIEW = 2;</code>
@@ -296,11 +328,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * Type of event.
+   * Required. Type of event.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public int getTypeValue() {
     return type_;
@@ -309,11 +342,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * Type of event.
+   * Required. Type of event.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType getType() {
     @SuppressWarnings("deprecation")
@@ -330,11 +364,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+   * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+   * associated with this client event.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+   * for example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>repeated string profiles = 2;</code>
+   * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ProtocolStringList getProfilesList() {
     return profiles_;
@@ -343,11 +380,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+   * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+   * associated with this client event.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+   * for example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>repeated string profiles = 2;</code>
+   * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public int getProfilesCount() {
     return profiles_.size();
@@ -356,11 +396,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+   * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+   * associated with this client event.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+   * for example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>repeated string profiles = 2;</code>
+   * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getProfiles(int index) {
     return profiles_.get(index);
@@ -369,11 +412,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+   * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+   * associated with this client event.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+   * for example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>repeated string profiles = 2;</code>
+   * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getProfilesBytes(int index) {
     return profiles_.getByteString(index);
@@ -385,11 +431,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * The job ID associated with this client event if there is one. Leave it
-   * empty if the event isn't associated with a job.
-   * The job ID should be consistent with the
-   * [JobApplication.job.requisition_id][] in the profile.
+   * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+   * this client event. Leave it empty if the event isn't associated with a job.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+   * example, "projects/foo/tenants/bar/jobs/baz".
    * </pre>
    *
    * <code>repeated string jobs = 6;</code>
@@ -401,11 +447,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * The job ID associated with this client event if there is one. Leave it
-   * empty if the event isn't associated with a job.
-   * The job ID should be consistent with the
-   * [JobApplication.job.requisition_id][] in the profile.
+   * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+   * this client event. Leave it empty if the event isn't associated with a job.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+   * example, "projects/foo/tenants/bar/jobs/baz".
    * </pre>
    *
    * <code>repeated string jobs = 6;</code>
@@ -417,11 +463,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * The job ID associated with this client event if there is one. Leave it
-   * empty if the event isn't associated with a job.
-   * The job ID should be consistent with the
-   * [JobApplication.job.requisition_id][] in the profile.
+   * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+   * this client event. Leave it empty if the event isn't associated with a job.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+   * example, "projects/foo/tenants/bar/jobs/baz".
    * </pre>
    *
    * <code>repeated string jobs = 6;</code>
@@ -433,11 +479,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * The job ID associated with this client event if there is one. Leave it
-   * empty if the event isn't associated with a job.
-   * The job ID should be consistent with the
-   * [JobApplication.job.requisition_id][] in the profile.
+   * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+   * this client event. Leave it empty if the event isn't associated with a job.
+   * The format is
+   * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+   * example, "projects/foo/tenants/bar/jobs/baz".
    * </pre>
    *
    * <code>repeated string jobs = 6;</code>
@@ -844,11 +890,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * Type of event.
+     * Required. Type of event.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public int getTypeValue() {
       return type_;
@@ -857,11 +904,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * Type of event.
+     * Required. Type of event.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTypeValue(int value) {
       type_ = value;
@@ -872,11 +920,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * Type of event.
+     * Required. Type of event.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType getType() {
       @SuppressWarnings("deprecation")
@@ -890,11 +939,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * Type of event.
+     * Required. Type of event.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setType(com.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType value) {
       if (value == null) {
@@ -909,11 +959,12 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * Type of event.
+     * Required. Type of event.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.ProfileEvent.ProfileEventType type = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearType() {
 
@@ -935,11 +986,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ProtocolStringList getProfilesList() {
       return profiles_.getUnmodifiableView();
@@ -948,11 +1002,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public int getProfilesCount() {
       return profiles_.size();
@@ -961,11 +1018,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getProfiles(int index) {
       return profiles_.get(index);
@@ -974,11 +1034,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getProfilesBytes(int index) {
       return profiles_.getByteString(index);
@@ -987,11 +1050,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setProfiles(int index, java.lang.String value) {
       if (value == null) {
@@ -1006,11 +1072,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addProfiles(java.lang.String value) {
       if (value == null) {
@@ -1025,11 +1094,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addAllProfiles(java.lang.Iterable<java.lang.String> values) {
       ensureProfilesIsMutable();
@@ -1041,11 +1113,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearProfiles() {
       profiles_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -1057,11 +1132,14 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The [profile name(s)][google.cloud.talent.v4beta1.Profile.name] associated with this client event.
+     * Required. The [profile name(s)][google.cloud.talent.v4beta1.Profile.name]
+     * associated with this client event.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
+     * for example, "projects/foo/tenants/bar/profiles/baz".
      * </pre>
      *
-     * <code>repeated string profiles = 2;</code>
+     * <code>repeated string profiles = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addProfilesBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1087,11 +1165,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1103,11 +1181,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1119,11 +1197,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1135,11 +1213,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1151,11 +1229,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1173,11 +1251,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1195,11 +1273,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1214,11 +1292,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>
@@ -1233,11 +1311,11 @@ public final class ProfileEvent extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * The job ID associated with this client event if there is one. Leave it
-     * empty if the event isn't associated with a job.
-     * The job ID should be consistent with the
-     * [JobApplication.job.requisition_id][] in the profile.
+     * The [job name(s)][google.cloud.talent.v4beta1.Job.name] associated with
+     * this client event. Leave it empty if the event isn't associated with a job.
+     * The format is
+     * "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for
+     * example, "projects/foo/tenants/bar/jobs/baz".
      * </pre>
      *
      * <code>repeated string jobs = 6;</code>

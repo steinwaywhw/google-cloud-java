@@ -12,7 +12,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Skill display name.
    * For example, "Java", "Python".
    * Number of characters allowed is 100.
@@ -25,7 +24,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Skill display name.
    * For example, "Java", "Python".
    * Number of characters allowed is 100.
@@ -39,7 +37,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last time this skill was used.
    * </pre>
    *
@@ -50,7 +47,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last time this skill was used.
    * </pre>
    *
@@ -61,7 +57,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The last time this skill was used.
    * </pre>
    *
@@ -73,7 +68,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Skill proficiency level which indicates how proficient the candidate is at
    * this skill.
    * </pre>
@@ -85,7 +79,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Skill proficiency level which indicates how proficient the candidate is at
    * this skill.
    * </pre>
@@ -98,7 +91,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A paragraph describes context of this skill.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -110,7 +102,6 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A paragraph describes context of this skill.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -123,24 +114,28 @@ public interface SkillOrBuilder
    *
    *
    * <pre>
-   * Output only. Skill name snippet shows how the [display_name][google.cloud.talent.v4beta1.Skill.display_name] is related
-   * to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Skill.display_name] isn't related to the
-   * search query.
+   * Output only. Skill name snippet shows how the
+   * [display_name][google.cloud.talent.v4beta1.Skill.display_name] is related
+   * to a search query. It's empty if the
+   * [display_name][google.cloud.talent.v4beta1.Skill.display_name] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string skill_name_snippet = 5;</code>
+   * <code>string skill_name_snippet = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getSkillNameSnippet();
   /**
    *
    *
    * <pre>
-   * Output only. Skill name snippet shows how the [display_name][google.cloud.talent.v4beta1.Skill.display_name] is related
-   * to a search query. It's empty if the [display_name][google.cloud.talent.v4beta1.Skill.display_name] isn't related to the
-   * search query.
+   * Output only. Skill name snippet shows how the
+   * [display_name][google.cloud.talent.v4beta1.Skill.display_name] is related
+   * to a search query. It's empty if the
+   * [display_name][google.cloud.talent.v4beta1.Skill.display_name] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string skill_name_snippet = 5;</code>
+   * <code>string skill_name_snippet = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getSkillNameSnippetBytes();
 }

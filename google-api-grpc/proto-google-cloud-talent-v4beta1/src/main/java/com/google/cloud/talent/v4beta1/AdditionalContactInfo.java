@@ -114,7 +114,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -127,7 +126,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -146,7 +144,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The name of the contact method.
    * For example, "hangout", "skype".
    * Number of characters allowed is 100.
@@ -169,7 +166,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The name of the contact method.
    * For example, "hangout", "skype".
    * Number of characters allowed is 100.
@@ -195,7 +191,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The contact id.
    * Number of characters allowed is 100.
    * </pre>
@@ -217,7 +212,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
    *
    *
    * <pre>
-   * Optional.
    * The contact id.
    * Number of characters allowed is 100.
    * </pre>
@@ -596,7 +590,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -609,7 +602,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -624,7 +616,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -642,7 +633,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -661,7 +651,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The usage of this contact method. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -679,7 +668,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The name of the contact method.
      * For example, "hangout", "skype".
      * Number of characters allowed is 100.
@@ -702,7 +690,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The name of the contact method.
      * For example, "hangout", "skype".
      * Number of characters allowed is 100.
@@ -725,7 +712,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The name of the contact method.
      * For example, "hangout", "skype".
      * Number of characters allowed is 100.
@@ -746,7 +732,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The name of the contact method.
      * For example, "hangout", "skype".
      * Number of characters allowed is 100.
@@ -764,7 +749,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The name of the contact method.
      * For example, "hangout", "skype".
      * Number of characters allowed is 100.
@@ -788,7 +772,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The contact id.
      * Number of characters allowed is 100.
      * </pre>
@@ -810,7 +793,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The contact id.
      * Number of characters allowed is 100.
      * </pre>
@@ -832,7 +814,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The contact id.
      * Number of characters allowed is 100.
      * </pre>
@@ -852,7 +833,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The contact id.
      * Number of characters allowed is 100.
      * </pre>
@@ -869,7 +849,6 @@ public final class AdditionalContactInfo extends com.google.protobuf.GeneratedMe
      *
      *
      * <pre>
-     * Optional.
      * The contact id.
      * Number of characters allowed is 100.
      * </pre>

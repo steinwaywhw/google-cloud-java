@@ -33,7 +33,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for SHOT_CHANGE_DETECTION.
+   * Config for STREAMING_SHOT_CHANGE_DETECTION.
    * </pre>
    *
    * <code>
@@ -45,7 +45,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for SHOT_CHANGE_DETECTION.
+   * Config for STREAMING_SHOT_CHANGE_DETECTION.
    * </pre>
    *
    * <code>
@@ -58,7 +58,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for SHOT_CHANGE_DETECTION.
+   * Config for STREAMING_SHOT_CHANGE_DETECTION.
    * </pre>
    *
    * <code>
@@ -72,7 +72,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for LABEL_DETECTION.
+   * Config for STREAMING_LABEL_DETECTION.
    * </pre>
    *
    * <code>
@@ -84,7 +84,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for LABEL_DETECTION.
+   * Config for STREAMING_LABEL_DETECTION.
    * </pre>
    *
    * <code>
@@ -97,7 +97,7 @@ public interface StreamingVideoConfigOrBuilder
    *
    *
    * <pre>
-   * Config for LABEL_DETECTION.
+   * Config for STREAMING_LABEL_DETECTION.
    * </pre>
    *
    * <code>
@@ -184,6 +184,84 @@ public interface StreamingVideoConfigOrBuilder
    */
   com.google.cloud.videointelligence.v1p3beta1.StreamingObjectTrackingConfigOrBuilder
       getObjectTrackingConfigOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_CLASSIFICATION.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlClassificationConfig automl_classification_config = 21;
+   * </code>
+   */
+  boolean hasAutomlClassificationConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_CLASSIFICATION.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlClassificationConfig automl_classification_config = 21;
+   * </code>
+   */
+  com.google.cloud.videointelligence.v1p3beta1.StreamingAutomlClassificationConfig
+      getAutomlClassificationConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_CLASSIFICATION.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlClassificationConfig automl_classification_config = 21;
+   * </code>
+   */
+  com.google.cloud.videointelligence.v1p3beta1.StreamingAutomlClassificationConfigOrBuilder
+      getAutomlClassificationConfigOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_OBJECT_TRACKING.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlObjectTrackingConfig automl_object_tracking_config = 22;
+   * </code>
+   */
+  boolean hasAutomlObjectTrackingConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_OBJECT_TRACKING.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlObjectTrackingConfig automl_object_tracking_config = 22;
+   * </code>
+   */
+  com.google.cloud.videointelligence.v1p3beta1.StreamingAutomlObjectTrackingConfig
+      getAutomlObjectTrackingConfig();
+  /**
+   *
+   *
+   * <pre>
+   * Config for STREAMING_AUTOML_OBJECT_TRACKING.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.videointelligence.v1p3beta1.StreamingAutomlObjectTrackingConfig automl_object_tracking_config = 22;
+   * </code>
+   */
+  com.google.cloud.videointelligence.v1p3beta1.StreamingAutomlObjectTrackingConfigOrBuilder
+      getAutomlObjectTrackingConfigOrBuilder();
 
   /**
    *

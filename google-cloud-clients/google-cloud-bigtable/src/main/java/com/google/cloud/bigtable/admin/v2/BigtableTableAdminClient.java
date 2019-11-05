@@ -25,19 +25,27 @@ import com.google.bigtable.admin.v2.DeleteTableRequest;
 import com.google.bigtable.admin.v2.DropRowRangeRequest;
 import com.google.bigtable.admin.v2.GetTableRequest;
 import com.google.bigtable.admin.v2.ListTablesRequest;
+import com.google.cloud.Policy;
+import com.google.cloud.Policy.DefaultMarshaller;
 import com.google.cloud.bigtable.admin.v2.BaseBigtableTableAdminClient.ListTablesPage;
 import com.google.cloud.bigtable.admin.v2.BaseBigtableTableAdminClient.ListTablesPagedResponse;
 import com.google.cloud.bigtable.admin.v2.internal.NameUtil;
 import com.google.cloud.bigtable.admin.v2.models.CreateTableRequest;
+import com.google.cloud.bigtable.admin.v2.models.GCRules;
 import com.google.cloud.bigtable.admin.v2.models.ModifyColumnFamiliesRequest;
 import com.google.cloud.bigtable.admin.v2.models.Table;
 import com.google.cloud.bigtable.admin.v2.stub.EnhancedBigtableTableAdminStub;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.google.iam.v1.GetIamPolicyRequest;
+import com.google.iam.v1.SetIamPolicyRequest;
+import com.google.iam.v1.TestIamPermissionsRequest;
+import com.google.iam.v1.TestIamPermissionsResponse;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Empty;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.Nonnull;
 
@@ -51,19 +59,24 @@ import javax.annotation.Nonnull;
  * <p>Sample code to get started:
  *
  * <pre>{@code
- * try(BigtableTableAdminClient client =  BigtableTableAdminClient.create("[PROJECT]", "[INSTANCE]")) {
- *   CreateTable request =
- *     CreateTableRequest.of("my-table")
- *       .addFamily("cf1")
- *       .addFamily("cf2", GCRULES.maxVersions(10))
- *       .addSplit(ByteString.copyFromUtf8("b"))
- *       .addSplit(ByteString.copyFromUtf8("q"));
- *   client.createTable(request);
- * }
+ * // One instance per application.
+ * BigtableTableAdminClient client =  BigtableTableAdminClient.create("[PROJECT]", "[INSTANCE]");
+ *
+ * CreateTable request =
+ *   CreateTableRequest.of("my-table")
+ *     .addFamily("cf1")
+ *     .addFamily("cf2", GCRULES.maxVersions(10))
+ *     .addSplit(ByteString.copyFromUtf8("b"))
+ *     .addSplit(ByteString.copyFromUtf8("q"));
+ * client.createTable(request);
+ *
+ * // Cleanup during application shutdown.
+ * client.close();
  * }</pre>
  *
- * <p>Note: close() needs to be called on the client object to clean up resources such as threads.
- * In the example above, try-with-resources is used, which automatically calls close().
+ * <p>Creating a new client is a very expensive operation and should only be done once and shared in
+ * an application. However, close() needs to be called on the client object to clean up resources
+ * such as threads during application shutdown.
  *
  * <p>This class can be customized by passing in a custom instance of BigtableTableAdminSettings to
  * create(). For example:
@@ -71,25 +84,26 @@ import javax.annotation.Nonnull;
  * <p>To customize credentials:
  *
  * <pre>{@code
- * BigtableTableAdminSettings tableAdminSettings = BigtableTableAdminSettings.newBuilder()
+ * BigtableTableAdminSettings settings = BigtableTableAdminSettings.newBuilder()
  *   .setProjectId("[PROJECT]")
  *   .setInstanceId("[INSTANCE]")
  *   .setCredentialsProvider(FixedCredentialsProvider.create(myCredentials))
  *   .build();
  *
- * BigtableTableAdminClient client =
- *   BigtableTableAdminClient.create(tableAdminSettings);
+ * BigtableTableAdminClient client = BigtableTableAdminClient.create(settings);
  * }</pre>
  *
  * To customize the endpoint:
  *
  * <pre>{@code
- * BigtableTableAdminSettings tableAdminSettings = BigtableTableAdminSettings.newBuilder()
+ * BigtableTableAdminSettings.Builder settingsBuilder = BigtableTableAdminSettings.newBuilder()
  *   .setProjectId("[PROJECT]")
- *   .setInstanceId("[INSTANCE]")
+ *   .setInstanceId("[INSTANCE]");
+ *
+ * settingsBuilder.stubSettings()
  *   .setEndpoint(myEndpoint).build();
  *
- * BigtableTableAdminClient client = BigtableTableAdminClient.create(tableAdminSettings);
+ * BigtableTableAdminClient client = BigtableTableAdminClient.create(settingsBuilder.build());
  * }</pre>
  */
 public final class BigtableTableAdminClient implements AutoCloseable {
@@ -97,7 +111,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   private final String projectId;
   private final String instanceId;
 
-  /** Constructs an instance of BigtableTableAdminClient with the given project and instance ids. */
+  /** Constructs an instance of BigtableTableAdminClient with the given project and instance IDs. */
   public static BigtableTableAdminClient create(
       @Nonnull String projectId, @Nonnull String instanceId) throws IOException {
     return create(
@@ -105,17 +119,6 @@ public final class BigtableTableAdminClient implements AutoCloseable {
             .setProjectId(projectId)
             .setInstanceId(instanceId)
             .build());
-  }
-
-  /**
-   * Constructs an instance of BigtableTableAdminClient with the given instanceName.
-   *
-   * @deprecated Please {@link #create(String, String)}.
-   */
-  @Deprecated
-  public static BigtableTableAdminClient create(
-      @Nonnull com.google.bigtable.admin.v2.InstanceName instanceName) throws IOException {
-    return create(instanceName.getProject(), instanceName.getInstance());
   }
 
   /** Constructs an instance of BigtableTableAdminClient with the given settings. */
@@ -126,7 +129,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
     return create(settings.getProjectId(), settings.getInstanceId(), stub);
   }
 
-  /** Constructs an instance of BigtableTableAdminClient with the given instanceName and stub. */
+  /** Constructs an instance of BigtableTableAdminClient with the given instance name and stub. */
   public static BigtableTableAdminClient create(
       @Nonnull String projectId,
       @Nonnull String instanceId,
@@ -146,24 +149,14 @@ public final class BigtableTableAdminClient implements AutoCloseable {
     this.stub = stub;
   }
 
-  /** Gets the project id of the instance whose tables this client manages. */
+  /** Gets the project ID of the instance whose tables this client manages. */
   public String getProjectId() {
     return projectId;
   }
 
-  /** Gets the id of the instance whose tables this client manages. */
+  /** Gets the ID of the instance whose tables this client manages. */
   public String getInstanceId() {
     return instanceId;
-  }
-
-  /**
-   * Gets the instanceName this client is associated with.
-   *
-   * @deprecated Please use {@link #getProjectId()} and {@link #getInstanceId()}.
-   */
-  @Deprecated
-  public com.google.bigtable.admin.v2.InstanceName getInstanceName() {
-    return com.google.bigtable.admin.v2.InstanceName.of(projectId, instanceId);
   }
 
   @Override
@@ -172,33 +165,53 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Creates a new table with the specified configuration
+   * Creates a new table with the specified configuration.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // A table with a single column family, which retains only the latest value.
    * Table table = client.createTable(
    *   CreateTableRequest.of("my-table")
-   *     .addFamily("cf2", GCRULES.maxVersions(1)
+   *     .addFamily("cf2", GCRULES.maxVersions(1))
+   * );
+   *
+   * // Another table with more complex garbage collection rules.
+   * Table table = client.createTable(
+   *   CreateTableRequest.of("my-table")
+   *     .addFamily("cf2", GCRULES.union()
+   *       .rule(GCRULES.maxAge(Duration.ofDays(30)))
+   *       .rule(GCRULES.maxVersions(5))
+   *     )
    * );
    * }</pre>
    *
    * @see CreateTableRequest for available options.
+   * @see GCRules for the documentation on available garbage collection rules.
    */
-  @SuppressWarnings("WeakerAccess")
   public Table createTable(CreateTableRequest request) {
     return ApiExceptions.callAndTranslateApiException(createTableAsync(request));
   }
 
   /**
-   * Creates a new table with the specified configuration asynchronously
+   * Asynchronously creates a new table with the specified configuration.
    *
    * <p>Sample code:
    *
    * <pre>{@code
+   * // A table with a single column family, which retains values up to 7 days.
    * ApiFuture<Table> tableFuture = client.createTableAsync(
    *   CreateTableRequest.of("my-table")
-   *     .addFamily("cf", GCRules.GCRULES.maxVersions(1))
+   *     .addFamily("cf", GCRULES.maxAge(Duration.ofDays(7)))
+   * );
+   *
+   * // Another table with more complex garbage collection rules.
+   * ApiFuture<Table> tableFuture = client.createTableAsync(
+   *   CreateTableRequest.of("my-table")
+   *     .addFamily("cf", GCRULES.intersection()
+   *       .rule(GCRULES.maxAge(120, TimeUnit.HOURS))
+   *       .rule(GCRULES.maxVersions(10))
+   *     )
    * );
    *
    * ApiFutures.addCallback(
@@ -217,6 +230,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * }</pre>
    *
    * @see CreateTableRequest for available options.
+   * @see GCRules for the documentation on available garbage collection rules.
    */
   @SuppressWarnings("WeakerAccess")
   public ApiFuture<Table> createTableAsync(CreateTableRequest request) {
@@ -225,7 +239,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Creates, Updates and drops ColumnFamilies as per the request.
+   * Creates, updates and drops column families as specified in the request.
    *
    * <p>Sample code:
    *
@@ -258,13 +272,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    *
    * @see ModifyColumnFamiliesRequest for available options.
    */
-  @SuppressWarnings("WeakerAccess")
   public Table modifyFamilies(ModifyColumnFamiliesRequest request) {
     return ApiExceptions.callAndTranslateApiException(modifyFamiliesAsync(request));
   }
 
   /**
-   * Asynchronously creates, updates and drops ColumnFamilies as per the request.
+   * Asynchronously creates, updates, and drops column families as specified in the request.
    *
    * <p>Sample code:
    *
@@ -319,7 +332,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Deletes the table specified by tableId
+   * Deletes the table specified by the table ID.
    *
    * <p>Sample code:
    *
@@ -327,13 +340,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * client.deleteTable("my-table");
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public void deleteTable(String tableId) {
     ApiExceptions.callAndTranslateApiException(deleteTableAsync(tableId));
   }
 
   /**
-   * Asynchronously deletes the table specified by tableId.
+   * Asynchronously deletes the table specified by the table ID.
    *
    * <p>Sample code:
    *
@@ -364,7 +376,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Checks if the table specified by the tableId exists
+   * Checks if the table specified by the table ID exists.
    *
    * <p>Sample code:
    *
@@ -379,7 +391,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Asynchronously checks if the table specified by the tableId exists
+   * Asynchronously checks if the table specified by the table ID exists.
    *
    * <p>Sample code:
    *
@@ -434,7 +446,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Gets the table metadata by tableId.
+   * Gets the table metadata by table ID.
    *
    * <p>Sample code:
    *
@@ -449,13 +461,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * }
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public Table getTable(String tableId) {
     return ApiExceptions.callAndTranslateApiException(getTableAsync(tableId));
   }
 
   /**
-   * Asynchronously gets the table metadata by tableId.
+   * Asynchronously gets the table metadata by table ID.
    *
    * <p>Sample code:
    *
@@ -495,7 +506,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Lists all table ids in the instance.
+   * Lists all table IDs in the instance.
    *
    * <p>Sample code:
    *
@@ -506,13 +517,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * }
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public List<String> listTables() {
     return ApiExceptions.callAndTranslateApiException(listTablesAsync());
   }
 
   /**
-   * Asynchronously lists all table ids in the instance.
+   * Asynchronously lists all table IDs in the instance.
    *
    * <p>Sample code:
    *
@@ -537,7 +547,6 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * );
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public ApiFuture<List<String>> listTablesAsync() {
     ListTablesRequest request =
         ListTablesRequest.newBuilder()
@@ -547,7 +556,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
     // TODO(igorbernstein2): try to upstream pagination spooling or figure out a way to expose the
     // paginated responses while maintaining the wrapper facade.
 
-    // Fetch the first page.
+    // Fetches the first page.
     ApiFuture<ListTablesPage> firstPageFuture =
         ApiFutures.transform(
             stub.listTablesPagedCallable().futureCall(request),
@@ -559,7 +568,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
             },
             MoreExecutors.directExecutor());
 
-    // Fetch the rest of the pages by chaining the futures.
+    // Fetches the rest of the pages by chaining the futures.
     ApiFuture<List<com.google.bigtable.admin.v2.Table>> allProtos =
         ApiFutures.transformAsync(
             firstPageFuture,
@@ -584,7 +593,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
             },
             MoreExecutors.directExecutor());
 
-    // Wrap all of the accumulated protos.
+    // Wraps all of the accumulated protos.
     return ApiFutures.transform(
         allProtos,
         new ApiFunction<List<com.google.bigtable.admin.v2.Table>, List<String>>() {
@@ -601,7 +610,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Drops rows by the specified key prefix and tableId
+   * Drops rows by the specified row key prefix and table ID.
    *
    * <p>Please note that this method is considered part of the admin API and is rate limited.
    *
@@ -611,13 +620,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * client.dropRowRange("my-table", "prefix");
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public void dropRowRange(String tableId, String rowKeyPrefix) {
     ApiExceptions.callAndTranslateApiException(dropRowRangeAsync(tableId, rowKeyPrefix));
   }
 
   /**
-   * Drops rows by the specified key prefix and tableId asynchronously
+   * Asynchronously drops rows by the specified row key prefix and table ID.
    *
    * <p>Please note that this method is considered part of the admin API and is rate limited.
    *
@@ -647,7 +655,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Drops rows by the specified key prefix and tableId
+   * Drops rows by the specified row key prefix and table ID.
    *
    * <p>Please note that this method is considered part of the admin API and is rate limited.
    *
@@ -663,7 +671,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Drops rows by the specified key prefix and tableId asynchronously
+   * Asynchronously drops rows by the specified row key prefix and table ID.
    *
    * <p>Please note that this method is considered part of the admin API and is rate limited.
    *
@@ -699,7 +707,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Drops all data in the table
+   * Drops all data in the table.
    *
    * <p>Sample code:
    *
@@ -707,13 +715,12 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    * client.dropAllRows("my-table");
    * }</pre>
    */
-  @SuppressWarnings("WeakerAccess")
   public void dropAllRows(String tableId) {
     ApiExceptions.callAndTranslateApiException(dropAllRowsAsync(tableId));
   }
 
   /**
-   * Asynchornously drops all data in the table.
+   * Asynchronously drops all data in the table.
    *
    * <p>Sample code:
    *
@@ -747,8 +754,9 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Blocks until replication has caught up to the point this method was called. This allows callers
-   * to make sure that their mutations have been replicated across all of their clusters.
+   * Blocks the current thread until replication has caught up to the point when this method was
+   * called. This allows callers to make sure that their mutations have been replicated across all
+   * of their clusters.
    *
    * <p>Sample code
    *
@@ -758,7 +766,6 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    *
    * @throws com.google.api.gax.retrying.PollException when polling exceeds the total timeout
    */
-  @SuppressWarnings("WeakerAccess")
   public void awaitReplication(String tableId) {
     // TODO(igorbernstein2): remove usage of typesafe names
     com.google.bigtable.admin.v2.TableName tableName =
@@ -769,9 +776,9 @@ public final class BigtableTableAdminClient implements AutoCloseable {
   }
 
   /**
-   * Returns a future that is resolved when replication has caught up to the point this method was
-   * called. This allows callers to make sure that their mutations have been replicated across all
-   * of their clusters.
+   * Returns a future that is resolved when replication has caught up to the point when this method
+   * was called. This allows callers to make sure that their mutations have been replicated across
+   * all of their clusters.
    *
    * <p>Sample code:
    *
@@ -796,7 +803,7 @@ public final class BigtableTableAdminClient implements AutoCloseable {
    */
   @SuppressWarnings("WeakerAccess")
   public ApiFuture<Void> awaitReplicationAsync(final String tableId) {
-    // TODO(igorbernstein2): remove usage of trypesafe names
+    // TODO(igorbernstein2): remove usage of typesafe names
     com.google.bigtable.admin.v2.TableName tableName =
         com.google.bigtable.admin.v2.TableName.of(projectId, instanceId, tableId);
     return stub.awaitReplicationCallable().futureCall(tableName);
@@ -839,5 +846,232 @@ public final class BigtableTableAdminClient implements AutoCloseable {
           }
         },
         MoreExecutors.directExecutor());
+  }
+
+  /**
+   * Gets the IAM access control policy for the specified table.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * Policy policy = client.getIamPolicy("my-table");
+   * for(Map.Entry<Role, Set<Identity>> entry : policy.getBindings().entrySet()) {
+   *   System.out.printf("Role: %s Identities: %s\n", entry.getKey(), entry.getValue());
+   * }
+   * }</pre>
+   *
+   * @see <a
+   *     href="https://cloud.google.com/bigtable/docs/access-control#iam-management-table">Table-level
+   *     IAM management</a>
+   */
+  @SuppressWarnings("WeakerAccess")
+  public Policy getIamPolicy(String tableId) {
+    return ApiExceptions.callAndTranslateApiException(getIamPolicyAsync(tableId));
+  }
+
+  /**
+   * Asynchronously gets the IAM access control policy for the specified table.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * ApiFuture<Policy> policyFuture = client.getIamPolicyAsync("my-table");
+   *
+   * ApiFutures.addCallback(policyFuture,
+   *   new ApiFutureCallback<Policy>() {
+   *     public void onSuccess(Policy policy) {
+   *       for (Entry<Role, Set<Identity>> entry : policy.getBindings().entrySet()) {
+   *         System.out.printf("Role: %s Identities: %s\n", entry.getKey(), entry.getValue());
+   *       }
+   *     }
+   *
+   *     public void onFailure(Throwable t) {
+   *       t.printStackTrace();
+   *     }
+   *   },
+   *   MoreExecutors.directExecutor());
+   * }</pre>
+   *
+   * @see <a
+   *     href="https://cloud.google.com/bigtable/docs/access-control#iam-management-table">Table-level
+   *     IAM management</a>
+   */
+  @SuppressWarnings("WeakerAccess")
+  public ApiFuture<Policy> getIamPolicyAsync(String tableId) {
+    String name = NameUtil.formatTableName(projectId, instanceId, tableId);
+
+    GetIamPolicyRequest request = GetIamPolicyRequest.newBuilder().setResource(name).build();
+
+    final IamPolicyMarshaller marshaller = new IamPolicyMarshaller();
+
+    return ApiFutures.transform(
+        stub.getIamPolicyCallable().futureCall(request),
+        new ApiFunction<com.google.iam.v1.Policy, Policy>() {
+          @Override
+          public Policy apply(com.google.iam.v1.Policy proto) {
+            return marshaller.fromPb(proto);
+          }
+        },
+        MoreExecutors.directExecutor());
+  }
+
+  /**
+   * Replaces the IAM policy associated with the specified table.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * Policy newPolicy = client.setIamPolicy("my-table",
+   *   Policy.newBuilder()
+   *     .addIdentity(Role.of("bigtable.user"), Identity.user("someone@example.com"))
+   *     .addIdentity(Role.of("bigtable.admin"), Identity.group("admins@example.com"))
+   *     .build());
+   * }</pre>
+   *
+   * @see <a
+   *     href="https://cloud.google.com/bigtable/docs/access-control#iam-management-table">Table-level
+   *     IAM management</a>
+   */
+  @SuppressWarnings("WeakerAccess")
+  public Policy setIamPolicy(String tableId, Policy policy) {
+    return ApiExceptions.callAndTranslateApiException(setIamPolicyAsync(tableId, policy));
+  }
+
+  /**
+   * Asynchronously replaces the IAM policy associated with the specified table.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * ApiFuture<Policy> newPolicyFuture = client.setIamPolicyAsync("my-table",
+   *   Policy.newBuilder()
+   *     .addIdentity(Role.of("bigtable.user"), Identity.user("someone@example.com"))
+   *     .addIdentity(Role.of("bigtable.admin"), Identity.group("admins@example.com"))
+   *     .build());
+   *
+   * ApiFutures.addCallback(policyFuture,
+   *   new ApiFutureCallback<Policy>() {
+   *     public void onSuccess(Policy policy) {
+   *       for (Entry<Role, Set<Identity>> entry : policy.getBindings().entrySet()) {
+   *         System.out.printf("Role: %s Identities: %s\n", entry.getKey(), entry.getValue());
+   *       }
+   *     }
+   *
+   *     public void onFailure(Throwable t) {
+   *       t.printStackTrace();
+   *     }
+   *   },
+   *   MoreExecutors.directExecutor());
+   * }</pre>
+   *
+   * @see <a
+   *     href="https://cloud.google.com/bigtable/docs/access-control#iam-management-table">Table-level
+   *     IAM management</a>
+   */
+  @SuppressWarnings("WeakerAccess")
+  public ApiFuture<Policy> setIamPolicyAsync(String tableId, Policy policy) {
+    String name = NameUtil.formatTableName(projectId, instanceId, tableId);
+    final IamPolicyMarshaller marshaller = new IamPolicyMarshaller();
+
+    SetIamPolicyRequest request =
+        SetIamPolicyRequest.newBuilder()
+            .setResource(name)
+            .setPolicy(marshaller.toPb(policy))
+            .build();
+
+    return ApiFutures.transform(
+        stub.setIamPolicyCallable().futureCall(request),
+        new ApiFunction<com.google.iam.v1.Policy, Policy>() {
+          @Override
+          public Policy apply(com.google.iam.v1.Policy proto) {
+            return marshaller.fromPb(proto);
+          }
+        },
+        MoreExecutors.directExecutor());
+  }
+
+  /**
+   * Tests whether the caller has the given permissions for the specified table. Returns a subset of
+   * the specified permissions that the caller has.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * List<String> grantedPermissions = client.testIamPermission("my-table",
+   *   "bigtable.tables.readRows", "bigtable.tables.mutateRows");
+   * }</pre>
+   *
+   * System.out.println("Has read access: " +
+   * grantedPermissions.contains("bigtable.tables.readRows")); System.out.println("Has write access:
+   * " + grantedPermissions.contains("bigtable.tables.mutateRows"));
+   *
+   * @see <a href="https://cloud.google.com/bigtable/docs/access-control#permissions">Cloud Bigtable
+   *     permissions</a>
+   */
+  @SuppressWarnings({"WeakerAccess"})
+  public List<String> testIamPermission(String tableId, String... permissions) {
+    return ApiExceptions.callAndTranslateApiException(testIamPermissionAsync(tableId, permissions));
+  }
+
+  /**
+   * Asynchronously tests whether the caller has the given permissions for the specified table.
+   * Returns a subset of the specified permissions that the caller has.
+   *
+   * <p>Sample code:
+   *
+   * <pre>{@code
+   * ApiFuture<List<String>> grantedPermissionsFuture = client.testIamPermissionAsync("my-table",
+   *   "bigtable.tables.readRows", "bigtable.tables.mutateRows");
+   *
+   * ApiFutures.addCallback(grantedPermissionsFuture,
+   *   new ApiFutureCallback<List<String>>() {
+   *     public void onSuccess(List<String> grantedPermissions) {
+   *       System.out.println("Has read access: " + grantedPermissions.contains("bigtable.tables.readRows"));
+   *       System.out.println("Has write access: " + grantedPermissions.contains("bigtable.tables.mutateRows"));
+   *     }
+   *
+   *     public void onFailure(Throwable t) {
+   *       t.printStackTrace();
+   *     }
+   *   },
+   *   MoreExecutors.directExecutor());
+   * }</pre>
+   *
+   * @see <a href="https://cloud.google.com/bigtable/docs/access-control#permissions">Cloud Bigtable
+   *     permissions</a>
+   */
+  @SuppressWarnings({"WeakerAccess"})
+  public ApiFuture<List<String>> testIamPermissionAsync(String tableId, String... permissions) {
+    TestIamPermissionsRequest request =
+        TestIamPermissionsRequest.newBuilder()
+            .setResource(NameUtil.formatTableName(projectId, instanceId, tableId))
+            .addAllPermissions(Arrays.asList(permissions))
+            .build();
+
+    return ApiFutures.transform(
+        stub.testIamPermissionsCallable().futureCall(request),
+        new ApiFunction<TestIamPermissionsResponse, List<String>>() {
+          @Override
+          public List<String> apply(TestIamPermissionsResponse input) {
+            return input.getPermissionsList();
+          }
+        },
+        MoreExecutors.directExecutor());
+  }
+
+  /**
+   * Simple adapter to expose {@link DefaultMarshaller} to this class. It enables this client to
+   * convert to/from IAM wrappers and protobufs.
+   */
+  private static class IamPolicyMarshaller extends DefaultMarshaller {
+    @Override
+    public Policy fromPb(com.google.iam.v1.Policy policyPb) {
+      return super.fromPb(policyPb);
+    }
+
+    @Override
+    public com.google.iam.v1.Policy toPb(Policy policy) {
+      return super.toPb(policy);
+    }
   }
 }

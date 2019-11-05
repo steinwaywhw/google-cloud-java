@@ -23,6 +23,8 @@ import com.google.api.gax.longrunning.OperationFutureImpl;
 import com.google.api.gax.longrunning.OperationSnapshot;
 import com.google.api.gax.paging.Page;
 import com.google.api.pathtemplate.PathTemplate;
+import com.google.cloud.Policy;
+import com.google.cloud.Policy.DefaultMarshaller;
 import com.google.cloud.spanner.Options.ListOption;
 import com.google.cloud.spanner.SpannerImpl.PageFetcher;
 import com.google.cloud.spanner.spi.v1.SpannerRpc;
@@ -31,15 +33,27 @@ import com.google.common.base.Preconditions;
 import com.google.protobuf.FieldMask;
 import com.google.spanner.admin.instance.v1.CreateInstanceMetadata;
 import com.google.spanner.admin.instance.v1.UpdateInstanceMetadata;
-import java.util.concurrent.Callable;
 
 /** Default implementation of {@link InstanceAdminClient} */
 class InstanceAdminClientImpl implements InstanceAdminClient {
+  private static final class PolicyMarshaller extends DefaultMarshaller {
+    @Override
+    protected Policy fromPb(com.google.iam.v1.Policy policyPb) {
+      return super.fromPb(policyPb);
+    }
+
+    @Override
+    protected com.google.iam.v1.Policy toPb(Policy policy) {
+      return super.toPb(policy);
+    }
+  }
+
   private static final PathTemplate PROJECT_NAME_TEMPLATE =
       PathTemplate.create("projects/{project}");
   private final DatabaseAdminClient dbClient;
   private final String projectId;
   private final SpannerRpc rpc;
+  private final PolicyMarshaller policyMarshaller = new PolicyMarshaller();
 
   InstanceAdminClientImpl(String projectId, SpannerRpc rpc, DatabaseAdminClient dbClient) {
     this.projectId = projectId;
@@ -49,15 +63,9 @@ class InstanceAdminClientImpl implements InstanceAdminClient {
 
   @Override
   public InstanceConfig getInstanceConfig(String configId) throws SpannerException {
-    final String instanceConfigName = new InstanceConfigId(projectId, configId).getName();
-    return SpannerImpl.runWithRetries(
-        new Callable<InstanceConfig>() {
-          @Override
-          public InstanceConfig call() {
-            return InstanceConfig.fromProto(
-                rpc.getInstanceConfig(instanceConfigName), InstanceAdminClientImpl.this);
-          }
-        });
+    String instanceConfigName = new InstanceConfigId(projectId, configId).getName();
+    return InstanceConfig.fromProto(
+        rpc.getInstanceConfig(instanceConfigName), InstanceAdminClientImpl.this);
   }
 
   @Override
@@ -119,15 +127,9 @@ class InstanceAdminClientImpl implements InstanceAdminClient {
 
   @Override
   public Instance getInstance(String instanceId) throws SpannerException {
-    final String instanceName = new InstanceId(projectId, instanceId).getName();
-    return SpannerImpl.runWithRetries(
-        new Callable<Instance>() {
-          @Override
-          public Instance call() {
-            return Instance.fromProto(
-                rpc.getInstance(instanceName), InstanceAdminClientImpl.this, dbClient);
-          }
-        });
+    String instanceName = new InstanceId(projectId, instanceId).getName();
+    return Instance.fromProto(
+        rpc.getInstance(instanceName), InstanceAdminClientImpl.this, dbClient);
   }
 
   @Override
@@ -156,14 +158,7 @@ class InstanceAdminClientImpl implements InstanceAdminClient {
 
   @Override
   public void deleteInstance(final String instanceId) throws SpannerException {
-    SpannerImpl.runWithRetries(
-        new Callable<Void>() {
-          @Override
-          public Void call() {
-            rpc.deleteInstance(new InstanceId(projectId, instanceId).getName());
-            return null;
-          }
-        });
+    rpc.deleteInstance(new InstanceId(projectId, instanceId).getName());
   }
 
   @Override
@@ -197,6 +192,28 @@ class InstanceAdminClientImpl implements InstanceAdminClient {
             throw SpannerExceptionFactory.newSpannerException(e);
           }
         });
+  }
+
+  @Override
+  public Policy getInstanceIAMPolicy(String instanceId) {
+    String instanceName = InstanceId.of(projectId, instanceId).getName();
+    return policyMarshaller.fromPb(rpc.getInstanceAdminIAMPolicy(instanceName));
+  }
+
+  @Override
+  public Policy setInstanceIAMPolicy(String instanceId, Policy policy) {
+    Preconditions.checkNotNull(policy);
+    String instanceName = InstanceId.of(projectId, instanceId).getName();
+    return policyMarshaller.fromPb(
+        rpc.setInstanceAdminIAMPolicy(instanceName, policyMarshaller.toPb(policy)));
+  }
+
+  @Override
+  public Iterable<String> testInstanceIAMPermissions(
+      String instanceId, Iterable<String> permissions) {
+    Preconditions.checkNotNull(permissions);
+    String instanceName = InstanceId.of(projectId, instanceId).getName();
+    return rpc.testInstanceAdminIAMPermissions(instanceName, permissions).getPermissionsList();
   }
 
   @Override

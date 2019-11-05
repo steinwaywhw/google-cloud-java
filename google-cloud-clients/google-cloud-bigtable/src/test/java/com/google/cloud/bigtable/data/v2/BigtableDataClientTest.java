@@ -21,15 +21,11 @@ import static org.mockito.Matchers.any;
 
 import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
-import com.google.api.core.SettableApiFuture;
-import com.google.api.gax.grpc.GrpcStatusCode;
-import com.google.api.gax.rpc.ApiException;
+import com.google.api.gax.batching.Batcher;
 import com.google.api.gax.rpc.ResponseObserver;
 import com.google.api.gax.rpc.ServerStreamingCallable;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.bigtable.data.v2.models.BulkMutation;
-import com.google.cloud.bigtable.data.v2.models.BulkMutationBatcher;
-import com.google.cloud.bigtable.data.v2.models.BulkMutationBatcher.BulkMutationFailure;
 import com.google.cloud.bigtable.data.v2.models.ConditionalRowMutation;
 import com.google.cloud.bigtable.data.v2.models.Filters.Filter;
 import com.google.cloud.bigtable.data.v2.models.KeyOffset;
@@ -39,14 +35,13 @@ import com.google.cloud.bigtable.data.v2.models.ReadModifyWriteRow;
 import com.google.cloud.bigtable.data.v2.models.Row;
 import com.google.cloud.bigtable.data.v2.models.RowCell;
 import com.google.cloud.bigtable.data.v2.models.RowMutation;
+import com.google.cloud.bigtable.data.v2.models.RowMutationEntry;
 import com.google.cloud.bigtable.data.v2.stub.EnhancedBigtableStub;
 import com.google.common.collect.ImmutableList;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.Empty;
-import io.grpc.Status.Code;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,7 +51,6 @@ import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
-import org.threeten.bp.Duration;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BigtableDataClientTest {
@@ -71,7 +65,7 @@ public class BigtableDataClientTest {
   @Mock private UnaryCallable<ConditionalRowMutation, Boolean> mockCheckAndMutateRowCallable;
   @Mock private UnaryCallable<ReadModifyWriteRow, Row> mockReadModifyWriteRowCallable;
   @Mock private UnaryCallable<BulkMutation, Void> mockBulkMutateRowsCallable;
-  @Mock private UnaryCallable<RowMutation, Void> mockBulkMutateRowsBatchingCallable;
+  @Mock private Batcher<RowMutationEntry, Void> mockBulkMutationbatcher;
 
   private BigtableDataClient bigtableDataClient;
 
@@ -83,10 +77,10 @@ public class BigtableDataClientTest {
     Mockito.when(mockStub.sampleRowKeysCallable()).thenReturn(mockSampleRowKeysCallable);
     Mockito.when(mockStub.mutateRowCallable()).thenReturn(mockMutateRowCallable);
     Mockito.when(mockStub.bulkMutateRowsCallable()).thenReturn(mockBulkMutateRowsCallable);
-    Mockito.when(mockStub.bulkMutateRowsBatchingCallable())
-        .thenReturn(mockBulkMutateRowsBatchingCallable);
     Mockito.when(mockStub.checkAndMutateRowCallable()).thenReturn(mockCheckAndMutateRowCallable);
     Mockito.when(mockStub.readModifyWriteRowCallable()).thenReturn(mockReadModifyWriteRowCallable);
+    Mockito.when(mockStub.newMutateRowsBatcher(Mockito.any(String.class)))
+        .thenReturn(mockBulkMutationbatcher);
   }
 
   @Test
@@ -97,7 +91,7 @@ public class BigtableDataClientTest {
 
   @Test
   public void proxyReadRowsCallableTest() {
-    assertThat(bigtableDataClient.readRowsCallable()).isSameAs(mockReadRowsCallable);
+    assertThat(bigtableDataClient.readRowsCallable()).isSameInstanceAs(mockReadRowsCallable);
   }
 
   @Test
@@ -229,7 +223,8 @@ public class BigtableDataClientTest {
 
   @Test
   public void proxySampleRowKeysCallableTest() {
-    assertThat(bigtableDataClient.sampleRowKeysCallable()).isSameAs(mockSampleRowKeysCallable);
+    assertThat(bigtableDataClient.sampleRowKeysCallable())
+        .isSameInstanceAs(mockSampleRowKeysCallable);
   }
 
   @Test
@@ -248,7 +243,7 @@ public class BigtableDataClientTest {
 
   @Test
   public void proxyMutateRowCallableTest() {
-    assertThat(bigtableDataClient.mutateRowCallable()).isSameAs(mockMutateRowCallable);
+    assertThat(bigtableDataClient.mutateRowCallable()).isSameInstanceAs(mockMutateRowCallable);
   }
 
   @Test
@@ -314,97 +309,24 @@ public class BigtableDataClientTest {
   }
 
   @Test
-  public void proxyBulkMutationsBatchingSendTest() {
-    BulkMutationBatcher batcher = bigtableDataClient.newBulkMutationBatcher();
+  public void proxyNewBulkMutationBatcherTest() {
+    ApiFuture<Void> expectedResponse = ApiFutures.immediateFuture(null);
+    Batcher<RowMutationEntry, Void> batcher =
+        bigtableDataClient.newBulkMutationBatcher("fake-table");
+    RowMutationEntry request =
+        RowMutationEntry.create("some-key").setCell("some-family", "fake-qualifier", "fake-value");
+    Mockito.when(mockBulkMutationbatcher.add(request)).thenReturn(expectedResponse);
 
-    RowMutation request =
-        RowMutation.create("fake-table", "some-key")
-            .setCell("some-family", "fake-qualifier", "fake-value");
+    ApiFuture<Void> actualRes = batcher.add(request);
+    assertThat(actualRes).isSameInstanceAs(expectedResponse);
 
-    SettableApiFuture<Void> innerResult = SettableApiFuture.create();
-    Mockito.when(mockBulkMutateRowsBatchingCallable.futureCall(request)).thenReturn(innerResult);
-
-    ApiFuture<Void> actualResult = batcher.add(request);
-    assertThat(actualResult).isSameAs(innerResult);
-  }
-
-  @Test
-  public void bulkMutationsBatchingCloseTest() throws Exception {
-    BulkMutationBatcher batcher = bigtableDataClient.newBulkMutationBatcher();
-
-    RowMutation request =
-        RowMutation.create("fake-table", "some-key")
-            .setCell("some-family", "fake-qualifier", "fake-value");
-
-    SettableApiFuture<Void> innerResult = SettableApiFuture.create();
-    Mockito.when(mockBulkMutateRowsBatchingCallable.futureCall(request)).thenReturn(innerResult);
-
-    batcher.add(request);
-
-    // Close will timeout while the request is outstanding.
-    Throwable error = null;
-    try {
-      batcher.close(Duration.ofMillis(20));
-    } catch (Throwable t) {
-      error = t;
-    }
-    assertThat(error).isInstanceOf(TimeoutException.class);
-
-    // Resolve the request
-    innerResult.set(null);
-
-    // Now, close will promptly finish
-    batcher.close(Duration.ofMillis(20));
-  }
-
-  @Test
-  public void bulkMutationsBatchingNoSendAfterCloseTest()
-      throws InterruptedException, TimeoutException {
-    BulkMutationBatcher batcher = bigtableDataClient.newBulkMutationBatcher();
-
-    batcher.close();
-
-    RowMutation request =
-        RowMutation.create("fake-table", "some-key")
-            .setCell("some-family", "fake-qualifier", "fake-value");
-
-    Throwable error = null;
-    try {
-      batcher.add(request);
-    } catch (Throwable t) {
-      error = t;
-    }
-    assertThat(error).isInstanceOf(IllegalStateException.class);
-  }
-
-  @Test
-  public void bulkMutationsBatchingFailureTest() throws Exception {
-    BulkMutationBatcher batcher = bigtableDataClient.newBulkMutationBatcher();
-    RowMutation request =
-        RowMutation.create("fake-table", "some-key")
-            .setCell("some-family", "fake-qualifier", "fake-value");
-
-    SettableApiFuture<Void> innerResult = SettableApiFuture.create();
-    Mockito.when(mockBulkMutateRowsBatchingCallable.futureCall(request)).thenReturn(innerResult);
-
-    ApiException innerError = new ApiException(null, GrpcStatusCode.of(Code.INTERNAL), false);
-
-    batcher.add(request);
-    innerResult.setException(innerError);
-
-    Throwable outerError = null;
-    try {
-      batcher.close(Duration.ofMillis(10));
-    } catch (Throwable t) {
-      outerError = t;
-    }
-    assertThat(outerError).isInstanceOf(BulkMutationFailure.class);
+    Mockito.verify(mockStub).newMutateRowsBatcher(Mockito.any(String.class));
   }
 
   @Test
   public void proxyCheckAndMutateRowCallableTest() {
     assertThat(bigtableDataClient.checkAndMutateRowCallable())
-        .isSameAs(mockStub.checkAndMutateRowCallable());
+        .isSameInstanceAs(mockStub.checkAndMutateRowCallable());
   }
 
   @Test
@@ -455,6 +377,6 @@ public class BigtableDataClientTest {
   @Test
   public void proxyReadModifyWriterRowCallableTest() {
     assertThat(bigtableDataClient.readModifyWriteRowCallable())
-        .isSameAs(mockReadModifyWriteRowCallable);
+        .isSameInstanceAs(mockReadModifyWriteRowCallable);
   }
 }

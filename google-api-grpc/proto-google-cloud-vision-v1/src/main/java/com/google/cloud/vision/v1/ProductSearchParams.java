@@ -180,13 +180,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-   * be searched for similar images.
+   * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
    * Format is:
    * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
    * </pre>
    *
-   * <code>string product_set = 6;</code>
+   * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
    */
   public java.lang.String getProductSet() {
     java.lang.Object ref = productSet_;
@@ -203,13 +202,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    *
    * <pre>
-   * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-   * be searched for similar images.
+   * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
    * Format is:
    * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
    * </pre>
    *
-   * <code>string product_set = 6;</code>
+   * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
    */
   public com.google.protobuf.ByteString getProductSetBytes() {
     java.lang.Object ref = productSet_;
@@ -230,8 +228,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The list of product categories to search in. Currently, we only consider
-   * the first category, and either "homegoods", "apparel", or "toys" should be
-   * specified.
+   * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+   * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+   * categories "homegoods", "apparel", and "toys" are still supported but will
+   * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+   * or "toys-v2" for better product search accuracy. It is recommended to
+   * migrate existing products to these categories as well.
    * </pre>
    *
    * <code>repeated string product_categories = 7;</code>
@@ -244,8 +246,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The list of product categories to search in. Currently, we only consider
-   * the first category, and either "homegoods", "apparel", or "toys" should be
-   * specified.
+   * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+   * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+   * categories "homegoods", "apparel", and "toys" are still supported but will
+   * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+   * or "toys-v2" for better product search accuracy. It is recommended to
+   * migrate existing products to these categories as well.
    * </pre>
    *
    * <code>repeated string product_categories = 7;</code>
@@ -258,8 +264,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The list of product categories to search in. Currently, we only consider
-   * the first category, and either "homegoods", "apparel", or "toys" should be
-   * specified.
+   * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+   * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+   * categories "homegoods", "apparel", and "toys" are still supported but will
+   * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+   * or "toys-v2" for better product search accuracy. It is recommended to
+   * migrate existing products to these categories as well.
    * </pre>
    *
    * <code>repeated string product_categories = 7;</code>
@@ -272,8 +282,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
    *
    * <pre>
    * The list of product categories to search in. Currently, we only consider
-   * the first category, and either "homegoods", "apparel", or "toys" should be
-   * specified.
+   * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+   * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+   * categories "homegoods", "apparel", and "toys" are still supported but will
+   * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+   * or "toys-v2" for better product search accuracy. It is recommended to
+   * migrate existing products to these categories as well.
    * </pre>
    *
    * <code>repeated string product_categories = 7;</code>
@@ -931,13 +945,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-     * be searched for similar images.
+     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
      * Format is:
      * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
      * </pre>
      *
-     * <code>string product_set = 6;</code>
+     * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
      */
     public java.lang.String getProductSet() {
       java.lang.Object ref = productSet_;
@@ -954,13 +967,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-     * be searched for similar images.
+     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
      * Format is:
      * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
      * </pre>
      *
-     * <code>string product_set = 6;</code>
+     * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
      */
     public com.google.protobuf.ByteString getProductSetBytes() {
       java.lang.Object ref = productSet_;
@@ -977,13 +989,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-     * be searched for similar images.
+     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
      * Format is:
      * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
      * </pre>
      *
-     * <code>string product_set = 6;</code>
+     * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
      */
     public Builder setProductSet(java.lang.String value) {
       if (value == null) {
@@ -998,13 +1009,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-     * be searched for similar images.
+     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
      * Format is:
      * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
      * </pre>
      *
-     * <code>string product_set = 6;</code>
+     * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
      */
     public Builder clearProductSet() {
 
@@ -1016,13 +1026,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      *
      * <pre>
-     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to
-     * be searched for similar images.
+     * The resource name of a [ProductSet][google.cloud.vision.v1.ProductSet] to be searched for similar images.
      * Format is:
      * `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`.
      * </pre>
      *
-     * <code>string product_set = 6;</code>
+     * <code>string product_set = 6 [(.google.api.resource_reference) = { ... }</code>
      */
     public Builder setProductSetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1049,8 +1058,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1063,8 +1076,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1077,8 +1094,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1091,8 +1112,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1105,8 +1130,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1125,8 +1154,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1145,8 +1178,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1162,8 +1199,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>
@@ -1179,8 +1220,12 @@ public final class ProductSearchParams extends com.google.protobuf.GeneratedMess
      *
      * <pre>
      * The list of product categories to search in. Currently, we only consider
-     * the first category, and either "homegoods", "apparel", or "toys" should be
-     * specified.
+     * the first category, and either "homegoods-v2", "apparel-v2", "toys-v2",
+     * "packagedgoods-v1", or "general-v1" should be specified. The legacy
+     * categories "homegoods", "apparel", and "toys" are still supported but will
+     * be deprecated. For new products, please use "homegoods-v2", "apparel-v2",
+     * or "toys-v2" for better product search accuracy. It is recommended to
+     * migrate existing products to these categories as well.
      * </pre>
      *
      * <code>repeated string product_categories = 7;</code>

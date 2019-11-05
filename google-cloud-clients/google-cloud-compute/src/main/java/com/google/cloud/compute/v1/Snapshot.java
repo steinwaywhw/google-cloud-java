@@ -27,10 +27,14 @@ import javax.annotation.Nullable;
 @Generated("by GAPIC")
 @BetaApi
 /**
- * A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (== resource_for
+ * Represents a Persistent Disk Snapshot resource.
+ *
+ * <p>You can use snapshots to back up data on a regular interval. For more information, read
+ * Creating persistent disk snapshots. (== resource_for beta.snapshots ==) (== resource_for
  * v1.snapshots ==)
  */
 public final class Snapshot implements ApiMessage {
+  private final Boolean autoCreated;
   private final String creationTimestamp;
   private final String description;
   private final String diskSizeGb;
@@ -52,6 +56,7 @@ public final class Snapshot implements ApiMessage {
   private final List<String> storageLocations;
 
   private Snapshot() {
+    this.autoCreated = null;
     this.creationTimestamp = null;
     this.description = null;
     this.diskSizeGb = null;
@@ -74,6 +79,7 @@ public final class Snapshot implements ApiMessage {
   }
 
   private Snapshot(
+      Boolean autoCreated,
       String creationTimestamp,
       String description,
       String diskSizeGb,
@@ -93,6 +99,7 @@ public final class Snapshot implements ApiMessage {
       String storageBytes,
       String storageBytesStatus,
       List<String> storageLocations) {
+    this.autoCreated = autoCreated;
     this.creationTimestamp = creationTimestamp;
     this.description = description;
     this.diskSizeGb = diskSizeGb;
@@ -116,6 +123,9 @@ public final class Snapshot implements ApiMessage {
 
   @Override
   public Object getFieldValue(String fieldName) {
+    if ("autoCreated".equals(fieldName)) {
+      return autoCreated;
+    }
     if ("creationTimestamp".equals(fieldName)) {
       return creationTimestamp;
     }
@@ -192,6 +202,14 @@ public final class Snapshot implements ApiMessage {
    */
   public List<String> getFieldMask() {
     return null;
+  }
+
+  /**
+   * [Output Only] Set to true if snapshots are automatically by applying resource policy on the
+   * target disk.
+   */
+  public Boolean getAutoCreated() {
+    return autoCreated;
   }
 
   /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -279,10 +297,10 @@ public final class Snapshot implements ApiMessage {
    * Encrypts the snapshot using a customer-supplied encryption key.
    *
    * <p>After you encrypt a snapshot using a customer-supplied key, you must provide the same key if
-   * you use the image later For example, you must provide the encryption key when you create a disk
-   * from the encrypted snapshot in a future request.
+   * you use the snapshot later. For example, you must provide the encryption key when you create a
+   * disk from the encrypted snapshot in a future request.
    *
-   * <p>Customer-supplied encryption keys do not protect access to metadata of the disk.
+   * <p>Customer-supplied encryption keys do not protect access to metadata of the snapshot.
    *
    * <p>If you do not provide an encryption key when creating the snapshot, then the snapshot will
    * be encrypted using an automatically generated key and you do not need to provide a key to use
@@ -340,7 +358,7 @@ public final class Snapshot implements ApiMessage {
     return storageBytesStatus;
   }
 
-  /** GCS bucket storage location of the snapshot (regional or multi-regional). */
+  /** Cloud Storage bucket storage location of the snapshot (regional or multi-regional). */
   public List<String> getStorageLocationsList() {
     return storageLocations;
   }
@@ -368,6 +386,7 @@ public final class Snapshot implements ApiMessage {
   }
 
   public static class Builder {
+    private Boolean autoCreated;
     private String creationTimestamp;
     private String description;
     private String diskSizeGb;
@@ -392,6 +411,9 @@ public final class Snapshot implements ApiMessage {
 
     public Builder mergeFrom(Snapshot other) {
       if (other == Snapshot.getDefaultInstance()) return this;
+      if (other.getAutoCreated() != null) {
+        this.autoCreated = other.autoCreated;
+      }
       if (other.getCreationTimestamp() != null) {
         this.creationTimestamp = other.creationTimestamp;
       }
@@ -453,6 +475,7 @@ public final class Snapshot implements ApiMessage {
     }
 
     Builder(Snapshot source) {
+      this.autoCreated = source.autoCreated;
       this.creationTimestamp = source.creationTimestamp;
       this.description = source.description;
       this.diskSizeGb = source.diskSizeGb;
@@ -472,6 +495,23 @@ public final class Snapshot implements ApiMessage {
       this.storageBytes = source.storageBytes;
       this.storageBytesStatus = source.storageBytesStatus;
       this.storageLocations = source.storageLocations;
+    }
+
+    /**
+     * [Output Only] Set to true if snapshots are automatically by applying resource policy on the
+     * target disk.
+     */
+    public Boolean getAutoCreated() {
+      return autoCreated;
+    }
+
+    /**
+     * [Output Only] Set to true if snapshots are automatically by applying resource policy on the
+     * target disk.
+     */
+    public Builder setAutoCreated(Boolean autoCreated) {
+      this.autoCreated = autoCreated;
+      return this;
     }
 
     /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -682,10 +722,10 @@ public final class Snapshot implements ApiMessage {
      * Encrypts the snapshot using a customer-supplied encryption key.
      *
      * <p>After you encrypt a snapshot using a customer-supplied key, you must provide the same key
-     * if you use the image later For example, you must provide the encryption key when you create a
-     * disk from the encrypted snapshot in a future request.
+     * if you use the snapshot later. For example, you must provide the encryption key when you
+     * create a disk from the encrypted snapshot in a future request.
      *
-     * <p>Customer-supplied encryption keys do not protect access to metadata of the disk.
+     * <p>Customer-supplied encryption keys do not protect access to metadata of the snapshot.
      *
      * <p>If you do not provide an encryption key when creating the snapshot, then the snapshot will
      * be encrypted using an automatically generated key and you do not need to provide a key to use
@@ -699,10 +739,10 @@ public final class Snapshot implements ApiMessage {
      * Encrypts the snapshot using a customer-supplied encryption key.
      *
      * <p>After you encrypt a snapshot using a customer-supplied key, you must provide the same key
-     * if you use the image later For example, you must provide the encryption key when you create a
-     * disk from the encrypted snapshot in a future request.
+     * if you use the snapshot later. For example, you must provide the encryption key when you
+     * create a disk from the encrypted snapshot in a future request.
      *
-     * <p>Customer-supplied encryption keys do not protect access to metadata of the disk.
+     * <p>Customer-supplied encryption keys do not protect access to metadata of the snapshot.
      *
      * <p>If you do not provide an encryption key when creating the snapshot, then the snapshot will
      * be encrypted using an automatically generated key and you do not need to provide a key to use
@@ -815,12 +855,12 @@ public final class Snapshot implements ApiMessage {
       return this;
     }
 
-    /** GCS bucket storage location of the snapshot (regional or multi-regional). */
+    /** Cloud Storage bucket storage location of the snapshot (regional or multi-regional). */
     public List<String> getStorageLocationsList() {
       return storageLocations;
     }
 
-    /** GCS bucket storage location of the snapshot (regional or multi-regional). */
+    /** Cloud Storage bucket storage location of the snapshot (regional or multi-regional). */
     public Builder addAllStorageLocations(List<String> storageLocations) {
       if (this.storageLocations == null) {
         this.storageLocations = new LinkedList<>();
@@ -829,7 +869,7 @@ public final class Snapshot implements ApiMessage {
       return this;
     }
 
-    /** GCS bucket storage location of the snapshot (regional or multi-regional). */
+    /** Cloud Storage bucket storage location of the snapshot (regional or multi-regional). */
     public Builder addStorageLocations(String storageLocations) {
       if (this.storageLocations == null) {
         this.storageLocations = new LinkedList<>();
@@ -841,6 +881,7 @@ public final class Snapshot implements ApiMessage {
     public Snapshot build() {
 
       return new Snapshot(
+          autoCreated,
           creationTimestamp,
           description,
           diskSizeGb,
@@ -864,6 +905,7 @@ public final class Snapshot implements ApiMessage {
 
     public Builder clone() {
       Builder newBuilder = new Builder();
+      newBuilder.setAutoCreated(this.autoCreated);
       newBuilder.setCreationTimestamp(this.creationTimestamp);
       newBuilder.setDescription(this.description);
       newBuilder.setDiskSizeGb(this.diskSizeGb);
@@ -890,6 +932,9 @@ public final class Snapshot implements ApiMessage {
   @Override
   public String toString() {
     return "Snapshot{"
+        + "autoCreated="
+        + autoCreated
+        + ", "
         + "creationTimestamp="
         + creationTimestamp
         + ", "
@@ -956,7 +1001,8 @@ public final class Snapshot implements ApiMessage {
     }
     if (o instanceof Snapshot) {
       Snapshot that = (Snapshot) o;
-      return Objects.equals(this.creationTimestamp, that.getCreationTimestamp())
+      return Objects.equals(this.autoCreated, that.getAutoCreated())
+          && Objects.equals(this.creationTimestamp, that.getCreationTimestamp())
           && Objects.equals(this.description, that.getDescription())
           && Objects.equals(this.diskSizeGb, that.getDiskSizeGb())
           && Objects.equals(this.id, that.getId())
@@ -982,6 +1028,7 @@ public final class Snapshot implements ApiMessage {
   @Override
   public int hashCode() {
     return Objects.hash(
+        autoCreated,
         creationTimestamp,
         description,
         diskSizeGb,

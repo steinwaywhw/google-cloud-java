@@ -12,7 +12,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -23,7 +22,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The usage of the address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -35,7 +33,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Unstructured address.
    * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
    * "Sunnyvale, California".
@@ -49,7 +46,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Unstructured address.
    * For example, "1600 Amphitheatre Pkwy, Mountain View, CA 94043",
    * "Sunnyvale, California".
@@ -64,7 +60,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -76,7 +71,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -88,7 +82,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Structured address that contains street address, city, state, country,
    * and so on.
    * </pre>
@@ -101,7 +94,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *
@@ -112,7 +104,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *
@@ -123,7 +114,6 @@ public interface AddressOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Indicates if it's the person's current address.
    * </pre>
    *

@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Output only.
  * Spell check result.
  * </pre>
  *
@@ -397,7 +396,6 @@ public final class SpellingCorrection extends com.google.protobuf.GeneratedMessa
    *
    *
    * <pre>
-   * Output only.
    * Spell check result.
    * </pre>
    *

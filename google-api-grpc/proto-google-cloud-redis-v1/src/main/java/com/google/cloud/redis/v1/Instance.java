@@ -35,6 +35,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
     statusMessage_ = "";
     tier_ = 0;
     authorizedNetwork_ = "";
+    persistenceIamIdentity_ = "";
   }
 
   @java.lang.Override
@@ -198,6 +199,13 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
               authorizedNetwork_ = s;
               break;
             }
+          case 170:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              persistenceIamIdentity_ = s;
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -331,6 +339,16 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * Redis instance is importing data (availability may be affected).
+     * </pre>
+     *
+     * <code>IMPORTING = 8;</code>
+     */
+    IMPORTING(8),
+    /**
+     *
+     *
+     * <pre>
      * Redis instance is failing over (availability may be affected).
      * </pre>
      *
@@ -416,6 +434,16 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
+     * Redis instance is importing data (availability may be affected).
+     * </pre>
+     *
+     * <code>IMPORTING = 8;</code>
+     */
+    public static final int IMPORTING_VALUE = 8;
+    /**
+     *
+     *
+     * <pre>
      * Redis instance is failing over (availability may be affected).
      * </pre>
      *
@@ -453,6 +481,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
           return REPAIRING;
         case 6:
           return MAINTENANCE;
+        case 8:
+          return IMPORTING;
         case 9:
           return FAILING_OVER;
         default:
@@ -666,7 +696,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * [alternative_location_id] fields for more details.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -693,7 +723,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * [alternative_location_id] fields for more details.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -856,7 +886,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * different from [location_id].
    * </pre>
    *
-   * <code>string location_id = 4;</code>
+   * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getLocationId() {
     java.lang.Object ref = locationId_;
@@ -880,7 +910,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * different from [location_id].
    * </pre>
    *
-   * <code>string location_id = 4;</code>
+   * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getLocationIdBytes() {
     java.lang.Object ref = locationId_;
@@ -905,7 +935,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * must be a different zone from the one provided in [location_id].
    * </pre>
    *
-   * <code>string alternative_location_id = 5;</code>
+   * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getAlternativeLocationId() {
     java.lang.Object ref = alternativeLocationId_;
@@ -927,7 +957,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * must be a different zone from the one provided in [location_id].
    * </pre>
    *
-   * <code>string alternative_location_id = 5;</code>
+   * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getAlternativeLocationIdBytes() {
     java.lang.Object ref = alternativeLocationId_;
@@ -950,10 +980,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. The version of Redis software.
    * If not provided, latest supported version will be used. Updating the
    * version will perform an upgrade/downgrade to the new version. Currently,
-   * the supported values are `REDIS_3_2` for Redis 3.2.
+   * the supported values are:
+   *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+   *  *   `REDIS_3_2` for Redis 3.2 compatibility
    * </pre>
    *
-   * <code>string redis_version = 7;</code>
+   * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getRedisVersion() {
     java.lang.Object ref = redisVersion_;
@@ -973,10 +1005,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. The version of Redis software.
    * If not provided, latest supported version will be used. Updating the
    * version will perform an upgrade/downgrade to the new version. Currently,
-   * the supported values are `REDIS_3_2` for Redis 3.2.
+   * the supported values are:
+   *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+   *  *   `REDIS_3_2` for Redis 3.2 compatibility
    * </pre>
    *
-   * <code>string redis_version = 7;</code>
+   * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getRedisVersionBytes() {
     java.lang.Object ref = redisVersion_;
@@ -1002,7 +1036,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * and non-overlapping with existing subnets in an authorized network.
    * </pre>
    *
-   * <code>string reserved_ip_range = 9;</code>
+   * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getReservedIpRange() {
     java.lang.Object ref = reservedIpRange_;
@@ -1025,7 +1059,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * and non-overlapping with existing subnets in an authorized network.
    * </pre>
    *
-   * <code>string reserved_ip_range = 9;</code>
+   * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getReservedIpRangeBytes() {
     java.lang.Object ref = reservedIpRange_;
@@ -1049,7 +1083,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * clients to connect to the service.
    * </pre>
    *
-   * <code>string host = 10;</code>
+   * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getHost() {
     java.lang.Object ref = host_;
@@ -1070,7 +1104,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * clients to connect to the service.
    * </pre>
    *
-   * <code>string host = 10;</code>
+   * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getHostBytes() {
     java.lang.Object ref = host_;
@@ -1093,7 +1127,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The port number of the exposed Redis endpoint.
    * </pre>
    *
-   * <code>int32 port = 11;</code>
+   * <code>int32 port = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public int getPort() {
     return port_;
@@ -1112,7 +1146,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * change after a failover event.
    * </pre>
    *
-   * <code>string current_location_id = 12;</code>
+   * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getCurrentLocationId() {
     java.lang.Object ref = currentLocationId_;
@@ -1136,7 +1170,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * change after a failover event.
    * </pre>
    *
-   * <code>string current_location_id = 12;</code>
+   * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getCurrentLocationIdBytes() {
     java.lang.Object ref = currentLocationId_;
@@ -1159,7 +1193,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The time the instance was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 13;</code>
+   * <code>.google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public boolean hasCreateTime() {
     return createTime_ != null;
@@ -1171,7 +1206,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The time the instance was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 13;</code>
+   * <code>.google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.Timestamp getCreateTime() {
     return createTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createTime_;
@@ -1183,7 +1219,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The time the instance was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 13;</code>
+   * <code>.google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.TimestampOrBuilder getCreateTimeOrBuilder() {
     return getCreateTime();
@@ -1198,7 +1235,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The current state of this instance.
    * </pre>
    *
-   * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+   * <code>
+   * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public int getStateValue() {
     return state_;
@@ -1210,7 +1249,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Output only. The current state of this instance.
    * </pre>
    *
-   * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+   * <code>
+   * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.cloud.redis.v1.Instance.State getState() {
     @SuppressWarnings("deprecation")
@@ -1229,7 +1270,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * instance, if available.
    * </pre>
    *
-   * <code>string status_message = 15;</code>
+   * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getStatusMessage() {
     java.lang.Object ref = statusMessage_;
@@ -1250,7 +1291,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * instance, if available.
    * </pre>
    *
-   * <code>string status_message = 15;</code>
+   * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getStatusMessageBytes() {
     java.lang.Object ref = statusMessage_;
@@ -1298,11 +1339,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. Redis configuration parameters, according to
    * http://redis.io/topics/config. Currently, the only supported parameters
    * are:
+   *  Redis 3.2 and above:
    *  *   maxmemory-policy
    *  *   notify-keyspace-events
+   *  Redis 4.0 and above:
+   *  *   activedefrag
+   *  *   lfu-log-factor
+   *  *   lfu-decay-time
    * </pre>
    *
-   * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+   * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean containsRedisConfigs(java.lang.String key) {
     if (key == null) {
@@ -1322,11 +1369,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. Redis configuration parameters, according to
    * http://redis.io/topics/config. Currently, the only supported parameters
    * are:
+   *  Redis 3.2 and above:
    *  *   maxmemory-policy
    *  *   notify-keyspace-events
+   *  Redis 4.0 and above:
+   *  *   activedefrag
+   *  *   lfu-log-factor
+   *  *   lfu-decay-time
    * </pre>
    *
-   * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+   * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.util.Map<java.lang.String, java.lang.String> getRedisConfigsMap() {
     return internalGetRedisConfigs().getMap();
@@ -1338,11 +1391,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. Redis configuration parameters, according to
    * http://redis.io/topics/config. Currently, the only supported parameters
    * are:
+   *  Redis 3.2 and above:
    *  *   maxmemory-policy
    *  *   notify-keyspace-events
+   *  Redis 4.0 and above:
+   *  *   activedefrag
+   *  *   lfu-log-factor
+   *  *   lfu-decay-time
    * </pre>
    *
-   * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+   * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.lang.String getRedisConfigsOrDefault(
       java.lang.String key, java.lang.String defaultValue) {
@@ -1359,11 +1418,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Optional. Redis configuration parameters, according to
    * http://redis.io/topics/config. Currently, the only supported parameters
    * are:
+   *  Redis 3.2 and above:
    *  *   maxmemory-policy
    *  *   notify-keyspace-events
+   *  Redis 4.0 and above:
+   *  *   activedefrag
+   *  *   lfu-log-factor
+   *  *   lfu-decay-time
    * </pre>
    *
-   * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+   * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.lang.String getRedisConfigsOrThrow(java.lang.String key) {
     if (key == null) {
@@ -1385,7 +1450,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Required. The service tier of the instance.
    * </pre>
    *
-   * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+   * <code>.google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public int getTierValue() {
     return tier_;
@@ -1397,7 +1463,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Required. The service tier of the instance.
    * </pre>
    *
-   * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+   * <code>.google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.redis.v1.Instance.Tier getTier() {
     @SuppressWarnings("deprecation")
@@ -1415,7 +1482,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * Required. Redis memory size in GiB.
    * </pre>
    *
-   * <code>int32 memory_size_gb = 18;</code>
+   * <code>int32 memory_size_gb = 18 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public int getMemorySizeGb() {
     return memorySizeGb_;
@@ -1433,7 +1500,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * will be used.
    * </pre>
    *
-   * <code>string authorized_network = 20;</code>
+   * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getAuthorizedNetwork() {
     java.lang.Object ref = authorizedNetwork_;
@@ -1456,7 +1523,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
    * will be used.
    * </pre>
    *
-   * <code>string authorized_network = 20;</code>
+   * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getAuthorizedNetworkBytes() {
     java.lang.Object ref = authorizedNetwork_;
@@ -1464,6 +1531,57 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
       authorizedNetwork_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int PERSISTENCE_IAM_IDENTITY_FIELD_NUMBER = 21;
+  private volatile java.lang.Object persistenceIamIdentity_;
+  /**
+   *
+   *
+   * <pre>
+   * Output only. Cloud IAM identity used by import / export operations to
+   * transfer data to/from Cloud Storage. Format is
+   * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+   * for a given instance so should be checked before each import/export
+   * operation.
+   * </pre>
+   *
+   * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   */
+  public java.lang.String getPersistenceIamIdentity() {
+    java.lang.Object ref = persistenceIamIdentity_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      persistenceIamIdentity_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Output only. Cloud IAM identity used by import / export operations to
+   * transfer data to/from Cloud Storage. Format is
+   * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+   * for a given instance so should be checked before each import/export
+   * operation.
+   * </pre>
+   *
+   * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
+   */
+  public com.google.protobuf.ByteString getPersistenceIamIdentityBytes() {
+    java.lang.Object ref = persistenceIamIdentity_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      persistenceIamIdentity_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -1532,6 +1650,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
     }
     if (!getAuthorizedNetworkBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 20, authorizedNetwork_);
+    }
+    if (!getPersistenceIamIdentityBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 21, persistenceIamIdentity_);
     }
     unknownFields.writeTo(output);
   }
@@ -1607,6 +1728,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
     if (!getAuthorizedNetworkBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(20, authorizedNetwork_);
     }
+    if (!getPersistenceIamIdentityBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(21, persistenceIamIdentity_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1642,6 +1766,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
     if (tier_ != other.tier_) return false;
     if (getMemorySizeGb() != other.getMemorySizeGb()) return false;
     if (!getAuthorizedNetwork().equals(other.getAuthorizedNetwork())) return false;
+    if (!getPersistenceIamIdentity().equals(other.getPersistenceIamIdentity())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1693,6 +1818,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + getMemorySizeGb();
     hash = (37 * hash) + AUTHORIZED_NETWORK_FIELD_NUMBER;
     hash = (53 * hash) + getAuthorizedNetwork().hashCode();
+    hash = (37 * hash) + PERSISTENCE_IAM_IDENTITY_FIELD_NUMBER;
+    hash = (53 * hash) + getPersistenceIamIdentity().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1897,6 +2024,8 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
 
       authorizedNetwork_ = "";
 
+      persistenceIamIdentity_ = "";
+
       return this;
     }
 
@@ -1948,6 +2077,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
       result.tier_ = tier_;
       result.memorySizeGb_ = memorySizeGb_;
       result.authorizedNetwork_ = authorizedNetwork_;
+      result.persistenceIamIdentity_ = persistenceIamIdentity_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -2055,6 +2185,10 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
         authorizedNetwork_ = other.authorizedNetwork_;
         onChanged();
       }
+      if (!other.getPersistenceIamIdentity().isEmpty()) {
+        persistenceIamIdentity_ = other.persistenceIamIdentity_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -2101,7 +2235,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * [alternative_location_id] fields for more details.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -2128,7 +2262,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * [alternative_location_id] fields for more details.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -2155,7 +2289,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * [alternative_location_id] fields for more details.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -2180,7 +2314,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * [alternative_location_id] fields for more details.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearName() {
 
@@ -2202,7 +2336,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * [alternative_location_id] fields for more details.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2473,7 +2607,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * different from [location_id].
      * </pre>
      *
-     * <code>string location_id = 4;</code>
+     * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getLocationId() {
       java.lang.Object ref = locationId_;
@@ -2497,7 +2631,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * different from [location_id].
      * </pre>
      *
-     * <code>string location_id = 4;</code>
+     * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getLocationIdBytes() {
       java.lang.Object ref = locationId_;
@@ -2521,7 +2655,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * different from [location_id].
      * </pre>
      *
-     * <code>string location_id = 4;</code>
+     * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLocationId(java.lang.String value) {
       if (value == null) {
@@ -2543,7 +2677,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * different from [location_id].
      * </pre>
      *
-     * <code>string location_id = 4;</code>
+     * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearLocationId() {
 
@@ -2562,7 +2696,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * different from [location_id].
      * </pre>
      *
-     * <code>string location_id = 4;</code>
+     * <code>string location_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLocationIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2585,7 +2719,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * must be a different zone from the one provided in [location_id].
      * </pre>
      *
-     * <code>string alternative_location_id = 5;</code>
+     * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getAlternativeLocationId() {
       java.lang.Object ref = alternativeLocationId_;
@@ -2607,7 +2741,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * must be a different zone from the one provided in [location_id].
      * </pre>
      *
-     * <code>string alternative_location_id = 5;</code>
+     * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getAlternativeLocationIdBytes() {
       java.lang.Object ref = alternativeLocationId_;
@@ -2629,7 +2763,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * must be a different zone from the one provided in [location_id].
      * </pre>
      *
-     * <code>string alternative_location_id = 5;</code>
+     * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setAlternativeLocationId(java.lang.String value) {
       if (value == null) {
@@ -2649,7 +2783,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * must be a different zone from the one provided in [location_id].
      * </pre>
      *
-     * <code>string alternative_location_id = 5;</code>
+     * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearAlternativeLocationId() {
 
@@ -2666,7 +2800,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * must be a different zone from the one provided in [location_id].
      * </pre>
      *
-     * <code>string alternative_location_id = 5;</code>
+     * <code>string alternative_location_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setAlternativeLocationIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2687,10 +2821,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. The version of Redis software.
      * If not provided, latest supported version will be used. Updating the
      * version will perform an upgrade/downgrade to the new version. Currently,
-     * the supported values are `REDIS_3_2` for Redis 3.2.
+     * the supported values are:
+     *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+     *  *   `REDIS_3_2` for Redis 3.2 compatibility
      * </pre>
      *
-     * <code>string redis_version = 7;</code>
+     * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getRedisVersion() {
       java.lang.Object ref = redisVersion_;
@@ -2710,10 +2846,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. The version of Redis software.
      * If not provided, latest supported version will be used. Updating the
      * version will perform an upgrade/downgrade to the new version. Currently,
-     * the supported values are `REDIS_3_2` for Redis 3.2.
+     * the supported values are:
+     *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+     *  *   `REDIS_3_2` for Redis 3.2 compatibility
      * </pre>
      *
-     * <code>string redis_version = 7;</code>
+     * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getRedisVersionBytes() {
       java.lang.Object ref = redisVersion_;
@@ -2733,10 +2871,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. The version of Redis software.
      * If not provided, latest supported version will be used. Updating the
      * version will perform an upgrade/downgrade to the new version. Currently,
-     * the supported values are `REDIS_3_2` for Redis 3.2.
+     * the supported values are:
+     *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+     *  *   `REDIS_3_2` for Redis 3.2 compatibility
      * </pre>
      *
-     * <code>string redis_version = 7;</code>
+     * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRedisVersion(java.lang.String value) {
       if (value == null) {
@@ -2754,10 +2894,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. The version of Redis software.
      * If not provided, latest supported version will be used. Updating the
      * version will perform an upgrade/downgrade to the new version. Currently,
-     * the supported values are `REDIS_3_2` for Redis 3.2.
+     * the supported values are:
+     *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+     *  *   `REDIS_3_2` for Redis 3.2 compatibility
      * </pre>
      *
-     * <code>string redis_version = 7;</code>
+     * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearRedisVersion() {
 
@@ -2772,10 +2914,12 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. The version of Redis software.
      * If not provided, latest supported version will be used. Updating the
      * version will perform an upgrade/downgrade to the new version. Currently,
-     * the supported values are `REDIS_3_2` for Redis 3.2.
+     * the supported values are:
+     *  *   `REDIS_4_0` for Redis 4.0 compatibility (default)
+     *  *   `REDIS_3_2` for Redis 3.2 compatibility
      * </pre>
      *
-     * <code>string redis_version = 7;</code>
+     * <code>string redis_version = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRedisVersionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2799,7 +2943,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * and non-overlapping with existing subnets in an authorized network.
      * </pre>
      *
-     * <code>string reserved_ip_range = 9;</code>
+     * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getReservedIpRange() {
       java.lang.Object ref = reservedIpRange_;
@@ -2822,7 +2966,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * and non-overlapping with existing subnets in an authorized network.
      * </pre>
      *
-     * <code>string reserved_ip_range = 9;</code>
+     * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getReservedIpRangeBytes() {
       java.lang.Object ref = reservedIpRange_;
@@ -2845,7 +2989,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * and non-overlapping with existing subnets in an authorized network.
      * </pre>
      *
-     * <code>string reserved_ip_range = 9;</code>
+     * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setReservedIpRange(java.lang.String value) {
       if (value == null) {
@@ -2866,7 +3010,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * and non-overlapping with existing subnets in an authorized network.
      * </pre>
      *
-     * <code>string reserved_ip_range = 9;</code>
+     * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearReservedIpRange() {
 
@@ -2884,7 +3028,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * and non-overlapping with existing subnets in an authorized network.
      * </pre>
      *
-     * <code>string reserved_ip_range = 9;</code>
+     * <code>string reserved_ip_range = 9 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setReservedIpRangeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2906,7 +3050,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * clients to connect to the service.
      * </pre>
      *
-     * <code>string host = 10;</code>
+     * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getHost() {
       java.lang.Object ref = host_;
@@ -2927,7 +3071,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * clients to connect to the service.
      * </pre>
      *
-     * <code>string host = 10;</code>
+     * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getHostBytes() {
       java.lang.Object ref = host_;
@@ -2948,7 +3092,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * clients to connect to the service.
      * </pre>
      *
-     * <code>string host = 10;</code>
+     * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setHost(java.lang.String value) {
       if (value == null) {
@@ -2967,7 +3111,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * clients to connect to the service.
      * </pre>
      *
-     * <code>string host = 10;</code>
+     * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearHost() {
 
@@ -2983,7 +3127,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * clients to connect to the service.
      * </pre>
      *
-     * <code>string host = 10;</code>
+     * <code>string host = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setHostBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3004,7 +3148,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The port number of the exposed Redis endpoint.
      * </pre>
      *
-     * <code>int32 port = 11;</code>
+     * <code>int32 port = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public int getPort() {
       return port_;
@@ -3016,7 +3160,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The port number of the exposed Redis endpoint.
      * </pre>
      *
-     * <code>int32 port = 11;</code>
+     * <code>int32 port = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setPort(int value) {
 
@@ -3031,7 +3175,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The port number of the exposed Redis endpoint.
      * </pre>
      *
-     * <code>int32 port = 11;</code>
+     * <code>int32 port = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearPort() {
 
@@ -3052,7 +3196,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * change after a failover event.
      * </pre>
      *
-     * <code>string current_location_id = 12;</code>
+     * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getCurrentLocationId() {
       java.lang.Object ref = currentLocationId_;
@@ -3076,7 +3220,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * change after a failover event.
      * </pre>
      *
-     * <code>string current_location_id = 12;</code>
+     * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getCurrentLocationIdBytes() {
       java.lang.Object ref = currentLocationId_;
@@ -3100,7 +3244,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * change after a failover event.
      * </pre>
      *
-     * <code>string current_location_id = 12;</code>
+     * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setCurrentLocationId(java.lang.String value) {
       if (value == null) {
@@ -3122,7 +3266,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * change after a failover event.
      * </pre>
      *
-     * <code>string current_location_id = 12;</code>
+     * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearCurrentLocationId() {
 
@@ -3141,7 +3285,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * change after a failover event.
      * </pre>
      *
-     * <code>string current_location_id = 12;</code>
+     * <code>string current_location_id = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setCurrentLocationIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3167,7 +3311,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public boolean hasCreateTime() {
       return createTimeBuilder_ != null || createTime_ != null;
@@ -3179,7 +3325,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp getCreateTime() {
       if (createTimeBuilder_ == null) {
@@ -3197,7 +3345,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setCreateTime(com.google.protobuf.Timestamp value) {
       if (createTimeBuilder_ == null) {
@@ -3219,7 +3369,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setCreateTime(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (createTimeBuilder_ == null) {
@@ -3238,7 +3390,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder mergeCreateTime(com.google.protobuf.Timestamp value) {
       if (createTimeBuilder_ == null) {
@@ -3262,7 +3416,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearCreateTime() {
       if (createTimeBuilder_ == null) {
@@ -3282,7 +3438,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getCreateTimeBuilder() {
 
@@ -3296,7 +3454,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getCreateTimeOrBuilder() {
       if (createTimeBuilder_ != null) {
@@ -3314,7 +3474,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The time the instance was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 13;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Timestamp,
@@ -3341,7 +3503,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The current state of this instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public int getStateValue() {
       return state_;
@@ -3353,7 +3517,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The current state of this instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setStateValue(int value) {
       state_ = value;
@@ -3367,7 +3533,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The current state of this instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.cloud.redis.v1.Instance.State getState() {
       @SuppressWarnings("deprecation")
@@ -3382,7 +3550,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The current state of this instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setState(com.google.cloud.redis.v1.Instance.State value) {
       if (value == null) {
@@ -3400,7 +3570,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Output only. The current state of this instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.State state = 14;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.State state = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearState() {
 
@@ -3418,7 +3590,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * instance, if available.
      * </pre>
      *
-     * <code>string status_message = 15;</code>
+     * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getStatusMessage() {
       java.lang.Object ref = statusMessage_;
@@ -3439,7 +3611,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * instance, if available.
      * </pre>
      *
-     * <code>string status_message = 15;</code>
+     * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getStatusMessageBytes() {
       java.lang.Object ref = statusMessage_;
@@ -3460,7 +3632,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * instance, if available.
      * </pre>
      *
-     * <code>string status_message = 15;</code>
+     * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setStatusMessage(java.lang.String value) {
       if (value == null) {
@@ -3479,7 +3651,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * instance, if available.
      * </pre>
      *
-     * <code>string status_message = 15;</code>
+     * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearStatusMessage() {
 
@@ -3495,7 +3667,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * instance, if available.
      * </pre>
      *
-     * <code>string status_message = 15;</code>
+     * <code>string status_message = 15 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setStatusMessageBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3543,11 +3715,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean containsRedisConfigs(java.lang.String key) {
       if (key == null) {
@@ -3567,11 +3745,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.util.Map<java.lang.String, java.lang.String> getRedisConfigsMap() {
       return internalGetRedisConfigs().getMap();
@@ -3583,11 +3767,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.lang.String getRedisConfigsOrDefault(
         java.lang.String key, java.lang.String defaultValue) {
@@ -3604,11 +3794,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.lang.String getRedisConfigsOrThrow(java.lang.String key) {
       if (key == null) {
@@ -3632,11 +3828,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder removeRedisConfigs(java.lang.String key) {
       if (key == null) {
@@ -3657,11 +3859,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder putRedisConfigs(java.lang.String key, java.lang.String value) {
       if (key == null) {
@@ -3680,11 +3888,17 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Optional. Redis configuration parameters, according to
      * http://redis.io/topics/config. Currently, the only supported parameters
      * are:
+     *  Redis 3.2 and above:
      *  *   maxmemory-policy
      *  *   notify-keyspace-events
+     *  Redis 4.0 and above:
+     *  *   activedefrag
+     *  *   lfu-log-factor
+     *  *   lfu-decay-time
      * </pre>
      *
-     * <code>map&lt;string, string&gt; redis_configs = 16;</code>
+     * <code>map&lt;string, string&gt; redis_configs = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder putAllRedisConfigs(java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableRedisConfigs().getMutableMap().putAll(values);
@@ -3699,7 +3913,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. The service tier of the instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public int getTierValue() {
       return tier_;
@@ -3711,7 +3927,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. The service tier of the instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTierValue(int value) {
       tier_ = value;
@@ -3725,7 +3943,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. The service tier of the instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.redis.v1.Instance.Tier getTier() {
       @SuppressWarnings("deprecation")
@@ -3740,7 +3960,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. The service tier of the instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTier(com.google.cloud.redis.v1.Instance.Tier value) {
       if (value == null) {
@@ -3758,7 +3980,9 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. The service tier of the instance.
      * </pre>
      *
-     * <code>.google.cloud.redis.v1.Instance.Tier tier = 17;</code>
+     * <code>
+     * .google.cloud.redis.v1.Instance.Tier tier = 17 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearTier() {
 
@@ -3775,7 +3999,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. Redis memory size in GiB.
      * </pre>
      *
-     * <code>int32 memory_size_gb = 18;</code>
+     * <code>int32 memory_size_gb = 18 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public int getMemorySizeGb() {
       return memorySizeGb_;
@@ -3787,7 +4011,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. Redis memory size in GiB.
      * </pre>
      *
-     * <code>int32 memory_size_gb = 18;</code>
+     * <code>int32 memory_size_gb = 18 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setMemorySizeGb(int value) {
 
@@ -3802,7 +4026,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * Required. Redis memory size in GiB.
      * </pre>
      *
-     * <code>int32 memory_size_gb = 18;</code>
+     * <code>int32 memory_size_gb = 18 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearMemorySizeGb() {
 
@@ -3822,7 +4046,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * will be used.
      * </pre>
      *
-     * <code>string authorized_network = 20;</code>
+     * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getAuthorizedNetwork() {
       java.lang.Object ref = authorizedNetwork_;
@@ -3845,7 +4069,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * will be used.
      * </pre>
      *
-     * <code>string authorized_network = 20;</code>
+     * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getAuthorizedNetworkBytes() {
       java.lang.Object ref = authorizedNetwork_;
@@ -3868,7 +4092,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * will be used.
      * </pre>
      *
-     * <code>string authorized_network = 20;</code>
+     * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setAuthorizedNetwork(java.lang.String value) {
       if (value == null) {
@@ -3889,7 +4113,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * will be used.
      * </pre>
      *
-     * <code>string authorized_network = 20;</code>
+     * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearAuthorizedNetwork() {
 
@@ -3907,7 +4131,7 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
      * will be used.
      * </pre>
      *
-     * <code>string authorized_network = 20;</code>
+     * <code>string authorized_network = 20 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setAuthorizedNetworkBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3916,6 +4140,125 @@ public final class Instance extends com.google.protobuf.GeneratedMessageV3
       checkByteStringIsUtf8(value);
 
       authorizedNetwork_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object persistenceIamIdentity_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Output only. Cloud IAM identity used by import / export operations to
+     * transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+     * for a given instance so should be checked before each import/export
+     * operation.
+     * </pre>
+     *
+     * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
+     */
+    public java.lang.String getPersistenceIamIdentity() {
+      java.lang.Object ref = persistenceIamIdentity_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        persistenceIamIdentity_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Output only. Cloud IAM identity used by import / export operations to
+     * transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+     * for a given instance so should be checked before each import/export
+     * operation.
+     * </pre>
+     *
+     * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
+     */
+    public com.google.protobuf.ByteString getPersistenceIamIdentityBytes() {
+      java.lang.Object ref = persistenceIamIdentity_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        persistenceIamIdentity_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Output only. Cloud IAM identity used by import / export operations to
+     * transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+     * for a given instance so should be checked before each import/export
+     * operation.
+     * </pre>
+     *
+     * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
+     */
+    public Builder setPersistenceIamIdentity(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      persistenceIamIdentity_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Output only. Cloud IAM identity used by import / export operations to
+     * transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+     * for a given instance so should be checked before each import/export
+     * operation.
+     * </pre>
+     *
+     * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
+     */
+    public Builder clearPersistenceIamIdentity() {
+
+      persistenceIamIdentity_ = getDefaultInstance().getPersistenceIamIdentity();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Output only. Cloud IAM identity used by import / export operations to
+     * transfer data to/from Cloud Storage. Format is
+     * "serviceAccount:&lt;service_account_email&gt;". The value may change over time
+     * for a given instance so should be checked before each import/export
+     * operation.
+     * </pre>
+     *
+     * <code>string persistence_iam_identity = 21 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
+     */
+    public Builder setPersistenceIamIdentityBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      persistenceIamIdentity_ = value;
       onChanged();
       return this;
     }

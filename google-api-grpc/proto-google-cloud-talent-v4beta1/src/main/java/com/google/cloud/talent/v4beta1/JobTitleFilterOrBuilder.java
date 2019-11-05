@@ -12,22 +12,22 @@ public interface JobTitleFilterOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The job title, for example, "Software engineer", or "Product manager".
+   * Required. The job title. For example, "Software engineer", or "Product
+   * manager".
    * </pre>
    *
-   * <code>string job_title = 1;</code>
+   * <code>string job_title = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getJobTitle();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The job title, for example, "Software engineer", or "Product manager".
+   * Required. The job title. For example, "Software engineer", or "Product
+   * manager".
    * </pre>
    *
-   * <code>string job_title = 1;</code>
+   * <code>string job_title = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getJobTitleBytes();
 
@@ -35,7 +35,6 @@ public interface JobTitleFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Whether to apply negation to the filter so profiles matching the filter
    * are excluded.
    * </pre>

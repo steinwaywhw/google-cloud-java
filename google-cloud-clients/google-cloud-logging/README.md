@@ -13,31 +13,29 @@ Java idiomatic client for [Stackdriver Logging][stackdriver-logging].
 Quickstart
 ----------
 
-[//]: # ({x-version-update-start:google-cloud-logging:released})
 Add this to your pom.xml file
 ```xml
 <dependency>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-logging</artifactId>
-  <version>1.72.0</version>
+  <version>1.98.0</version>
 </dependency>
 ```
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-logging:1.72.0'
+compile 'com.google.cloud:google-cloud-logging:1.98.0'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-logging" % "1.72.0"
+libraryDependencies += "com.google.cloud" % "google-cloud-logging" % "1.98.0"
 ```
-[//]: # ({x-version-update-end})
 
 Example Application
 -------------------
 [`LoggingExample`](../../google-cloud-examples/src/main/java/com/google/cloud/examples/logging/LoggingExample.java)
 is a simple command line interface that provides some of Stackdriver Logging's functionality. Read
 more about using the application on the
-[`LoggingExample` docs page](https://googleapis.github.io/google-cloud-java/apidocs/?com/google/cloud/examples/logging/LoggingExample.html).
+[`LoggingExample` docs page](https://googleapis.dev/java/google-cloud-clients/latest/index.html?com/google/cloud/examples/logging/LoggingExample.html).
 
 Authentication
 --------------
@@ -147,7 +145,7 @@ Then, to list the log entries, use the following code:
 ``` java
 Page<LogEntry> entries = logging.listLogEntries(
     EntryListOption.filter("logName=projects/" + options.getProjectId() + "/logs/test-log"));
-Iterator<LogEntry> entryIterator = entries.iterateAll();
+Iterator<LogEntry> entryIterator = entries.iterateAll().iterator();
 while (entryIterator.hasNext()) {
   System.out.println(entryIterator.next());
 }
@@ -227,4 +225,4 @@ Apache 2.0 - See [LICENSE] for more information.
 [stackdriver-logging]: https://cloud.google.com/logging/
 [stackdriver-logging-quickstart]: https://cloud.google.com/logging/docs/quickstart-sdk
 [logging-product-docs]: https://cloud.google.com/logging/docs/
-[logging-client-lib-docs]: https://googleapis.github.io/google-cloud-java/google-cloud-clients/apidocs/index.html?com/google/cloud/logging/package-summary.html
+[logging-client-lib-docs]: https://googleapis.dev/java/google-cloud-clients/latest/index.html?com/google/cloud/logging/package-summary.html

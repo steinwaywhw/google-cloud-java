@@ -20,6 +20,8 @@ import com.google.api.core.InternalExtensionOnly;
 import com.google.api.services.bigquery.model.Dataset;
 import com.google.api.services.bigquery.model.GetQueryResultsResponse;
 import com.google.api.services.bigquery.model.Job;
+import com.google.api.services.bigquery.model.Model;
+import com.google.api.services.bigquery.model.Routine;
 import com.google.api.services.bigquery.model.Table;
 import com.google.api.services.bigquery.model.TableDataInsertAllRequest;
 import com.google.api.services.bigquery.model.TableDataInsertAllResponse;
@@ -38,6 +40,9 @@ public interface BigQueryRpc extends ServiceRpc {
     DELETE_CONTENTS("deleteContents"),
     ALL_DATASETS("all"),
     ALL_USERS("allUsers"),
+    LABEL_FILTER("filter"),
+    MIN_CREATION_TIME("minCreationTime"),
+    MAX_CREATION_TIME("maxCreationTime"),
     MAX_RESULTS("maxResults"),
     PAGE_TOKEN("pageToken"),
     START_INDEX("startIndex"),
@@ -80,9 +85,9 @@ public interface BigQueryRpc extends ServiceRpc {
   Dataset getDataset(String projectId, String datasetId, Map<Option, ?> options);
 
   /**
-   * Lists the provided project's datasets. Partial information is returned on a dataset
-   * (datasetReference, friendlyName and id). To get full information use {@link #getDataset(String,
-   * String, Map)}.
+   * Lists the provided project's datasets, keyed by page token. Partial information is returned on
+   * a dataset (datasetReference, friendlyName and id). To get full information use {@link
+   * #getDataset(String, String, Map)}.
    *
    * @throws BigQueryException upon failure
    */
@@ -139,9 +144,9 @@ public interface BigQueryRpc extends ServiceRpc {
   Table getTable(String projectId, String datasetId, String tableId, Map<Option, ?> options);
 
   /**
-   * Lists the dataset's tables. Partial information is returned on a table (tableReference,
-   * friendlyName, id and type). To get full information use {@link #getTable(String, String,
-   * String, Map)}.
+   * Lists the dataset's tables, keyed by page token. Partial information is returned on a table
+   * (tableReference, friendlyName, id and type). To get full information use {@link
+   * #getTable(String, String, String, Map)}.
    *
    * @throws BigQueryException upon failure
    */
@@ -155,6 +160,67 @@ public interface BigQueryRpc extends ServiceRpc {
    * @throws BigQueryException upon failure
    */
   boolean deleteTable(String projectId, String datasetId, String tableId);
+
+  /**
+   * Updates model information.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Model patch(Model model, Map<Option, ?> options);
+
+  /**
+   * Returns the requested model or {@code null} if not found.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Model getModel(String projectId, String datasetId, String modelId, Map<Option, ?> options);
+
+  /**
+   * Lists the dataset's models, keyed by page token.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Tuple<String, Iterable<Model>> listModels(
+      String projectId, String dataset, Map<Option, ?> options);
+
+  /**
+   * Delete the requested model.
+   *
+   * @return {@code true} if model was deleted, {@code false} if it was not found
+   * @throws BigQueryException upon failure
+   */
+  boolean deleteModel(String projectId, String datasetId, String modelId);
+
+  /**
+   * Creates the requested routine.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Routine create(Routine routine, Map<Option, ?> options);
+
+  /**
+   * Updates the requested routine.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Routine update(Routine routine, Map<Option, ?> options);
+
+  /**
+   * Returns the requested routine or {@code null} if not found.
+   *
+   * @throws BigQueryException upon failure
+   */
+  Routine getRoutine(String projectId, String datasetId, String routineId, Map<Option, ?> options);
+
+  Tuple<String, Iterable<Routine>> listRoutines(
+      String projectId, String datasetId, Map<Option, ?> options);
+  /**
+   * Deletes the requested routine.
+   *
+   * @return {@code true} if routine was deleted, {@code false} if it was not found
+   * @throws BigQueryException upon failure
+   */
+  boolean deleteRoutine(String projectId, String datasetId, String routineId);
 
   /**
    * Sends an insert all request.

@@ -13,11 +13,12 @@ public interface TransferConfigOrBuilder
    *
    * <pre>
    * The resource name of the transfer config.
-   * Transfer config names have the form
-   * `projects/{project_id}/transferConfigs/{config_id}`.
-   * Where `config_id` is usually a uuid, even though it is not
-   * guaranteed or required. The name is ignored when creating a transfer
-   * config.
+   * Transfer config names have the form of
+   * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+   * The name is automatically generated based on the config_id specified in
+   * CreateTransferConfigRequest along with project_id and region. If config_id
+   * is not provided, usually a uuid, even though it is not guaranteed or
+   * required, will be generated for config_id.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -28,11 +29,12 @@ public interface TransferConfigOrBuilder
    *
    * <pre>
    * The resource name of the transfer config.
-   * Transfer config names have the form
-   * `projects/{project_id}/transferConfigs/{config_id}`.
-   * Where `config_id` is usually a uuid, even though it is not
-   * guaranteed or required. The name is ignored when creating a transfer
-   * config.
+   * Transfer config names have the form of
+   * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+   * The name is automatically generated based on the config_id specified in
+   * CreateTransferConfigRequest along with project_id and region. If config_id
+   * is not provided, usually a uuid, even though it is not guaranteed or
+   * required, will be generated for config_id.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -180,6 +182,37 @@ public interface TransferConfigOrBuilder
    *
    *
    * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  boolean hasScheduleOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions getScheduleOptions();
+  /**
+   *
+   *
+   * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder getScheduleOptionsOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
    * The number of days to look back to automatically refresh the data.
    * For example, if `data_refresh_window_days = 10`, then every day
    * BigQuery reingests data for [today-10, today-1], rather than ingesting data
@@ -211,7 +244,8 @@ public interface TransferConfigOrBuilder
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   boolean hasUpdateTime();
   /**
@@ -221,7 +255,8 @@ public interface TransferConfigOrBuilder
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.Timestamp getUpdateTime();
   /**
@@ -231,7 +266,8 @@ public interface TransferConfigOrBuilder
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder();
 
@@ -242,7 +278,9 @@ public interface TransferConfigOrBuilder
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   boolean hasNextRunTime();
   /**
@@ -252,7 +290,9 @@ public interface TransferConfigOrBuilder
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.Timestamp getNextRunTime();
   /**
@@ -262,7 +302,9 @@ public interface TransferConfigOrBuilder
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.protobuf.TimestampOrBuilder getNextRunTimeOrBuilder();
 
@@ -273,7 +315,9 @@ public interface TransferConfigOrBuilder
    * Output only. State of the most recently updated transfer run.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   int getStateValue();
   /**
@@ -283,7 +327,9 @@ public interface TransferConfigOrBuilder
    * Output only. State of the most recently updated transfer run.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   com.google.cloud.bigquery.datatransfer.v1.TransferState getState();
 
@@ -291,11 +337,7 @@ public interface TransferConfigOrBuilder
    *
    *
    * <pre>
-   * Output only. Unique ID of the user on whose behalf transfer is done.
-   * Applicable only to data sources that do not support service accounts.
-   * When set to 0, the data source service account credentials are used.
-   * May be negative. Note, that this identifier is not stable.
-   * It may change over time even for the same user.
+   * Deprecated. Unique ID of the user on whose behalf transfer is done.
    * </pre>
    *
    * <code>int64 user_id = 11;</code>
@@ -309,7 +351,7 @@ public interface TransferConfigOrBuilder
    * Output only. Region in which BigQuery dataset is located.
    * </pre>
    *
-   * <code>string dataset_region = 14;</code>
+   * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getDatasetRegion();
   /**
@@ -319,7 +361,10 @@ public interface TransferConfigOrBuilder
    * Output only. Region in which BigQuery dataset is located.
    * </pre>
    *
-   * <code>string dataset_region = 14;</code>
+   * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getDatasetRegionBytes();
+
+  public com.google.cloud.bigquery.datatransfer.v1.TransferConfig.DestinationCase
+      getDestinationCase();
 }

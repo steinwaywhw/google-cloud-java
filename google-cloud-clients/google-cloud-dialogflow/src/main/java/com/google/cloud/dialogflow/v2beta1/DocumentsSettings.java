@@ -49,8 +49,9 @@ import javax.annotation.Generated;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of getDocument to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of getDocument to 30 seconds:
  *
  * <pre>
  * <code>
@@ -105,6 +106,14 @@ public class DocumentsSettings extends ClientSettings<DocumentsSettings> {
   /** Returns the object with the settings used for calls to updateDocument. */
   public UnaryCallSettings<UpdateDocumentRequest, Operation> updateDocumentSettings() {
     return ((DocumentsStubSettings) getStubSettings()).updateDocumentSettings();
+  }
+
+  /** Returns the object with the settings used for calls to updateDocument. */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+      updateDocumentOperationSettings() {
+    return ((DocumentsStubSettings) getStubSettings()).updateDocumentOperationSettings();
   }
 
   /** Returns the object with the settings used for calls to reloadDocument. */
@@ -250,6 +259,15 @@ public class DocumentsSettings extends ClientSettings<DocumentsSettings> {
     /** Returns the builder for the settings used for calls to updateDocument. */
     public UnaryCallSettings.Builder<UpdateDocumentRequest, Operation> updateDocumentSettings() {
       return getStubSettingsBuilder().updateDocumentSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to updateDocument. */
+    @BetaApi(
+        "The surface for long-running operations is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+        updateDocumentOperationSettings() {
+      return getStubSettingsBuilder().updateDocumentOperationSettings();
     }
 
     /** Returns the builder for the settings used for calls to reloadDocument. */

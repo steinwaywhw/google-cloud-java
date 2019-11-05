@@ -124,7 +124,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -145,7 +147,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -170,7 +174,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;`.
    * </pre>
    *
-   * <code>repeated string entity_values = 2;</code>
+   * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ProtocolStringList getEntityValuesList() {
     return entityValues_;
@@ -184,7 +188,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;`.
    * </pre>
    *
-   * <code>repeated string entity_values = 2;</code>
+   * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public int getEntityValuesCount() {
     return entityValues_.size();
@@ -198,7 +202,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;`.
    * </pre>
    *
-   * <code>repeated string entity_values = 2;</code>
+   * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getEntityValues(int index) {
     return entityValues_.get(index);
@@ -212,7 +216,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * `projects/&lt;Project ID&gt;`.
    * </pre>
    *
-   * <code>repeated string entity_values = 2;</code>
+   * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getEntityValuesBytes(int index) {
     return entityValues_.getByteString(index);
@@ -227,12 +231,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * Optional. The language of entity synonyms defined in `entities`. If not
    * specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 3;</code>
+   * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getLanguageCode() {
     java.lang.Object ref = languageCode_;
@@ -252,12 +256,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
    * Optional. The language of entity synonyms defined in `entities`. If not
    * specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 3;</code>
+   * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getLanguageCodeBytes() {
     java.lang.Object ref = languageCode_;
@@ -653,7 +657,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -674,7 +680,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -695,7 +703,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -714,7 +724,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder clearParent() {
 
@@ -730,7 +742,9 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;/agent/entityTypes/&lt;Entity Type ID&gt;`.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -761,7 +775,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ProtocolStringList getEntityValuesList() {
       return entityValues_.getUnmodifiableView();
@@ -775,7 +789,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public int getEntityValuesCount() {
       return entityValues_.size();
@@ -789,7 +803,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getEntityValues(int index) {
       return entityValues_.get(index);
@@ -803,7 +817,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getEntityValuesBytes(int index) {
       return entityValues_.getByteString(index);
@@ -817,7 +831,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setEntityValues(int index, java.lang.String value) {
       if (value == null) {
@@ -837,7 +851,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addEntityValues(java.lang.String value) {
       if (value == null) {
@@ -857,7 +871,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addAllEntityValues(java.lang.Iterable<java.lang.String> values) {
       ensureEntityValuesIsMutable();
@@ -874,7 +888,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearEntityValues() {
       entityValues_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -891,7 +905,7 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * `projects/&lt;Project ID&gt;`.
      * </pre>
      *
-     * <code>repeated string entity_values = 2;</code>
+     * <code>repeated string entity_values = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder addEntityValuesBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -912,12 +926,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * Optional. The language of entity synonyms defined in `entities`. If not
      * specified, the agent's default language is used.
      * [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getLanguageCode() {
       java.lang.Object ref = languageCode_;
@@ -937,12 +951,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * Optional. The language of entity synonyms defined in `entities`. If not
      * specified, the agent's default language is used.
      * [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getLanguageCodeBytes() {
       java.lang.Object ref = languageCode_;
@@ -962,12 +976,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * Optional. The language of entity synonyms defined in `entities`. If not
      * specified, the agent's default language is used.
      * [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLanguageCode(java.lang.String value) {
       if (value == null) {
@@ -985,12 +999,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * Optional. The language of entity synonyms defined in `entities`. If not
      * specified, the agent's default language is used.
      * [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearLanguageCode() {
 
@@ -1005,12 +1019,12 @@ public final class BatchDeleteEntitiesRequest extends com.google.protobuf.Genera
      * Optional. The language of entity synonyms defined in `entities`. If not
      * specified, the agent's default language is used.
      * [Many
-     * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * languages](https://cloud.google.com/dialogflow/docs/reference/language)
      * are supported. Note: languages must be enabled in the agent before they can
      * be used.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setLanguageCodeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

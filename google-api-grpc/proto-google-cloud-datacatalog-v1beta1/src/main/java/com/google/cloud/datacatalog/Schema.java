@@ -104,11 +104,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public java.util.List<com.google.cloud.datacatalog.ColumnSchema> getColumnsList() {
     return columns_;
@@ -117,11 +119,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public java.util.List<? extends com.google.cloud.datacatalog.ColumnSchemaOrBuilder>
       getColumnsOrBuilderList() {
@@ -131,11 +135,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public int getColumnsCount() {
     return columns_.size();
@@ -144,11 +150,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.datacatalog.ColumnSchema getColumns(int index) {
     return columns_.get(index);
@@ -157,11 +165,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.datacatalog.ColumnSchemaOrBuilder getColumnsOrBuilder(int index) {
     return columns_.get(index);
@@ -542,11 +552,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public java.util.List<com.google.cloud.datacatalog.ColumnSchema> getColumnsList() {
       if (columnsBuilder_ == null) {
@@ -559,11 +571,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public int getColumnsCount() {
       if (columnsBuilder_ == null) {
@@ -576,11 +590,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.datacatalog.ColumnSchema getColumns(int index) {
       if (columnsBuilder_ == null) {
@@ -593,11 +609,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setColumns(int index, com.google.cloud.datacatalog.ColumnSchema value) {
       if (columnsBuilder_ == null) {
@@ -616,11 +634,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setColumns(
         int index, com.google.cloud.datacatalog.ColumnSchema.Builder builderForValue) {
@@ -637,11 +657,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder addColumns(com.google.cloud.datacatalog.ColumnSchema value) {
       if (columnsBuilder_ == null) {
@@ -660,11 +682,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder addColumns(int index, com.google.cloud.datacatalog.ColumnSchema value) {
       if (columnsBuilder_ == null) {
@@ -683,11 +707,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder addColumns(com.google.cloud.datacatalog.ColumnSchema.Builder builderForValue) {
       if (columnsBuilder_ == null) {
@@ -703,11 +729,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder addColumns(
         int index, com.google.cloud.datacatalog.ColumnSchema.Builder builderForValue) {
@@ -724,11 +752,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder addAllColumns(
         java.lang.Iterable<? extends com.google.cloud.datacatalog.ColumnSchema> values) {
@@ -745,11 +775,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearColumns() {
       if (columnsBuilder_ == null) {
@@ -765,11 +797,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder removeColumns(int index) {
       if (columnsBuilder_ == null) {
@@ -785,11 +819,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.datacatalog.ColumnSchema.Builder getColumnsBuilder(int index) {
       return getColumnsFieldBuilder().getBuilder(index);
@@ -798,11 +834,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.datacatalog.ColumnSchemaOrBuilder getColumnsOrBuilder(int index) {
       if (columnsBuilder_ == null) {
@@ -815,11 +853,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public java.util.List<? extends com.google.cloud.datacatalog.ColumnSchemaOrBuilder>
         getColumnsOrBuilderList() {
@@ -833,11 +873,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.datacatalog.ColumnSchema.Builder addColumnsBuilder() {
       return getColumnsFieldBuilder()
@@ -847,11 +889,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.datacatalog.ColumnSchema.Builder addColumnsBuilder(int index) {
       return getColumnsFieldBuilder()
@@ -861,11 +905,13 @@ public final class Schema extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-     * specified.
+     * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+     * can be specified.
      * </pre>
      *
-     * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+     * <code>
+     * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public java.util.List<com.google.cloud.datacatalog.ColumnSchema.Builder>
         getColumnsBuilderList() {

@@ -16,9 +16,11 @@
 
 package com.google.cloud.storage;
 
+import static com.google.cloud.RetryHelper.runWithRetries;
 import static com.google.cloud.storage.Blob.BlobSourceOption.toGetOptions;
 import static com.google.cloud.storage.Blob.BlobSourceOption.toSourceOptions;
 import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.concurrent.Executors.callable;
 
 import com.google.api.services.storage.model.StorageObject;
 import com.google.auth.ServiceAccountSigner;
@@ -34,13 +36,11 @@ import com.google.cloud.storage.Storage.SignUrlOption;
 import com.google.cloud.storage.spi.v1.StorageRpc;
 import com.google.common.base.Function;
 import com.google.common.io.BaseEncoding;
+import com.google.common.io.CountingOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.WritableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.security.Key;
@@ -119,6 +119,8 @@ public class Blob extends BlobInfo {
           return Storage.BlobGetOption.metagenerationNotMatch(blobInfo.getMetageneration());
         case USER_PROJECT:
           return Storage.BlobGetOption.userProject((String) getValue());
+        case CUSTOMER_SUPPLIED_KEY:
+          return Storage.BlobGetOption.decryptionKey((String) getValue());
         default:
           throw new AssertionError("Unexpected enum value");
       }
@@ -211,18 +213,38 @@ public class Blob extends BlobInfo {
    * @throws StorageException upon failure
    */
   public void downloadTo(Path path, BlobSourceOption... options) {
-    try (OutputStream outputStream = Files.newOutputStream(path);
-        ReadChannel reader = reader(options)) {
-      WritableByteChannel channel = Channels.newChannel(outputStream);
-      ByteBuffer bytes = ByteBuffer.allocate(DEFAULT_CHUNK_SIZE);
-      while (reader.read(bytes) > 0) {
-        bytes.flip();
-        channel.write(bytes);
-        bytes.clear();
-      }
+    try (OutputStream outputStream = Files.newOutputStream(path)) {
+      downloadTo(outputStream, options);
     } catch (IOException e) {
       throw new StorageException(e);
     }
+  }
+
+  /**
+   * Downloads this blob to the given output stream using specified blob read options.
+   *
+   * @param outputStream
+   * @param options
+   */
+  public void downloadTo(OutputStream outputStream, BlobSourceOption... options) {
+    final CountingOutputStream countingOutputStream = new CountingOutputStream(outputStream);
+    final StorageRpc storageRpc = this.options.getStorageRpcV1();
+    final Map<StorageRpc.Option, ?> requestOptions = StorageImpl.optionMap(getBlobId(), options);
+    runWithRetries(
+        callable(
+            new Runnable() {
+              @Override
+              public void run() {
+                storageRpc.read(
+                    getBlobId().toPb(),
+                    requestOptions,
+                    countingOutputStream.getCount(),
+                    countingOutputStream);
+              }
+            }),
+        this.options.getRetrySettings(),
+        StorageImpl.EXCEPTION_HANDLER,
+        this.options.getClock());
   }
 
   /**
@@ -512,17 +534,33 @@ public class Blob extends BlobInfo {
    * current blob metadata are at their latest version use the {@code metagenerationMatch} option:
    * {@code newBlob.update(BlobTargetOption.metagenerationMatch())}.
    *
-   * <p>Original metadata are merged with metadata in the provided in this {@code blob}. To replace
-   * metadata instead you first have to unset them. Unsetting metadata can be done by setting this
-   * {@code blob}'s metadata to {@code null}.
+   * <p>Original metadata are merged with metadata in the provided {@code blobInfo}. If the original
+   * metadata already contains a key specified in the provided {@code blobInfo's} metadata map, it
+   * will be replaced by the new value. Removing metadata can be done by setting that metadata's
+   * value to {@code null}.
    *
-   * <p>Example of replacing blob's metadata.
+   * <p>Example of adding new metadata values or updating existing ones.
    *
    * <pre>{@code
+   * String bucketName = "my_unique_bucket";
+   * String blobName = "my_blob_name";
    * Map<String, String> newMetadata = new HashMap<>();
-   * newMetadata.put("key", "value");
-   * blob.toBuilder().setMetadata(null).build().update();
-   * Blob updatedBlob = blob.toBuilder().setMetadata(newMetadata).build().update();
+   * newMetadata.put("keyToAddOrUpdate", "value");
+   * Blob blob = storage.update(BlobInfo.newBuilder(bucketName, blobName)
+   *     .setMetadata(newMetadata)
+   *     .build());
+   * }</pre>
+   *
+   * <p>Example of removing metadata values.
+   *
+   * <pre>{@code
+   * String bucketName = "my_unique_bucket";
+   * String blobName = "my_blob_name";
+   * Map<String, String> newMetadata = new HashMap<>();
+   * newMetadata.put("keyToRemove", null);
+   * Blob blob = storage.update(BlobInfo.newBuilder(bucketName, blobName)
+   *     .setMetadata(newMetadata)
+   *     .build());
    * }</pre>
    *
    * @param options update options

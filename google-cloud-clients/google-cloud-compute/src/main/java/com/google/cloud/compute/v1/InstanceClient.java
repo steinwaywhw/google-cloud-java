@@ -988,6 +988,129 @@ public class InstanceClient implements BackgroundResource {
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
   /**
+   * Returns the specified guest attributes entry.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ProjectZoneInstanceName instance = ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String queryPath = "";
+   *   String variableKey = "";
+   *   GuestAttributes response = instanceClient.getGuestAttributesInstance(instance, queryPath, variableKey);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param queryPath Specifies the guest attributes path to be queried.
+   * @param variableKey Specifies the key for the guest attributes entry.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final GuestAttributes getGuestAttributesInstance(
+      ProjectZoneInstanceName instance, String queryPath, String variableKey) {
+
+    GetGuestAttributesInstanceHttpRequest request =
+        GetGuestAttributesInstanceHttpRequest.newBuilder()
+            .setInstance(instance == null ? null : instance.toString())
+            .setQueryPath(queryPath)
+            .setVariableKey(variableKey)
+            .build();
+    return getGuestAttributesInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified guest attributes entry.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ProjectZoneInstanceName instance = ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String queryPath = "";
+   *   String variableKey = "";
+   *   GuestAttributes response = instanceClient.getGuestAttributesInstance(instance.toString(), queryPath, variableKey);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param queryPath Specifies the guest attributes path to be queried.
+   * @param variableKey Specifies the key for the guest attributes entry.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final GuestAttributes getGuestAttributesInstance(
+      String instance, String queryPath, String variableKey) {
+
+    GetGuestAttributesInstanceHttpRequest request =
+        GetGuestAttributesInstanceHttpRequest.newBuilder()
+            .setInstance(instance)
+            .setQueryPath(queryPath)
+            .setVariableKey(variableKey)
+            .build();
+    return getGuestAttributesInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified guest attributes entry.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   String formattedInstance = ProjectZoneInstanceName.format("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String queryPath = "";
+   *   String variableKey = "";
+   *   GetGuestAttributesInstanceHttpRequest request = GetGuestAttributesInstanceHttpRequest.newBuilder()
+   *     .setInstance(formattedInstance)
+   *     .setQueryPath(queryPath)
+   *     .setVariableKey(variableKey)
+   *     .build();
+   *   GuestAttributes response = instanceClient.getGuestAttributesInstance(request);
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final GuestAttributes getGuestAttributesInstance(
+      GetGuestAttributesInstanceHttpRequest request) {
+    return getGuestAttributesInstanceCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Returns the specified guest attributes entry.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   String formattedInstance = ProjectZoneInstanceName.format("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   String queryPath = "";
+   *   String variableKey = "";
+   *   GetGuestAttributesInstanceHttpRequest request = GetGuestAttributesInstanceHttpRequest.newBuilder()
+   *     .setInstance(formattedInstance)
+   *     .setQueryPath(queryPath)
+   *     .setVariableKey(variableKey)
+   *     .build();
+   *   ApiFuture&lt;GuestAttributes&gt; future = instanceClient.getGuestAttributesInstanceCallable().futureCall(request);
+   *   // Do something
+   *   GuestAttributes response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+      getGuestAttributesInstanceCallable() {
+    return stub.getGuestAttributesInstanceCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
    * Gets the access control policy for a resource. May be empty if no such policy or resource
    * exists.
    *
@@ -1333,7 +1456,9 @@ public class InstanceClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone The name of the zone for this request.
-   * @param instanceResource An Instance resource. (== resource_for beta.instances ==) (==
+   * @param instanceResource Represents an Instance resource.
+   *     <p>An instance is a virtual machine that is hosted on Google Cloud Platform. For more
+   *     information, read Virtual Machine Instances. (== resource_for beta.instances ==) (==
    *     resource_for v1.instances ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -1363,7 +1488,9 @@ public class InstanceClient implements BackgroundResource {
    * </code></pre>
    *
    * @param zone The name of the zone for this request.
-   * @param instanceResource An Instance resource. (== resource_for beta.instances ==) (==
+   * @param instanceResource Represents an Instance resource.
+   *     <p>An instance is a virtual machine that is hosted on Google Cloud Platform. For more
+   *     information, read Virtual Machine Instances. (== resource_for beta.instances ==) (==
    *     resource_for v1.instances ==)
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
@@ -2754,7 +2881,7 @@ public class InstanceClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Instance name for this request.
-   * @param schedulingResource Sets the scheduling options for an Instance.
+   * @param schedulingResource Sets the scheduling options for an Instance. NextID: 9
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -2784,7 +2911,7 @@ public class InstanceClient implements BackgroundResource {
    * </code></pre>
    *
    * @param instance Instance name for this request.
-   * @param schedulingResource Sets the scheduling options for an Instance.
+   * @param schedulingResource Sets the scheduling options for an Instance. NextID: 9
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   @BetaApi
@@ -3896,6 +4023,145 @@ public class InstanceClient implements BackgroundResource {
   public final UnaryCallable<UpdateAccessConfigInstanceHttpRequest, Operation>
       updateAccessConfigInstanceCallable() {
     return stub.updateAccessConfigInstanceCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the Display config for a VM instance. You can only use this method on a stopped VM
+   * instance. This method supports PATCH semantics and uses the JSON merge patch format and
+   * processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ProjectZoneInstanceName instance = ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   DisplayDevice displayDeviceResource = DisplayDevice.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   Operation response = instanceClient.updateDisplayDeviceInstance(instance, displayDeviceResource, fieldMask);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param displayDeviceResource A set of Display Device options
+   * @param fieldMask The fields that should be serialized (even if they have empty values). If the
+   *     containing message object has a non-null fieldmask, then all the fields in the field mask
+   *     (and only those fields in the field mask) will be serialized. If the containing object does
+   *     not have a fieldmask, then only non-empty fields will be serialized.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateDisplayDeviceInstance(
+      ProjectZoneInstanceName instance,
+      DisplayDevice displayDeviceResource,
+      List<String> fieldMask) {
+
+    UpdateDisplayDeviceInstanceHttpRequest request =
+        UpdateDisplayDeviceInstanceHttpRequest.newBuilder()
+            .setInstance(instance == null ? null : instance.toString())
+            .setDisplayDeviceResource(displayDeviceResource)
+            .addAllFieldMask(fieldMask)
+            .build();
+    return updateDisplayDeviceInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the Display config for a VM instance. You can only use this method on a stopped VM
+   * instance. This method supports PATCH semantics and uses the JSON merge patch format and
+   * processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   ProjectZoneInstanceName instance = ProjectZoneInstanceName.of("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   DisplayDevice displayDeviceResource = DisplayDevice.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   Operation response = instanceClient.updateDisplayDeviceInstance(instance.toString(), displayDeviceResource, fieldMask);
+   * }
+   * </code></pre>
+   *
+   * @param instance Name of the instance scoping this request.
+   * @param displayDeviceResource A set of Display Device options
+   * @param fieldMask The fields that should be serialized (even if they have empty values). If the
+   *     containing message object has a non-null fieldmask, then all the fields in the field mask
+   *     (and only those fields in the field mask) will be serialized. If the containing object does
+   *     not have a fieldmask, then only non-empty fields will be serialized.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateDisplayDeviceInstance(
+      String instance, DisplayDevice displayDeviceResource, List<String> fieldMask) {
+
+    UpdateDisplayDeviceInstanceHttpRequest request =
+        UpdateDisplayDeviceInstanceHttpRequest.newBuilder()
+            .setInstance(instance)
+            .setDisplayDeviceResource(displayDeviceResource)
+            .addAllFieldMask(fieldMask)
+            .build();
+    return updateDisplayDeviceInstance(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the Display config for a VM instance. You can only use this method on a stopped VM
+   * instance. This method supports PATCH semantics and uses the JSON merge patch format and
+   * processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   String formattedInstance = ProjectZoneInstanceName.format("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   DisplayDevice displayDeviceResource = DisplayDevice.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateDisplayDeviceInstanceHttpRequest request = UpdateDisplayDeviceInstanceHttpRequest.newBuilder()
+   *     .setInstance(formattedInstance)
+   *     .setDisplayDeviceResource(displayDeviceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   Operation response = instanceClient.updateDisplayDeviceInstance(request);
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi
+  public final Operation updateDisplayDeviceInstance(
+      UpdateDisplayDeviceInstanceHttpRequest request) {
+    return updateDisplayDeviceInstanceCallable().call(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Updates the Display config for a VM instance. You can only use this method on a stopped VM
+   * instance. This method supports PATCH semantics and uses the JSON merge patch format and
+   * processing rules.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (InstanceClient instanceClient = InstanceClient.create()) {
+   *   String formattedInstance = ProjectZoneInstanceName.format("[PROJECT]", "[ZONE]", "[INSTANCE]");
+   *   DisplayDevice displayDeviceResource = DisplayDevice.newBuilder().build();
+   *   List&lt;String&gt; fieldMask = new ArrayList&lt;&gt;();
+   *   UpdateDisplayDeviceInstanceHttpRequest request = UpdateDisplayDeviceInstanceHttpRequest.newBuilder()
+   *     .setInstance(formattedInstance)
+   *     .setDisplayDeviceResource(displayDeviceResource)
+   *     .addAllFieldMask(fieldMask)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = instanceClient.updateDisplayDeviceInstanceCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi
+  public final UnaryCallable<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+      updateDisplayDeviceInstanceCallable() {
+    return stub.updateDisplayDeviceInstanceCallable();
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD

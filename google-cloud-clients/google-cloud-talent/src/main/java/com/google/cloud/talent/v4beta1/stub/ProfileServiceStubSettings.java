@@ -43,12 +43,12 @@ import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.talent.v4beta1.CreateProfileRequest;
 import com.google.cloud.talent.v4beta1.DeleteProfileRequest;
 import com.google.cloud.talent.v4beta1.GetProfileRequest;
-import com.google.cloud.talent.v4beta1.HistogramQueryResult;
 import com.google.cloud.talent.v4beta1.ListProfilesRequest;
 import com.google.cloud.talent.v4beta1.ListProfilesResponse;
 import com.google.cloud.talent.v4beta1.Profile;
 import com.google.cloud.talent.v4beta1.SearchProfilesRequest;
 import com.google.cloud.talent.v4beta1.SearchProfilesResponse;
+import com.google.cloud.talent.v4beta1.SummarizedProfile;
 import com.google.cloud.talent.v4beta1.UpdateProfileRequest;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -73,8 +73,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createProfile to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of createProfile to 30 seconds:
  *
  * <pre>
  * <code>
@@ -174,7 +175,8 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -253,10 +255,10 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
           };
 
   private static final PagedListDescriptor<
-          SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>
+          SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>
       SEARCH_PROFILES_PAGE_STR_DESC =
           new PagedListDescriptor<
-              SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>() {
+              SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>() {
             @Override
             public String emptyToken() {
               return "";
@@ -284,10 +286,10 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
             }
 
             @Override
-            public Iterable<HistogramQueryResult> extractResources(SearchProfilesResponse payload) {
-              return payload.getHistogramQueryResultsList() != null
-                  ? payload.getHistogramQueryResultsList()
-                  : ImmutableList.<HistogramQueryResult>of();
+            public Iterable<SummarizedProfile> extractResources(SearchProfilesResponse payload) {
+              return payload.getSummarizedProfilesList() != null
+                  ? payload.getSummarizedProfilesList()
+                  : ImmutableList.<SummarizedProfile>of();
             }
           };
 
@@ -319,7 +321,7 @@ public class ProfileServiceStubSettings extends StubSettings<ProfileServiceStubS
                 SearchProfilesRequest request,
                 ApiCallContext context,
                 ApiFuture<SearchProfilesResponse> futureResponse) {
-              PageContext<SearchProfilesRequest, SearchProfilesResponse, HistogramQueryResult>
+              PageContext<SearchProfilesRequest, SearchProfilesResponse, SummarizedProfile>
                   pageContext =
                       PageContext.create(callable, SEARCH_PROFILES_PAGE_STR_DESC, request, context);
               return SearchProfilesPagedResponse.createAsync(pageContext, futureResponse);

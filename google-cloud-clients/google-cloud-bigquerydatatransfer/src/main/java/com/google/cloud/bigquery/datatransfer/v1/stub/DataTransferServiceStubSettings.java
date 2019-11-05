@@ -61,6 +61,8 @@ import com.google.cloud.bigquery.datatransfer.v1.ListTransferRunsRequest;
 import com.google.cloud.bigquery.datatransfer.v1.ListTransferRunsResponse;
 import com.google.cloud.bigquery.datatransfer.v1.ScheduleTransferRunsRequest;
 import com.google.cloud.bigquery.datatransfer.v1.ScheduleTransferRunsResponse;
+import com.google.cloud.bigquery.datatransfer.v1.StartManualTransferRunsRequest;
+import com.google.cloud.bigquery.datatransfer.v1.StartManualTransferRunsResponse;
 import com.google.cloud.bigquery.datatransfer.v1.TransferConfig;
 import com.google.cloud.bigquery.datatransfer.v1.TransferMessage;
 import com.google.cloud.bigquery.datatransfer.v1.TransferRun;
@@ -89,8 +91,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of getDataSource to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of getDataSource to 30 seconds:
  *
  * <pre>
  * <code>
@@ -135,6 +138,8 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
       listTransferLogsSettings;
   private final UnaryCallSettings<CheckValidCredsRequest, CheckValidCredsResponse>
       checkValidCredsSettings;
+  private final UnaryCallSettings<StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+      startManualTransferRunsSettings;
 
   /** Returns the object with the settings used for calls to getDataSource. */
   public UnaryCallSettings<GetDataSourceRequest, DataSource> getDataSourceSettings() {
@@ -213,6 +218,12 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
     return checkValidCredsSettings;
   }
 
+  /** Returns the object with the settings used for calls to startManualTransferRuns. */
+  public UnaryCallSettings<StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+      startManualTransferRunsSettings() {
+    return startManualTransferRunsSettings;
+  }
+
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public DataTransferServiceStub createStub() throws IOException {
     if (getTransportChannelProvider()
@@ -247,7 +258,8 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -294,6 +306,7 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
     listTransferRunsSettings = settingsBuilder.listTransferRunsSettings().build();
     listTransferLogsSettings = settingsBuilder.listTransferLogsSettings().build();
     checkValidCredsSettings = settingsBuilder.checkValidCredsSettings().build();
+    startManualTransferRunsSettings = settingsBuilder.startManualTransferRunsSettings().build();
   }
 
   private static final PagedListDescriptor<
@@ -568,6 +581,9 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
         listTransferLogsSettings;
     private final UnaryCallSettings.Builder<CheckValidCredsRequest, CheckValidCredsResponse>
         checkValidCredsSettings;
+    private final UnaryCallSettings.Builder<
+            StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+        startManualTransferRunsSettings;
 
     private static final ImmutableMap<String, ImmutableSet<StatusCode.Code>>
         RETRYABLE_CODE_DEFINITIONS;
@@ -637,6 +653,8 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
 
       checkValidCredsSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      startManualTransferRunsSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
               getDataSourceSettings,
@@ -651,7 +669,8 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
               deleteTransferRunSettings,
               listTransferRunsSettings,
               listTransferLogsSettings,
-              checkValidCredsSettings);
+              checkValidCredsSettings,
+              startManualTransferRunsSettings);
 
       initDefaults(this);
     }
@@ -732,6 +751,11 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
+      builder
+          .startManualTransferRunsSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
       return builder;
     }
 
@@ -751,6 +775,7 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
       listTransferRunsSettings = settings.listTransferRunsSettings.toBuilder();
       listTransferLogsSettings = settings.listTransferLogsSettings.toBuilder();
       checkValidCredsSettings = settings.checkValidCredsSettings.toBuilder();
+      startManualTransferRunsSettings = settings.startManualTransferRunsSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
           ImmutableList.<UnaryCallSettings.Builder<?, ?>>of(
@@ -766,7 +791,8 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
               deleteTransferRunSettings,
               listTransferRunsSettings,
               listTransferLogsSettings,
-              checkValidCredsSettings);
+              checkValidCredsSettings,
+              startManualTransferRunsSettings);
     }
 
     // NEXT_MAJOR_VER: remove 'throws Exception'
@@ -864,6 +890,13 @@ public class DataTransferServiceStubSettings extends StubSettings<DataTransferSe
     public UnaryCallSettings.Builder<CheckValidCredsRequest, CheckValidCredsResponse>
         checkValidCredsSettings() {
       return checkValidCredsSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to startManualTransferRuns. */
+    public UnaryCallSettings.Builder<
+            StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+        startManualTransferRunsSettings() {
+      return startManualTransferRunsSettings;
     }
 
     @Override

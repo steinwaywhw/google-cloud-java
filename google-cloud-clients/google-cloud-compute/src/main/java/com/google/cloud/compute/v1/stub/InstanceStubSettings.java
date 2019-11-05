@@ -47,10 +47,12 @@ import com.google.cloud.compute.v1.AttachDiskInstanceHttpRequest;
 import com.google.cloud.compute.v1.DeleteAccessConfigInstanceHttpRequest;
 import com.google.cloud.compute.v1.DeleteInstanceHttpRequest;
 import com.google.cloud.compute.v1.DetachDiskInstanceHttpRequest;
+import com.google.cloud.compute.v1.GetGuestAttributesInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetIamPolicyInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetSerialPortOutputInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetShieldedInstanceIdentityInstanceHttpRequest;
+import com.google.cloud.compute.v1.GuestAttributes;
 import com.google.cloud.compute.v1.InsertInstanceHttpRequest;
 import com.google.cloud.compute.v1.Instance;
 import com.google.cloud.compute.v1.InstanceAggregatedList;
@@ -84,6 +86,7 @@ import com.google.cloud.compute.v1.StopInstanceHttpRequest;
 import com.google.cloud.compute.v1.TestIamPermissionsInstanceHttpRequest;
 import com.google.cloud.compute.v1.TestPermissionsResponse;
 import com.google.cloud.compute.v1.UpdateAccessConfigInstanceHttpRequest;
+import com.google.cloud.compute.v1.UpdateDisplayDeviceInstanceHttpRequest;
 import com.google.cloud.compute.v1.UpdateNetworkInterfaceInstanceHttpRequest;
 import com.google.cloud.compute.v1.UpdateShieldedInstanceConfigInstanceHttpRequest;
 import com.google.common.collect.ImmutableList;
@@ -102,15 +105,16 @@ import org.threeten.bp.Duration;
  * <p>The default instance has everything set to sensible defaults:
  *
  * <ul>
- *   <li>The default service address (https://www.googleapis.com/compute/v1/projects/) and default
- *       port (443) are used.
+ *   <li>The default service address (https://compute.googleapis.com/compute/v1/projects/) and
+ *       default port (443) are used.
  *   <li>Credentials are acquired automatically through Application Default Credentials.
  *   <li>Retries are configured for idempotent methods but not for non-idempotent methods.
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of addAccessConfigInstance to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of addAccessConfigInstance to 30 seconds:
  *
  * <pre>
  * <code>
@@ -151,6 +155,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
   private final UnaryCallSettings<DetachDiskInstanceHttpRequest, Operation>
       detachDiskInstanceSettings;
   private final UnaryCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings;
+  private final UnaryCallSettings<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+      getGuestAttributesInstanceSettings;
   private final UnaryCallSettings<GetIamPolicyInstanceHttpRequest, Policy>
       getIamPolicyInstanceSettings;
   private final UnaryCallSettings<GetSerialPortOutputInstanceHttpRequest, SerialPortOutput>
@@ -201,6 +207,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
       testIamPermissionsInstanceSettings;
   private final UnaryCallSettings<UpdateAccessConfigInstanceHttpRequest, Operation>
       updateAccessConfigInstanceSettings;
+  private final UnaryCallSettings<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+      updateDisplayDeviceInstanceSettings;
   private final UnaryCallSettings<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
       updateNetworkInterfaceInstanceSettings;
   private final UnaryCallSettings<UpdateShieldedInstanceConfigInstanceHttpRequest, Operation>
@@ -245,6 +253,12 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
   /** Returns the object with the settings used for calls to getInstance. */
   public UnaryCallSettings<GetInstanceHttpRequest, Instance> getInstanceSettings() {
     return getInstanceSettings;
+  }
+
+  /** Returns the object with the settings used for calls to getGuestAttributesInstance. */
+  public UnaryCallSettings<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+      getGuestAttributesInstanceSettings() {
+    return getGuestAttributesInstanceSettings;
   }
 
   /** Returns the object with the settings used for calls to getIamPolicyInstance. */
@@ -395,6 +409,12 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     return updateAccessConfigInstanceSettings;
   }
 
+  /** Returns the object with the settings used for calls to updateDisplayDeviceInstance. */
+  public UnaryCallSettings<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+      updateDisplayDeviceInstanceSettings() {
+    return updateDisplayDeviceInstanceSettings;
+  }
+
   /** Returns the object with the settings used for calls to updateNetworkInterfaceInstance. */
   public UnaryCallSettings<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
       updateNetworkInterfaceInstanceSettings() {
@@ -428,7 +448,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
   /** Returns the default service endpoint. */
   public static String getDefaultEndpoint() {
-    return "https://www.googleapis.com/compute/v1/projects/";
+    return "https://compute.googleapis.com/compute/v1/projects/";
   }
 
   /** Returns the default service port. */
@@ -491,6 +511,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         settingsBuilder.deleteAccessConfigInstanceSettings().build();
     detachDiskInstanceSettings = settingsBuilder.detachDiskInstanceSettings().build();
     getInstanceSettings = settingsBuilder.getInstanceSettings().build();
+    getGuestAttributesInstanceSettings =
+        settingsBuilder.getGuestAttributesInstanceSettings().build();
     getIamPolicyInstanceSettings = settingsBuilder.getIamPolicyInstanceSettings().build();
     getSerialPortOutputInstanceSettings =
         settingsBuilder.getSerialPortOutputInstanceSettings().build();
@@ -525,6 +547,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         settingsBuilder.testIamPermissionsInstanceSettings().build();
     updateAccessConfigInstanceSettings =
         settingsBuilder.updateAccessConfigInstanceSettings().build();
+    updateDisplayDeviceInstanceSettings =
+        settingsBuilder.updateDisplayDeviceInstanceSettings().build();
     updateNetworkInterfaceInstanceSettings =
         settingsBuilder.updateNetworkInterfaceInstanceSettings().build();
     updateShieldedInstanceConfigInstanceSettings =
@@ -743,6 +767,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     private final UnaryCallSettings.Builder<DetachDiskInstanceHttpRequest, Operation>
         detachDiskInstanceSettings;
     private final UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings;
+    private final UnaryCallSettings.Builder<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+        getGuestAttributesInstanceSettings;
     private final UnaryCallSettings.Builder<GetIamPolicyInstanceHttpRequest, Policy>
         getIamPolicyInstanceSettings;
     private final UnaryCallSettings.Builder<
@@ -801,6 +827,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
         testIamPermissionsInstanceSettings;
     private final UnaryCallSettings.Builder<UpdateAccessConfigInstanceHttpRequest, Operation>
         updateAccessConfigInstanceSettings;
+    private final UnaryCallSettings.Builder<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+        updateDisplayDeviceInstanceSettings;
     private final UnaryCallSettings.Builder<UpdateNetworkInterfaceInstanceHttpRequest, Operation>
         updateNetworkInterfaceInstanceSettings;
     private final UnaryCallSettings.Builder<
@@ -863,6 +891,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
       getInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      getGuestAttributesInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       getIamPolicyInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       getSerialPortOutputInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
@@ -915,6 +945,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
       updateAccessConfigInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      updateDisplayDeviceInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       updateNetworkInterfaceInstanceSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       updateShieldedInstanceConfigInstanceSettings =
@@ -929,6 +961,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
               deleteAccessConfigInstanceSettings,
               detachDiskInstanceSettings,
               getInstanceSettings,
+              getGuestAttributesInstanceSettings,
               getIamPolicyInstanceSettings,
               getSerialPortOutputInstanceSettings,
               getShieldedInstanceIdentityInstanceSettings,
@@ -954,6 +987,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
               stopInstanceSettings,
               testIamPermissionsInstanceSettings,
               updateAccessConfigInstanceSettings,
+              updateDisplayDeviceInstanceSettings,
               updateNetworkInterfaceInstanceSettings,
               updateShieldedInstanceConfigInstanceSettings);
 
@@ -1003,6 +1037,11 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
 
       builder
           .getInstanceSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
+      builder
+          .getGuestAttributesInstanceSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
@@ -1132,6 +1171,11 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
 
       builder
+          .updateDisplayDeviceInstanceSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+
+      builder
           .updateNetworkInterfaceInstanceSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
           .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
@@ -1154,6 +1198,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
       deleteAccessConfigInstanceSettings = settings.deleteAccessConfigInstanceSettings.toBuilder();
       detachDiskInstanceSettings = settings.detachDiskInstanceSettings.toBuilder();
       getInstanceSettings = settings.getInstanceSettings.toBuilder();
+      getGuestAttributesInstanceSettings = settings.getGuestAttributesInstanceSettings.toBuilder();
       getIamPolicyInstanceSettings = settings.getIamPolicyInstanceSettings.toBuilder();
       getSerialPortOutputInstanceSettings =
           settings.getSerialPortOutputInstanceSettings.toBuilder();
@@ -1186,6 +1231,8 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
       stopInstanceSettings = settings.stopInstanceSettings.toBuilder();
       testIamPermissionsInstanceSettings = settings.testIamPermissionsInstanceSettings.toBuilder();
       updateAccessConfigInstanceSettings = settings.updateAccessConfigInstanceSettings.toBuilder();
+      updateDisplayDeviceInstanceSettings =
+          settings.updateDisplayDeviceInstanceSettings.toBuilder();
       updateNetworkInterfaceInstanceSettings =
           settings.updateNetworkInterfaceInstanceSettings.toBuilder();
       updateShieldedInstanceConfigInstanceSettings =
@@ -1200,6 +1247,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
               deleteAccessConfigInstanceSettings,
               detachDiskInstanceSettings,
               getInstanceSettings,
+              getGuestAttributesInstanceSettings,
               getIamPolicyInstanceSettings,
               getSerialPortOutputInstanceSettings,
               getShieldedInstanceIdentityInstanceSettings,
@@ -1225,6 +1273,7 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
               stopInstanceSettings,
               testIamPermissionsInstanceSettings,
               updateAccessConfigInstanceSettings,
+              updateDisplayDeviceInstanceSettings,
               updateNetworkInterfaceInstanceSettings,
               updateShieldedInstanceConfigInstanceSettings);
     }
@@ -1287,6 +1336,12 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     /** Returns the builder for the settings used for calls to getInstance. */
     public UnaryCallSettings.Builder<GetInstanceHttpRequest, Instance> getInstanceSettings() {
       return getInstanceSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to getGuestAttributesInstance. */
+    public UnaryCallSettings.Builder<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+        getGuestAttributesInstanceSettings() {
+      return getGuestAttributesInstanceSettings;
     }
 
     /** Returns the builder for the settings used for calls to getIamPolicyInstance. */
@@ -1445,6 +1500,12 @@ public class InstanceStubSettings extends StubSettings<InstanceStubSettings> {
     public UnaryCallSettings.Builder<UpdateAccessConfigInstanceHttpRequest, Operation>
         updateAccessConfigInstanceSettings() {
       return updateAccessConfigInstanceSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateDisplayDeviceInstance. */
+    public UnaryCallSettings.Builder<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+        updateDisplayDeviceInstanceSettings() {
+      return updateDisplayDeviceInstanceSettings;
     }
 
     /** Returns the builder for the settings used for calls to updateNetworkInterfaceInstance. */

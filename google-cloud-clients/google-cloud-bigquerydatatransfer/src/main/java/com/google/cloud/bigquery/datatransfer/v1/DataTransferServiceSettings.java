@@ -51,8 +51,9 @@ import javax.annotation.Generated;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of getDataSource to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of getDataSource to 30 seconds:
  *
  * <pre>
  * <code>
@@ -142,6 +143,12 @@ public class DataTransferServiceSettings extends ClientSettings<DataTransferServ
   public UnaryCallSettings<CheckValidCredsRequest, CheckValidCredsResponse>
       checkValidCredsSettings() {
     return ((DataTransferServiceStubSettings) getStubSettings()).checkValidCredsSettings();
+  }
+
+  /** Returns the object with the settings used for calls to startManualTransferRuns. */
+  public UnaryCallSettings<StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+      startManualTransferRunsSettings() {
+    return ((DataTransferServiceStubSettings) getStubSettings()).startManualTransferRunsSettings();
   }
 
   public static final DataTransferServiceSettings create(DataTransferServiceStubSettings stub)
@@ -320,6 +327,13 @@ public class DataTransferServiceSettings extends ClientSettings<DataTransferServ
     public UnaryCallSettings.Builder<CheckValidCredsRequest, CheckValidCredsResponse>
         checkValidCredsSettings() {
       return getStubSettingsBuilder().checkValidCredsSettings();
+    }
+
+    /** Returns the builder for the settings used for calls to startManualTransferRuns. */
+    public UnaryCallSettings.Builder<
+            StartManualTransferRunsRequest, StartManualTransferRunsResponse>
+        startManualTransferRunsSettings() {
+      return getStubSettingsBuilder().startManualTransferRunsSettings();
     }
 
     @Override

@@ -44,8 +44,9 @@ import javax.annotation.Generated;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of generateAccessToken to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of generateAccessToken to 30 seconds:
  *
  * <pre>
  * <code>
@@ -80,14 +81,6 @@ public class IamCredentialsSettings extends ClientSettings<IamCredentialsSetting
   /** Returns the object with the settings used for calls to signJwt. */
   public UnaryCallSettings<SignJwtRequest, SignJwtResponse> signJwtSettings() {
     return ((IamCredentialsStubSettings) getStubSettings()).signJwtSettings();
-  }
-
-  /** Returns the object with the settings used for calls to generateIdentityBindingAccessToken. */
-  public UnaryCallSettings<
-          GenerateIdentityBindingAccessTokenRequest, GenerateIdentityBindingAccessTokenResponse>
-      generateIdentityBindingAccessTokenSettings() {
-    return ((IamCredentialsStubSettings) getStubSettings())
-        .generateIdentityBindingAccessTokenSettings();
   }
 
   public static final IamCredentialsSettings create(IamCredentialsStubSettings stub)
@@ -207,15 +200,6 @@ public class IamCredentialsSettings extends ClientSettings<IamCredentialsSetting
     /** Returns the builder for the settings used for calls to signJwt. */
     public UnaryCallSettings.Builder<SignJwtRequest, SignJwtResponse> signJwtSettings() {
       return getStubSettingsBuilder().signJwtSettings();
-    }
-
-    /**
-     * Returns the builder for the settings used for calls to generateIdentityBindingAccessToken.
-     */
-    public UnaryCallSettings.Builder<
-            GenerateIdentityBindingAccessTokenRequest, GenerateIdentityBindingAccessTokenResponse>
-        generateIdentityBindingAccessTokenSettings() {
-      return getStubSettingsBuilder().generateIdentityBindingAccessTokenSettings();
     }
 
     @Override

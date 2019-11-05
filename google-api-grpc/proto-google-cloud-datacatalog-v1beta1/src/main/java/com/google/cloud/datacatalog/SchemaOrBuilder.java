@@ -12,44 +12,52 @@ public interface SchemaOrBuilder
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   java.util.List<com.google.cloud.datacatalog.ColumnSchema> getColumnsList();
   /**
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.datacatalog.ColumnSchema getColumns(int index);
   /**
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   int getColumnsCount();
   /**
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   java.util.List<? extends com.google.cloud.datacatalog.ColumnSchemaOrBuilder>
       getColumnsOrBuilderList();
@@ -57,11 +65,13 @@ public interface SchemaOrBuilder
    *
    *
    * <pre>
-   * Schema of columns. A maximum of 10,000 columns and sub-columns can be
-   * specified.
+   * Required. Schema of columns. A maximum of 10,000 columns and sub-columns
+   * can be specified.
    * </pre>
    *
-   * <code>repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2;</code>
+   * <code>
+   * repeated .google.cloud.datacatalog.v1beta1.ColumnSchema columns = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.datacatalog.ColumnSchemaOrBuilder getColumnsOrBuilder(int index);
 }

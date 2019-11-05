@@ -18,10 +18,10 @@ public interface SoftwareConfigOrBuilder
    * such as "1.2" (including a subminor version, such as "1.2.29"), or the
    * ["preview"
    * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-   * If unspecified, it defaults to the latest version.
+   * If unspecified, it defaults to the latest Debian version.
    * </pre>
    *
-   * <code>string image_version = 1;</code>
+   * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getImageVersion();
   /**
@@ -34,10 +34,10 @@ public interface SoftwareConfigOrBuilder
    * such as "1.2" (including a subminor version, such as "1.2.29"), or the
    * ["preview"
    * version](/dataproc/docs/concepts/versioning/dataproc-versions#other_versions).
-   * If unspecified, it defaults to the latest version.
+   * If unspecified, it defaults to the latest Debian version.
    * </pre>
    *
-   * <code>string image_version = 1;</code>
+   * <code>string image_version = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getImageVersionBytes();
 
@@ -46,8 +46,8 @@ public interface SoftwareConfigOrBuilder
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -62,7 +62,8 @@ public interface SoftwareConfigOrBuilder
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   int getPropertiesCount();
   /**
@@ -70,8 +71,8 @@ public interface SoftwareConfigOrBuilder
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -86,7 +87,8 @@ public interface SoftwareConfigOrBuilder
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean containsProperties(java.lang.String key);
   /** Use {@link #getPropertiesMap()} instead. */
@@ -97,8 +99,8 @@ public interface SoftwareConfigOrBuilder
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -113,7 +115,8 @@ public interface SoftwareConfigOrBuilder
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   java.util.Map<java.lang.String, java.lang.String> getPropertiesMap();
   /**
@@ -121,8 +124,8 @@ public interface SoftwareConfigOrBuilder
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -137,7 +140,8 @@ public interface SoftwareConfigOrBuilder
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   java.lang.String getPropertiesOrDefault(java.lang.String key, java.lang.String defaultValue);
   /**
@@ -145,8 +149,8 @@ public interface SoftwareConfigOrBuilder
    *
    * <pre>
    * Optional. The properties to set on daemon config files.
-   * Property keys are specified in `prefix:property` format, such as
-   * `core:fs.defaultFS`. The following are supported prefixes
+   * Property keys are specified in `prefix:property` format, for example
+   * `core:hadoop.tmp.dir`. The following are supported prefixes
    * and their mappings:
    * * capacity-scheduler: `capacity-scheduler.xml`
    * * core:   `core-site.xml`
@@ -161,7 +165,69 @@ public interface SoftwareConfigOrBuilder
    * [Cluster properties](/dataproc/docs/concepts/cluster-properties).
    * </pre>
    *
-   * <code>map&lt;string, string&gt; properties = 2;</code>
+   * <code>map&lt;string, string&gt; properties = 2 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   java.lang.String getPropertiesOrThrow(java.lang.String key);
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional. The set of components to activate on the cluster.
+   * </pre>
+   *
+   * <code>
+   * repeated .google.cloud.dataproc.v1.Component optional_components = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  java.util.List<com.google.cloud.dataproc.v1.Component> getOptionalComponentsList();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. The set of components to activate on the cluster.
+   * </pre>
+   *
+   * <code>
+   * repeated .google.cloud.dataproc.v1.Component optional_components = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  int getOptionalComponentsCount();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. The set of components to activate on the cluster.
+   * </pre>
+   *
+   * <code>
+   * repeated .google.cloud.dataproc.v1.Component optional_components = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  com.google.cloud.dataproc.v1.Component getOptionalComponents(int index);
+  /**
+   *
+   *
+   * <pre>
+   * Optional. The set of components to activate on the cluster.
+   * </pre>
+   *
+   * <code>
+   * repeated .google.cloud.dataproc.v1.Component optional_components = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  java.util.List<java.lang.Integer> getOptionalComponentsValueList();
+  /**
+   *
+   *
+   * <pre>
+   * Optional. The set of components to activate on the cluster.
+   * </pre>
+   *
+   * <code>
+   * repeated .google.cloud.dataproc.v1.Component optional_components = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  int getOptionalComponentsValue(int index);
 }

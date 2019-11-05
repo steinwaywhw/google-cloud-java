@@ -15,30 +15,19 @@
  */
 package com.google.cloud.bigtable.data.v2;
 
-import com.google.api.core.ApiClock;
 import com.google.api.core.ApiFunction;
+import com.google.api.core.BetaApi;
 import com.google.api.gax.core.CredentialsProvider;
-import com.google.api.gax.core.ExecutorProvider;
 import com.google.api.gax.core.NoCredentialsProvider;
 import com.google.api.gax.grpc.InstantiatingGrpcChannelProvider;
-import com.google.api.gax.rpc.BatchingCallSettings;
-import com.google.api.gax.rpc.HeaderProvider;
-import com.google.api.gax.rpc.ServerStreamingCallSettings;
-import com.google.api.gax.rpc.TransportChannelProvider;
 import com.google.api.gax.rpc.UnaryCallSettings;
-import com.google.api.gax.rpc.WatchdogProvider;
-import com.google.cloud.bigtable.data.v2.models.ConditionalRowMutation;
-import com.google.cloud.bigtable.data.v2.models.KeyOffset;
 import com.google.cloud.bigtable.data.v2.models.Query;
-import com.google.cloud.bigtable.data.v2.models.ReadModifyWriteRow;
 import com.google.cloud.bigtable.data.v2.models.Row;
-import com.google.cloud.bigtable.data.v2.models.RowMutation;
 import com.google.cloud.bigtable.data.v2.stub.EnhancedBigtableStubSettings;
+import com.google.common.base.Strings;
 import io.grpc.ManagedChannelBuilder;
-import java.util.List;
+import java.util.logging.Logger;
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.threeten.bp.Duration;
 
 /**
  * Settings class to configure an instance of {@link BigtableDataClient}.
@@ -47,6 +36,8 @@ import org.threeten.bp.Duration;
  *
  * <ul>
  *   <li>The default service address (bigtable.googleapis.com) and default port (443) are used.
+ *   <li>The transport provider is configured with a channel pool that contains twice as many
+ *       connections as CPUs.
  *   <li>Credentials are acquired automatically through Application Default Credentials.
  *   <li>Retries are configured for idempotent methods but not for non-idempotent methods.
  * </ul>
@@ -69,27 +60,56 @@ import org.threeten.bp.Duration;
  * EnhancedBigtableStubSettings}, which is exposed as {@link Builder#stubSettings()}.
  */
 public final class BigtableDataSettings {
+
+  private static final Logger LOGGER = Logger.getLogger(BigtableDataSettings.class.getName());
+  private static final String BIGTABLE_EMULATOR_HOST_ENV_VAR = "BIGTABLE_EMULATOR_HOST";
+
   private final EnhancedBigtableStubSettings stubSettings;
 
   private BigtableDataSettings(Builder builder) {
     stubSettings = builder.stubSettings().build();
   }
 
-  /** Create a new builder. */
+  /**
+   * Create a new builder.
+   *
+   * <p>If emulator configuration provided in BIGTABLE_EMULATOR_HOST environment variable then it
+   * creates a builder preconfigured to connect to Bigtable using emulator hostname and port number.
+   */
   public static Builder newBuilder() {
+    String hostAndPort = System.getenv(BIGTABLE_EMULATOR_HOST_ENV_VAR);
+    if (!Strings.isNullOrEmpty(hostAndPort)) {
+      try {
+        int lastIndexOfCol = hostAndPort.lastIndexOf(":");
+        int port = Integer.parseInt(hostAndPort.substring(lastIndexOfCol + 1));
+        return newBuilderForEmulator(hostAndPort.substring(0, lastIndexOfCol), port);
+      } catch (NumberFormatException | IndexOutOfBoundsException ex) {
+        throw new RuntimeException(
+            "Invalid host/port in "
+                + BIGTABLE_EMULATOR_HOST_ENV_VAR
+                + " environment variable: "
+                + hostAndPort);
+      }
+    }
     return new Builder();
   }
 
-  /** Create a new builder preconfigured to connect to the Bigtable emulator. */
+  /** Create a new builder preconfigured to connect to the Bigtable emulator with port number. */
   public static Builder newBuilderForEmulator(int port) {
-    Builder builder = newBuilder();
+    return newBuilderForEmulator("localhost", port);
+  }
+
+  /**
+   * Creates a new builder preconfigured to connect to the Bigtable emulator with a host name and
+   * port number.
+   */
+  public static Builder newBuilderForEmulator(String hostname, int port) {
+    Builder builder = new Builder();
 
     builder
         .stubSettings()
-        .setProjectId("fake-project")
-        .setInstanceId("fake-instance")
         .setCredentialsProvider(NoCredentialsProvider.create())
-        .setEndpoint("localhost:" + port)
+        .setEndpoint(hostname + ":" + port)
         .setTransportChannelProvider(
             InstantiatingGrpcChannelProvider.newBuilder()
                 .setMaxInboundMessageSize(256 * 1024 * 1024)
@@ -103,7 +123,50 @@ public final class BigtableDataSettings {
                     })
                 .build());
 
+    LOGGER.info("Connecting to the Bigtable emulator at " + hostname + ":" + port);
     return builder;
+  }
+
+  /**
+   * Enables OpenCensus metric aggregations.
+   *
+   * <p>This will register Bigtable client relevant {@link io.opencensus.stats.View}s. When coupled
+   * with an exporter, it allows users to monitor client behavior.
+   *
+   * <p>Please note that in addition to calling this method, the application must:
+   * <ul>
+   *   <li>Include openensus-impl dependency on the classpath
+   *   <li>Configure an exporter like opencensus-exporter-stats-stackdriver
+   * </ul>
+   *
+   * <p>Example usage for maven:
+   * <pre>{@code
+   *   <dependency>
+   *     <groupId>io.opencensus</groupId>
+   *     <artifactId>opencensus-impl</artifactId>
+   *     <version>${opencensus.version}</version>
+   *     <scope>runtime</scope>
+   *   </dependency>
+   *
+   *   <dependency>
+   *     <groupId>io.opencensus</groupId>
+   *     <artifactId>opencensus-exporter-stats-stackdriver</artifactId>
+   *     <version>${opencensus.version}</version>
+   *   </dependency>
+   * </pre>
+   *
+   * Java:
+   * <pre>{@code
+   *   StackdriverStatsExporter.createAndRegister();
+   *   BigtableDataSettings.enableOpenCensusStats();
+   * }</pre>
+   */
+  @BetaApi("OpenCensus stats integration is currently unstable and may change in the future")
+  public static void enableOpenCensusStats() {
+    com.google.cloud.bigtable.data.v2.stub.metrics.RpcViews.registerBigtableClientViews();
+    // TODO(igorbernstein): Enable grpc views once we upgrade to grpc-java 1.24.0
+    // Required change: https://github.com/grpc/grpc-java/pull/5996
+    // io.opencensus.contrib.grpc.metrics.RpcViews.registerClientGrpcBasicViews();
   }
 
   /** Returns the target project id. */
@@ -126,95 +189,9 @@ public final class BigtableDataSettings {
     return stubSettings;
   }
 
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public ServerStreamingCallSettings<Query, Row> readRowsSettings() {
-    return stubSettings.readRowsSettings();
-  }
-
   /** Returns the object with the settings used for point reads via ReadRow. */
   public UnaryCallSettings<Query, Row> readRowSettings() {
     return stubSettings.readRowSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public UnaryCallSettings<String, List<KeyOffset>> sampleRowKeysSettings() {
-    return stubSettings.sampleRowKeysSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public UnaryCallSettings<RowMutation, Void> mutateRowSettings() {
-    return stubSettings.mutateRowSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public BatchingCallSettings<RowMutation, Void> bulkMutationsSettings() {
-    return stubSettings.bulkMutateRowsSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public UnaryCallSettings<ConditionalRowMutation, Boolean> checkAndMutateRowSettings() {
-    return stubSettings.checkAndMutateRowSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public UnaryCallSettings<ReadModifyWriteRow, Row> readModifyWriteRowSettings() {
-    return stubSettings.readModifyWriteRowSettings();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public ExecutorProvider getExecutorProvider() {
-    return stubSettings.getExecutorProvider();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public TransportChannelProvider getTransportChannelProvider() {
-    return stubSettings.getTransportChannelProvider();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public CredentialsProvider getCredentialsProvider() {
-    return stubSettings.getCredentialsProvider();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public HeaderProvider getHeaderProvider() {
-    return stubSettings.getHeaderProvider();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public ApiClock getClock() {
-    return stubSettings.getClock();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  public String getEndpoint() {
-    return stubSettings.getEndpoint();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  @Nullable
-  public WatchdogProvider getStreamWatchdogProvider() {
-    return stubSettings.getStreamWatchdogProvider();
-  }
-
-  /** @deprecated Please use {@link #getStubSettings()} */
-  @Deprecated
-  @Nonnull
-  public Duration getStreamWatchdogCheckInterval() {
-    return stubSettings.getStreamWatchdogCheckInterval();
   }
 
   /** Returns a builder containing all the values of this settings class. */
@@ -287,48 +264,6 @@ public final class BigtableDataSettings {
       return stubSettings.getAppProfileId();
     }
 
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public ServerStreamingCallSettings.Builder<Query, Row> readRowsSettings() {
-      return stubSettings.readRowsSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public UnaryCallSettings.Builder<Query, Row> readRowSettings() {
-      return stubSettings.readRowSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public UnaryCallSettings.Builder<String, List<KeyOffset>> sampleRowKeysSettings() {
-      return stubSettings.sampleRowKeysSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public UnaryCallSettings.Builder<RowMutation, Void> mutateRowSettings() {
-      return stubSettings.mutateRowSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public BatchingCallSettings.Builder<RowMutation, Void> bulkMutationsSettings() {
-      return stubSettings.bulkMutateRowsSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public UnaryCallSettings.Builder<ConditionalRowMutation, Boolean> checkAndMutateRowSettings() {
-      return stubSettings.checkAndMutateRowSettings();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public UnaryCallSettings.Builder<ReadModifyWriteRow, Row> readModifyWriteRowSettings() {
-      return stubSettings.readModifyWriteRowSettings();
-    }
-
     /** Sets the CredentialsProvider to use for getting the credentials to make calls with. */
     public Builder setCredentialsProvider(CredentialsProvider credentialsProvider) {
       stubSettings.setCredentialsProvider(credentialsProvider);
@@ -350,99 +285,6 @@ public final class BigtableDataSettings {
 
     public BigtableDataSettings build() {
       return new BigtableDataSettings(this);
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setExecutorProvider(ExecutorProvider executorProvider) {
-      stubSettings.setExecutorProvider(executorProvider);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setHeaderProvider(HeaderProvider headerProvider) {
-      stubSettings.setHeaderProvider(headerProvider);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setTransportChannelProvider(TransportChannelProvider transportChannelProvider) {
-      stubSettings.setTransportChannelProvider(transportChannelProvider);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setStreamWatchdogProvider(@Nullable WatchdogProvider streamWatchdogProvider) {
-      stubSettings.setStreamWatchdogProvider(streamWatchdogProvider);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setClock(ApiClock clock) {
-      stubSettings.setClock(clock);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setEndpoint(String endpoint) {
-      stubSettings.setEndpoint(endpoint);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public Builder setStreamWatchdogCheckInterval(@Nonnull Duration checkInterval) {
-      stubSettings.setStreamWatchdogCheckInterval(checkInterval);
-      return this;
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public ExecutorProvider getExecutorProvider() {
-      return stubSettings.getExecutorProvider();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public TransportChannelProvider getTransportChannelProvider() {
-      return stubSettings.getTransportChannelProvider();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public HeaderProvider getHeaderProvider() {
-      return stubSettings.getHeaderProvider();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    @Nullable
-    public WatchdogProvider getStreamWatchdogProvider() {
-      return stubSettings.getStreamWatchdogProvider();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public ApiClock getClock() {
-      return stubSettings.getClock();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    public String getEndpoint() {
-      return stubSettings.getEndpoint();
-    }
-
-    /** @deprecated Please use {@link #stubSettings()} */
-    @Deprecated
-    @Nonnull
-    public Duration getStreamWatchdogCheckInterval() {
-      return stubSettings.getStreamWatchdogCheckInterval();
     }
   }
 }

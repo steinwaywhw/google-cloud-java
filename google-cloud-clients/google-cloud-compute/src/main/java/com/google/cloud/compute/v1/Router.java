@@ -25,7 +25,11 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-/** Router resource. */
+/**
+ * Represents a Cloud Router resource.
+ *
+ * <p>For more information about Cloud Router, read the the Cloud Router overview.
+ */
 public final class Router implements ApiMessage {
   private final RouterBgp bgp;
   private final List<RouterBgpPeer> bgpPeers;
@@ -147,9 +151,9 @@ public final class Router implements ApiMessage {
   }
 
   /**
-   * BGP information that needs to be configured into the routing stack to establish the BGP
-   * peering. It must specify peer ASN and either interface name, IP, or peer IP. Please refer to
-   * RFC4273.
+   * BGP information that must be configured into the routing stack to establish BGP peering. This
+   * information must specify the peer ASN and either the interface name, IP address, or peer IP
+   * address. Please refer to RFC4273.
    */
   public List<RouterBgpPeer> getBgpPeersList() {
     return bgpPeers;
@@ -175,8 +179,8 @@ public final class Router implements ApiMessage {
   }
 
   /**
-   * Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel),
-   * or IP address and IP address range (e.g. ipRange), or both.
+   * Router interfaces. Each interface requires either one linked resource, (for example,
+   * linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
    */
   public List<RouterInterface> getInterfacesList() {
     return interfaces;
@@ -198,7 +202,7 @@ public final class Router implements ApiMessage {
     return name;
   }
 
-  /** A list of Nat services created in this router. */
+  /** A list of NAT services created in this router. */
   public List<RouterNat> getNatsList() {
     return nats;
   }
@@ -327,18 +331,18 @@ public final class Router implements ApiMessage {
     }
 
     /**
-     * BGP information that needs to be configured into the routing stack to establish the BGP
-     * peering. It must specify peer ASN and either interface name, IP, or peer IP. Please refer to
-     * RFC4273.
+     * BGP information that must be configured into the routing stack to establish BGP peering. This
+     * information must specify the peer ASN and either the interface name, IP address, or peer IP
+     * address. Please refer to RFC4273.
      */
     public List<RouterBgpPeer> getBgpPeersList() {
       return bgpPeers;
     }
 
     /**
-     * BGP information that needs to be configured into the routing stack to establish the BGP
-     * peering. It must specify peer ASN and either interface name, IP, or peer IP. Please refer to
-     * RFC4273.
+     * BGP information that must be configured into the routing stack to establish BGP peering. This
+     * information must specify the peer ASN and either the interface name, IP address, or peer IP
+     * address. Please refer to RFC4273.
      */
     public Builder addAllBgpPeers(List<RouterBgpPeer> bgpPeers) {
       if (this.bgpPeers == null) {
@@ -349,9 +353,9 @@ public final class Router implements ApiMessage {
     }
 
     /**
-     * BGP information that needs to be configured into the routing stack to establish the BGP
-     * peering. It must specify peer ASN and either interface name, IP, or peer IP. Please refer to
-     * RFC4273.
+     * BGP information that must be configured into the routing stack to establish BGP peering. This
+     * information must specify the peer ASN and either the interface name, IP address, or peer IP
+     * address. Please refer to RFC4273.
      */
     public Builder addBgpPeers(RouterBgpPeer bgpPeers) {
       if (this.bgpPeers == null) {
@@ -405,16 +409,16 @@ public final class Router implements ApiMessage {
     }
 
     /**
-     * Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel),
-     * or IP address and IP address range (e.g. ipRange), or both.
+     * Router interfaces. Each interface requires either one linked resource, (for example,
+     * linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
     public List<RouterInterface> getInterfacesList() {
       return interfaces;
     }
 
     /**
-     * Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel),
-     * or IP address and IP address range (e.g. ipRange), or both.
+     * Router interfaces. Each interface requires either one linked resource, (for example,
+     * linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
     public Builder addAllInterfaces(List<RouterInterface> interfaces) {
       if (this.interfaces == null) {
@@ -425,8 +429,8 @@ public final class Router implements ApiMessage {
     }
 
     /**
-     * Router interfaces. Each interface requires either one linked resource (e.g. linkedVpnTunnel),
-     * or IP address and IP address range (e.g. ipRange), or both.
+     * Router interfaces. Each interface requires either one linked resource, (for example,
+     * linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
     public Builder addInterfaces(RouterInterface interfaces) {
       if (this.interfaces == null) {
@@ -470,12 +474,12 @@ public final class Router implements ApiMessage {
       return this;
     }
 
-    /** A list of Nat services created in this router. */
+    /** A list of NAT services created in this router. */
     public List<RouterNat> getNatsList() {
       return nats;
     }
 
-    /** A list of Nat services created in this router. */
+    /** A list of NAT services created in this router. */
     public Builder addAllNats(List<RouterNat> nats) {
       if (this.nats == null) {
         this.nats = new LinkedList<>();
@@ -484,7 +488,7 @@ public final class Router implements ApiMessage {
       return this;
     }
 
-    /** A list of Nat services created in this router. */
+    /** A list of NAT services created in this router. */
     public Builder addNats(RouterNat nats) {
       if (this.nats == null) {
         this.nats = new LinkedList<>();

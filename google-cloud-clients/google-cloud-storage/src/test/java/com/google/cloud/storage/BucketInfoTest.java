@@ -68,8 +68,13 @@ public class BucketInfoTest {
   private static final String INDEX_PAGE = "index.html";
   private static final BucketInfo.IamConfiguration IAM_CONFIGURATION =
       BucketInfo.IamConfiguration.newBuilder()
-          .setIsBucketPolicyOnlyEnabled(true)
-          .setBucketPolicyOnlyLockedTime(System.currentTimeMillis())
+          .setIsUniformBucketLevelAccessEnabled(true)
+          .setUniformBucketLevelAccessLockedTime(System.currentTimeMillis())
+          .build();
+  private static final BucketInfo.Logging LOGGING =
+      BucketInfo.Logging.newBuilder()
+          .setLogBucket("test-bucket")
+          .setLogObjectPrefix("test-")
           .build();
   private static final String NOT_FOUND_PAGE = "error.html";
   private static final String LOCATION = "ASIA";
@@ -83,6 +88,9 @@ public class BucketInfoTest {
   private static final Long RETENTION_EFFECTIVE_TIME = 10L;
   private static final Long RETENTION_PERIOD = 10L;
   private static final Boolean RETENTION_POLICY_IS_LOCKED = false;
+  private static final List<String> LOCATION_TYPES =
+      ImmutableList.of("multi-region", "region", "dual-region");
+  private static final String LOCATION_TYPE = "multi-region";
   private static final BucketInfo BUCKET_INFO =
       BucketInfo.newBuilder("b")
           .setAcl(ACL)
@@ -100,6 +108,7 @@ public class BucketInfoTest {
           .setIamConfiguration(IAM_CONFIGURATION)
           .setNotFoundPage(NOT_FOUND_PAGE)
           .setLocation(LOCATION)
+          .setLocationType(LOCATION_TYPE)
           .setStorageClass(STORAGE_CLASS)
           .setVersioningEnabled(VERSIONING_ENABLED)
           .setLabels(BUCKET_LABELS)
@@ -109,6 +118,7 @@ public class BucketInfoTest {
           .setRetentionEffectiveTime(RETENTION_EFFECTIVE_TIME)
           .setRetentionPeriod(RETENTION_PERIOD)
           .setRetentionPolicyIsLocked(RETENTION_POLICY_IS_LOCKED)
+          .setLogging(LOGGING)
           .build();
 
   @Test
@@ -159,6 +169,8 @@ public class BucketInfoTest {
     assertEquals(RETENTION_EFFECTIVE_TIME, BUCKET_INFO.getRetentionEffectiveTime());
     assertEquals(RETENTION_PERIOD, BUCKET_INFO.getRetentionPeriod());
     assertEquals(RETENTION_POLICY_IS_LOCKED, BUCKET_INFO.retentionPolicyIsLocked());
+    assertTrue(LOCATION_TYPES.contains(BUCKET_INFO.getLocationType()));
+    assertEquals(LOGGING, BUCKET_INFO.getLogging());
   }
 
   @Test
@@ -195,6 +207,7 @@ public class BucketInfoTest {
     assertEquals(expected.getRetentionEffectiveTime(), value.getRetentionEffectiveTime());
     assertEquals(expected.getRetentionPeriod(), value.getRetentionPeriod());
     assertEquals(expected.retentionPolicyIsLocked(), value.retentionPolicyIsLocked());
+    assertEquals(expected.getLogging(), value.getLogging());
   }
 
   @Test
@@ -259,12 +272,24 @@ public class BucketInfoTest {
   public void testIamConfiguration() {
     Bucket.IamConfiguration iamConfiguration =
         BucketInfo.IamConfiguration.newBuilder()
-            .setIsBucketPolicyOnlyEnabled(true)
-            .setBucketPolicyOnlyLockedTime(System.currentTimeMillis())
+            .setIsUniformBucketLevelAccessEnabled(true)
+            .setUniformBucketLevelAccessLockedTime(System.currentTimeMillis())
             .build()
             .toPb();
 
-    assertEquals(Boolean.TRUE, iamConfiguration.getBucketPolicyOnly().getEnabled());
-    assertNotNull(iamConfiguration.getBucketPolicyOnly().getLockedTime());
+    assertEquals(Boolean.TRUE, iamConfiguration.getUniformBucketLevelAccess().getEnabled());
+    assertNotNull(iamConfiguration.getUniformBucketLevelAccess().getLockedTime());
+  }
+
+  @Test
+  public void testLogging() {
+    Bucket.Logging logging =
+        BucketInfo.Logging.newBuilder()
+            .setLogBucket("test-bucket")
+            .setLogObjectPrefix("test-")
+            .build()
+            .toPb();
+    assertEquals("test-bucket", logging.getLogBucket());
+    assertEquals("test-", logging.getLogObjectPrefix());
   }
 }

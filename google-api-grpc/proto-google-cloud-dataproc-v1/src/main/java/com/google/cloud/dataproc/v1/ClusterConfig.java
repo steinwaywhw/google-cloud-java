@@ -168,6 +168,38 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
 
               break;
             }
+          case 130:
+            {
+              com.google.cloud.dataproc.v1.SecurityConfig.Builder subBuilder = null;
+              if (securityConfig_ != null) {
+                subBuilder = securityConfig_.toBuilder();
+              }
+              securityConfig_ =
+                  input.readMessage(
+                      com.google.cloud.dataproc.v1.SecurityConfig.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(securityConfig_);
+                securityConfig_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+          case 146:
+            {
+              com.google.cloud.dataproc.v1.AutoscalingConfig.Builder subBuilder = null;
+              if (autoscalingConfig_ != null) {
+                subBuilder = autoscalingConfig_.toBuilder();
+              }
+              autoscalingConfig_ =
+                  input.readMessage(
+                      com.google.cloud.dataproc.v1.AutoscalingConfig.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(autoscalingConfig_);
+                autoscalingConfig_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -212,15 +244,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional. A Cloud Storage staging bucket used for sharing generated
-   * SSH keys and config. If you do not specify a staging bucket, Cloud
-   * Dataproc will determine an appropriate Cloud Storage location (US,
+   * Optional. A Google Cloud Storage bucket used to stage job
+   * dependencies, config files, and job driver console output.
+   * If you do not specify a staging bucket, Cloud
+   * Dataproc will determine a Cloud Storage location (US,
    * ASIA, or EU) for your cluster's staging bucket according to the Google
-   * Compute Engine zone where your cluster is deployed, and then it will create
-   * and manage this project-level, per-location bucket for you.
+   * Compute Engine zone where your cluster is deployed, and then create
+   * and manage this project-level, per-location bucket (see
+   * [Cloud Dataproc staging
+   * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
    * </pre>
    *
-   * <code>string config_bucket = 1;</code>
+   * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getConfigBucket() {
     java.lang.Object ref = configBucket_;
@@ -237,15 +272,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional. A Cloud Storage staging bucket used for sharing generated
-   * SSH keys and config. If you do not specify a staging bucket, Cloud
-   * Dataproc will determine an appropriate Cloud Storage location (US,
+   * Optional. A Google Cloud Storage bucket used to stage job
+   * dependencies, config files, and job driver console output.
+   * If you do not specify a staging bucket, Cloud
+   * Dataproc will determine a Cloud Storage location (US,
    * ASIA, or EU) for your cluster's staging bucket according to the Google
-   * Compute Engine zone where your cluster is deployed, and then it will create
-   * and manage this project-level, per-location bucket for you.
+   * Compute Engine zone where your cluster is deployed, and then create
+   * and manage this project-level, per-location bucket (see
+   * [Cloud Dataproc staging
+   * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
    * </pre>
    *
-   * <code>string config_bucket = 1;</code>
+   * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getConfigBucketBytes() {
     java.lang.Object ref = configBucket_;
@@ -265,11 +303,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasGceClusterConfig() {
     return gceClusterConfig_ != null;
@@ -278,11 +318,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.GceClusterConfig getGceClusterConfig() {
     return gceClusterConfig_ == null
@@ -293,11 +335,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required. The shared Compute Engine config settings for
+   * Optional. The shared Compute Engine config settings for
    * all instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.GceClusterConfigOrBuilder getGceClusterConfigOrBuilder() {
     return getGceClusterConfig();
@@ -313,7 +357,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasMasterConfig() {
     return masterConfig_ != null;
@@ -326,7 +372,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfig getMasterConfig() {
     return masterConfig_ == null
@@ -341,7 +389,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * the master instance in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getMasterConfigOrBuilder() {
     return getMasterConfig();
@@ -357,7 +407,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasWorkerConfig() {
     return workerConfig_ != null;
@@ -370,7 +422,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfig getWorkerConfig() {
     return workerConfig_ == null
@@ -385,7 +439,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getWorkerConfigOrBuilder() {
     return getWorkerConfig();
@@ -401,7 +457,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasSecondaryWorkerConfig() {
     return secondaryWorkerConfig_ != null;
@@ -414,7 +472,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfig getSecondaryWorkerConfig() {
     return secondaryWorkerConfig_ == null
@@ -429,7 +489,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * additional worker instances in a cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder
       getSecondaryWorkerConfigOrBuilder() {
@@ -445,7 +507,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasSoftwareConfig() {
     return softwareConfig_ != null;
@@ -457,7 +521,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.SoftwareConfig getSoftwareConfig() {
     return softwareConfig_ == null
@@ -471,7 +537,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. The config settings for software inside the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.SoftwareConfigOrBuilder getSoftwareConfigOrBuilder() {
     return getSoftwareConfig();
@@ -498,7 +566,8 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public java.util.List<com.google.cloud.dataproc.v1.NodeInitializationAction>
@@ -523,7 +592,8 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public java.util.List<? extends com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder>
@@ -548,7 +618,8 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public int getInitializationActionsCount() {
@@ -572,7 +643,8 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public com.google.cloud.dataproc.v1.NodeInitializationAction getInitializationActions(int index) {
@@ -596,7 +668,8 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    *     fi
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+   * <code>
+   * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder
@@ -613,7 +686,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public boolean hasEncryptionConfig() {
     return encryptionConfig_ != null;
@@ -625,7 +700,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.EncryptionConfig getEncryptionConfig() {
     return encryptionConfig_ == null
@@ -639,10 +716,109 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
    * Optional. Encryption settings for the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+   * <code>
+   * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.EncryptionConfigOrBuilder getEncryptionConfigOrBuilder() {
     return getEncryptionConfig();
+  }
+
+  public static final int AUTOSCALING_CONFIG_FIELD_NUMBER = 18;
+  private com.google.cloud.dataproc.v1.AutoscalingConfig autoscalingConfig_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public boolean hasAutoscalingConfig() {
+    return autoscalingConfig_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1.AutoscalingConfig getAutoscalingConfig() {
+    return autoscalingConfig_ == null
+        ? com.google.cloud.dataproc.v1.AutoscalingConfig.getDefaultInstance()
+        : autoscalingConfig_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Autoscaling config for the policy associated with the cluster.
+   * Cluster does not autoscale if this field is unset.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder getAutoscalingConfigOrBuilder() {
+    return getAutoscalingConfig();
+  }
+
+  public static final int SECURITY_CONFIG_FIELD_NUMBER = 16;
+  private com.google.cloud.dataproc.v1.SecurityConfig securityConfig_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public boolean hasSecurityConfig() {
+    return securityConfig_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1.SecurityConfig getSecurityConfig() {
+    return securityConfig_ == null
+        ? com.google.cloud.dataproc.v1.SecurityConfig.getDefaultInstance()
+        : securityConfig_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Security settings for the cluster.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1.SecurityConfigOrBuilder getSecurityConfigOrBuilder() {
+    return getSecurityConfig();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -683,6 +859,12 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
     if (encryptionConfig_ != null) {
       output.writeMessage(15, getEncryptionConfig());
     }
+    if (securityConfig_ != null) {
+      output.writeMessage(16, getSecurityConfig());
+    }
+    if (autoscalingConfig_ != null) {
+      output.writeMessage(18, getAutoscalingConfig());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -718,6 +900,12 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
     }
     if (encryptionConfig_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(15, getEncryptionConfig());
+    }
+    if (securityConfig_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(16, getSecurityConfig());
+    }
+    if (autoscalingConfig_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(18, getAutoscalingConfig());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -761,6 +949,14 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
     if (hasEncryptionConfig()) {
       if (!getEncryptionConfig().equals(other.getEncryptionConfig())) return false;
     }
+    if (hasAutoscalingConfig() != other.hasAutoscalingConfig()) return false;
+    if (hasAutoscalingConfig()) {
+      if (!getAutoscalingConfig().equals(other.getAutoscalingConfig())) return false;
+    }
+    if (hasSecurityConfig() != other.hasSecurityConfig()) return false;
+    if (hasSecurityConfig()) {
+      if (!getSecurityConfig().equals(other.getSecurityConfig())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -801,6 +997,14 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
     if (hasEncryptionConfig()) {
       hash = (37 * hash) + ENCRYPTION_CONFIG_FIELD_NUMBER;
       hash = (53 * hash) + getEncryptionConfig().hashCode();
+    }
+    if (hasAutoscalingConfig()) {
+      hash = (37 * hash) + AUTOSCALING_CONFIG_FIELD_NUMBER;
+      hash = (53 * hash) + getAutoscalingConfig().hashCode();
+    }
+    if (hasSecurityConfig()) {
+      hash = (37 * hash) + SECURITY_CONFIG_FIELD_NUMBER;
+      hash = (53 * hash) + getSecurityConfig().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -993,6 +1197,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
         encryptionConfig_ = null;
         encryptionConfigBuilder_ = null;
       }
+      if (autoscalingConfigBuilder_ == null) {
+        autoscalingConfig_ = null;
+      } else {
+        autoscalingConfig_ = null;
+        autoscalingConfigBuilder_ = null;
+      }
+      if (securityConfigBuilder_ == null) {
+        securityConfig_ = null;
+      } else {
+        securityConfig_ = null;
+        securityConfigBuilder_ = null;
+      }
       return this;
     }
 
@@ -1061,6 +1277,16 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
         result.encryptionConfig_ = encryptionConfig_;
       } else {
         result.encryptionConfig_ = encryptionConfigBuilder_.build();
+      }
+      if (autoscalingConfigBuilder_ == null) {
+        result.autoscalingConfig_ = autoscalingConfig_;
+      } else {
+        result.autoscalingConfig_ = autoscalingConfigBuilder_.build();
+      }
+      if (securityConfigBuilder_ == null) {
+        result.securityConfig_ = securityConfig_;
+      } else {
+        result.securityConfig_ = securityConfigBuilder_.build();
       }
       result.bitField0_ = to_bitField0_;
       onBuilt();
@@ -1161,6 +1387,12 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
       if (other.hasEncryptionConfig()) {
         mergeEncryptionConfig(other.getEncryptionConfig());
       }
+      if (other.hasAutoscalingConfig()) {
+        mergeAutoscalingConfig(other.getAutoscalingConfig());
+      }
+      if (other.hasSecurityConfig()) {
+        mergeSecurityConfig(other.getSecurityConfig());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1197,15 +1429,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional. A Cloud Storage staging bucket used for sharing generated
-     * SSH keys and config. If you do not specify a staging bucket, Cloud
-     * Dataproc will determine an appropriate Cloud Storage location (US,
+     * Optional. A Google Cloud Storage bucket used to stage job
+     * dependencies, config files, and job driver console output.
+     * If you do not specify a staging bucket, Cloud
+     * Dataproc will determine a Cloud Storage location (US,
      * ASIA, or EU) for your cluster's staging bucket according to the Google
-     * Compute Engine zone where your cluster is deployed, and then it will create
-     * and manage this project-level, per-location bucket for you.
+     * Compute Engine zone where your cluster is deployed, and then create
+     * and manage this project-level, per-location bucket (see
+     * [Cloud Dataproc staging
+     * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * </pre>
      *
-     * <code>string config_bucket = 1;</code>
+     * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getConfigBucket() {
       java.lang.Object ref = configBucket_;
@@ -1222,15 +1457,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional. A Cloud Storage staging bucket used for sharing generated
-     * SSH keys and config. If you do not specify a staging bucket, Cloud
-     * Dataproc will determine an appropriate Cloud Storage location (US,
+     * Optional. A Google Cloud Storage bucket used to stage job
+     * dependencies, config files, and job driver console output.
+     * If you do not specify a staging bucket, Cloud
+     * Dataproc will determine a Cloud Storage location (US,
      * ASIA, or EU) for your cluster's staging bucket according to the Google
-     * Compute Engine zone where your cluster is deployed, and then it will create
-     * and manage this project-level, per-location bucket for you.
+     * Compute Engine zone where your cluster is deployed, and then create
+     * and manage this project-level, per-location bucket (see
+     * [Cloud Dataproc staging
+     * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * </pre>
      *
-     * <code>string config_bucket = 1;</code>
+     * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getConfigBucketBytes() {
       java.lang.Object ref = configBucket_;
@@ -1247,15 +1485,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional. A Cloud Storage staging bucket used for sharing generated
-     * SSH keys and config. If you do not specify a staging bucket, Cloud
-     * Dataproc will determine an appropriate Cloud Storage location (US,
+     * Optional. A Google Cloud Storage bucket used to stage job
+     * dependencies, config files, and job driver console output.
+     * If you do not specify a staging bucket, Cloud
+     * Dataproc will determine a Cloud Storage location (US,
      * ASIA, or EU) for your cluster's staging bucket according to the Google
-     * Compute Engine zone where your cluster is deployed, and then it will create
-     * and manage this project-level, per-location bucket for you.
+     * Compute Engine zone where your cluster is deployed, and then create
+     * and manage this project-level, per-location bucket (see
+     * [Cloud Dataproc staging
+     * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * </pre>
      *
-     * <code>string config_bucket = 1;</code>
+     * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setConfigBucket(java.lang.String value) {
       if (value == null) {
@@ -1270,15 +1511,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional. A Cloud Storage staging bucket used for sharing generated
-     * SSH keys and config. If you do not specify a staging bucket, Cloud
-     * Dataproc will determine an appropriate Cloud Storage location (US,
+     * Optional. A Google Cloud Storage bucket used to stage job
+     * dependencies, config files, and job driver console output.
+     * If you do not specify a staging bucket, Cloud
+     * Dataproc will determine a Cloud Storage location (US,
      * ASIA, or EU) for your cluster's staging bucket according to the Google
-     * Compute Engine zone where your cluster is deployed, and then it will create
-     * and manage this project-level, per-location bucket for you.
+     * Compute Engine zone where your cluster is deployed, and then create
+     * and manage this project-level, per-location bucket (see
+     * [Cloud Dataproc staging
+     * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * </pre>
      *
-     * <code>string config_bucket = 1;</code>
+     * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearConfigBucket() {
 
@@ -1290,15 +1534,18 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional. A Cloud Storage staging bucket used for sharing generated
-     * SSH keys and config. If you do not specify a staging bucket, Cloud
-     * Dataproc will determine an appropriate Cloud Storage location (US,
+     * Optional. A Google Cloud Storage bucket used to stage job
+     * dependencies, config files, and job driver console output.
+     * If you do not specify a staging bucket, Cloud
+     * Dataproc will determine a Cloud Storage location (US,
      * ASIA, or EU) for your cluster's staging bucket according to the Google
-     * Compute Engine zone where your cluster is deployed, and then it will create
-     * and manage this project-level, per-location bucket for you.
+     * Compute Engine zone where your cluster is deployed, and then create
+     * and manage this project-level, per-location bucket (see
+     * [Cloud Dataproc staging
+     * bucket](/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
      * </pre>
      *
-     * <code>string config_bucket = 1;</code>
+     * <code>string config_bucket = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setConfigBucketBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1321,11 +1568,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasGceClusterConfig() {
       return gceClusterConfigBuilder_ != null || gceClusterConfig_ != null;
@@ -1334,11 +1583,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.GceClusterConfig getGceClusterConfig() {
       if (gceClusterConfigBuilder_ == null) {
@@ -1353,11 +1604,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setGceClusterConfig(com.google.cloud.dataproc.v1.GceClusterConfig value) {
       if (gceClusterConfigBuilder_ == null) {
@@ -1376,11 +1629,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setGceClusterConfig(
         com.google.cloud.dataproc.v1.GceClusterConfig.Builder builderForValue) {
@@ -1397,11 +1652,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeGceClusterConfig(com.google.cloud.dataproc.v1.GceClusterConfig value) {
       if (gceClusterConfigBuilder_ == null) {
@@ -1424,11 +1681,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearGceClusterConfig() {
       if (gceClusterConfigBuilder_ == null) {
@@ -1445,11 +1704,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.GceClusterConfig.Builder getGceClusterConfigBuilder() {
 
@@ -1460,11 +1721,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.GceClusterConfigOrBuilder getGceClusterConfigOrBuilder() {
       if (gceClusterConfigBuilder_ != null) {
@@ -1479,11 +1742,13 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required. The shared Compute Engine config settings for
+     * Optional. The shared Compute Engine config settings for
      * all instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.GceClusterConfig gce_cluster_config = 8 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.GceClusterConfig,
@@ -1516,7 +1781,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasMasterConfig() {
       return masterConfigBuilder_ != null || masterConfig_ != null;
@@ -1529,7 +1796,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig getMasterConfig() {
       if (masterConfigBuilder_ == null) {
@@ -1548,7 +1817,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setMasterConfig(com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
       if (masterConfigBuilder_ == null) {
@@ -1571,7 +1842,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setMasterConfig(
         com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder builderForValue) {
@@ -1592,7 +1865,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeMasterConfig(com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
       if (masterConfigBuilder_ == null) {
@@ -1619,7 +1894,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearMasterConfig() {
       if (masterConfigBuilder_ == null) {
@@ -1640,7 +1917,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder getMasterConfigBuilder() {
 
@@ -1655,7 +1934,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getMasterConfigOrBuilder() {
       if (masterConfigBuilder_ != null) {
@@ -1674,7 +1955,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * the master instance in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig master_config = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.InstanceGroupConfig,
@@ -1707,7 +1990,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasWorkerConfig() {
       return workerConfigBuilder_ != null || workerConfig_ != null;
@@ -1720,7 +2005,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig getWorkerConfig() {
       if (workerConfigBuilder_ == null) {
@@ -1739,7 +2026,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setWorkerConfig(com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
       if (workerConfigBuilder_ == null) {
@@ -1762,7 +2051,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setWorkerConfig(
         com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder builderForValue) {
@@ -1783,7 +2074,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeWorkerConfig(com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
       if (workerConfigBuilder_ == null) {
@@ -1810,7 +2103,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearWorkerConfig() {
       if (workerConfigBuilder_ == null) {
@@ -1831,7 +2126,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder getWorkerConfigBuilder() {
 
@@ -1846,7 +2143,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder getWorkerConfigOrBuilder() {
       if (workerConfigBuilder_ != null) {
@@ -1865,7 +2164,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig worker_config = 10 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.InstanceGroupConfig,
@@ -1898,7 +2199,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasSecondaryWorkerConfig() {
       return secondaryWorkerConfigBuilder_ != null || secondaryWorkerConfig_ != null;
@@ -1911,7 +2214,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig getSecondaryWorkerConfig() {
       if (secondaryWorkerConfigBuilder_ == null) {
@@ -1930,7 +2235,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setSecondaryWorkerConfig(
         com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
@@ -1954,7 +2261,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setSecondaryWorkerConfig(
         com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder builderForValue) {
@@ -1975,7 +2284,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeSecondaryWorkerConfig(
         com.google.cloud.dataproc.v1.InstanceGroupConfig value) {
@@ -2003,7 +2314,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearSecondaryWorkerConfig() {
       if (secondaryWorkerConfigBuilder_ == null) {
@@ -2024,7 +2337,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfig.Builder
         getSecondaryWorkerConfigBuilder() {
@@ -2040,7 +2355,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.InstanceGroupConfigOrBuilder
         getSecondaryWorkerConfigOrBuilder() {
@@ -2060,7 +2377,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * additional worker instances in a cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.InstanceGroupConfig secondary_worker_config = 12 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.InstanceGroupConfig,
@@ -2092,7 +2411,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasSoftwareConfig() {
       return softwareConfigBuilder_ != null || softwareConfig_ != null;
@@ -2104,7 +2425,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.SoftwareConfig getSoftwareConfig() {
       if (softwareConfigBuilder_ == null) {
@@ -2122,7 +2445,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setSoftwareConfig(com.google.cloud.dataproc.v1.SoftwareConfig value) {
       if (softwareConfigBuilder_ == null) {
@@ -2144,7 +2469,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setSoftwareConfig(
         com.google.cloud.dataproc.v1.SoftwareConfig.Builder builderForValue) {
@@ -2164,7 +2491,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeSoftwareConfig(com.google.cloud.dataproc.v1.SoftwareConfig value) {
       if (softwareConfigBuilder_ == null) {
@@ -2190,7 +2519,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearSoftwareConfig() {
       if (softwareConfigBuilder_ == null) {
@@ -2210,7 +2541,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.SoftwareConfig.Builder getSoftwareConfigBuilder() {
 
@@ -2224,7 +2557,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.SoftwareConfigOrBuilder getSoftwareConfigOrBuilder() {
       if (softwareConfigBuilder_ != null) {
@@ -2242,7 +2577,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. The config settings for software inside the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.SoftwareConfig software_config = 13;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.SoftwareConfig software_config = 13 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.SoftwareConfig,
@@ -2298,7 +2635,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public java.util.List<com.google.cloud.dataproc.v1.NodeInitializationAction>
@@ -2328,7 +2665,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public int getInitializationActionsCount() {
@@ -2357,7 +2694,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.dataproc.v1.NodeInitializationAction getInitializationActions(
@@ -2387,7 +2724,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder setInitializationActions(
@@ -2423,7 +2760,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder setInitializationActions(
@@ -2456,7 +2793,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder addInitializationActions(
@@ -2492,7 +2829,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder addInitializationActions(
@@ -2528,7 +2865,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder addInitializationActions(
@@ -2561,7 +2898,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder addInitializationActions(
@@ -2594,7 +2931,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder addAllInitializationActions(
@@ -2628,7 +2965,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder clearInitializationActions() {
@@ -2660,7 +2997,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder removeInitializationActions(int index) {
@@ -2692,7 +3029,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.dataproc.v1.NodeInitializationAction.Builder
@@ -2718,7 +3055,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder
@@ -2748,7 +3085,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public java.util.List<? extends com.google.cloud.dataproc.v1.NodeInitializationActionOrBuilder>
@@ -2778,7 +3115,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.dataproc.v1.NodeInitializationAction.Builder
@@ -2805,7 +3142,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.dataproc.v1.NodeInitializationAction.Builder
@@ -2833,7 +3170,7 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * </pre>
      *
      * <code>
-     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11;
+     * repeated .google.cloud.dataproc.v1.NodeInitializationAction initialization_actions = 11 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public java.util.List<com.google.cloud.dataproc.v1.NodeInitializationAction.Builder>
@@ -2874,7 +3211,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasEncryptionConfig() {
       return encryptionConfigBuilder_ != null || encryptionConfig_ != null;
@@ -2886,7 +3225,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.EncryptionConfig getEncryptionConfig() {
       if (encryptionConfigBuilder_ == null) {
@@ -2904,7 +3245,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setEncryptionConfig(com.google.cloud.dataproc.v1.EncryptionConfig value) {
       if (encryptionConfigBuilder_ == null) {
@@ -2926,7 +3269,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setEncryptionConfig(
         com.google.cloud.dataproc.v1.EncryptionConfig.Builder builderForValue) {
@@ -2946,7 +3291,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeEncryptionConfig(com.google.cloud.dataproc.v1.EncryptionConfig value) {
       if (encryptionConfigBuilder_ == null) {
@@ -2972,7 +3319,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearEncryptionConfig() {
       if (encryptionConfigBuilder_ == null) {
@@ -2992,7 +3341,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.EncryptionConfig.Builder getEncryptionConfigBuilder() {
 
@@ -3006,7 +3357,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.EncryptionConfigOrBuilder getEncryptionConfigOrBuilder() {
       if (encryptionConfigBuilder_ != null) {
@@ -3024,7 +3377,9 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
      * Optional. Encryption settings for the cluster.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.EncryptionConfig encryption_config = 15 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.EncryptionConfig,
@@ -3041,6 +3396,415 @@ public final class ClusterConfig extends com.google.protobuf.GeneratedMessageV3
         encryptionConfig_ = null;
       }
       return encryptionConfigBuilder_;
+    }
+
+    private com.google.cloud.dataproc.v1.AutoscalingConfig autoscalingConfig_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1.AutoscalingConfig,
+            com.google.cloud.dataproc.v1.AutoscalingConfig.Builder,
+            com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder>
+        autoscalingConfigBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public boolean hasAutoscalingConfig() {
+      return autoscalingConfigBuilder_ != null || autoscalingConfig_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.AutoscalingConfig getAutoscalingConfig() {
+      if (autoscalingConfigBuilder_ == null) {
+        return autoscalingConfig_ == null
+            ? com.google.cloud.dataproc.v1.AutoscalingConfig.getDefaultInstance()
+            : autoscalingConfig_;
+      } else {
+        return autoscalingConfigBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setAutoscalingConfig(com.google.cloud.dataproc.v1.AutoscalingConfig value) {
+      if (autoscalingConfigBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        autoscalingConfig_ = value;
+        onChanged();
+      } else {
+        autoscalingConfigBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setAutoscalingConfig(
+        com.google.cloud.dataproc.v1.AutoscalingConfig.Builder builderForValue) {
+      if (autoscalingConfigBuilder_ == null) {
+        autoscalingConfig_ = builderForValue.build();
+        onChanged();
+      } else {
+        autoscalingConfigBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder mergeAutoscalingConfig(com.google.cloud.dataproc.v1.AutoscalingConfig value) {
+      if (autoscalingConfigBuilder_ == null) {
+        if (autoscalingConfig_ != null) {
+          autoscalingConfig_ =
+              com.google.cloud.dataproc.v1.AutoscalingConfig.newBuilder(autoscalingConfig_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          autoscalingConfig_ = value;
+        }
+        onChanged();
+      } else {
+        autoscalingConfigBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder clearAutoscalingConfig() {
+      if (autoscalingConfigBuilder_ == null) {
+        autoscalingConfig_ = null;
+        onChanged();
+      } else {
+        autoscalingConfig_ = null;
+        autoscalingConfigBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.AutoscalingConfig.Builder getAutoscalingConfigBuilder() {
+
+      onChanged();
+      return getAutoscalingConfigFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder getAutoscalingConfigOrBuilder() {
+      if (autoscalingConfigBuilder_ != null) {
+        return autoscalingConfigBuilder_.getMessageOrBuilder();
+      } else {
+        return autoscalingConfig_ == null
+            ? com.google.cloud.dataproc.v1.AutoscalingConfig.getDefaultInstance()
+            : autoscalingConfig_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Autoscaling config for the policy associated with the cluster.
+     * Cluster does not autoscale if this field is unset.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.AutoscalingConfig autoscaling_config = 18 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1.AutoscalingConfig,
+            com.google.cloud.dataproc.v1.AutoscalingConfig.Builder,
+            com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder>
+        getAutoscalingConfigFieldBuilder() {
+      if (autoscalingConfigBuilder_ == null) {
+        autoscalingConfigBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.cloud.dataproc.v1.AutoscalingConfig,
+                com.google.cloud.dataproc.v1.AutoscalingConfig.Builder,
+                com.google.cloud.dataproc.v1.AutoscalingConfigOrBuilder>(
+                getAutoscalingConfig(), getParentForChildren(), isClean());
+        autoscalingConfig_ = null;
+      }
+      return autoscalingConfigBuilder_;
+    }
+
+    private com.google.cloud.dataproc.v1.SecurityConfig securityConfig_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1.SecurityConfig,
+            com.google.cloud.dataproc.v1.SecurityConfig.Builder,
+            com.google.cloud.dataproc.v1.SecurityConfigOrBuilder>
+        securityConfigBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public boolean hasSecurityConfig() {
+      return securityConfigBuilder_ != null || securityConfig_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.SecurityConfig getSecurityConfig() {
+      if (securityConfigBuilder_ == null) {
+        return securityConfig_ == null
+            ? com.google.cloud.dataproc.v1.SecurityConfig.getDefaultInstance()
+            : securityConfig_;
+      } else {
+        return securityConfigBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setSecurityConfig(com.google.cloud.dataproc.v1.SecurityConfig value) {
+      if (securityConfigBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        securityConfig_ = value;
+        onChanged();
+      } else {
+        securityConfigBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setSecurityConfig(
+        com.google.cloud.dataproc.v1.SecurityConfig.Builder builderForValue) {
+      if (securityConfigBuilder_ == null) {
+        securityConfig_ = builderForValue.build();
+        onChanged();
+      } else {
+        securityConfigBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder mergeSecurityConfig(com.google.cloud.dataproc.v1.SecurityConfig value) {
+      if (securityConfigBuilder_ == null) {
+        if (securityConfig_ != null) {
+          securityConfig_ =
+              com.google.cloud.dataproc.v1.SecurityConfig.newBuilder(securityConfig_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          securityConfig_ = value;
+        }
+        onChanged();
+      } else {
+        securityConfigBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder clearSecurityConfig() {
+      if (securityConfigBuilder_ == null) {
+        securityConfig_ = null;
+        onChanged();
+      } else {
+        securityConfig_ = null;
+        securityConfigBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.SecurityConfig.Builder getSecurityConfigBuilder() {
+
+      onChanged();
+      return getSecurityConfigFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1.SecurityConfigOrBuilder getSecurityConfigOrBuilder() {
+      if (securityConfigBuilder_ != null) {
+        return securityConfigBuilder_.getMessageOrBuilder();
+      } else {
+        return securityConfig_ == null
+            ? com.google.cloud.dataproc.v1.SecurityConfig.getDefaultInstance()
+            : securityConfig_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Security settings for the cluster.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1.SecurityConfig security_config = 16 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1.SecurityConfig,
+            com.google.cloud.dataproc.v1.SecurityConfig.Builder,
+            com.google.cloud.dataproc.v1.SecurityConfigOrBuilder>
+        getSecurityConfigFieldBuilder() {
+      if (securityConfigBuilder_ == null) {
+        securityConfigBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.cloud.dataproc.v1.SecurityConfig,
+                com.google.cloud.dataproc.v1.SecurityConfig.Builder,
+                com.google.cloud.dataproc.v1.SecurityConfigOrBuilder>(
+                getSecurityConfig(), getParentForChildren(), isClean());
+        securityConfig_ = null;
+      }
+      return securityConfigBuilder_;
     }
 
     @java.lang.Override

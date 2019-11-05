@@ -28,10 +28,12 @@ import com.google.cloud.compute.v1.AttachDiskInstanceHttpRequest;
 import com.google.cloud.compute.v1.DeleteAccessConfigInstanceHttpRequest;
 import com.google.cloud.compute.v1.DeleteInstanceHttpRequest;
 import com.google.cloud.compute.v1.DetachDiskInstanceHttpRequest;
+import com.google.cloud.compute.v1.GetGuestAttributesInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetIamPolicyInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetSerialPortOutputInstanceHttpRequest;
 import com.google.cloud.compute.v1.GetShieldedInstanceIdentityInstanceHttpRequest;
+import com.google.cloud.compute.v1.GuestAttributes;
 import com.google.cloud.compute.v1.InsertInstanceHttpRequest;
 import com.google.cloud.compute.v1.Instance;
 import com.google.cloud.compute.v1.InstanceAggregatedList;
@@ -63,6 +65,7 @@ import com.google.cloud.compute.v1.StopInstanceHttpRequest;
 import com.google.cloud.compute.v1.TestIamPermissionsInstanceHttpRequest;
 import com.google.cloud.compute.v1.TestPermissionsResponse;
 import com.google.cloud.compute.v1.UpdateAccessConfigInstanceHttpRequest;
+import com.google.cloud.compute.v1.UpdateDisplayDeviceInstanceHttpRequest;
 import com.google.cloud.compute.v1.UpdateNetworkInterfaceInstanceHttpRequest;
 import com.google.cloud.compute.v1.UpdateShieldedInstanceConfigInstanceHttpRequest;
 import javax.annotation.Generated;
@@ -121,6 +124,13 @@ public abstract class InstanceStub implements BackgroundResource {
   @BetaApi
   public UnaryCallable<GetInstanceHttpRequest, Instance> getInstanceCallable() {
     throw new UnsupportedOperationException("Not implemented: getInstanceCallable()");
+  }
+
+  @BetaApi
+  public UnaryCallable<GetGuestAttributesInstanceHttpRequest, GuestAttributes>
+      getGuestAttributesInstanceCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: getGuestAttributesInstanceCallable()");
   }
 
   @BetaApi
@@ -283,6 +293,13 @@ public abstract class InstanceStub implements BackgroundResource {
       updateAccessConfigInstanceCallable() {
     throw new UnsupportedOperationException(
         "Not implemented: updateAccessConfigInstanceCallable()");
+  }
+
+  @BetaApi
+  public UnaryCallable<UpdateDisplayDeviceInstanceHttpRequest, Operation>
+      updateDisplayDeviceInstanceCallable() {
+    throw new UnsupportedOperationException(
+        "Not implemented: updateDisplayDeviceInstanceCallable()");
   }
 
   @BetaApi

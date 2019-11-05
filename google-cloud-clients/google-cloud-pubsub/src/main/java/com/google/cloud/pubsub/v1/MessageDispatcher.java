@@ -62,6 +62,7 @@ class MessageDispatcher {
   @InternalApi static final Duration PENDING_ACKS_SEND_DELAY = Duration.ofMillis(100);
 
   private final Executor executor;
+  private final SequentialExecutorService.AutoExecutor sequentialExecutor;
   private final ScheduledExecutorService systemExecutor;
   private final ApiClock clock;
 
@@ -86,6 +87,7 @@ class MessageDispatcher {
   private final AtomicBoolean extendDeadline = new AtomicBoolean(true);
   private final Lock jobLock;
   private ScheduledFuture<?> backgroundJob;
+  private ScheduledFuture<?> setExtendedDeadlineFuture;
 
   // To keep track of number of seconds the receiver takes to process messages.
   private final Distribution ackLatencyDistribution;
@@ -205,6 +207,7 @@ class MessageDispatcher {
     jobLock = new ReentrantLock();
     messagesWaiter = new MessageWaiter();
     this.clock = clock;
+    this.sequentialExecutor = new SequentialExecutorService.AutoExecutor(executor);
   }
 
   void start() {
@@ -239,11 +242,15 @@ class MessageDispatcher {
                       int newDeadlineSec = computeDeadlineSeconds();
                       messageDeadlineSeconds.set(newDeadlineSec);
                       extendDeadlines();
-                      // Don't bother cancelling this when we stop. It'd just set an atomic boolean.
-                      systemExecutor.schedule(
-                          setExtendDeadline,
-                          newDeadlineSec - ackExpirationPadding.getSeconds(),
-                          TimeUnit.SECONDS);
+                      if (setExtendedDeadlineFuture != null && !backgroundJob.isDone()) {
+                        setExtendedDeadlineFuture.cancel(true);
+                      }
+
+                      setExtendedDeadlineFuture =
+                          systemExecutor.schedule(
+                              setExtendDeadline,
+                              newDeadlineSec - ackExpirationPadding.getSeconds(),
+                              TimeUnit.SECONDS);
                     }
                     processOutstandingAckOperations();
                   } catch (Throwable t) {
@@ -266,8 +273,12 @@ class MessageDispatcher {
     try {
       if (backgroundJob != null) {
         backgroundJob.cancel(false);
-        backgroundJob = null;
       }
+      if (setExtendedDeadlineFuture != null) {
+        setExtendedDeadlineFuture.cancel(true);
+      }
+      backgroundJob = null;
+      setExtendedDeadlineFuture = null;
     } finally {
       jobLock.unlock();
     }
@@ -349,7 +360,7 @@ class MessageDispatcher {
           }
         };
     ApiFutures.addCallback(response, ackHandler, MoreExecutors.directExecutor());
-    executor.execute(
+    Runnable deliverMessageTask =
         new Runnable() {
           @Override
           public void run() {
@@ -370,7 +381,12 @@ class MessageDispatcher {
               response.setException(e);
             }
           }
-        });
+        };
+    if (message.getOrderingKey().isEmpty()) {
+      executor.execute(deliverMessageTask);
+    } else {
+      sequentialExecutor.submit(message.getOrderingKey(), deliverMessageTask);
+    }
   }
 
   /** Compute the ideal deadline, set subsequent modacks to this deadline, and return it. */

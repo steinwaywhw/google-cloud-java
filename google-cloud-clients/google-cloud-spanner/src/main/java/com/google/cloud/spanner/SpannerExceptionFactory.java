@@ -89,6 +89,33 @@ public final class SpannerExceptionFactory {
   }
 
   /**
+   * Constructs a specific aborted exception that should only be thrown by a connection after an
+   * internal retry aborted due to concurrent modifications.
+   */
+  public static AbortedDueToConcurrentModificationException
+      newAbortedDueToConcurrentModificationException(AbortedException cause) {
+    return new AbortedDueToConcurrentModificationException(
+        DoNotConstructDirectly.ALLOWED,
+        "The transaction was aborted and could not be retried due to a concurrent modification",
+        cause);
+  }
+
+  /**
+   * Constructs a specific aborted exception that should only be thrown by a connection after an
+   * internal retry aborted because a database call caused an exception that did not happen during
+   * the original attempt.
+   */
+  public static AbortedDueToConcurrentModificationException
+      newAbortedDueToConcurrentModificationException(
+          AbortedException cause, SpannerException databaseError) {
+    return new AbortedDueToConcurrentModificationException(
+        DoNotConstructDirectly.ALLOWED,
+        "The transaction was aborted and could not be retried due to a database error during the retry",
+        cause,
+        databaseError);
+  }
+
+  /**
    * Creates a new exception based on {@code cause}. If {@code cause} indicates cancellation, {@code
    * context} will be inspected to establish the type of cancellation.
    *
@@ -116,16 +143,15 @@ public final class SpannerExceptionFactory {
       @Nullable Context context, @Nullable Throwable cause) {
     if (context != null && context.isCancelled()) {
       Throwable cancellationCause = context.cancellationCause();
+      Throwable throwable =
+          cause == null && cancellationCause == null
+              ? null
+              : MoreObjects.firstNonNull(cause, cancellationCause);
       if (cancellationCause instanceof TimeoutException) {
         return newSpannerException(
-            ErrorCode.DEADLINE_EXCEEDED,
-            "Current context exceeded deadline",
-            MoreObjects.firstNonNull(cause, cancellationCause));
+            ErrorCode.DEADLINE_EXCEEDED, "Current context exceeded deadline", throwable);
       } else {
-        return newSpannerException(
-            ErrorCode.CANCELLED,
-            "Current context was cancelled",
-            MoreObjects.firstNonNull(cause, cancellationCause));
+        return newSpannerException(ErrorCode.CANCELLED, "Current context was cancelled", throwable);
       }
     }
     return newSpannerException(
@@ -147,6 +173,11 @@ public final class SpannerExceptionFactory {
     switch (code) {
       case ABORTED:
         return new AbortedException(token, message, cause);
+      case NOT_FOUND:
+        if (message != null && message.contains("Session not found")) {
+          return new SessionNotFoundException(token, message, cause);
+        }
+        // Fall through to the default.
       default:
         return new SpannerException(token, code, isRetryable(code, cause), message, cause);
     }

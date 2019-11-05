@@ -169,11 +169,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>Resource name of the project under which the tenant is created.
-   *     <p>The format is "projects/{project_id}", for example, "projects/api-test-project".
-   * @param tenant Required.
-   *     <p>The tenant to be created.
+   * @param parent Required. Resource name of the project under which the tenant is created.
+   *     <p>The format is "projects/{project_id}", for example, "projects/foo".
+   * @param tenant Required. The tenant to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Tenant createTenant(ProjectName parent, Tenant tenant) {
@@ -200,11 +198,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>Resource name of the project under which the tenant is created.
-   *     <p>The format is "projects/{project_id}", for example, "projects/api-test-project".
-   * @param tenant Required.
-   *     <p>The tenant to be created.
+   * @param parent Required. Resource name of the project under which the tenant is created.
+   *     <p>The format is "projects/{project_id}", for example, "projects/foo".
+   * @param tenant Required. The tenant to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Tenant createTenant(String parent, Tenant tenant) {
@@ -276,10 +272,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the tenant to be retrieved.
+   * @param name Required. The resource name of the tenant to be retrieved.
    *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Tenant getTenant(TenantName name) {
@@ -302,10 +297,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the tenant to be retrieved.
+   * @param name Required. The resource name of the tenant to be retrieved.
    *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Tenant getTenant(String name) {
@@ -372,8 +366,7 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param tenant Required.
-   *     <p>The tenant resource to replace the current resource in the system.
+   * @param tenant Required. The tenant resource to replace the current resource in the system.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Tenant updateTenant(Tenant tenant) {
@@ -440,10 +433,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the tenant to be deleted.
+   * @param name Required. The resource name of the tenant to be deleted.
    *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteTenant(TenantName name) {
@@ -466,10 +458,9 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the tenant to be deleted.
+   * @param name Required. The resource name of the tenant to be deleted.
    *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenants/foo".
+   *     "projects/foo/tenants/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteTenant(String name) {
@@ -538,9 +529,8 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>Resource name of the project under which the tenant is created.
-   *     <p>The format is "projects/{project_id}", for example, "projects/api-test-project".
+   * @param parent Required. Resource name of the project under which the tenant is created.
+   *     <p>The format is "projects/{project_id}", for example, "projects/foo".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListTenantsPagedResponse listTenants(ProjectName parent) {
@@ -566,9 +556,8 @@ public class TenantServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>Resource name of the project under which the tenant is created.
-   *     <p>The format is "projects/{project_id}", for example, "projects/api-test-project".
+   * @param parent Required. Resource name of the project under which the tenant is created.
+   *     <p>The format is "projects/{project_id}", for example, "projects/foo".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListTenantsPagedResponse listTenants(String parent) {

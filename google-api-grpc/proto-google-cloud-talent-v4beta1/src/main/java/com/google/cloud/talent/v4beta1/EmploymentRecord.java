@@ -234,19 +234,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -258,19 +246,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -282,19 +258,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -309,7 +273,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -322,7 +285,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -335,7 +297,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -351,10 +312,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The name of the employer company/organization.
    * For example, "Google", "Alphabet", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string employer_name = 3;</code>
@@ -374,10 +334,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The name of the employer company/organization.
    * For example, "Google", "Alphabet", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string employer_name = 3;</code>
@@ -400,7 +359,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The division name of the employment.
    * For example, division, department, client, and so on.
    * Number of characters allowed is 100.
@@ -423,7 +381,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The division name of the employment.
    * For example, division, department, client, and so on.
    * Number of characters allowed is 100.
@@ -449,7 +406,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -462,7 +418,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -477,7 +432,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -493,10 +447,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The job title of the employment.
    * For example, "Software Engineer", "Data Scientist", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string job_title = 6;</code>
@@ -516,10 +469,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The job title of the employment.
    * For example, "Software Engineer", "Data Scientist", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string job_title = 6;</code>
@@ -542,7 +494,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The description of job content.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -564,7 +515,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * The description of job content.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -589,7 +539,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -602,7 +551,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -617,7 +565,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -633,7 +580,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -646,7 +592,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -661,7 +606,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -677,7 +621,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -690,7 +633,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -703,7 +645,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -719,12 +660,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-   * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-   * search query.
+   * Output only. The job title snippet shows how the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+   * related to a search query. It's empty if the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string job_title_snippet = 11;</code>
+   * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getJobTitleSnippet() {
     java.lang.Object ref = jobTitleSnippet_;
@@ -741,12 +684,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-   * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-   * search query.
+   * Output only. The job title snippet shows how the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+   * related to a search query. It's empty if the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string job_title_snippet = 11;</code>
+   * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getJobTitleSnippetBytes() {
     java.lang.Object ref = jobTitleSnippet_;
@@ -766,12 +711,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-   * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-   * related to the search query.
+   * Output only. The job description snippet shows how the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * is related to a search query. It's empty if the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string job_description_snippet = 12;</code>
+   * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getJobDescriptionSnippet() {
     java.lang.Object ref = jobDescriptionSnippet_;
@@ -788,12 +735,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-   * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-   * related to the search query.
+   * Output only. The job description snippet shows how the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * is related to a search query. It's empty if the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string job_description_snippet = 12;</code>
+   * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getJobDescriptionSnippetBytes() {
     java.lang.Object ref = jobDescriptionSnippet_;
@@ -813,12 +762,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-   * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-   * related to the search query.
+   * Output only. The employer name snippet shows how the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * is related to a search query. It's empty if the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string employer_name_snippet = 13;</code>
+   * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getEmployerNameSnippet() {
     java.lang.Object ref = employerNameSnippet_;
@@ -835,12 +786,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-   * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-   * related to the search query.
+   * Output only. The employer name snippet shows how the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * is related to a search query. It's empty if the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string employer_name_snippet = 13;</code>
+   * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getEmployerNameSnippetBytes() {
     java.lang.Object ref = employerNameSnippet_;
@@ -1443,19 +1396,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1467,19 +1408,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1495,19 +1424,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1529,19 +1446,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1560,19 +1465,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1595,19 +1488,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1627,19 +1508,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1653,19 +1522,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1681,19 +1538,7 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * Start date of the employment.
-     * It can be a partial date (only year, or only year and month), but must be
-     * valid. Otherwise an error is thrown.
-     * Examples:
-     * {"year": 2017, "month": 2, "day": 28} is valid.
-     * {"year": 2020, "month": 1, "date": 31} is valid.
-     * {"year": 2018, "month": 12} is valid (partial date).
-     * {"year": 2018} is valid (partial date).
-     * {"year": 2015, "day": 21} is not valid (month is missing but day is
-     * presented).
-     * {"year": 2018, "month": 13} is not valid (invalid month).
-     * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
      * </pre>
      *
      * <code>.google.type.Date start_date = 1;</code>
@@ -1719,7 +1564,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1732,7 +1576,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1749,7 +1592,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1772,7 +1614,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1792,7 +1633,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1816,7 +1656,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1837,7 +1676,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1852,7 +1690,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1869,7 +1706,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * End date of the employment.
      * </pre>
      *
@@ -1893,10 +1729,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The name of the employer company/organization.
      * For example, "Google", "Alphabet", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string employer_name = 3;</code>
@@ -1916,10 +1751,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The name of the employer company/organization.
      * For example, "Google", "Alphabet", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string employer_name = 3;</code>
@@ -1939,10 +1773,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The name of the employer company/organization.
      * For example, "Google", "Alphabet", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string employer_name = 3;</code>
@@ -1960,10 +1793,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The name of the employer company/organization.
      * For example, "Google", "Alphabet", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string employer_name = 3;</code>
@@ -1978,10 +1810,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The name of the employer company/organization.
      * For example, "Google", "Alphabet", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string employer_name = 3;</code>
@@ -2002,7 +1833,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The division name of the employment.
      * For example, division, department, client, and so on.
      * Number of characters allowed is 100.
@@ -2025,7 +1855,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The division name of the employment.
      * For example, division, department, client, and so on.
      * Number of characters allowed is 100.
@@ -2048,7 +1877,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The division name of the employment.
      * For example, division, department, client, and so on.
      * Number of characters allowed is 100.
@@ -2069,7 +1897,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The division name of the employment.
      * For example, division, department, client, and so on.
      * Number of characters allowed is 100.
@@ -2087,7 +1914,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The division name of the employment.
      * For example, division, department, client, and so on.
      * Number of characters allowed is 100.
@@ -2116,7 +1942,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2129,7 +1954,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2148,7 +1972,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2171,7 +1994,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2191,7 +2013,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2218,7 +2039,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2239,7 +2059,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2254,7 +2073,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2273,7 +2091,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The physical address of the employer.
      * </pre>
      *
@@ -2301,10 +2118,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The job title of the employment.
      * For example, "Software Engineer", "Data Scientist", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string job_title = 6;</code>
@@ -2324,10 +2140,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The job title of the employment.
      * For example, "Software Engineer", "Data Scientist", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string job_title = 6;</code>
@@ -2347,10 +2162,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The job title of the employment.
      * For example, "Software Engineer", "Data Scientist", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string job_title = 6;</code>
@@ -2368,10 +2182,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The job title of the employment.
      * For example, "Software Engineer", "Data Scientist", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string job_title = 6;</code>
@@ -2386,10 +2199,9 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The job title of the employment.
      * For example, "Software Engineer", "Data Scientist", and so on.
-     * Number of characters allowed is 100.
+     * Number of characters allowed is 250.
      * </pre>
      *
      * <code>string job_title = 6;</code>
@@ -2410,7 +2222,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The description of job content.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2432,7 +2243,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The description of job content.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2454,7 +2264,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The description of job content.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2474,7 +2283,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The description of job content.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2491,7 +2299,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * The description of job content.
      * Number of characters allowed is 100,000.
      * </pre>
@@ -2519,7 +2326,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2532,7 +2338,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2551,7 +2356,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2574,7 +2378,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2594,7 +2397,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2621,7 +2423,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2642,7 +2443,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2657,7 +2457,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2676,7 +2475,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If the jobs is a supervisor position.
      * </pre>
      *
@@ -2709,7 +2507,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2722,7 +2519,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2741,7 +2537,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2764,7 +2559,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2784,7 +2578,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2811,7 +2604,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2832,7 +2624,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2847,7 +2638,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2866,7 +2656,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is self-employed.
      * </pre>
      *
@@ -2899,7 +2688,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -2912,7 +2700,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -2929,7 +2716,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -2952,7 +2738,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -2972,7 +2757,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -2997,7 +2781,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -3018,7 +2801,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -3033,7 +2815,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -3050,7 +2831,6 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Optional.
      * If this employment is current.
      * </pre>
      *
@@ -3078,12 +2858,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-     * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-     * search query.
+     * Output only. The job title snippet shows how the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+     * related to a search query. It's empty if the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+     * related to the search query.
      * </pre>
      *
-     * <code>string job_title_snippet = 11;</code>
+     * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getJobTitleSnippet() {
       java.lang.Object ref = jobTitleSnippet_;
@@ -3100,12 +2882,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-     * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-     * search query.
+     * Output only. The job title snippet shows how the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+     * related to a search query. It's empty if the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+     * related to the search query.
      * </pre>
      *
-     * <code>string job_title_snippet = 11;</code>
+     * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getJobTitleSnippetBytes() {
       java.lang.Object ref = jobTitleSnippet_;
@@ -3122,12 +2906,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-     * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-     * search query.
+     * Output only. The job title snippet shows how the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+     * related to a search query. It's empty if the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+     * related to the search query.
      * </pre>
      *
-     * <code>string job_title_snippet = 11;</code>
+     * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setJobTitleSnippet(java.lang.String value) {
       if (value == null) {
@@ -3142,12 +2928,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-     * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-     * search query.
+     * Output only. The job title snippet shows how the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+     * related to a search query. It's empty if the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+     * related to the search query.
      * </pre>
      *
-     * <code>string job_title_snippet = 11;</code>
+     * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearJobTitleSnippet() {
 
@@ -3159,12 +2947,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-     * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-     * search query.
+     * Output only. The job title snippet shows how the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+     * related to a search query. It's empty if the
+     * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+     * related to the search query.
      * </pre>
      *
-     * <code>string job_title_snippet = 11;</code>
+     * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setJobTitleSnippetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3182,12 +2972,15 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-     * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-     * related to the search query.
+     * Output only. The job description snippet shows how the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * is related to a search query. It's empty if the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string job_description_snippet = 12;</code>
+     * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public java.lang.String getJobDescriptionSnippet() {
       java.lang.Object ref = jobDescriptionSnippet_;
@@ -3204,12 +2997,15 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-     * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-     * related to the search query.
+     * Output only. The job description snippet shows how the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * is related to a search query. It's empty if the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string job_description_snippet = 12;</code>
+     * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.ByteString getJobDescriptionSnippetBytes() {
       java.lang.Object ref = jobDescriptionSnippet_;
@@ -3226,12 +3022,15 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-     * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-     * related to the search query.
+     * Output only. The job description snippet shows how the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * is related to a search query. It's empty if the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string job_description_snippet = 12;</code>
+     * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setJobDescriptionSnippet(java.lang.String value) {
       if (value == null) {
@@ -3246,12 +3045,15 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-     * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-     * related to the search query.
+     * Output only. The job description snippet shows how the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * is related to a search query. It's empty if the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string job_description_snippet = 12;</code>
+     * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearJobDescriptionSnippet() {
 
@@ -3263,12 +3065,15 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-     * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-     * related to the search query.
+     * Output only. The job description snippet shows how the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * is related to a search query. It's empty if the
+     * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string job_description_snippet = 12;</code>
+     * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setJobDescriptionSnippetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -3286,12 +3091,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-     * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-     * related to the search query.
+     * Output only. The employer name snippet shows how the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * is related to a search query. It's empty if the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string employer_name_snippet = 13;</code>
+     * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getEmployerNameSnippet() {
       java.lang.Object ref = employerNameSnippet_;
@@ -3308,12 +3115,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-     * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-     * related to the search query.
+     * Output only. The employer name snippet shows how the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * is related to a search query. It's empty if the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string employer_name_snippet = 13;</code>
+     * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getEmployerNameSnippetBytes() {
       java.lang.Object ref = employerNameSnippet_;
@@ -3330,12 +3139,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-     * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-     * related to the search query.
+     * Output only. The employer name snippet shows how the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * is related to a search query. It's empty if the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string employer_name_snippet = 13;</code>
+     * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setEmployerNameSnippet(java.lang.String value) {
       if (value == null) {
@@ -3350,12 +3161,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-     * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-     * related to the search query.
+     * Output only. The employer name snippet shows how the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * is related to a search query. It's empty if the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string employer_name_snippet = 13;</code>
+     * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearEmployerNameSnippet() {
 
@@ -3367,12 +3180,14 @@ public final class EmploymentRecord extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-     * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-     * related to the search query.
+     * Output only. The employer name snippet shows how the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * is related to a search query. It's empty if the
+     * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+     * isn't related to the search query.
      * </pre>
      *
-     * <code>string employer_name_snippet = 13;</code>
+     * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setEmployerNameSnippetBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

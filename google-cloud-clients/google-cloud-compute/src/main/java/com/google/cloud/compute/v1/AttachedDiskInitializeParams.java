@@ -17,6 +17,7 @@ package com.google.cloud.compute.v1;
 
 import com.google.api.core.BetaApi;
 import com.google.api.gax.httpjson.ApiMessage;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -39,8 +40,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   private final String diskSizeGb;
   private final String diskType;
   private final Map<String, String> labels;
+  private final List<String> resourcePolicies;
   private final String sourceImage;
   private final CustomerEncryptionKey sourceImageEncryptionKey;
+  private final String sourceSnapshot;
+  private final CustomerEncryptionKey sourceSnapshotEncryptionKey;
 
   private AttachedDiskInitializeParams() {
     this.description = null;
@@ -48,8 +52,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     this.diskSizeGb = null;
     this.diskType = null;
     this.labels = null;
+    this.resourcePolicies = null;
     this.sourceImage = null;
     this.sourceImageEncryptionKey = null;
+    this.sourceSnapshot = null;
+    this.sourceSnapshotEncryptionKey = null;
   }
 
   private AttachedDiskInitializeParams(
@@ -58,15 +65,21 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       String diskSizeGb,
       String diskType,
       Map<String, String> labels,
+      List<String> resourcePolicies,
       String sourceImage,
-      CustomerEncryptionKey sourceImageEncryptionKey) {
+      CustomerEncryptionKey sourceImageEncryptionKey,
+      String sourceSnapshot,
+      CustomerEncryptionKey sourceSnapshotEncryptionKey) {
     this.description = description;
     this.diskName = diskName;
     this.diskSizeGb = diskSizeGb;
     this.diskType = diskType;
     this.labels = labels;
+    this.resourcePolicies = resourcePolicies;
     this.sourceImage = sourceImage;
     this.sourceImageEncryptionKey = sourceImageEncryptionKey;
+    this.sourceSnapshot = sourceSnapshot;
+    this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
   }
 
   @Override
@@ -86,11 +99,20 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     if ("labels".equals(fieldName)) {
       return labels;
     }
+    if ("resourcePolicies".equals(fieldName)) {
+      return resourcePolicies;
+    }
     if ("sourceImage".equals(fieldName)) {
       return sourceImage;
     }
     if ("sourceImageEncryptionKey".equals(fieldName)) {
       return sourceImageEncryptionKey;
+    }
+    if ("sourceSnapshot".equals(fieldName)) {
+      return sourceSnapshot;
+    }
+    if ("sourceSnapshotEncryptionKey".equals(fieldName)) {
+      return sourceSnapshotEncryptionKey;
     }
     return null;
   }
@@ -127,7 +149,10 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     return diskName;
   }
 
-  /** Specifies the size of the disk in base-2 GB. */
+  /**
+   * Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size
+   * as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB.
+   */
   public String getDiskSizeGb() {
     return diskSizeGb;
   }
@@ -156,8 +181,17 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   }
 
   /**
+   * Resource policies applied to this disk for automatic snapshot creations. Specified using the
+   * full or partial URL. For instance template, specify only the resource policy name.
+   */
+  public List<String> getResourcePoliciesList() {
+    return resourcePolicies;
+  }
+
+  /**
    * The source image to create this disk. When creating a new instance, one of
-   * initializeParams.sourceImage or disks.source is required except for local SSD.
+   * initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required
+   * except for local SSD.
    *
    * <p>To create a disk with one of the public operating system images, specify the image by its
    * family name. For example, specify family/debian-9 to use the latest Debian 9 image:
@@ -191,6 +225,25 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     return sourceImageEncryptionKey;
   }
 
+  /**
+   * The source snapshot to create this disk. When creating a new instance, one of
+   * initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required
+   * except for local SSD.
+   *
+   * <p>To create a disk with a snapshot that you created, specify the snapshot name in the
+   * following format: global/snapshots/my-backup
+   *
+   * <p>If the source snapshot is deleted later, this field will not be set.
+   */
+  public String getSourceSnapshot() {
+    return sourceSnapshot;
+  }
+
+  /** The customer-supplied encryption key of the source snapshot. */
+  public CustomerEncryptionKey getSourceSnapshotEncryptionKey() {
+    return sourceSnapshotEncryptionKey;
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
@@ -219,8 +272,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     private String diskSizeGb;
     private String diskType;
     private Map<String, String> labels;
+    private List<String> resourcePolicies;
     private String sourceImage;
     private CustomerEncryptionKey sourceImageEncryptionKey;
+    private String sourceSnapshot;
+    private CustomerEncryptionKey sourceSnapshotEncryptionKey;
 
     Builder() {}
 
@@ -241,11 +297,20 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       if (other.getLabelsMap() != null) {
         this.labels = other.labels;
       }
+      if (other.getResourcePoliciesList() != null) {
+        this.resourcePolicies = other.resourcePolicies;
+      }
       if (other.getSourceImage() != null) {
         this.sourceImage = other.sourceImage;
       }
       if (other.getSourceImageEncryptionKey() != null) {
         this.sourceImageEncryptionKey = other.sourceImageEncryptionKey;
+      }
+      if (other.getSourceSnapshot() != null) {
+        this.sourceSnapshot = other.sourceSnapshot;
+      }
+      if (other.getSourceSnapshotEncryptionKey() != null) {
+        this.sourceSnapshotEncryptionKey = other.sourceSnapshotEncryptionKey;
       }
       return this;
     }
@@ -256,8 +321,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       this.diskSizeGb = source.diskSizeGb;
       this.diskType = source.diskType;
       this.labels = source.labels;
+      this.resourcePolicies = source.resourcePolicies;
       this.sourceImage = source.sourceImage;
       this.sourceImageEncryptionKey = source.sourceImageEncryptionKey;
+      this.sourceSnapshot = source.sourceSnapshot;
+      this.sourceSnapshotEncryptionKey = source.sourceSnapshotEncryptionKey;
     }
 
     /** An optional description. Provide this property when creating the disk. */
@@ -290,12 +358,18 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       return this;
     }
 
-    /** Specifies the size of the disk in base-2 GB. */
+    /**
+     * Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size
+     * as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB.
+     */
     public String getDiskSizeGb() {
       return diskSizeGb;
     }
 
-    /** Specifies the size of the disk in base-2 GB. */
+    /**
+     * Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size
+     * as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB.
+     */
     public Builder setDiskSizeGb(String diskSizeGb) {
       this.diskSizeGb = diskSizeGb;
       return this;
@@ -350,8 +424,41 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
     }
 
     /**
+     * Resource policies applied to this disk for automatic snapshot creations. Specified using the
+     * full or partial URL. For instance template, specify only the resource policy name.
+     */
+    public List<String> getResourcePoliciesList() {
+      return resourcePolicies;
+    }
+
+    /**
+     * Resource policies applied to this disk for automatic snapshot creations. Specified using the
+     * full or partial URL. For instance template, specify only the resource policy name.
+     */
+    public Builder addAllResourcePolicies(List<String> resourcePolicies) {
+      if (this.resourcePolicies == null) {
+        this.resourcePolicies = new LinkedList<>();
+      }
+      this.resourcePolicies.addAll(resourcePolicies);
+      return this;
+    }
+
+    /**
+     * Resource policies applied to this disk for automatic snapshot creations. Specified using the
+     * full or partial URL. For instance template, specify only the resource policy name.
+     */
+    public Builder addResourcePolicies(String resourcePolicies) {
+      if (this.resourcePolicies == null) {
+        this.resourcePolicies = new LinkedList<>();
+      }
+      this.resourcePolicies.add(resourcePolicies);
+      return this;
+    }
+
+    /**
      * The source image to create this disk. When creating a new instance, one of
-     * initializeParams.sourceImage or disks.source is required except for local SSD.
+     * initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required
+     * except for local SSD.
      *
      * <p>To create a disk with one of the public operating system images, specify the image by its
      * family name. For example, specify family/debian-9 to use the latest Debian 9 image:
@@ -375,7 +482,8 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
 
     /**
      * The source image to create this disk. When creating a new instance, one of
-     * initializeParams.sourceImage or disks.source is required except for local SSD.
+     * initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required
+     * except for local SSD.
      *
      * <p>To create a disk with one of the public operating system images, specify the image by its
      * family name. For example, specify family/debian-9 to use the latest Debian 9 image:
@@ -423,6 +531,47 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       return this;
     }
 
+    /**
+     * The source snapshot to create this disk. When creating a new instance, one of
+     * initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required
+     * except for local SSD.
+     *
+     * <p>To create a disk with a snapshot that you created, specify the snapshot name in the
+     * following format: global/snapshots/my-backup
+     *
+     * <p>If the source snapshot is deleted later, this field will not be set.
+     */
+    public String getSourceSnapshot() {
+      return sourceSnapshot;
+    }
+
+    /**
+     * The source snapshot to create this disk. When creating a new instance, one of
+     * initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required
+     * except for local SSD.
+     *
+     * <p>To create a disk with a snapshot that you created, specify the snapshot name in the
+     * following format: global/snapshots/my-backup
+     *
+     * <p>If the source snapshot is deleted later, this field will not be set.
+     */
+    public Builder setSourceSnapshot(String sourceSnapshot) {
+      this.sourceSnapshot = sourceSnapshot;
+      return this;
+    }
+
+    /** The customer-supplied encryption key of the source snapshot. */
+    public CustomerEncryptionKey getSourceSnapshotEncryptionKey() {
+      return sourceSnapshotEncryptionKey;
+    }
+
+    /** The customer-supplied encryption key of the source snapshot. */
+    public Builder setSourceSnapshotEncryptionKey(
+        CustomerEncryptionKey sourceSnapshotEncryptionKey) {
+      this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
+      return this;
+    }
+
     public AttachedDiskInitializeParams build() {
 
       return new AttachedDiskInitializeParams(
@@ -431,8 +580,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
           diskSizeGb,
           diskType,
           labels,
+          resourcePolicies,
           sourceImage,
-          sourceImageEncryptionKey);
+          sourceImageEncryptionKey,
+          sourceSnapshot,
+          sourceSnapshotEncryptionKey);
     }
 
     public Builder clone() {
@@ -442,8 +594,11 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
       newBuilder.setDiskSizeGb(this.diskSizeGb);
       newBuilder.setDiskType(this.diskType);
       newBuilder.putAllLabels(this.labels);
+      newBuilder.addAllResourcePolicies(this.resourcePolicies);
       newBuilder.setSourceImage(this.sourceImage);
       newBuilder.setSourceImageEncryptionKey(this.sourceImageEncryptionKey);
+      newBuilder.setSourceSnapshot(this.sourceSnapshot);
+      newBuilder.setSourceSnapshotEncryptionKey(this.sourceSnapshotEncryptionKey);
       return newBuilder;
     }
   }
@@ -466,11 +621,20 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
         + "labels="
         + labels
         + ", "
+        + "resourcePolicies="
+        + resourcePolicies
+        + ", "
         + "sourceImage="
         + sourceImage
         + ", "
         + "sourceImageEncryptionKey="
         + sourceImageEncryptionKey
+        + ", "
+        + "sourceSnapshot="
+        + sourceSnapshot
+        + ", "
+        + "sourceSnapshotEncryptionKey="
+        + sourceSnapshotEncryptionKey
         + "}";
   }
 
@@ -486,8 +650,12 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
           && Objects.equals(this.diskSizeGb, that.getDiskSizeGb())
           && Objects.equals(this.diskType, that.getDiskType())
           && Objects.equals(this.labels, that.getLabelsMap())
+          && Objects.equals(this.resourcePolicies, that.getResourcePoliciesList())
           && Objects.equals(this.sourceImage, that.getSourceImage())
-          && Objects.equals(this.sourceImageEncryptionKey, that.getSourceImageEncryptionKey());
+          && Objects.equals(this.sourceImageEncryptionKey, that.getSourceImageEncryptionKey())
+          && Objects.equals(this.sourceSnapshot, that.getSourceSnapshot())
+          && Objects.equals(
+              this.sourceSnapshotEncryptionKey, that.getSourceSnapshotEncryptionKey());
     }
     return false;
   }
@@ -495,6 +663,15 @@ public final class AttachedDiskInitializeParams implements ApiMessage {
   @Override
   public int hashCode() {
     return Objects.hash(
-        description, diskName, diskSizeGb, diskType, labels, sourceImage, sourceImageEncryptionKey);
+        description,
+        diskName,
+        diskSizeGb,
+        diskType,
+        labels,
+        resourcePolicies,
+        sourceImage,
+        sourceImageEncryptionKey,
+        sourceSnapshot,
+        sourceSnapshotEncryptionKey);
   }
 }

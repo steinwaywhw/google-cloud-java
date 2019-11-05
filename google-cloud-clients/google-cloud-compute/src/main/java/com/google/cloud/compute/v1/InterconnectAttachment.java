@@ -26,8 +26,11 @@ import javax.annotation.Nullable;
 @Generated("by GAPIC")
 @BetaApi
 /**
- * Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see
- * Creating VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for
+ * Represents an Interconnect Attachment (VLAN) resource.
+ *
+ * <p>You can use Interconnect attachments (VLANS) to connect your Virtual Private Cloud networks to
+ * your on-premises networks through an Interconnect. For more information, read Creating VLAN
+ * Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for
  * v1.interconnectAttachments ==)
  */
 public final class InterconnectAttachment implements ApiMessage {
@@ -235,9 +238,13 @@ public final class InterconnectAttachment implements ApiMessage {
   }
 
   /**
-   * Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to
-   * update the customer's provisioned bandwidth. Output only for PARTNER type, mutable for
-   * PARTNER_PROVIDER and DEDICATED.
+   * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type
+   * DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner
+   * that is operating the interconnect must set the bandwidth. Output only for PARTNER type,
+   * mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: -
+   * BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s -
+   * BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5
+   * Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
    */
   public String getBandwidth() {
     return bandwidth;
@@ -283,10 +290,11 @@ public final class InterconnectAttachment implements ApiMessage {
 
   /**
    * Desired availability domain for the attachment. Only available for type PARTNER, at creation
-   * time. For improved reliability, customers should configure a pair of attachments with one per
-   * availability domain. The selected availability domain will be provided to the Partner via the
-   * pairing key so that the provisioned circuit will lie in the specified domain. If not specified,
-   * the value will default to AVAILABILITY_DOMAIN_ANY.
+   * time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY -
+   * AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should
+   * configure a pair of attachments, one per availability domain. The selected availability domain
+   * will be provided to the Partner via the pairing key, so that the provisioned circuit will lie
+   * in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
    */
   public String getEdgeAvailabilityDomain() {
     return edgeAvailabilityDomain;
@@ -294,7 +302,7 @@ public final class InterconnectAttachment implements ApiMessage {
 
   /**
    * [Output Only] Google reference ID, to be used when raising support tickets with Google or
-   * otherwise to debug backend connectivity issues.
+   * otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
    */
   public String getGoogleReferenceId() {
     return googleReferenceId;
@@ -334,7 +342,10 @@ public final class InterconnectAttachment implements ApiMessage {
   }
 
   /**
-   * [Output Only] The current status of whether or not this interconnect attachment is functional.
+   * [Output Only] The current status of whether or not this interconnect attachment is functional,
+   * which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and
+   * is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is
+   * not complete.
    */
   public String getOperationalStatus() {
     return operationalStatus;
@@ -350,9 +361,9 @@ public final class InterconnectAttachment implements ApiMessage {
   }
 
   /**
-   * Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they configured
-   * BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER,
-   * not available for DEDICATED.
+   * Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf
+   * of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available
+   * for DEDICATED.
    */
   public String getPartnerAsn() {
     return partnerAsn;
@@ -397,11 +408,31 @@ public final class InterconnectAttachment implements ApiMessage {
     return selfLink;
   }
 
-  /** [Output Only] The current state of this attachment's functionality. */
+  /**
+   * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and
+   * UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect
+   * attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER
+   * are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take
+   * one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. -
+   * UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. -
+   * PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the
+   * Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of
+   * provisioning after a PARTNER_PROVIDER attachment was created that references it. -
+   * PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to
+   * activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This
+   * could be because the associated Interconnect was removed, or because the other side of a
+   * Partner attachment was deleted.
+   */
   public String getState() {
     return state;
   }
 
+  /**
+   * The type of interconnect attachment this is, which can take one of the following values: -
+   * DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner
+   * Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner
+   * Interconnect, created by the partner.
+   */
   public String getType() {
     return type;
   }
@@ -580,18 +611,26 @@ public final class InterconnectAttachment implements ApiMessage {
     }
 
     /**
-     * Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to
-     * update the customer's provisioned bandwidth. Output only for PARTNER type, mutable for
-     * PARTNER_PROVIDER and DEDICATED.
+     * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type
+     * DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google
+     * Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER
+     * type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: -
+     * BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s -
+     * BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5
+     * Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
      */
     public String getBandwidth() {
       return bandwidth;
     }
 
     /**
-     * Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to
-     * update the customer's provisioned bandwidth. Output only for PARTNER type, mutable for
-     * PARTNER_PROVIDER and DEDICATED.
+     * Provisioned bandwidth capacity for the interconnect attachment. For attachments of type
+     * DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google
+     * Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER
+     * type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: -
+     * BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s -
+     * BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5
+     * Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
      */
     public Builder setBandwidth(String bandwidth) {
       this.bandwidth = bandwidth;
@@ -700,10 +739,12 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * Desired availability domain for the attachment. Only available for type PARTNER, at creation
-     * time. For improved reliability, customers should configure a pair of attachments with one per
-     * availability domain. The selected availability domain will be provided to the Partner via the
-     * pairing key so that the provisioned circuit will lie in the specified domain. If not
-     * specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+     * time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY -
+     * AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should
+     * configure a pair of attachments, one per availability domain. The selected availability
+     * domain will be provided to the Partner via the pairing key, so that the provisioned circuit
+     * will lie in the specified domain. If not specified, the value will default to
+     * AVAILABILITY_DOMAIN_ANY.
      */
     public String getEdgeAvailabilityDomain() {
       return edgeAvailabilityDomain;
@@ -711,10 +752,12 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * Desired availability domain for the attachment. Only available for type PARTNER, at creation
-     * time. For improved reliability, customers should configure a pair of attachments with one per
-     * availability domain. The selected availability domain will be provided to the Partner via the
-     * pairing key so that the provisioned circuit will lie in the specified domain. If not
-     * specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+     * time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY -
+     * AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should
+     * configure a pair of attachments, one per availability domain. The selected availability
+     * domain will be provided to the Partner via the pairing key, so that the provisioned circuit
+     * will lie in the specified domain. If not specified, the value will default to
+     * AVAILABILITY_DOMAIN_ANY.
      */
     public Builder setEdgeAvailabilityDomain(String edgeAvailabilityDomain) {
       this.edgeAvailabilityDomain = edgeAvailabilityDomain;
@@ -723,7 +766,7 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * [Output Only] Google reference ID, to be used when raising support tickets with Google or
-     * otherwise to debug backend connectivity issues.
+     * otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
      */
     public String getGoogleReferenceId() {
       return googleReferenceId;
@@ -731,7 +774,7 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * [Output Only] Google reference ID, to be used when raising support tickets with Google or
-     * otherwise to debug backend connectivity issues.
+     * otherwise to debug backend connectivity issues. [Deprecated] This field is not used.
      */
     public Builder setGoogleReferenceId(String googleReferenceId) {
       this.googleReferenceId = googleReferenceId;
@@ -814,7 +857,9 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * [Output Only] The current status of whether or not this interconnect attachment is
-     * functional.
+     * functional, which can take one of the following values: - OS_ACTIVE: The attachment has been
+     * turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet,
+     * because turnup is not complete.
      */
     public String getOperationalStatus() {
       return operationalStatus;
@@ -822,7 +867,9 @@ public final class InterconnectAttachment implements ApiMessage {
 
     /**
      * [Output Only] The current status of whether or not this interconnect attachment is
-     * functional.
+     * functional, which can take one of the following values: - OS_ACTIVE: The attachment has been
+     * turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet,
+     * because turnup is not complete.
      */
     public Builder setOperationalStatus(String operationalStatus) {
       this.operationalStatus = operationalStatus;
@@ -849,18 +896,18 @@ public final class InterconnectAttachment implements ApiMessage {
     }
 
     /**
-     * Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they
-     * configured BGP on behalf of the customer. Output only for PARTNER type, input only for
-     * PARTNER_PROVIDER, not available for DEDICATED.
+     * Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on
+     * behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not
+     * available for DEDICATED.
      */
     public String getPartnerAsn() {
       return partnerAsn;
     }
 
     /**
-     * Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they
-     * configured BGP on behalf of the customer. Output only for PARTNER type, input only for
-     * PARTNER_PROVIDER, not available for DEDICATED.
+     * Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on
+     * behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not
+     * available for DEDICATED.
      */
     public Builder setPartnerAsn(String partnerAsn) {
       this.partnerAsn = partnerAsn;
@@ -951,21 +998,61 @@ public final class InterconnectAttachment implements ApiMessage {
       return this;
     }
 
-    /** [Output Only] The current state of this attachment's functionality. */
+    /**
+     * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and
+     * UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect
+     * attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and
+     * PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments.
+     * This state can take one of the following values: - ACTIVE: The attachment has been turned up
+     * and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup
+     * is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been
+     * configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the
+     * process of provisioning after a PARTNER_PROVIDER attachment was created that references it. -
+     * PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to
+     * activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional.
+     * This could be because the associated Interconnect was removed, or because the other side of a
+     * Partner attachment was deleted.
+     */
     public String getState() {
       return state;
     }
 
-    /** [Output Only] The current state of this attachment's functionality. */
+    /**
+     * [Output Only] The current state of this attachment's functionality. Enum values ACTIVE and
+     * UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect
+     * attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and
+     * PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments.
+     * This state can take one of the following values: - ACTIVE: The attachment has been turned up
+     * and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup
+     * is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been
+     * configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the
+     * process of provisioning after a PARTNER_PROVIDER attachment was created that references it. -
+     * PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to
+     * activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional.
+     * This could be because the associated Interconnect was removed, or because the other side of a
+     * Partner attachment was deleted.
+     */
     public Builder setState(String state) {
       this.state = state;
       return this;
     }
 
+    /**
+     * The type of interconnect attachment this is, which can take one of the following values: -
+     * DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner
+     * Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner
+     * Interconnect, created by the partner.
+     */
     public String getType() {
       return type;
     }
 
+    /**
+     * The type of interconnect attachment this is, which can take one of the following values: -
+     * DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner
+     * Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner
+     * Interconnect, created by the partner.
+     */
     public Builder setType(String type) {
       this.type = type;
       return this;

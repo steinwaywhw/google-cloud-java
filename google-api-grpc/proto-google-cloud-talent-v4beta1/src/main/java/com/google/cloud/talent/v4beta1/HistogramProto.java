@@ -34,18 +34,17 @@ public final class HistogramProto {
   static {
     java.lang.String[] descriptorData = {
       "\n+google/cloud/talent/v4beta1/histogram."
-          + "proto\022\033google.cloud.talent.v4beta1\032\036goog"
-          + "le/protobuf/wrappers.proto\032\034google/api/a"
-          + "nnotations.proto\")\n\016HistogramQuery\022\027\n\017hi"
-          + "stogram_query\030\001 \001(\t\"\266\001\n\024HistogramQueryRe"
-          + "sult\022\027\n\017histogram_query\030\001 \001(\t\022S\n\thistogr"
-          + "am\030\002 \003(\0132@.google.cloud.talent.v4beta1.H"
-          + "istogramQueryResult.HistogramEntry\0320\n\016Hi"
-          + "stogramEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\003"
-          + ":\0028\001B|\n\037com.google.cloud.talent.v4beta1B"
-          + "\016HistogramProtoP\001ZAgoogle.golang.org/gen"
-          + "proto/googleapis/cloud/talent/v4beta1;ta"
-          + "lent\242\002\003CTSb\006proto3"
+          + "proto\022\033google.cloud.talent.v4beta1\032\034goog"
+          + "le/api/annotations.proto\")\n\016HistogramQue"
+          + "ry\022\027\n\017histogram_query\030\001 \001(\t\"\266\001\n\024Histogra"
+          + "mQueryResult\022\027\n\017histogram_query\030\001 \001(\t\022S\n"
+          + "\thistogram\030\002 \003(\0132@.google.cloud.talent.v"
+          + "4beta1.HistogramQueryResult.HistogramEnt"
+          + "ry\0320\n\016HistogramEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val"
+          + "ue\030\002 \001(\003:\0028\001B|\n\037com.google.cloud.talent."
+          + "v4beta1B\016HistogramProtoP\001ZAgoogle.golang"
+          + ".org/genproto/googleapis/cloud/talent/v4"
+          + "beta1;talent\242\002\003CTSb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -58,7 +57,6 @@ public final class HistogramProto {
     com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(
         descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.WrappersProto.getDescriptor(),
           com.google.api.AnnotationsProto.getDescriptor(),
         },
         assigner);
@@ -88,7 +86,6 @@ public final class HistogramProto {
             new java.lang.String[] {
               "Key", "Value",
             });
-    com.google.protobuf.WrappersProto.getDescriptor();
     com.google.api.AnnotationsProto.getDescriptor();
   }
 

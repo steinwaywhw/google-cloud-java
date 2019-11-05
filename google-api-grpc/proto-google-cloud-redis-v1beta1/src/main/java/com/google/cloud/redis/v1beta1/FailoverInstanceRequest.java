@@ -7,8 +7,7 @@ package com.google.cloud.redis.v1beta1;
  *
  *
  * <pre>
- * Request for
- * [Failover][google.cloud.redis.v1beta1.CloudRedis.FailoverInstance].
+ * Request for [Failover][google.cloud.redis.v1beta1.CloudRedis.FailoverInstance].
  * </pre>
  *
  * Protobuf type {@code google.cloud.redis.v1beta1.FailoverInstanceRequest}
@@ -102,7 +101,16 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
 
   /** Protobuf enum {@code google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode} */
   public enum DataProtectionMode implements com.google.protobuf.ProtocolMessageEnum {
-    /** <code>DATA_PROTECTION_MODE_UNSPECIFIED = 0;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Defaults to LIMITED_DATA_LOSS if a data protection mode is not
+     * specified.
+     * </pre>
+     *
+     * <code>DATA_PROTECTION_MODE_UNSPECIFIED = 0;</code>
+     */
     DATA_PROTECTION_MODE_UNSPECIFIED(0),
     /**
      *
@@ -130,7 +138,16 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
     UNRECOGNIZED(-1),
     ;
 
-    /** <code>DATA_PROTECTION_MODE_UNSPECIFIED = 0;</code> */
+    /**
+     *
+     *
+     * <pre>
+     * Defaults to LIMITED_DATA_LOSS if a data protection mode is not
+     * specified.
+     * </pre>
+     *
+     * <code>DATA_PROTECTION_MODE_UNSPECIFIED = 0;</code>
+     */
     public static final int DATA_PROTECTION_MODE_UNSPECIFIED_VALUE = 0;
     /**
      *
@@ -240,10 +257,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
    * <pre>
    * Required. Redis instance resource name using the form:
    *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-   * where `location_id` refers to a GCP region
+   * where `location_id` refers to a GCP region.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>
+   * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -262,10 +281,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
    * <pre>
    * Required. Redis instance resource name using the form:
    *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-   * where `location_id` refers to a GCP region
+   * where `location_id` refers to a GCP region.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>
+   * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -290,7 +311,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
    * </pre>
    *
    * <code>
-   * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+   * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public int getDataProtectionModeValue() {
@@ -305,7 +326,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
    * </pre>
    *
    * <code>
-   * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+   * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
    * </code>
    */
   public com.google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode
@@ -498,8 +519,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
    *
    *
    * <pre>
-   * Request for
-   * [Failover][google.cloud.redis.v1beta1.CloudRedis.FailoverInstance].
+   * Request for [Failover][google.cloud.redis.v1beta1.CloudRedis.FailoverInstance].
    * </pre>
    *
    * Protobuf type {@code google.cloud.redis.v1beta1.FailoverInstanceRequest}
@@ -667,10 +687,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * <pre>
      * Required. Redis instance resource name using the form:
      *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-     * where `location_id` refers to a GCP region
+     * where `location_id` refers to a GCP region.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>
+     * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -689,10 +711,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * <pre>
      * Required. Redis instance resource name using the form:
      *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-     * where `location_id` refers to a GCP region
+     * where `location_id` refers to a GCP region.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>
+     * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -711,10 +735,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * <pre>
      * Required. Redis instance resource name using the form:
      *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-     * where `location_id` refers to a GCP region
+     * where `location_id` refers to a GCP region.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>
+     * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -731,10 +757,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * <pre>
      * Required. Redis instance resource name using the form:
      *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-     * where `location_id` refers to a GCP region
+     * where `location_id` refers to a GCP region.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>
+     * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder clearName() {
 
@@ -748,10 +776,12 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * <pre>
      * Required. Redis instance resource name using the form:
      *     `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
-     * where `location_id` refers to a GCP region
+     * where `location_id` refers to a GCP region.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>
+     * string name = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -774,7 +804,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * </pre>
      *
      * <code>
-     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public int getDataProtectionModeValue() {
@@ -789,7 +819,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * </pre>
      *
      * <code>
-     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder setDataProtectionModeValue(int value) {
@@ -806,7 +836,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * </pre>
      *
      * <code>
-     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public com.google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode
@@ -828,7 +858,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * </pre>
      *
      * <code>
-     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder setDataProtectionMode(
@@ -850,7 +880,7 @@ public final class FailoverInstanceRequest extends com.google.protobuf.Generated
      * </pre>
      *
      * <code>
-     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2;
+     * .google.cloud.redis.v1beta1.FailoverInstanceRequest.DataProtectionMode data_protection_mode = 2 [(.google.api.field_behavior) = OPTIONAL];
      * </code>
      */
     public Builder clearDataProtectionMode() {

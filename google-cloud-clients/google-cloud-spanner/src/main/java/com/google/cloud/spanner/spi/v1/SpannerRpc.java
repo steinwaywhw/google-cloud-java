@@ -19,8 +19,11 @@ package com.google.cloud.spanner.spi.v1;
 import com.google.api.gax.longrunning.OperationFuture;
 import com.google.cloud.ServiceRpc;
 import com.google.cloud.spanner.SpannerException;
-import com.google.cloud.spanner.spi.v1.SpannerRpc.Option;
+import com.google.cloud.spanner.admin.database.v1.stub.DatabaseAdminStub;
+import com.google.cloud.spanner.admin.instance.v1.stub.InstanceAdminStub;
 import com.google.common.collect.ImmutableList;
+import com.google.iam.v1.Policy;
+import com.google.iam.v1.TestIamPermissionsResponse;
 import com.google.longrunning.Operation;
 import com.google.protobuf.Empty;
 import com.google.protobuf.FieldMask;
@@ -49,6 +52,7 @@ import com.google.spanner.v1.Transaction;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
+import org.threeten.bp.Duration;
 
 /**
  * Abstracts remote calls to the Cloud Spanner service. Typically end-consumer code will never use
@@ -202,6 +206,13 @@ public interface SpannerRpc extends ServiceRpc {
   /** Retrieves a long running operation. */
   Operation getOperation(String name) throws SpannerException;
 
+  List<Session> batchCreateSessions(
+      String databaseName,
+      int sessionCount,
+      @Nullable Map<String, String> labels,
+      @Nullable Map<Option, ?> options)
+      throws SpannerException;
+
   Session createSession(
       String databaseName, @Nullable Map<String, String> labels, @Nullable Map<Option, ?> options)
       throws SpannerException;
@@ -212,6 +223,9 @@ public interface SpannerRpc extends ServiceRpc {
       ReadRequest request, ResultStreamConsumer consumer, @Nullable Map<Option, ?> options);
 
   ResultSet executeQuery(ExecuteSqlRequest request, @Nullable Map<Option, ?> options);
+
+  ResultSet executePartitionedDml(
+      ExecuteSqlRequest request, @Nullable Map<Option, ?> options, Duration timeout);
 
   StreamingCall executeQuery(
       ExecuteSqlRequest request, ResultStreamConsumer consumer, @Nullable Map<Option, ?> options);
@@ -232,5 +246,37 @@ public interface SpannerRpc extends ServiceRpc {
   PartitionResponse partitionRead(PartitionReadRequest request, @Nullable Map<Option, ?> options)
       throws SpannerException;
 
+  /** Gets the IAM policy for the given resource using the {@link DatabaseAdminStub}. */
+  Policy getDatabaseAdminIAMPolicy(String resource);
+
+  /**
+   * Updates the IAM policy for the given resource using the {@link DatabaseAdminStub}. It is highly
+   * recommended to first get the current policy and base the updated policy on the returned policy.
+   * See {@link Policy.Builder#setEtag(com.google.protobuf.ByteString)} for information on the
+   * recommended read-modify-write cycle.
+   */
+  Policy setDatabaseAdminIAMPolicy(String resource, Policy policy);
+
+  /** Tests the IAM permissions for the given resource using the {@link DatabaseAdminStub}. */
+  TestIamPermissionsResponse testDatabaseAdminIAMPermissions(
+      String resource, Iterable<String> permissions);
+
+  /** Gets the IAM policy for the given resource using the {@link InstanceAdminStub}. */
+  Policy getInstanceAdminIAMPolicy(String resource);
+
+  /**
+   * Updates the IAM policy for the given resource using the {@link InstanceAdminStub}. It is highly
+   * recommended to first get the current policy and base the updated policy on the returned policy.
+   * See {@link Policy.Builder#setEtag(com.google.protobuf.ByteString)} for information on the
+   * recommended read-modify-write cycle.
+   */
+  Policy setInstanceAdminIAMPolicy(String resource, Policy policy);
+
+  /** Tests the IAM permissions for the given resource using the {@link InstanceAdminStub}. */
+  TestIamPermissionsResponse testInstanceAdminIAMPermissions(
+      String resource, Iterable<String> permissions);
+
   public void shutdown();
+
+  boolean isClosed();
 }

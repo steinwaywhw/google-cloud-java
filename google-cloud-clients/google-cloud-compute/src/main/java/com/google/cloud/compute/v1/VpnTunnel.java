@@ -25,7 +25,12 @@ import javax.annotation.Nullable;
 
 @Generated("by GAPIC")
 @BetaApi
-/** VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==) */
+/**
+ * Represents a Cloud VPN Tunnel resource.
+ *
+ * <p>For more information about VPN, read the the Cloud VPN Overview. (== resource_for
+ * beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)
+ */
 public final class VpnTunnel implements ApiMessage {
   private final String creationTimestamp;
   private final String description;
@@ -35,6 +40,9 @@ public final class VpnTunnel implements ApiMessage {
   private final String kind;
   private final List<String> localTrafficSelector;
   private final String name;
+  private final String peerExternalGateway;
+  private final Integer peerExternalGatewayInterface;
+  private final String peerGcpGateway;
   private final String peerIp;
   private final String region;
   private final List<String> remoteTrafficSelector;
@@ -44,6 +52,8 @@ public final class VpnTunnel implements ApiMessage {
   private final String sharedSecretHash;
   private final String status;
   private final String targetVpnGateway;
+  private final String vpnGateway;
+  private final Integer vpnGatewayInterface;
 
   private VpnTunnel() {
     this.creationTimestamp = null;
@@ -54,6 +64,9 @@ public final class VpnTunnel implements ApiMessage {
     this.kind = null;
     this.localTrafficSelector = null;
     this.name = null;
+    this.peerExternalGateway = null;
+    this.peerExternalGatewayInterface = null;
+    this.peerGcpGateway = null;
     this.peerIp = null;
     this.region = null;
     this.remoteTrafficSelector = null;
@@ -63,6 +76,8 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = null;
     this.status = null;
     this.targetVpnGateway = null;
+    this.vpnGateway = null;
+    this.vpnGatewayInterface = null;
   }
 
   private VpnTunnel(
@@ -74,6 +89,9 @@ public final class VpnTunnel implements ApiMessage {
       String kind,
       List<String> localTrafficSelector,
       String name,
+      String peerExternalGateway,
+      Integer peerExternalGatewayInterface,
+      String peerGcpGateway,
       String peerIp,
       String region,
       List<String> remoteTrafficSelector,
@@ -82,7 +100,9 @@ public final class VpnTunnel implements ApiMessage {
       String sharedSecret,
       String sharedSecretHash,
       String status,
-      String targetVpnGateway) {
+      String targetVpnGateway,
+      String vpnGateway,
+      Integer vpnGatewayInterface) {
     this.creationTimestamp = creationTimestamp;
     this.description = description;
     this.detailedStatus = detailedStatus;
@@ -91,6 +111,9 @@ public final class VpnTunnel implements ApiMessage {
     this.kind = kind;
     this.localTrafficSelector = localTrafficSelector;
     this.name = name;
+    this.peerExternalGateway = peerExternalGateway;
+    this.peerExternalGatewayInterface = peerExternalGatewayInterface;
+    this.peerGcpGateway = peerGcpGateway;
     this.peerIp = peerIp;
     this.region = region;
     this.remoteTrafficSelector = remoteTrafficSelector;
@@ -100,6 +123,8 @@ public final class VpnTunnel implements ApiMessage {
     this.sharedSecretHash = sharedSecretHash;
     this.status = status;
     this.targetVpnGateway = targetVpnGateway;
+    this.vpnGateway = vpnGateway;
+    this.vpnGatewayInterface = vpnGatewayInterface;
   }
 
   @Override
@@ -128,6 +153,15 @@ public final class VpnTunnel implements ApiMessage {
     if ("name".equals(fieldName)) {
       return name;
     }
+    if ("peerExternalGateway".equals(fieldName)) {
+      return peerExternalGateway;
+    }
+    if ("peerExternalGatewayInterface".equals(fieldName)) {
+      return peerExternalGatewayInterface;
+    }
+    if ("peerGcpGateway".equals(fieldName)) {
+      return peerGcpGateway;
+    }
     if ("peerIp".equals(fieldName)) {
       return peerIp;
     }
@@ -154,6 +188,12 @@ public final class VpnTunnel implements ApiMessage {
     }
     if ("targetVpnGateway".equals(fieldName)) {
       return targetVpnGateway;
+    }
+    if ("vpnGateway".equals(fieldName)) {
+      return vpnGateway;
+    }
+    if ("vpnGatewayInterface".equals(fieldName)) {
+      return vpnGatewayInterface;
     }
     return null;
   }
@@ -233,6 +273,34 @@ public final class VpnTunnel implements ApiMessage {
     return name;
   }
 
+  /**
+   * URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by
+   * the client when the VPN tunnel is created. This field is exclusive with the field
+   * peerGcpGateway.
+   */
+  public String getPeerExternalGateway() {
+    return peerExternalGateway;
+  }
+
+  /**
+   * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided by
+   * the client when the VPN tunnel is created.
+   */
+  public Integer getPeerExternalGatewayInterface() {
+    return peerExternalGatewayInterface;
+  }
+
+  /**
+   * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by the
+   * client when the VPN tunnel is created. This field can be used when creating highly available
+   * VPN from VPC network to VPC network, the field is exclusive with the field peerExternalGateway.
+   * If provided, the VPN tunnel will automatically use the same vpnGatewayInterface ID in the peer
+   * GCP VPN gateway.
+   */
+  public String getPeerGcpGateway() {
+    return peerGcpGateway;
+  }
+
   /** IP address of the peer VPN gateway. Only IPv4 is supported. */
   public String getPeerIp() {
     return peerIp;
@@ -301,6 +369,20 @@ public final class VpnTunnel implements ApiMessage {
     return targetVpnGateway;
   }
 
+  /**
+   * URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when
+   * the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High
+   * Availability VPN gateway resource is created.
+   */
+  public String getVpnGateway() {
+    return vpnGateway;
+  }
+
+  /** The interface ID of the VPN gateway with which this VPN tunnel is associated. */
+  public Integer getVpnGatewayInterface() {
+    return vpnGatewayInterface;
+  }
+
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
@@ -332,6 +414,9 @@ public final class VpnTunnel implements ApiMessage {
     private String kind;
     private List<String> localTrafficSelector;
     private String name;
+    private String peerExternalGateway;
+    private Integer peerExternalGatewayInterface;
+    private String peerGcpGateway;
     private String peerIp;
     private String region;
     private List<String> remoteTrafficSelector;
@@ -341,6 +426,8 @@ public final class VpnTunnel implements ApiMessage {
     private String sharedSecretHash;
     private String status;
     private String targetVpnGateway;
+    private String vpnGateway;
+    private Integer vpnGatewayInterface;
 
     Builder() {}
 
@@ -370,6 +457,15 @@ public final class VpnTunnel implements ApiMessage {
       if (other.getName() != null) {
         this.name = other.name;
       }
+      if (other.getPeerExternalGateway() != null) {
+        this.peerExternalGateway = other.peerExternalGateway;
+      }
+      if (other.getPeerExternalGatewayInterface() != null) {
+        this.peerExternalGatewayInterface = other.peerExternalGatewayInterface;
+      }
+      if (other.getPeerGcpGateway() != null) {
+        this.peerGcpGateway = other.peerGcpGateway;
+      }
       if (other.getPeerIp() != null) {
         this.peerIp = other.peerIp;
       }
@@ -397,6 +493,12 @@ public final class VpnTunnel implements ApiMessage {
       if (other.getTargetVpnGateway() != null) {
         this.targetVpnGateway = other.targetVpnGateway;
       }
+      if (other.getVpnGateway() != null) {
+        this.vpnGateway = other.vpnGateway;
+      }
+      if (other.getVpnGatewayInterface() != null) {
+        this.vpnGatewayInterface = other.vpnGatewayInterface;
+      }
       return this;
     }
 
@@ -409,6 +511,9 @@ public final class VpnTunnel implements ApiMessage {
       this.kind = source.kind;
       this.localTrafficSelector = source.localTrafficSelector;
       this.name = source.name;
+      this.peerExternalGateway = source.peerExternalGateway;
+      this.peerExternalGatewayInterface = source.peerExternalGatewayInterface;
+      this.peerGcpGateway = source.peerGcpGateway;
       this.peerIp = source.peerIp;
       this.region = source.region;
       this.remoteTrafficSelector = source.remoteTrafficSelector;
@@ -418,6 +523,8 @@ public final class VpnTunnel implements ApiMessage {
       this.sharedSecretHash = source.sharedSecretHash;
       this.status = source.status;
       this.targetVpnGateway = source.targetVpnGateway;
+      this.vpnGateway = source.vpnGateway;
+      this.vpnGatewayInterface = source.vpnGatewayInterface;
     }
 
     /** [Output Only] Creation timestamp in RFC3339 text format. */
@@ -557,6 +664,65 @@ public final class VpnTunnel implements ApiMessage {
      */
     public Builder setName(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by
+     * the client when the VPN tunnel is created. This field is exclusive with the field
+     * peerGcpGateway.
+     */
+    public String getPeerExternalGateway() {
+      return peerExternalGateway;
+    }
+
+    /**
+     * URL of the peer side external VPN gateway to which this VPN tunnel is connected. Provided by
+     * the client when the VPN tunnel is created. This field is exclusive with the field
+     * peerGcpGateway.
+     */
+    public Builder setPeerExternalGateway(String peerExternalGateway) {
+      this.peerExternalGateway = peerExternalGateway;
+      return this;
+    }
+
+    /**
+     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided
+     * by the client when the VPN tunnel is created.
+     */
+    public Integer getPeerExternalGatewayInterface() {
+      return peerExternalGatewayInterface;
+    }
+
+    /**
+     * The interface ID of the external VPN gateway to which this VPN tunnel is connected. Provided
+     * by the client when the VPN tunnel is created.
+     */
+    public Builder setPeerExternalGatewayInterface(Integer peerExternalGatewayInterface) {
+      this.peerExternalGatewayInterface = peerExternalGatewayInterface;
+      return this;
+    }
+
+    /**
+     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by
+     * the client when the VPN tunnel is created. This field can be used when creating highly
+     * available VPN from VPC network to VPC network, the field is exclusive with the field
+     * peerExternalGateway. If provided, the VPN tunnel will automatically use the same
+     * vpnGatewayInterface ID in the peer GCP VPN gateway.
+     */
+    public String getPeerGcpGateway() {
+      return peerGcpGateway;
+    }
+
+    /**
+     * URL of the peer side HA GCP VPN gateway to which this VPN tunnel is connected. Provided by
+     * the client when the VPN tunnel is created. This field can be used when creating highly
+     * available VPN from VPC network to VPC network, the field is exclusive with the field
+     * peerExternalGateway. If provided, the VPN tunnel will automatically use the same
+     * vpnGatewayInterface ID in the peer GCP VPN gateway.
+     */
+    public Builder setPeerGcpGateway(String peerGcpGateway) {
+      this.peerGcpGateway = peerGcpGateway;
       return this;
     }
 
@@ -721,6 +887,36 @@ public final class VpnTunnel implements ApiMessage {
       return this;
     }
 
+    /**
+     * URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when
+     * the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High
+     * Availability VPN gateway resource is created.
+     */
+    public String getVpnGateway() {
+      return vpnGateway;
+    }
+
+    /**
+     * URL of the VPN gateway with which this VPN tunnel is associated. Provided by the client when
+     * the VPN tunnel is created. This must be used (instead of target_vpn_gateway) if a High
+     * Availability VPN gateway resource is created.
+     */
+    public Builder setVpnGateway(String vpnGateway) {
+      this.vpnGateway = vpnGateway;
+      return this;
+    }
+
+    /** The interface ID of the VPN gateway with which this VPN tunnel is associated. */
+    public Integer getVpnGatewayInterface() {
+      return vpnGatewayInterface;
+    }
+
+    /** The interface ID of the VPN gateway with which this VPN tunnel is associated. */
+    public Builder setVpnGatewayInterface(Integer vpnGatewayInterface) {
+      this.vpnGatewayInterface = vpnGatewayInterface;
+      return this;
+    }
+
     public VpnTunnel build() {
 
       return new VpnTunnel(
@@ -732,6 +928,9 @@ public final class VpnTunnel implements ApiMessage {
           kind,
           localTrafficSelector,
           name,
+          peerExternalGateway,
+          peerExternalGatewayInterface,
+          peerGcpGateway,
           peerIp,
           region,
           remoteTrafficSelector,
@@ -740,7 +939,9 @@ public final class VpnTunnel implements ApiMessage {
           sharedSecret,
           sharedSecretHash,
           status,
-          targetVpnGateway);
+          targetVpnGateway,
+          vpnGateway,
+          vpnGatewayInterface);
     }
 
     public Builder clone() {
@@ -753,6 +954,9 @@ public final class VpnTunnel implements ApiMessage {
       newBuilder.setKind(this.kind);
       newBuilder.addAllLocalTrafficSelector(this.localTrafficSelector);
       newBuilder.setName(this.name);
+      newBuilder.setPeerExternalGateway(this.peerExternalGateway);
+      newBuilder.setPeerExternalGatewayInterface(this.peerExternalGatewayInterface);
+      newBuilder.setPeerGcpGateway(this.peerGcpGateway);
       newBuilder.setPeerIp(this.peerIp);
       newBuilder.setRegion(this.region);
       newBuilder.addAllRemoteTrafficSelector(this.remoteTrafficSelector);
@@ -762,6 +966,8 @@ public final class VpnTunnel implements ApiMessage {
       newBuilder.setSharedSecretHash(this.sharedSecretHash);
       newBuilder.setStatus(this.status);
       newBuilder.setTargetVpnGateway(this.targetVpnGateway);
+      newBuilder.setVpnGateway(this.vpnGateway);
+      newBuilder.setVpnGatewayInterface(this.vpnGatewayInterface);
       return newBuilder;
     }
   }
@@ -793,6 +999,15 @@ public final class VpnTunnel implements ApiMessage {
         + "name="
         + name
         + ", "
+        + "peerExternalGateway="
+        + peerExternalGateway
+        + ", "
+        + "peerExternalGatewayInterface="
+        + peerExternalGatewayInterface
+        + ", "
+        + "peerGcpGateway="
+        + peerGcpGateway
+        + ", "
         + "peerIp="
         + peerIp
         + ", "
@@ -819,6 +1034,12 @@ public final class VpnTunnel implements ApiMessage {
         + ", "
         + "targetVpnGateway="
         + targetVpnGateway
+        + ", "
+        + "vpnGateway="
+        + vpnGateway
+        + ", "
+        + "vpnGatewayInterface="
+        + vpnGatewayInterface
         + "}";
   }
 
@@ -837,6 +1058,10 @@ public final class VpnTunnel implements ApiMessage {
           && Objects.equals(this.kind, that.getKind())
           && Objects.equals(this.localTrafficSelector, that.getLocalTrafficSelectorList())
           && Objects.equals(this.name, that.getName())
+          && Objects.equals(this.peerExternalGateway, that.getPeerExternalGateway())
+          && Objects.equals(
+              this.peerExternalGatewayInterface, that.getPeerExternalGatewayInterface())
+          && Objects.equals(this.peerGcpGateway, that.getPeerGcpGateway())
           && Objects.equals(this.peerIp, that.getPeerIp())
           && Objects.equals(this.region, that.getRegion())
           && Objects.equals(this.remoteTrafficSelector, that.getRemoteTrafficSelectorList())
@@ -845,7 +1070,9 @@ public final class VpnTunnel implements ApiMessage {
           && Objects.equals(this.sharedSecret, that.getSharedSecret())
           && Objects.equals(this.sharedSecretHash, that.getSharedSecretHash())
           && Objects.equals(this.status, that.getStatus())
-          && Objects.equals(this.targetVpnGateway, that.getTargetVpnGateway());
+          && Objects.equals(this.targetVpnGateway, that.getTargetVpnGateway())
+          && Objects.equals(this.vpnGateway, that.getVpnGateway())
+          && Objects.equals(this.vpnGatewayInterface, that.getVpnGatewayInterface());
     }
     return false;
   }
@@ -861,6 +1088,9 @@ public final class VpnTunnel implements ApiMessage {
         kind,
         localTrafficSelector,
         name,
+        peerExternalGateway,
+        peerExternalGatewayInterface,
+        peerGcpGateway,
         peerIp,
         region,
         remoteTrafficSelector,
@@ -869,6 +1099,8 @@ public final class VpnTunnel implements ApiMessage {
         sharedSecret,
         sharedSecretHash,
         status,
-        targetVpnGateway);
+        targetVpnGateway,
+        vpnGateway,
+        vpnGatewayInterface);
   }
 }

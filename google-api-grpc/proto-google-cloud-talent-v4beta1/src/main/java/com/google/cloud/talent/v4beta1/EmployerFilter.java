@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Input only.
  * Employer filter of the search.
  * </pre>
  *
@@ -109,8 +108,9 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Enum indicating which set of [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records] to search
-   * against.
+   * Enum indicating which set of
+   * [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records]
+   * to search against.
    * </pre>
    *
    * Protobuf enum {@code google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode}
@@ -130,7 +130,8 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Apply to all employers in [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+     * Apply to all employers in
+     * [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
      * </pre>
      *
      * <code>ALL_EMPLOYMENT_RECORDS = 1;</code>
@@ -140,7 +141,8 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Apply only to current employer in [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+     * Apply only to current employer in
+     * [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
      * </pre>
      *
      * <code>CURRENT_EMPLOYMENT_RECORDS_ONLY = 2;</code>
@@ -174,7 +176,8 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Apply to all employers in [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+     * Apply to all employers in
+     * [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
      * </pre>
      *
      * <code>ALL_EMPLOYMENT_RECORDS = 1;</code>
@@ -184,7 +187,8 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Apply only to current employer in [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
+     * Apply only to current employer in
+     * [Profile.employment_records][google.cloud.talent.v4beta1.Profile.employment_records].
      * </pre>
      *
      * <code>CURRENT_EMPLOYMENT_RECORDS_ONLY = 2;</code>
@@ -284,11 +288,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The name of the employer, for example "Google", "Alphabet".
+   * Required. The name of the employer, for example "Google", "Alphabet".
    * </pre>
    *
-   * <code>string employer = 1;</code>
+   * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getEmployer() {
     java.lang.Object ref = employer_;
@@ -305,11 +308,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Required.
-   * The name of the employer, for example "Google", "Alphabet".
+   * Required. The name of the employer, for example "Google", "Alphabet".
    * </pre>
    *
-   * <code>string employer = 1;</code>
+   * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getEmployerBytes() {
     java.lang.Object ref = employer_;
@@ -329,9 +331,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-   * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+   * Define set of
+   * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+   * against.
+   * Defaults to
+   * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -343,9 +347,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
-   * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-   * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+   * Define set of
+   * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+   * against.
+   * Defaults to
+   * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -365,7 +371,6 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Whether to apply negation to the filter so profiles matching the filter
    * is excluded.
    * </pre>
@@ -563,7 +568,6 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Input only.
    * Employer filter of the search.
    * </pre>
    *
@@ -734,11 +738,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The name of the employer, for example "Google", "Alphabet".
+     * Required. The name of the employer, for example "Google", "Alphabet".
      * </pre>
      *
-     * <code>string employer = 1;</code>
+     * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getEmployer() {
       java.lang.Object ref = employer_;
@@ -755,11 +758,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The name of the employer, for example "Google", "Alphabet".
+     * Required. The name of the employer, for example "Google", "Alphabet".
      * </pre>
      *
-     * <code>string employer = 1;</code>
+     * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getEmployerBytes() {
       java.lang.Object ref = employer_;
@@ -776,11 +778,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The name of the employer, for example "Google", "Alphabet".
+     * Required. The name of the employer, for example "Google", "Alphabet".
      * </pre>
      *
-     * <code>string employer = 1;</code>
+     * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setEmployer(java.lang.String value) {
       if (value == null) {
@@ -795,11 +796,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The name of the employer, for example "Google", "Alphabet".
+     * Required. The name of the employer, for example "Google", "Alphabet".
      * </pre>
      *
-     * <code>string employer = 1;</code>
+     * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearEmployer() {
 
@@ -811,11 +811,10 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Required.
-     * The name of the employer, for example "Google", "Alphabet".
+     * Required. The name of the employer, for example "Google", "Alphabet".
      * </pre>
      *
-     * <code>string employer = 1;</code>
+     * <code>string employer = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setEmployerBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -833,9 +832,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-     * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+     * Define set of
+     * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+     * against.
+     * Defaults to
+     * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -847,9 +848,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-     * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+     * Define set of
+     * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+     * against.
+     * Defaults to
+     * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -863,9 +866,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-     * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+     * Define set of
+     * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+     * against.
+     * Defaults to
+     * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -882,9 +887,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-     * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+     * Define set of
+     * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+     * against.
+     * Defaults to
+     * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -903,9 +910,11 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
-     * Define set of [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search against.
-     * Defaults to [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
+     * Define set of
+     * [EmploymentRecord][google.cloud.talent.v4beta1.EmploymentRecord]s to search
+     * against.
+     * Defaults to
+     * [EmployerFilterMode.ALL_EMPLOYMENT_RECORDS][google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode.ALL_EMPLOYMENT_RECORDS].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.EmployerFilter.EmployerFilterMode mode = 2;</code>
@@ -922,7 +931,6 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Whether to apply negation to the filter so profiles matching the filter
      * is excluded.
      * </pre>
@@ -936,7 +944,6 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Whether to apply negation to the filter so profiles matching the filter
      * is excluded.
      * </pre>
@@ -953,7 +960,6 @@ public final class EmployerFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Whether to apply negation to the filter so profiles matching the filter
      * is excluded.
      * </pre>

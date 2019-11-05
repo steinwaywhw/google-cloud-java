@@ -133,7 +133,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getProjectId() {
     java.lang.Object ref = projectId_;
@@ -154,7 +154,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getProjectIdBytes() {
     java.lang.Object ref = projectId_;
@@ -177,7 +177,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 3;</code>
+   * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getRegion() {
     java.lang.Object ref = region_;
@@ -197,7 +197,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 3;</code>
+   * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getRegionBytes() {
     java.lang.Object ref = region_;
@@ -220,7 +220,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The cluster name.
    * </pre>
    *
-   * <code>string cluster_name = 2;</code>
+   * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getClusterName() {
     java.lang.Object ref = clusterName_;
@@ -240,7 +240,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The cluster name.
    * </pre>
    *
-   * <code>string cluster_name = 2;</code>
+   * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getClusterNameBytes() {
     java.lang.Object ref = clusterName_;
@@ -264,7 +264,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * (with error NOT_FOUND) if cluster with specified UUID does not exist.
    * </pre>
    *
-   * <code>string cluster_uuid = 4;</code>
+   * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getClusterUuid() {
     java.lang.Object ref = clusterUuid_;
@@ -285,7 +285,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    * (with error NOT_FOUND) if cluster with specified UUID does not exist.
    * </pre>
    *
-   * <code>string cluster_uuid = 4;</code>
+   * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getClusterUuidBytes() {
     java.lang.Object ref = clusterUuid_;
@@ -306,18 +306,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+   * backend is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 5;</code>
+   * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getRequestId() {
     java.lang.Object ref = requestId_;
@@ -335,18 +334,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+   * backend is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 5;</code>
+   * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getRequestIdBytes() {
     java.lang.Object ref = requestId_;
@@ -752,7 +750,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getProjectId() {
       java.lang.Object ref = projectId_;
@@ -773,7 +771,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getProjectIdBytes() {
       java.lang.Object ref = projectId_;
@@ -794,7 +792,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setProjectId(java.lang.String value) {
       if (value == null) {
@@ -813,7 +811,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearProjectId() {
 
@@ -829,7 +827,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setProjectIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -850,7 +848,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getRegion() {
       java.lang.Object ref = region_;
@@ -870,7 +868,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getRegionBytes() {
       java.lang.Object ref = region_;
@@ -890,7 +888,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setRegion(java.lang.String value) {
       if (value == null) {
@@ -908,7 +906,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearRegion() {
 
@@ -923,7 +921,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setRegionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -944,7 +942,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster name.
      * </pre>
      *
-     * <code>string cluster_name = 2;</code>
+     * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getClusterName() {
       java.lang.Object ref = clusterName_;
@@ -964,7 +962,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster name.
      * </pre>
      *
-     * <code>string cluster_name = 2;</code>
+     * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getClusterNameBytes() {
       java.lang.Object ref = clusterName_;
@@ -984,7 +982,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster name.
      * </pre>
      *
-     * <code>string cluster_name = 2;</code>
+     * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setClusterName(java.lang.String value) {
       if (value == null) {
@@ -1002,7 +1000,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster name.
      * </pre>
      *
-     * <code>string cluster_name = 2;</code>
+     * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearClusterName() {
 
@@ -1017,7 +1015,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster name.
      * </pre>
      *
-     * <code>string cluster_name = 2;</code>
+     * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setClusterNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1039,7 +1037,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * (with error NOT_FOUND) if cluster with specified UUID does not exist.
      * </pre>
      *
-     * <code>string cluster_uuid = 4;</code>
+     * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getClusterUuid() {
       java.lang.Object ref = clusterUuid_;
@@ -1060,7 +1058,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * (with error NOT_FOUND) if cluster with specified UUID does not exist.
      * </pre>
      *
-     * <code>string cluster_uuid = 4;</code>
+     * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getClusterUuidBytes() {
       java.lang.Object ref = clusterUuid_;
@@ -1081,7 +1079,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * (with error NOT_FOUND) if cluster with specified UUID does not exist.
      * </pre>
      *
-     * <code>string cluster_uuid = 4;</code>
+     * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setClusterUuid(java.lang.String value) {
       if (value == null) {
@@ -1100,7 +1098,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * (with error NOT_FOUND) if cluster with specified UUID does not exist.
      * </pre>
      *
-     * <code>string cluster_uuid = 4;</code>
+     * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearClusterUuid() {
 
@@ -1116,7 +1114,7 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      * (with error NOT_FOUND) if cluster with specified UUID does not exist.
      * </pre>
      *
-     * <code>string cluster_uuid = 4;</code>
+     * <code>string cluster_uuid = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setClusterUuidBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1135,18 +1133,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+     * backend is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 5;</code>
+     * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getRequestId() {
       java.lang.Object ref = requestId_;
@@ -1164,18 +1161,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+     * backend is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 5;</code>
+     * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getRequestIdBytes() {
       java.lang.Object ref = requestId_;
@@ -1193,18 +1189,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+     * backend is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 5;</code>
+     * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRequestId(java.lang.String value) {
       if (value == null) {
@@ -1220,18 +1215,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+     * backend is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 5;</code>
+     * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearRequestId() {
 
@@ -1244,18 +1238,17 @@ public final class DeleteClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [DeleteClusterRequest][google.cloud.dataproc.v1beta2.DeleteClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+     * backend is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 5;</code>
+     * <code>string request_id = 5 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRequestIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

@@ -25,6 +25,7 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
 
   private UpdateTransferConfigRequest() {
     authorizationCode_ = "";
+    versionInfo_ = "";
   }
 
   @java.lang.Override
@@ -90,6 +91,13 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
 
               break;
             }
+          case 42:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              versionInfo_ = s;
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -130,10 +138,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasTransferConfig() {
     return transferConfig_ != null;
@@ -142,10 +152,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.bigquery.datatransfer.v1.TransferConfig getTransferConfig() {
     return transferConfig_ == null
@@ -156,10 +168,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.bigquery.datatransfer.v1.TransferConfigOrBuilder
       getTransferConfigOrBuilder() {
@@ -243,10 +257,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Required list of fields to be updated in this request.
+   * Required. Required list of fields to be updated in this request.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasUpdateMask() {
     return updateMask_ != null;
@@ -255,10 +270,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Required list of fields to be updated in this request.
+   * Required. Required list of fields to be updated in this request.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.protobuf.FieldMask getUpdateMask() {
     return updateMask_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : updateMask_;
@@ -267,13 +283,67 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Required list of fields to be updated in this request.
+   * Required. Required list of fields to be updated in this request.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder() {
     return getUpdateMask();
+  }
+
+  public static final int VERSION_INFO_FIELD_NUMBER = 5;
+  private volatile java.lang.Object versionInfo_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  public java.lang.String getVersionInfo() {
+    java.lang.Object ref = versionInfo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      versionInfo_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  public com.google.protobuf.ByteString getVersionInfoBytes() {
+    java.lang.Object ref = versionInfo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      versionInfo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -299,6 +369,9 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
     if (updateMask_ != null) {
       output.writeMessage(4, getUpdateMask());
     }
+    if (!getVersionInfoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, versionInfo_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -316,6 +389,9 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
     }
     if (updateMask_ != null) {
       size += com.google.protobuf.CodedOutputStream.computeMessageSize(4, getUpdateMask());
+    }
+    if (!getVersionInfoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, versionInfo_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -342,6 +418,7 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
     if (hasUpdateMask()) {
       if (!getUpdateMask().equals(other.getUpdateMask())) return false;
     }
+    if (!getVersionInfo().equals(other.getVersionInfo())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -363,6 +440,8 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
       hash = (37 * hash) + UPDATE_MASK_FIELD_NUMBER;
       hash = (53 * hash) + getUpdateMask().hashCode();
     }
+    hash = (37 * hash) + VERSION_INFO_FIELD_NUMBER;
+    hash = (53 * hash) + getVersionInfo().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -526,6 +605,8 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
         updateMask_ = null;
         updateMaskBuilder_ = null;
       }
+      versionInfo_ = "";
+
       return this;
     }
 
@@ -566,6 +647,7 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
       } else {
         result.updateMask_ = updateMaskBuilder_.build();
       }
+      result.versionInfo_ = versionInfo_;
       onBuilt();
       return result;
     }
@@ -629,6 +711,10 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
       if (other.hasUpdateMask()) {
         mergeUpdateMask(other.getUpdateMask());
       }
+      if (!other.getVersionInfo().isEmpty()) {
+        versionInfo_ = other.versionInfo_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -670,10 +756,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasTransferConfig() {
       return transferConfigBuilder_ != null || transferConfig_ != null;
@@ -682,10 +770,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfig getTransferConfig() {
       if (transferConfigBuilder_ == null) {
@@ -700,10 +790,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig value) {
@@ -723,10 +815,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig.Builder builderForValue) {
@@ -743,10 +837,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig value) {
@@ -770,10 +866,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearTransferConfig() {
       if (transferConfigBuilder_ == null) {
@@ -790,10 +888,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfig.Builder
         getTransferConfigBuilder() {
@@ -805,10 +905,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfigOrBuilder
         getTransferConfigOrBuilder() {
@@ -824,10 +926,12 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 1 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.bigquery.datatransfer.v1.TransferConfig,
@@ -1020,10 +1124,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasUpdateMask() {
       return updateMaskBuilder_ != null || updateMask_ != null;
@@ -1032,10 +1137,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.protobuf.FieldMask getUpdateMask() {
       if (updateMaskBuilder_ == null) {
@@ -1050,10 +1156,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setUpdateMask(com.google.protobuf.FieldMask value) {
       if (updateMaskBuilder_ == null) {
@@ -1072,10 +1179,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setUpdateMask(com.google.protobuf.FieldMask.Builder builderForValue) {
       if (updateMaskBuilder_ == null) {
@@ -1091,10 +1199,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeUpdateMask(com.google.protobuf.FieldMask value) {
       if (updateMaskBuilder_ == null) {
@@ -1115,10 +1224,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearUpdateMask() {
       if (updateMaskBuilder_ == null) {
@@ -1135,10 +1245,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.protobuf.FieldMask.Builder getUpdateMaskBuilder() {
 
@@ -1149,10 +1260,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder() {
       if (updateMaskBuilder_ != null) {
@@ -1167,10 +1279,11 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Required list of fields to be updated in this request.
+     * Required. Required list of fields to be updated in this request.
      * </pre>
      *
-     * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+     * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.FieldMask,
@@ -1187,6 +1300,125 @@ public final class UpdateTransferConfigRequest extends com.google.protobuf.Gener
         updateMask_ = null;
       }
       return updateMaskBuilder_;
+    }
+
+    private java.lang.Object versionInfo_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public java.lang.String getVersionInfo() {
+      java.lang.Object ref = versionInfo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        versionInfo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public com.google.protobuf.ByteString getVersionInfoBytes() {
+      java.lang.Object ref = versionInfo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        versionInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder setVersionInfo(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      versionInfo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder clearVersionInfo() {
+
+      versionInfo_ = getDefaultInstance().getVersionInfo();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder setVersionInfoBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      versionInfo_ = value;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

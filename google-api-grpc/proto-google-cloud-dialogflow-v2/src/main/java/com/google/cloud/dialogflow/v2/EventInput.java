@@ -127,7 +127,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    * Required. The unique identifier of the event.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -147,7 +147,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    * Required. The unique identifier of the event.
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -170,7 +170,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    * Optional. The collection of parameters associated with the event.
    * </pre>
    *
-   * <code>.google.protobuf.Struct parameters = 2;</code>
+   * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public boolean hasParameters() {
     return parameters_ != null;
@@ -182,7 +182,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    * Optional. The collection of parameters associated with the event.
    * </pre>
    *
-   * <code>.google.protobuf.Struct parameters = 2;</code>
+   * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.Struct getParameters() {
     return parameters_ == null ? com.google.protobuf.Struct.getDefaultInstance() : parameters_;
@@ -194,7 +194,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    * Optional. The collection of parameters associated with the event.
    * </pre>
    *
-   * <code>.google.protobuf.Struct parameters = 2;</code>
+   * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.StructOrBuilder getParametersOrBuilder() {
     return getParameters();
@@ -207,12 +207,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Required. The language of this query. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
    *
-   * <code>string language_code = 3;</code>
+   * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getLanguageCode() {
     java.lang.Object ref = languageCode_;
@@ -230,12 +230,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * Required. The language of this query. See [Language
-   * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * Support](https://cloud.google.com/dialogflow/docs/reference/language)
    * for a list of the currently supported language codes. Note that queries in
    * the same session do not necessarily need to specify the same language.
    * </pre>
    *
-   * <code>string language_code = 3;</code>
+   * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getLanguageCodeBytes() {
     java.lang.Object ref = languageCode_;
@@ -621,7 +621,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Required. The unique identifier of the event.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -641,7 +641,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Required. The unique identifier of the event.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -661,7 +661,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Required. The unique identifier of the event.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -679,7 +679,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Required. The unique identifier of the event.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearName() {
 
@@ -694,7 +694,7 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Required. The unique identifier of the event.
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -720,7 +720,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public boolean hasParameters() {
       return parametersBuilder_ != null || parameters_ != null;
@@ -732,7 +733,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.Struct getParameters() {
       if (parametersBuilder_ == null) {
@@ -748,7 +750,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setParameters(com.google.protobuf.Struct value) {
       if (parametersBuilder_ == null) {
@@ -770,7 +773,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setParameters(com.google.protobuf.Struct.Builder builderForValue) {
       if (parametersBuilder_ == null) {
@@ -789,7 +793,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder mergeParameters(com.google.protobuf.Struct value) {
       if (parametersBuilder_ == null) {
@@ -813,7 +818,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearParameters() {
       if (parametersBuilder_ == null) {
@@ -833,7 +839,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.Struct.Builder getParametersBuilder() {
 
@@ -847,7 +854,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.StructOrBuilder getParametersOrBuilder() {
       if (parametersBuilder_ != null) {
@@ -863,7 +871,8 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      * Optional. The collection of parameters associated with the event.
      * </pre>
      *
-     * <code>.google.protobuf.Struct parameters = 2;</code>
+     * <code>.google.protobuf.Struct parameters = 2 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Struct,
@@ -888,12 +897,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Required. The language of this query. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getLanguageCode() {
       java.lang.Object ref = languageCode_;
@@ -911,12 +920,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Required. The language of this query. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getLanguageCodeBytes() {
       java.lang.Object ref = languageCode_;
@@ -934,12 +943,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Required. The language of this query. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setLanguageCode(java.lang.String value) {
       if (value == null) {
@@ -955,12 +964,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Required. The language of this query. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearLanguageCode() {
 
@@ -973,12 +982,12 @@ public final class EventInput extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * Required. The language of this query. See [Language
-     * Support](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+     * Support](https://cloud.google.com/dialogflow/docs/reference/language)
      * for a list of the currently supported language codes. Note that queries in
      * the same session do not necessarily need to specify the same language.
      * </pre>
      *
-     * <code>string language_code = 3;</code>
+     * <code>string language_code = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setLanguageCodeBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

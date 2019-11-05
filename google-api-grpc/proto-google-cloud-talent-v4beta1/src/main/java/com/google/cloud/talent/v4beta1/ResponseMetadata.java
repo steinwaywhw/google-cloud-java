@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Output only.
  * Additional information returned to client, such as debugging information.
  * </pre>
  *
@@ -300,7 +299,6 @@ public final class ResponseMetadata extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only.
    * Additional information returned to client, such as debugging information.
    * </pre>
    *

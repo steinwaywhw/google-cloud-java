@@ -14,10 +14,12 @@ public interface ListInstancesRequestOrBuilder
    * <pre>
    * Required. The resource name of the instance location using the form:
    *     `projects/{project_id}/locations/{location_id}`
-   * where `location_id` refers to a GCP region
+   * where `location_id` refers to a GCP region.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   java.lang.String getParent();
   /**
@@ -26,10 +28,12 @@ public interface ListInstancesRequestOrBuilder
    * <pre>
    * Required. The resource name of the instance location using the form:
    *     `projects/{project_id}/locations/{location_id}`
-   * where `location_id` refers to a GCP region
+   * where `location_id` refers to a GCP region.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   com.google.protobuf.ByteString getParentBytes();
 

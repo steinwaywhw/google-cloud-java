@@ -12,7 +12,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Name of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -24,7 +23,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Name of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -37,7 +35,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of inventors' names.
    * Number of characters allowed for each is 100.
    * </pre>
@@ -49,7 +46,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of inventors' names.
    * Number of characters allowed for each is 100.
    * </pre>
@@ -61,7 +57,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of inventors' names.
    * Number of characters allowed for each is 100.
    * </pre>
@@ -73,7 +68,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * A list of inventors' names.
    * Number of characters allowed for each is 100.
    * </pre>
@@ -86,7 +80,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The status of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -98,7 +91,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The status of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -111,7 +103,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date the last time the status of the patent was checked.
    * </pre>
    *
@@ -122,7 +113,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date the last time the status of the patent was checked.
    * </pre>
    *
@@ -133,7 +123,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date the last time the status of the patent was checked.
    * </pre>
    *
@@ -145,7 +134,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date that the patent was filed.
    * </pre>
    *
@@ -156,7 +144,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date that the patent was filed.
    * </pre>
    *
@@ -167,7 +154,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The date that the patent was filed.
    * </pre>
    *
@@ -179,7 +165,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The name of the patent office.
    * Number of characters allowed is 100.
    * </pre>
@@ -191,7 +176,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The name of the patent office.
    * Number of characters allowed is 100.
    * </pre>
@@ -204,7 +188,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The number of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -216,7 +199,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The number of the patent.
    * Number of characters allowed is 100.
    * </pre>
@@ -229,7 +211,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The description of the patent.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -241,7 +222,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The description of the patent.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -254,7 +234,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The skills used in this patent.
    * </pre>
    *
@@ -265,7 +244,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The skills used in this patent.
    * </pre>
    *
@@ -276,7 +254,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The skills used in this patent.
    * </pre>
    *
@@ -287,7 +264,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The skills used in this patent.
    * </pre>
    *
@@ -299,7 +275,6 @@ public interface PatentOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The skills used in this patent.
    * </pre>
    *

@@ -12,15 +12,18 @@ Java idiomatic client for [Google Cloud Platform][cloud-platform] services.
 
 This library supports the following Google Cloud Platform services with clients at a [GA](#versioning) quality level:
 -  [BigQuery](google-cloud-clients/google-cloud-bigquery) (GA)
+-  [Cloud Bigtable](google-cloud-clients/google-cloud-bigtable) (GA)
 -  [Cloud Datastore](google-cloud-clients/google-cloud-datastore) (GA)
 -  [Cloud Firestore](google-cloud-clients/google-cloud-firestore) (GA)
 -  [Cloud KMS](google-cloud-clients/google-cloud-kms) (GA)
 -  [Cloud Natural Language](google-cloud-clients/google-cloud-language) (GA)
 -  [Cloud Pub/Sub](google-cloud-clients/google-cloud-pubsub) (GA)
+-  [Cloud Scheduler](google-cloud-clients/google-cloud-scheduler) (GA)
 -  [Cloud Spanner](google-cloud-clients/google-cloud-spanner) (GA)
 -  [Cloud Speech](google-cloud-clients/google-cloud-speech) (GA)
 -  [Cloud Storage](google-cloud-clients/google-cloud-storage) (GA)
 -  [Cloud Translation](google-cloud-clients/google-cloud-translate) (GA)
+-  [Cloud Tasks](google-cloud-clients/google-cloud-tasks) (GA)
 -  [Cloud Vision](google-cloud-clients/google-cloud-vision) (GA)
 -  [Stackdriver Logging](google-cloud-clients/google-cloud-logging) (GA)
 -  [Stackdriver Monitoring](google-cloud-clients/google-cloud-monitoring) (GA)
@@ -31,11 +34,12 @@ This library supports the following Google Cloud Platform services with clients 
 -  [Cloud Asset](google-cloud-clients/google-cloud-asset) (Beta)
 -  [Cloud AutoML](google-cloud-clients/google-cloud-automl) (Beta)
 -  [Cloud Container Analysis](google-cloud-clients/google-cloud-containeranalysis) (Beta)
+-  [Cloud Dataproc](google-cloud-clients/google-cloud-dataproc) (Beta)
 -  [Cloud Data Loss Prevention](google-cloud-clients/google-cloud-dlp) (Beta)
 -  [Cloud IoT Core](google-cloud-clients/google-cloud-iot) (Beta)
 -  [Cloud Phishing Protection](google-cloud-clients/google-cloud-phishingprotection) (Beta)
+-  [Cloud Security Scanner](google-cloud-clients/google-cloud-websecurityscanner) (Beta)
 -  [Cloud Talent Solution](google-cloud-clients/google-cloud-talent) (Beta)
--  [Cloud Tasks](google-cloud-clients/google-cloud-tasks) (Beta)
 -  [Cloud Text-to-Speech](google-cloud-clients/google-cloud-texttospeech) (Beta)
 -  [Cloud Video Intelligence](google-cloud-clients/google-cloud-video-intelligence) (Beta)
 -  [Kubernetes Engine](google-cloud-clients/google-cloud-container) (Beta)
@@ -46,18 +50,14 @@ This library supports the following Google Cloud Platform services with clients 
 This library supports the following Google Cloud Platform services with clients at an [Alpha](#versioning) quality level:
 
 -  [BigQuery Storage](google-cloud-clients/google-cloud-bigquerystorage) (Alpha)
--  [Cloud Bigtable](google-cloud-clients/google-cloud-bigtable) (Alpha)
 -  [Cloud Compute](google-cloud-clients/google-cloud-compute) (Alpha)
 -  [Cloud Data Catalog](google-cloud-clients/google-cloud-datacatalog) (Alpha)
 -  [Cloud Data Labeling](google-cloud-clients/google-cloud-datalabeling) (Alpha)
--  [Cloud Dataproc](google-cloud-clients/google-cloud-dataproc) (Alpha)
 -  [Cloud DNS](google-cloud-clients/google-cloud-dns) (Alpha)
 -  [Cloud IAM Service Account Credentials API](google-cloud-clients/google-cloud-iamcredentials) (Alpha)
 -  [Cloud OS Login](google-cloud-clients/google-cloud-os-login) (Alpha)
 -  [Cloud Memorystore for Redis](google-cloud-clients/google-cloud-redis) (Alpha)
 -  [Cloud Resource Manager](google-cloud-clients/google-cloud-resourcemanager) (Alpha)
--  [Cloud Scheduler](google-cloud-clients/google-cloud-scheduler) (Alpha)
--  [Cloud Security Scanner](google-cloud-clients/google-cloud-websecurityscanner) (Alpha)
 -  [Cloud Web Risk](google-cloud-clients/google-cloud-webrisk) (Alpha)
 -  [Dialogflow](google-cloud-clients/google-cloud-dialogflow) (Alpha)
 
@@ -68,15 +68,14 @@ To call any of the supported Google Cloud Services simply add a corresponding cl
 artifact as a dependency to your project. The following instructions use `google-cloud-storage` 
 as an example (specific instructions can be found in the README of each client).
 
-[//]: # ({x-version-update-start:google-cloud-bom:released})
 If you are using Maven, add this to your pom.xml file
 ```xml
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-bom</artifactId>
-        <version>0.90.0-alpha</version>
+        <artifactId>libraries-bom</artifactId>
+        <version>2.7.1</version>
         <type>pom</type>
         <scope>import</scope>
        </dependency>
@@ -90,16 +89,15 @@ If you are using Maven, add this to your pom.xml file
     </dependency>
     ...
 ```
-[//]: # ({x-version-update-end})
 
 [//]: # ({x-version-update-start:google-cloud-storage:released})
 If you are using Gradle, add this to your dependencies
 ```Groovy
-compile 'com.google.cloud:google-cloud-storage:1.72.0'
+compile 'com.google.cloud:google-cloud-storage:1.99.0'
 ```
 If you are using SBT, add this to your dependencies
 ```Scala
-libraryDependencies += "com.google.cloud" % "google-cloud-storage" % "1.72.0"
+libraryDependencies += "com.google.cloud" % "google-cloud-storage" % "1.99.0"
 ```
 [//]: # ({x-version-update-end})
 
@@ -110,26 +108,6 @@ If you're using IntelliJ or Eclipse, you can add client libraries to your projec
 Besides adding client libraries, the plugins provide additional functionality, such as service account key management. Refer to the documentation for each plugin for more details.
 
 These client libraries can be used on App Engine standard for Java 8 runtime and App Engine flexible (including the Compat runtime).  Most of the libraries do not work on the App Engine standard for Java 7 runtime. However, Datastore, Storage, and Bigquery should work.
-
-If you are running into problems with version conflicts, the easiest way to solve the conflicts is to use google-cloud's BOM. In Maven, add the following to your POM:
-
-[//]: # ({x-version-update-start:google-cloud-bom:released})
-```xml
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.google.cloud</groupId>
-        <artifactId>google-cloud-bom</artifactId>
-        <version>0.90.0-alpha</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-```
-[//]: # ({x-version-update-end})
-
-Note that the BOM is only available starting at version 0.32.0-alpha. For prior versions, refer to [Old Version Combinations](#old-version-combinations) to make sure that your versions are compatible.
 
 Specifying a Project ID
 -----------------------
@@ -169,10 +147,10 @@ Authentication
 --------------
 
 `google-cloud-java` uses
-[https://github.com/google/google-auth-library-java](https://github.com/google/google-auth-library-java)
+[https://github.com/googleapis/google-auth-library-java](https://github.com/googleapis/google-auth-library-java)
 to authenticate requests. `google-auth-library-java` supports a wide range of authentication types;
 see the project's [README](https://github.com/google/google-auth-library-java/blob/master/README.md)
-and [javadoc](http://google.github.io/google-auth-library-java/releases/0.6.0/apidocs/) for more
+and [javadoc](http://googleapis.dev/java/google-auth-library/latest/) for more
 details.
 
 To access Google Cloud services, you first need to ensure that the necessary Google Cloud APIs are
@@ -293,7 +271,7 @@ See [TESTING] to read more about using our testing helpers.
 Versioning
 ----------
 
-This library follows [Semantic Versioning](http://semver.org/), but with some
+This library follows [Semantic Versioning](http://semver.org/), with some
 additional qualifications:
 
 1. Components marked with `@BetaApi` are considered to be "0.x" features inside
@@ -310,8 +288,8 @@ additional qualifications:
    with each other. For this reason, gax-java should not be used
    independently of google-cloud-java.
 
-1. Components marked with `@InternalApi` are technically public, but are only
-   public for technical reasons, because of the limitations of Java's access
+1. Components marked with `@InternalApi` are technically public, but only
+   because of the limitations of Java's access
    modifiers. For the purposes of semver, they should be considered private.
 
 Please note it is currently under active development. Any release versioned 0.x.y is
@@ -351,5 +329,5 @@ Apache 2.0 - See [LICENSE] for more information.
 
 [cloud-platform]: https://cloud.google.com/
 [cloud-platform-docs]: https://cloud.google.com/docs/
-[client-lib-docs]: https://googleapis.github.io/google-cloud-java/google-cloud-clients/apidocs/index.html
+[client-lib-docs]: https://googleapis.dev/java/google-cloud-clients/latest/index.html
 

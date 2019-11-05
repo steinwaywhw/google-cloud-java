@@ -12,7 +12,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * ISCED degree type.
    * </pre>
    *
@@ -23,7 +22,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * ISCED degree type.
    * </pre>
    *
@@ -35,7 +33,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Full Degree name.
    * For example, "B.S.", "Master of Arts", and so on.
    * Number of characters allowed is 100.
@@ -48,7 +45,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Full Degree name.
    * For example, "B.S.", "Master of Arts", and so on.
    * Number of characters allowed is 100.
@@ -62,7 +58,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Fields of study for the degree.
    * For example, "Computer science", "engineering".
    * Number of characters allowed is 100.
@@ -75,7 +70,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Fields of study for the degree.
    * For example, "Computer science", "engineering".
    * Number of characters allowed is 100.
@@ -88,7 +82,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Fields of study for the degree.
    * For example, "Computer science", "engineering".
    * Number of characters allowed is 100.
@@ -101,7 +94,6 @@ public interface DegreeOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Fields of study for the degree.
    * For example, "Computer science", "engineering".
    * Number of characters allowed is 100.

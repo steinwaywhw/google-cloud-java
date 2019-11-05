@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Input only.
  * Filter on create timestamp or update timestamp of profiles.
  * </pre>
  *
@@ -273,7 +272,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Start timestamp, matching profiles with the start time. If this field
    * missing, The API matches profiles with create / update timestamp before the
    * end timestamp.
@@ -288,7 +286,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Start timestamp, matching profiles with the start time. If this field
    * missing, The API matches profiles with create / update timestamp before the
    * end timestamp.
@@ -303,7 +300,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Start timestamp, matching profiles with the start time. If this field
    * missing, The API matches profiles with create / update timestamp before the
    * end timestamp.
@@ -321,7 +317,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * End timestamp, matching profiles with the end time. If this field
    * missing, The API matches profiles with create / update timestamp after the
    * start timestamp.
@@ -336,7 +331,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * End timestamp, matching profiles with the end time. If this field
    * missing, The API matches profiles with create / update timestamp after the
    * start timestamp.
@@ -351,7 +345,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * End timestamp, matching profiles with the end time. If this field
    * missing, The API matches profiles with create / update timestamp after the
    * start timestamp.
@@ -369,9 +362,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Specifies which time field to filter profiles.
-   * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+   * Defaults to
+   * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -383,9 +376,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Specifies which time field to filter profiles.
-   * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+   * Defaults to
+   * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -594,7 +587,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Input only.
    * Filter on create timestamp or update timestamp of profiles.
    * </pre>
    *
@@ -785,7 +777,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -800,7 +791,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -819,7 +809,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -844,7 +833,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -866,7 +854,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -893,7 +880,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -916,7 +902,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -933,7 +918,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -952,7 +936,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Start timestamp, matching profiles with the start time. If this field
      * missing, The API matches profiles with create / update timestamp before the
      * end timestamp.
@@ -987,7 +970,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1002,7 +984,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1021,7 +1002,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1046,7 +1026,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1068,7 +1047,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1095,7 +1073,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1118,7 +1095,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1135,7 +1111,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1154,7 +1129,6 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * End timestamp, matching profiles with the end time. If this field
      * missing, The API matches profiles with create / update timestamp after the
      * start timestamp.
@@ -1184,9 +1158,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Specifies which time field to filter profiles.
-     * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+     * Defaults to
+     * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -1198,9 +1172,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Specifies which time field to filter profiles.
-     * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+     * Defaults to
+     * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -1214,9 +1188,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Specifies which time field to filter profiles.
-     * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+     * Defaults to
+     * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -1233,9 +1207,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Specifies which time field to filter profiles.
-     * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+     * Defaults to
+     * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>
@@ -1253,9 +1227,9 @@ public final class TimeFilter extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Specifies which time field to filter profiles.
-     * Defaults to [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
+     * Defaults to
+     * [TimeField.CREATE_TIME][google.cloud.talent.v4beta1.TimeFilter.TimeField.CREATE_TIME].
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.TimeFilter.TimeField time_field = 3;</code>

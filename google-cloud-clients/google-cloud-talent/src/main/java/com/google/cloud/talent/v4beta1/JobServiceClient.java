@@ -20,14 +20,18 @@ import com.google.api.core.ApiFuture;
 import com.google.api.core.ApiFutures;
 import com.google.api.core.BetaApi;
 import com.google.api.gax.core.BackgroundResource;
+import com.google.api.gax.longrunning.OperationFuture;
 import com.google.api.gax.paging.AbstractFixedSizeCollection;
 import com.google.api.gax.paging.AbstractPage;
 import com.google.api.gax.paging.AbstractPagedListResponse;
+import com.google.api.gax.rpc.OperationCallable;
 import com.google.api.gax.rpc.PageContext;
 import com.google.api.gax.rpc.UnaryCallable;
 import com.google.cloud.talent.v4beta1.stub.JobServiceStub;
 import com.google.cloud.talent.v4beta1.stub.JobServiceStubSettings;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.google.longrunning.Operation;
+import com.google.longrunning.OperationsClient;
 import com.google.protobuf.Empty;
 import java.io.IOException;
 import java.util.List;
@@ -107,6 +111,7 @@ import javax.annotation.Generated;
 public class JobServiceClient implements BackgroundResource {
   private final JobServiceSettings settings;
   private final JobServiceStub stub;
+  private final OperationsClient operationsClient;
 
   /** Constructs an instance of JobServiceClient with default settings. */
   public static final JobServiceClient create() throws IOException {
@@ -137,12 +142,14 @@ public class JobServiceClient implements BackgroundResource {
   protected JobServiceClient(JobServiceSettings settings) throws IOException {
     this.settings = settings;
     this.stub = ((JobServiceStubSettings) settings.getStubSettings()).createStub();
+    this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   protected JobServiceClient(JobServiceStub stub) {
     this.settings = null;
     this.stub = stub;
+    this.operationsClient = OperationsClient.create(this.stub.getOperationsStub());
   }
 
   public final JobServiceSettings getSettings() {
@@ -152,6 +159,16 @@ public class JobServiceClient implements BackgroundResource {
   @BetaApi("A restructuring of stub classes is planned, so this may break in the future")
   public JobServiceStub getStub() {
     return stub;
+  }
+
+  /**
+   * Returns the OperationsClient that can be used to query the status of a long-running operation
+   * returned by another API method call.
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationsClient getOperationsClient() {
+    return operationsClient;
   }
 
   // AUTO-GENERATED DOCUMENTATION AND METHOD
@@ -170,14 +187,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and a default tenant is created if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param job Required.
-   *     <p>The Job to be created.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified a default tenant is created. For
+   *     example, "projects/foo".
+   * @param job Required. The Job to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Job createJob(TenantOrProjectName parent, Job job) {
@@ -206,14 +220,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and a default tenant is created if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param job Required.
-   *     <p>The Job to be created.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified a default tenant is created. For
+   *     example, "projects/foo".
+   * @param job Required. The Job to be created.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Job createJob(String parent, Job job) {
@@ -288,12 +299,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the job to retrieve.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example,
-   *     "projects/api-test-project/tenants/foo/jobs/1234".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project/jobs/1234".
+   * @param name Required. The resource name of the job to retrieve.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
+   *     "projects/foo/tenants/bar/jobs/baz".
+   *     <p>If tenant id is unspecified, the default tenant is used. For example,
+   *     "projects/foo/jobs/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Job getJob(JobName name) {
@@ -316,12 +326,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the job to retrieve.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example,
-   *     "projects/api-test-project/tenants/foo/jobs/1234".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project/jobs/1234".
+   * @param name Required. The resource name of the job to retrieve.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
+   *     "projects/foo/tenants/bar/jobs/baz".
+   *     <p>If tenant id is unspecified, the default tenant is used. For example,
+   *     "projects/foo/jobs/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Job getJob(String name) {
@@ -391,8 +400,7 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param job Required.
-   *     <p>The Job to be updated.
+   * @param job Required. The Job to be updated.
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final Job updateJob(Job job) {
@@ -467,12 +475,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the job to be deleted.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example,
-   *     "projects/api-test-project/tenants/foo/jobs/1234".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project/jobs/1234".
+   * @param name Required. The resource name of the job to be deleted.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
+   *     "projects/foo/tenants/bar/jobs/baz".
+   *     <p>If tenant id is unspecified, the default tenant is used. For example,
+   *     "projects/foo/jobs/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteJob(JobName name) {
@@ -497,12 +504,11 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param name Required.
-   *     <p>The resource name of the job to be deleted.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example,
-   *     "projects/api-test-project/tenants/foo/jobs/1234".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project/jobs/1234".
+   * @param name Required. The resource name of the job to be deleted.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example,
+   *     "projects/foo/tenants/bar/jobs/baz".
+   *     <p>If tenant id is unspecified, the default tenant is used. For example,
+   *     "projects/foo/jobs/bar".
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void deleteJob(String name) {
@@ -576,23 +582,19 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param filter Required.
-   *     <p>The filter string specifies the jobs to be enumerated.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param filter Required. The filter string specifies the jobs to be enumerated.
    *     <p>Supported operator: =, AND
    *     <p>The fields eligible for filtering are:
-   *     <p>&#42; `companyName` (Required) &#42; `requisitionId` (Optional) &#42; `status`
-   *     (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified.
+   *     <p>&#42; `companyName` (Required) &#42; `requisitionId` &#42; `status` Available values:
+   *     OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified.
    *     <p>Sample Query:
-   *     <p>&#42; companyName = "projects/api-test-project/tenants/foo/companies/bar" &#42;
-   *     companyName = "projects/api-test-project/tenants/foo/companies/bar" AND requisitionId =
-   *     "req-1" &#42; companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
-   *     status = "EXPIRED"
+   *     <p>&#42; companyName = "projects/foo/tenants/bar/companies/baz" &#42; companyName =
+   *     "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" &#42; companyName =
+   *     "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED"
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListJobsPagedResponse listJobs(TenantOrProjectName parent, String filter) {
@@ -620,23 +622,19 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param filter Required.
-   *     <p>The filter string specifies the jobs to be enumerated.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param filter Required. The filter string specifies the jobs to be enumerated.
    *     <p>Supported operator: =, AND
    *     <p>The fields eligible for filtering are:
-   *     <p>&#42; `companyName` (Required) &#42; `requisitionId` (Optional) &#42; `status`
-   *     (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified.
+   *     <p>&#42; `companyName` (Required) &#42; `requisitionId` &#42; `status` Available values:
+   *     OPEN, EXPIRED, ALL. Defaults to OPEN if no value is specified.
    *     <p>Sample Query:
-   *     <p>&#42; companyName = "projects/api-test-project/tenants/foo/companies/bar" &#42;
-   *     companyName = "projects/api-test-project/tenants/foo/companies/bar" AND requisitionId =
-   *     "req-1" &#42; companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
-   *     status = "EXPIRED"
+   *     <p>&#42; companyName = "projects/foo/tenants/bar/companies/baz" &#42; companyName =
+   *     "projects/foo/tenants/bar/companies/baz" AND requisitionId = "req-1" &#42; companyName =
+   *     "projects/foo/tenants/bar/companies/baz" AND status = "EXPIRED"
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final ListJobsPagedResponse listJobs(String parent, String filter) {
@@ -745,19 +743,15 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param filter Required.
-   *     <p>The filter string specifies the jobs to be deleted.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param filter Required. The filter string specifies the jobs to be deleted.
    *     <p>Supported operator: =, AND
    *     <p>The fields eligible for filtering are:
    *     <p>&#42; `companyName` (Required) &#42; `requisitionId` (Required)
-   *     <p>Sample Query: companyName = "projects/api-test-project/companies/123" AND requisitionId
-   *     = "req-1"
+   *     <p>Sample Query: companyName = "projects/foo/companies/bar" AND requisitionId = "req-1"
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void batchDeleteJobs(TenantOrProjectName parent, String filter) {
@@ -784,19 +778,15 @@ public class JobServiceClient implements BackgroundResource {
    * }
    * </code></pre>
    *
-   * @param parent Required.
-   *     <p>The resource name of the tenant under which the job is created.
-   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   *     "projects/api-test-project/tenant/foo".
-   *     <p>Tenant id is optional and the default tenant is used if unspecified, for example,
-   *     "projects/api-test-project".
-   * @param filter Required.
-   *     <p>The filter string specifies the jobs to be deleted.
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param filter Required. The filter string specifies the jobs to be deleted.
    *     <p>Supported operator: =, AND
    *     <p>The fields eligible for filtering are:
    *     <p>&#42; `companyName` (Required) &#42; `requisitionId` (Required)
-   *     <p>Sample Query: companyName = "projects/api-test-project/companies/123" AND requisitionId
-   *     = "req-1"
+   *     <p>Sample Query: companyName = "projects/foo/companies/bar" AND requisitionId = "req-1"
    * @throws com.google.api.gax.rpc.ApiException if the remote call fails
    */
   public final void batchDeleteJobs(String parent, String filter) {
@@ -1065,6 +1055,224 @@ public class JobServiceClient implements BackgroundResource {
    */
   public final UnaryCallable<SearchJobsRequest, SearchJobsResponse> searchJobsForAlertCallable() {
     return stub.searchJobsForAlertCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch create jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   JobOperationResult response = jobServiceClient.batchCreateJobsAsync(formattedParent, jobs).get();
+   * }
+   * </code></pre>
+   *
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param jobs Required. The jobs to be created.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<JobOperationResult, BatchOperationMetadata> batchCreateJobsAsync(
+      String parent, List<Job> jobs) {
+
+    BatchCreateJobsRequest request =
+        BatchCreateJobsRequest.newBuilder().setParent(parent).addAllJobs(jobs).build();
+    return batchCreateJobsAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch create jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchCreateJobsRequest request = BatchCreateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   JobOperationResult response = jobServiceClient.batchCreateJobsAsync(request).get();
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<JobOperationResult, BatchOperationMetadata> batchCreateJobsAsync(
+      BatchCreateJobsRequest request) {
+    return batchCreateJobsOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch create jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchCreateJobsRequest request = BatchCreateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   OperationFuture&lt;JobOperationResult, BatchOperationMetadata&gt; future = jobServiceClient.batchCreateJobsOperationCallable().futureCall(request);
+   *   // Do something
+   *   JobOperationResult response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<BatchCreateJobsRequest, JobOperationResult, BatchOperationMetadata>
+      batchCreateJobsOperationCallable() {
+    return stub.batchCreateJobsOperationCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch create jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchCreateJobsRequest request = BatchCreateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = jobServiceClient.batchCreateJobsCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  public final UnaryCallable<BatchCreateJobsRequest, Operation> batchCreateJobsCallable() {
+    return stub.batchCreateJobsCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch update jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   JobOperationResult response = jobServiceClient.batchUpdateJobsAsync(formattedParent, jobs).get();
+   * }
+   * </code></pre>
+   *
+   * @param parent Required. The resource name of the tenant under which the job is created.
+   *     <p>The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   *     "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant is created. For
+   *     example, "projects/foo".
+   * @param jobs The jobs to be updated.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<JobOperationResult, BatchOperationMetadata> batchUpdateJobsAsync(
+      String parent, List<Job> jobs) {
+
+    BatchUpdateJobsRequest request =
+        BatchUpdateJobsRequest.newBuilder().setParent(parent).addAllJobs(jobs).build();
+    return batchUpdateJobsAsync(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch update jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchUpdateJobsRequest request = BatchUpdateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   JobOperationResult response = jobServiceClient.batchUpdateJobsAsync(request).get();
+   * }
+   * </code></pre>
+   *
+   * @param request The request object containing all of the parameters for the API call.
+   * @throws com.google.api.gax.rpc.ApiException if the remote call fails
+   */
+  @BetaApi(
+      "The surface for long-running operations is not stable yet and may change in the future.")
+  public final OperationFuture<JobOperationResult, BatchOperationMetadata> batchUpdateJobsAsync(
+      BatchUpdateJobsRequest request) {
+    return batchUpdateJobsOperationCallable().futureCall(request);
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch update jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchUpdateJobsRequest request = BatchUpdateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   OperationFuture&lt;JobOperationResult, BatchOperationMetadata&gt; future = jobServiceClient.batchUpdateJobsOperationCallable().futureCall(request);
+   *   // Do something
+   *   JobOperationResult response = future.get();
+   * }
+   * </code></pre>
+   */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public final OperationCallable<BatchUpdateJobsRequest, JobOperationResult, BatchOperationMetadata>
+      batchUpdateJobsOperationCallable() {
+    return stub.batchUpdateJobsOperationCallable();
+  }
+
+  // AUTO-GENERATED DOCUMENTATION AND METHOD
+  /**
+   * Begins executing a batch update jobs operation.
+   *
+   * <p>Sample code:
+   *
+   * <pre><code>
+   * try (JobServiceClient jobServiceClient = JobServiceClient.create()) {
+   *   String formattedParent = TenantName.format("[PROJECT]", "[TENANT]");
+   *   List&lt;Job&gt; jobs = new ArrayList&lt;&gt;();
+   *   BatchUpdateJobsRequest request = BatchUpdateJobsRequest.newBuilder()
+   *     .setParent(formattedParent)
+   *     .addAllJobs(jobs)
+   *     .build();
+   *   ApiFuture&lt;Operation&gt; future = jobServiceClient.batchUpdateJobsCallable().futureCall(request);
+   *   // Do something
+   *   Operation response = future.get();
+   * }
+   * </code></pre>
+   */
+  public final UnaryCallable<BatchUpdateJobsRequest, Operation> batchUpdateJobsCallable() {
+    return stub.batchUpdateJobsCallable();
   }
 
   @Override

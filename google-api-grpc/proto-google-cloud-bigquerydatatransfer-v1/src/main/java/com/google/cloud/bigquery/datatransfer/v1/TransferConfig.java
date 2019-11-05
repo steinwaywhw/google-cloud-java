@@ -29,7 +29,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
 
   private TransferConfig() {
     name_ = "";
-    destinationDatasetId_ = "";
     displayName_ = "";
     dataSourceId_ = "";
     schedule_ = "";
@@ -71,8 +70,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
           case 18:
             {
               java.lang.String s = input.readStringRequireUtf8();
-
-              destinationDatasetId_ = s;
+              destinationCase_ = 2;
+              destination_ = s;
               break;
             }
           case 26:
@@ -169,6 +168,23 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
               datasetRegion_ = s;
               break;
             }
+          case 194:
+            {
+              com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder subBuilder = null;
+              if (scheduleOptions_ != null) {
+                subBuilder = scheduleOptions_.toBuilder();
+              }
+              scheduleOptions_ =
+                  input.readMessage(
+                      com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.parser(),
+                      extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(scheduleOptions_);
+                scheduleOptions_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -203,6 +219,43 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
             com.google.cloud.bigquery.datatransfer.v1.TransferConfig.Builder.class);
   }
 
+  private int destinationCase_ = 0;
+  private java.lang.Object destination_;
+
+  public enum DestinationCase implements com.google.protobuf.Internal.EnumLite {
+    DESTINATION_DATASET_ID(2),
+    DESTINATION_NOT_SET(0);
+    private final int value;
+
+    private DestinationCase(int value) {
+      this.value = value;
+    }
+    /** @deprecated Use {@link #forNumber(int)} instead. */
+    @java.lang.Deprecated
+    public static DestinationCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static DestinationCase forNumber(int value) {
+      switch (value) {
+        case 2:
+          return DESTINATION_DATASET_ID;
+        case 0:
+          return DESTINATION_NOT_SET;
+        default:
+          return null;
+      }
+    }
+
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public DestinationCase getDestinationCase() {
+    return DestinationCase.forNumber(destinationCase_);
+  }
+
   public static final int NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object name_;
   /**
@@ -210,11 +263,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * The resource name of the transfer config.
-   * Transfer config names have the form
-   * `projects/{project_id}/transferConfigs/{config_id}`.
-   * Where `config_id` is usually a uuid, even though it is not
-   * guaranteed or required. The name is ignored when creating a transfer
-   * config.
+   * Transfer config names have the form of
+   * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+   * The name is automatically generated based on the config_id specified in
+   * CreateTransferConfigRequest along with project_id and region. If config_id
+   * is not provided, usually a uuid, even though it is not guaranteed or
+   * required, will be generated for config_id.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -235,11 +289,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    *
    * <pre>
    * The resource name of the transfer config.
-   * Transfer config names have the form
-   * `projects/{project_id}/transferConfigs/{config_id}`.
-   * Where `config_id` is usually a uuid, even though it is not
-   * guaranteed or required. The name is ignored when creating a transfer
-   * config.
+   * Transfer config names have the form of
+   * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+   * The name is automatically generated based on the config_id specified in
+   * CreateTransferConfigRequest along with project_id and region. If config_id
+   * is not provided, usually a uuid, even though it is not guaranteed or
+   * required, will be generated for config_id.
    * </pre>
    *
    * <code>string name = 1;</code>
@@ -257,7 +312,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
   }
 
   public static final int DESTINATION_DATASET_ID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object destinationDatasetId_;
   /**
    *
    *
@@ -268,13 +322,18 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * <code>string destination_dataset_id = 2;</code>
    */
   public java.lang.String getDestinationDatasetId() {
-    java.lang.Object ref = destinationDatasetId_;
+    java.lang.Object ref = "";
+    if (destinationCase_ == 2) {
+      ref = destination_;
+    }
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      destinationDatasetId_ = s;
+      if (destinationCase_ == 2) {
+        destination_ = s;
+      }
       return s;
     }
   }
@@ -288,11 +347,16 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * <code>string destination_dataset_id = 2;</code>
    */
   public com.google.protobuf.ByteString getDestinationDatasetIdBytes() {
-    java.lang.Object ref = destinationDatasetId_;
+    java.lang.Object ref = "";
+    if (destinationCase_ == 2) {
+      ref = destination_;
+    }
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b =
           com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-      destinationDatasetId_ = b;
+      if (destinationCase_ == 2) {
+        destination_ = b;
+      }
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -489,6 +553,48 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     }
   }
 
+  public static final int SCHEDULE_OPTIONS_FIELD_NUMBER = 24;
+  private com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions scheduleOptions_;
+  /**
+   *
+   *
+   * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  public boolean hasScheduleOptions() {
+    return scheduleOptions_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  public com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions getScheduleOptions() {
+    return scheduleOptions_ == null
+        ? com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.getDefaultInstance()
+        : scheduleOptions_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Options customizing the data transfer schedule.
+   * </pre>
+   *
+   * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+   */
+  public com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder
+      getScheduleOptionsOrBuilder() {
+    return getScheduleOptions();
+  }
+
   public static final int DATA_REFRESH_WINDOW_DAYS_FIELD_NUMBER = 12;
   private int dataRefreshWindowDays_;
   /**
@@ -534,7 +640,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public boolean hasUpdateTime() {
     return updateTime_ != null;
@@ -546,7 +653,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.Timestamp getUpdateTime() {
     return updateTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updateTime_;
@@ -558,7 +666,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Data transfer modification time. Ignored by server on input.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 4;</code>
+   * <code>.google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
     return getUpdateTime();
@@ -573,7 +682,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public boolean hasNextRunTime() {
     return nextRunTime_ != null;
@@ -585,7 +696,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.Timestamp getNextRunTime() {
     return nextRunTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : nextRunTime_;
@@ -597,7 +710,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Next time when data transfer will run.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+   * <code>
+   * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.TimestampOrBuilder getNextRunTimeOrBuilder() {
     return getNextRunTime();
@@ -612,7 +727,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. State of the most recently updated transfer run.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public int getStateValue() {
     return state_;
@@ -624,7 +741,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. State of the most recently updated transfer run.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.cloud.bigquery.datatransfer.v1.TransferState getState() {
     @SuppressWarnings("deprecation")
@@ -641,11 +760,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Output only. Unique ID of the user on whose behalf transfer is done.
-   * Applicable only to data sources that do not support service accounts.
-   * When set to 0, the data source service account credentials are used.
-   * May be negative. Note, that this identifier is not stable.
-   * It may change over time even for the same user.
+   * Deprecated. Unique ID of the user on whose behalf transfer is done.
    * </pre>
    *
    * <code>int64 user_id = 11;</code>
@@ -663,7 +778,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Region in which BigQuery dataset is located.
    * </pre>
    *
-   * <code>string dataset_region = 14;</code>
+   * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getDatasetRegion() {
     java.lang.Object ref = datasetRegion_;
@@ -683,7 +798,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
    * Output only. Region in which BigQuery dataset is located.
    * </pre>
    *
-   * <code>string dataset_region = 14;</code>
+   * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getDatasetRegionBytes() {
     java.lang.Object ref = datasetRegion_;
@@ -714,8 +829,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
-    if (!getDestinationDatasetIdBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destinationDatasetId_);
+    if (destinationCase_ == 2) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, destination_);
     }
     if (!getDisplayNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, displayName_);
@@ -752,6 +867,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     if (!getDatasetRegionBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 14, datasetRegion_);
     }
+    if (scheduleOptions_ != null) {
+      output.writeMessage(24, getScheduleOptions());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -764,8 +882,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
-    if (!getDestinationDatasetIdBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destinationDatasetId_);
+    if (destinationCase_ == 2) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, destination_);
     }
     if (!getDisplayNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, displayName_);
@@ -802,6 +920,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     if (!getDatasetRegionBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(14, datasetRegion_);
     }
+    if (scheduleOptions_ != null) {
+      size += com.google.protobuf.CodedOutputStream.computeMessageSize(24, getScheduleOptions());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -819,7 +940,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
         (com.google.cloud.bigquery.datatransfer.v1.TransferConfig) obj;
 
     if (!getName().equals(other.getName())) return false;
-    if (!getDestinationDatasetId().equals(other.getDestinationDatasetId())) return false;
     if (!getDisplayName().equals(other.getDisplayName())) return false;
     if (!getDataSourceId().equals(other.getDataSourceId())) return false;
     if (hasParams() != other.hasParams()) return false;
@@ -827,6 +947,10 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       if (!getParams().equals(other.getParams())) return false;
     }
     if (!getSchedule().equals(other.getSchedule())) return false;
+    if (hasScheduleOptions() != other.hasScheduleOptions()) return false;
+    if (hasScheduleOptions()) {
+      if (!getScheduleOptions().equals(other.getScheduleOptions())) return false;
+    }
     if (getDataRefreshWindowDays() != other.getDataRefreshWindowDays()) return false;
     if (getDisabled() != other.getDisabled()) return false;
     if (hasUpdateTime() != other.hasUpdateTime()) return false;
@@ -840,6 +964,14 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     if (state_ != other.state_) return false;
     if (getUserId() != other.getUserId()) return false;
     if (!getDatasetRegion().equals(other.getDatasetRegion())) return false;
+    if (!getDestinationCase().equals(other.getDestinationCase())) return false;
+    switch (destinationCase_) {
+      case 2:
+        if (!getDestinationDatasetId().equals(other.getDestinationDatasetId())) return false;
+        break;
+      case 0:
+      default:
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -853,8 +985,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + DESTINATION_DATASET_ID_FIELD_NUMBER;
-    hash = (53 * hash) + getDestinationDatasetId().hashCode();
     hash = (37 * hash) + DISPLAY_NAME_FIELD_NUMBER;
     hash = (53 * hash) + getDisplayName().hashCode();
     hash = (37 * hash) + DATA_SOURCE_ID_FIELD_NUMBER;
@@ -865,6 +995,10 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     }
     hash = (37 * hash) + SCHEDULE_FIELD_NUMBER;
     hash = (53 * hash) + getSchedule().hashCode();
+    if (hasScheduleOptions()) {
+      hash = (37 * hash) + SCHEDULE_OPTIONS_FIELD_NUMBER;
+      hash = (53 * hash) + getScheduleOptions().hashCode();
+    }
     hash = (37 * hash) + DATA_REFRESH_WINDOW_DAYS_FIELD_NUMBER;
     hash = (53 * hash) + getDataRefreshWindowDays();
     hash = (37 * hash) + DISABLED_FIELD_NUMBER;
@@ -883,6 +1017,14 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(getUserId());
     hash = (37 * hash) + DATASET_REGION_FIELD_NUMBER;
     hash = (53 * hash) + getDatasetRegion().hashCode();
+    switch (destinationCase_) {
+      case 2:
+        hash = (37 * hash) + DESTINATION_DATASET_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getDestinationDatasetId().hashCode();
+        break;
+      case 0:
+      default:
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1036,8 +1178,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       super.clear();
       name_ = "";
 
-      destinationDatasetId_ = "";
-
       displayName_ = "";
 
       dataSourceId_ = "";
@@ -1050,6 +1190,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       }
       schedule_ = "";
 
+      if (scheduleOptionsBuilder_ == null) {
+        scheduleOptions_ = null;
+      } else {
+        scheduleOptions_ = null;
+        scheduleOptionsBuilder_ = null;
+      }
       dataRefreshWindowDays_ = 0;
 
       disabled_ = false;
@@ -1072,6 +1218,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
 
       datasetRegion_ = "";
 
+      destinationCase_ = 0;
+      destination_ = null;
       return this;
     }
 
@@ -1100,7 +1248,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       com.google.cloud.bigquery.datatransfer.v1.TransferConfig result =
           new com.google.cloud.bigquery.datatransfer.v1.TransferConfig(this);
       result.name_ = name_;
-      result.destinationDatasetId_ = destinationDatasetId_;
+      if (destinationCase_ == 2) {
+        result.destination_ = destination_;
+      }
       result.displayName_ = displayName_;
       result.dataSourceId_ = dataSourceId_;
       if (paramsBuilder_ == null) {
@@ -1109,6 +1259,11 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
         result.params_ = paramsBuilder_.build();
       }
       result.schedule_ = schedule_;
+      if (scheduleOptionsBuilder_ == null) {
+        result.scheduleOptions_ = scheduleOptions_;
+      } else {
+        result.scheduleOptions_ = scheduleOptionsBuilder_.build();
+      }
       result.dataRefreshWindowDays_ = dataRefreshWindowDays_;
       result.disabled_ = disabled_;
       if (updateTimeBuilder_ == null) {
@@ -1124,6 +1279,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       result.state_ = state_;
       result.userId_ = userId_;
       result.datasetRegion_ = datasetRegion_;
+      result.destinationCase_ = destinationCase_;
       onBuilt();
       return result;
     }
@@ -1178,10 +1334,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
         name_ = other.name_;
         onChanged();
       }
-      if (!other.getDestinationDatasetId().isEmpty()) {
-        destinationDatasetId_ = other.destinationDatasetId_;
-        onChanged();
-      }
       if (!other.getDisplayName().isEmpty()) {
         displayName_ = other.displayName_;
         onChanged();
@@ -1196,6 +1348,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       if (!other.getSchedule().isEmpty()) {
         schedule_ = other.schedule_;
         onChanged();
+      }
+      if (other.hasScheduleOptions()) {
+        mergeScheduleOptions(other.getScheduleOptions());
       }
       if (other.getDataRefreshWindowDays() != 0) {
         setDataRefreshWindowDays(other.getDataRefreshWindowDays());
@@ -1218,6 +1373,19 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       if (!other.getDatasetRegion().isEmpty()) {
         datasetRegion_ = other.datasetRegion_;
         onChanged();
+      }
+      switch (other.getDestinationCase()) {
+        case DESTINATION_DATASET_ID:
+          {
+            destinationCase_ = 2;
+            destination_ = other.destination_;
+            onChanged();
+            break;
+          }
+        case DESTINATION_NOT_SET:
+          {
+            break;
+          }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1249,17 +1417,32 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private int destinationCase_ = 0;
+    private java.lang.Object destination_;
+
+    public DestinationCase getDestinationCase() {
+      return DestinationCase.forNumber(destinationCase_);
+    }
+
+    public Builder clearDestination() {
+      destinationCase_ = 0;
+      destination_ = null;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object name_ = "";
     /**
      *
      *
      * <pre>
      * The resource name of the transfer config.
-     * Transfer config names have the form
-     * `projects/{project_id}/transferConfigs/{config_id}`.
-     * Where `config_id` is usually a uuid, even though it is not
-     * guaranteed or required. The name is ignored when creating a transfer
-     * config.
+     * Transfer config names have the form of
+     * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+     * The name is automatically generated based on the config_id specified in
+     * CreateTransferConfigRequest along with project_id and region. If config_id
+     * is not provided, usually a uuid, even though it is not guaranteed or
+     * required, will be generated for config_id.
      * </pre>
      *
      * <code>string name = 1;</code>
@@ -1280,11 +1463,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * The resource name of the transfer config.
-     * Transfer config names have the form
-     * `projects/{project_id}/transferConfigs/{config_id}`.
-     * Where `config_id` is usually a uuid, even though it is not
-     * guaranteed or required. The name is ignored when creating a transfer
-     * config.
+     * Transfer config names have the form of
+     * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+     * The name is automatically generated based on the config_id specified in
+     * CreateTransferConfigRequest along with project_id and region. If config_id
+     * is not provided, usually a uuid, even though it is not guaranteed or
+     * required, will be generated for config_id.
      * </pre>
      *
      * <code>string name = 1;</code>
@@ -1305,11 +1489,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * The resource name of the transfer config.
-     * Transfer config names have the form
-     * `projects/{project_id}/transferConfigs/{config_id}`.
-     * Where `config_id` is usually a uuid, even though it is not
-     * guaranteed or required. The name is ignored when creating a transfer
-     * config.
+     * Transfer config names have the form of
+     * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+     * The name is automatically generated based on the config_id specified in
+     * CreateTransferConfigRequest along with project_id and region. If config_id
+     * is not provided, usually a uuid, even though it is not guaranteed or
+     * required, will be generated for config_id.
      * </pre>
      *
      * <code>string name = 1;</code>
@@ -1328,11 +1513,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * The resource name of the transfer config.
-     * Transfer config names have the form
-     * `projects/{project_id}/transferConfigs/{config_id}`.
-     * Where `config_id` is usually a uuid, even though it is not
-     * guaranteed or required. The name is ignored when creating a transfer
-     * config.
+     * Transfer config names have the form of
+     * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+     * The name is automatically generated based on the config_id specified in
+     * CreateTransferConfigRequest along with project_id and region. If config_id
+     * is not provided, usually a uuid, even though it is not guaranteed or
+     * required, will be generated for config_id.
      * </pre>
      *
      * <code>string name = 1;</code>
@@ -1348,11 +1534,12 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      * <pre>
      * The resource name of the transfer config.
-     * Transfer config names have the form
-     * `projects/{project_id}/transferConfigs/{config_id}`.
-     * Where `config_id` is usually a uuid, even though it is not
-     * guaranteed or required. The name is ignored when creating a transfer
-     * config.
+     * Transfer config names have the form of
+     * `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.
+     * The name is automatically generated based on the config_id specified in
+     * CreateTransferConfigRequest along with project_id and region. If config_id
+     * is not provided, usually a uuid, even though it is not guaranteed or
+     * required, will be generated for config_id.
      * </pre>
      *
      * <code>string name = 1;</code>
@@ -1368,7 +1555,6 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
-    private java.lang.Object destinationDatasetId_ = "";
     /**
      *
      *
@@ -1379,11 +1565,16 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * <code>string destination_dataset_id = 2;</code>
      */
     public java.lang.String getDestinationDatasetId() {
-      java.lang.Object ref = destinationDatasetId_;
+      java.lang.Object ref = "";
+      if (destinationCase_ == 2) {
+        ref = destination_;
+      }
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        destinationDatasetId_ = s;
+        if (destinationCase_ == 2) {
+          destination_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
@@ -1399,11 +1590,16 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * <code>string destination_dataset_id = 2;</code>
      */
     public com.google.protobuf.ByteString getDestinationDatasetIdBytes() {
-      java.lang.Object ref = destinationDatasetId_;
+      java.lang.Object ref = "";
+      if (destinationCase_ == 2) {
+        ref = destination_;
+      }
       if (ref instanceof String) {
         com.google.protobuf.ByteString b =
             com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
-        destinationDatasetId_ = b;
+        if (destinationCase_ == 2) {
+          destination_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1422,8 +1618,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       if (value == null) {
         throw new NullPointerException();
       }
-
-      destinationDatasetId_ = value;
+      destinationCase_ = 2;
+      destination_ = value;
       onChanged();
       return this;
     }
@@ -1437,9 +1633,11 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * <code>string destination_dataset_id = 2;</code>
      */
     public Builder clearDestinationDatasetId() {
-
-      destinationDatasetId_ = getDefaultInstance().getDestinationDatasetId();
-      onChanged();
+      if (destinationCase_ == 2) {
+        destinationCase_ = 0;
+        destination_ = null;
+        onChanged();
+      }
       return this;
     }
     /**
@@ -1456,8 +1654,8 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
         throw new NullPointerException();
       }
       checkByteStringIsUtf8(value);
-
-      destinationDatasetId_ = value;
+      destinationCase_ = 2;
+      destination_ = value;
       onChanged();
       return this;
     }
@@ -1973,6 +2171,192 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
       return this;
     }
 
+    private com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions scheduleOptions_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions,
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder,
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder>
+        scheduleOptionsBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public boolean hasScheduleOptions() {
+      return scheduleOptionsBuilder_ != null || scheduleOptions_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions getScheduleOptions() {
+      if (scheduleOptionsBuilder_ == null) {
+        return scheduleOptions_ == null
+            ? com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.getDefaultInstance()
+            : scheduleOptions_;
+      } else {
+        return scheduleOptionsBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public Builder setScheduleOptions(
+        com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions value) {
+      if (scheduleOptionsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        scheduleOptions_ = value;
+        onChanged();
+      } else {
+        scheduleOptionsBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public Builder setScheduleOptions(
+        com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder builderForValue) {
+      if (scheduleOptionsBuilder_ == null) {
+        scheduleOptions_ = builderForValue.build();
+        onChanged();
+      } else {
+        scheduleOptionsBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public Builder mergeScheduleOptions(
+        com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions value) {
+      if (scheduleOptionsBuilder_ == null) {
+        if (scheduleOptions_ != null) {
+          scheduleOptions_ =
+              com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.newBuilder(scheduleOptions_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          scheduleOptions_ = value;
+        }
+        onChanged();
+      } else {
+        scheduleOptionsBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public Builder clearScheduleOptions() {
+      if (scheduleOptionsBuilder_ == null) {
+        scheduleOptions_ = null;
+        onChanged();
+      } else {
+        scheduleOptions_ = null;
+        scheduleOptionsBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder
+        getScheduleOptionsBuilder() {
+
+      onChanged();
+      return getScheduleOptionsFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    public com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder
+        getScheduleOptionsOrBuilder() {
+      if (scheduleOptionsBuilder_ != null) {
+        return scheduleOptionsBuilder_.getMessageOrBuilder();
+      } else {
+        return scheduleOptions_ == null
+            ? com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.getDefaultInstance()
+            : scheduleOptions_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Options customizing the data transfer schedule.
+     * </pre>
+     *
+     * <code>.google.cloud.bigquery.datatransfer.v1.ScheduleOptions schedule_options = 24;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions,
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder,
+            com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder>
+        getScheduleOptionsFieldBuilder() {
+      if (scheduleOptionsBuilder_ == null) {
+        scheduleOptionsBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions,
+                com.google.cloud.bigquery.datatransfer.v1.ScheduleOptions.Builder,
+                com.google.cloud.bigquery.datatransfer.v1.ScheduleOptionsOrBuilder>(
+                getScheduleOptions(), getParentForChildren(), isClean());
+        scheduleOptions_ = null;
+      }
+      return scheduleOptionsBuilder_;
+    }
+
     private int dataRefreshWindowDays_;
     /**
      *
@@ -2092,7 +2476,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public boolean hasUpdateTime() {
       return updateTimeBuilder_ != null || updateTime_ != null;
@@ -2104,7 +2490,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp getUpdateTime() {
       if (updateTimeBuilder_ == null) {
@@ -2122,7 +2510,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setUpdateTime(com.google.protobuf.Timestamp value) {
       if (updateTimeBuilder_ == null) {
@@ -2144,7 +2534,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setUpdateTime(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (updateTimeBuilder_ == null) {
@@ -2163,7 +2555,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder mergeUpdateTime(com.google.protobuf.Timestamp value) {
       if (updateTimeBuilder_ == null) {
@@ -2187,7 +2581,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearUpdateTime() {
       if (updateTimeBuilder_ == null) {
@@ -2207,7 +2603,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getUpdateTimeBuilder() {
 
@@ -2221,7 +2619,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
       if (updateTimeBuilder_ != null) {
@@ -2239,7 +2639,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Data transfer modification time. Ignored by server on input.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Timestamp,
@@ -2271,7 +2673,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public boolean hasNextRunTime() {
       return nextRunTimeBuilder_ != null || nextRunTime_ != null;
@@ -2283,7 +2687,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp getNextRunTime() {
       if (nextRunTimeBuilder_ == null) {
@@ -2301,7 +2707,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setNextRunTime(com.google.protobuf.Timestamp value) {
       if (nextRunTimeBuilder_ == null) {
@@ -2323,7 +2731,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setNextRunTime(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (nextRunTimeBuilder_ == null) {
@@ -2342,7 +2752,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder mergeNextRunTime(com.google.protobuf.Timestamp value) {
       if (nextRunTimeBuilder_ == null) {
@@ -2368,7 +2780,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearNextRunTime() {
       if (nextRunTimeBuilder_ == null) {
@@ -2388,7 +2802,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getNextRunTimeBuilder() {
 
@@ -2402,7 +2818,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getNextRunTimeOrBuilder() {
       if (nextRunTimeBuilder_ != null) {
@@ -2420,7 +2838,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Next time when data transfer will run.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp next_run_time = 8;</code>
+     * <code>
+     * .google.protobuf.Timestamp next_run_time = 8 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Timestamp,
@@ -2447,7 +2867,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. State of the most recently updated transfer run.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public int getStateValue() {
       return state_;
@@ -2459,7 +2881,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. State of the most recently updated transfer run.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setStateValue(int value) {
       state_ = value;
@@ -2473,7 +2897,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. State of the most recently updated transfer run.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferState getState() {
       @SuppressWarnings("deprecation")
@@ -2490,7 +2916,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. State of the most recently updated transfer run.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setState(com.google.cloud.bigquery.datatransfer.v1.TransferState value) {
       if (value == null) {
@@ -2508,7 +2936,9 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. State of the most recently updated transfer run.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferState state = 10;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferState state = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearState() {
 
@@ -2522,11 +2952,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Output only. Unique ID of the user on whose behalf transfer is done.
-     * Applicable only to data sources that do not support service accounts.
-     * When set to 0, the data source service account credentials are used.
-     * May be negative. Note, that this identifier is not stable.
-     * It may change over time even for the same user.
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
      * </pre>
      *
      * <code>int64 user_id = 11;</code>
@@ -2538,11 +2964,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Output only. Unique ID of the user on whose behalf transfer is done.
-     * Applicable only to data sources that do not support service accounts.
-     * When set to 0, the data source service account credentials are used.
-     * May be negative. Note, that this identifier is not stable.
-     * It may change over time even for the same user.
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
      * </pre>
      *
      * <code>int64 user_id = 11;</code>
@@ -2557,11 +2979,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Output only. Unique ID of the user on whose behalf transfer is done.
-     * Applicable only to data sources that do not support service accounts.
-     * When set to 0, the data source service account credentials are used.
-     * May be negative. Note, that this identifier is not stable.
-     * It may change over time even for the same user.
+     * Deprecated. Unique ID of the user on whose behalf transfer is done.
      * </pre>
      *
      * <code>int64 user_id = 11;</code>
@@ -2581,7 +2999,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Region in which BigQuery dataset is located.
      * </pre>
      *
-     * <code>string dataset_region = 14;</code>
+     * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getDatasetRegion() {
       java.lang.Object ref = datasetRegion_;
@@ -2601,7 +3019,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Region in which BigQuery dataset is located.
      * </pre>
      *
-     * <code>string dataset_region = 14;</code>
+     * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getDatasetRegionBytes() {
       java.lang.Object ref = datasetRegion_;
@@ -2621,7 +3039,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Region in which BigQuery dataset is located.
      * </pre>
      *
-     * <code>string dataset_region = 14;</code>
+     * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setDatasetRegion(java.lang.String value) {
       if (value == null) {
@@ -2639,7 +3057,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Region in which BigQuery dataset is located.
      * </pre>
      *
-     * <code>string dataset_region = 14;</code>
+     * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearDatasetRegion() {
 
@@ -2654,7 +3072,7 @@ public final class TransferConfig extends com.google.protobuf.GeneratedMessageV3
      * Output only. Region in which BigQuery dataset is located.
      * </pre>
      *
-     * <code>string dataset_region = 14;</code>
+     * <code>string dataset_region = 14 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setDatasetRegionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

@@ -12,30 +12,26 @@ public interface BatchDeleteJobsRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project".
+   * Required. The resource name of the tenant under which the job is created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created. For example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project".
+   * Required. The resource name of the tenant under which the job is created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created. For example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -43,34 +39,32 @@ public interface BatchDeleteJobsRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The filter string specifies the jobs to be deleted.
+   * Required. The filter string specifies the jobs to be deleted.
    * Supported operator: =, AND
    * The fields eligible for filtering are:
    * * `companyName` (Required)
    * * `requisitionId` (Required)
-   * Sample Query: companyName = "projects/api-test-project/companies/123" AND
+   * Sample Query: companyName = "projects/foo/companies/bar" AND
    * requisitionId = "req-1"
    * </pre>
    *
-   * <code>string filter = 2;</code>
+   * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getFilter();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The filter string specifies the jobs to be deleted.
+   * Required. The filter string specifies the jobs to be deleted.
    * Supported operator: =, AND
    * The fields eligible for filtering are:
    * * `companyName` (Required)
    * * `requisitionId` (Required)
-   * Sample Query: companyName = "projects/api-test-project/companies/123" AND
+   * Sample Query: companyName = "projects/foo/companies/bar" AND
    * requisitionId = "req-1"
    * </pre>
    *
-   * <code>string filter = 2;</code>
+   * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getFilterBytes();
 }

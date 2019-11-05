@@ -97,16 +97,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the company to be deleted.
+   * Required. The resource name of the company to be deleted.
    * The format is
    * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-   * example, "projects/api-test-project/tenants/foo/companies/bar".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project/companies/bar".
+   * example, "projects/foo/tenants/bar/companies/baz".
+   * If tenant id is unspecified, the default tenant is used, for
+   * example, "projects/foo/companies/bar".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -123,16 +122,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the company to be deleted.
+   * Required. The resource name of the company to be deleted.
    * The format is
    * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-   * example, "projects/api-test-project/tenants/foo/companies/bar".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project/companies/bar".
+   * example, "projects/foo/tenants/bar/companies/baz".
+   * If tenant id is unspecified, the default tenant is used, for
+   * example, "projects/foo/companies/bar".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -469,16 +467,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the company to be deleted.
+     * Required. The resource name of the company to be deleted.
      * The format is
      * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-     * example, "projects/api-test-project/tenants/foo/companies/bar".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project/companies/bar".
+     * example, "projects/foo/tenants/bar/companies/baz".
+     * If tenant id is unspecified, the default tenant is used, for
+     * example, "projects/foo/companies/bar".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -495,16 +492,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the company to be deleted.
+     * Required. The resource name of the company to be deleted.
      * The format is
      * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-     * example, "projects/api-test-project/tenants/foo/companies/bar".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project/companies/bar".
+     * example, "projects/foo/tenants/bar/companies/baz".
+     * If tenant id is unspecified, the default tenant is used, for
+     * example, "projects/foo/companies/bar".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -521,16 +517,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the company to be deleted.
+     * Required. The resource name of the company to be deleted.
      * The format is
      * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-     * example, "projects/api-test-project/tenants/foo/companies/bar".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project/companies/bar".
+     * example, "projects/foo/tenants/bar/companies/baz".
+     * If tenant id is unspecified, the default tenant is used, for
+     * example, "projects/foo/companies/bar".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -545,16 +540,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the company to be deleted.
+     * Required. The resource name of the company to be deleted.
      * The format is
      * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-     * example, "projects/api-test-project/tenants/foo/companies/bar".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project/companies/bar".
+     * example, "projects/foo/tenants/bar/companies/baz".
+     * If tenant id is unspecified, the default tenant is used, for
+     * example, "projects/foo/companies/bar".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearName() {
 
@@ -566,16 +560,15 @@ public final class DeleteCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the company to be deleted.
+     * Required. The resource name of the company to be deleted.
      * The format is
      * "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for
-     * example, "projects/api-test-project/tenants/foo/companies/bar".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project/companies/bar".
+     * example, "projects/foo/tenants/bar/companies/baz".
+     * If tenant id is unspecified, the default tenant is used, for
+     * example, "projects/foo/companies/bar".
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

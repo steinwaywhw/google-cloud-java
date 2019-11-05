@@ -12,28 +12,28 @@ public interface ListApplicationsRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the profile under which the application is created.
+   * Required. Resource name of the profile under which the application is
+   * created.
    * The format is
    * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   * example, "projects/test-project/tenants/test-tenant/profiles/test-profile".
+   * example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the profile under which the application is created.
+   * Required. Resource name of the profile under which the application is
+   * created.
    * The format is
    * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}", for
-   * example, "projects/test-project/tenants/test-tenant/profiles/test-profile".
+   * example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -41,7 +41,6 @@ public interface ListApplicationsRequestOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The starting indicator from which to return results.
    * </pre>
    *
@@ -52,7 +51,6 @@ public interface ListApplicationsRequestOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The starting indicator from which to return results.
    * </pre>
    *
@@ -64,7 +62,6 @@ public interface ListApplicationsRequestOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The maximum number of applications to be returned, at most 100.
    * Default is 100 if a non-positive number is provided.
    * </pre>

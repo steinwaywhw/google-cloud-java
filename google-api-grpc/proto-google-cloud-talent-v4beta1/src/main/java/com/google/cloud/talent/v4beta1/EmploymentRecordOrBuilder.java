@@ -12,19 +12,7 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -34,19 +22,7 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -56,19 +32,7 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date of the employment.
-   * It can be a partial date (only year, or only year and month), but must be
-   * valid. Otherwise an error is thrown.
-   * Examples:
-   * {"year": 2017, "month": 2, "day": 28} is valid.
-   * {"year": 2020, "month": 1, "date": 31} is valid.
-   * {"year": 2018, "month": 12} is valid (partial date).
-   * {"year": 2018} is valid (partial date).
-   * {"year": 2015, "day": 21} is not valid (month is missing but day is
-   * presented).
-   * {"year": 2018, "month": 13} is not valid (invalid month).
-   * {"year": 2017, "month": 1, "day": 32} is not valid (invalid day).
    * </pre>
    *
    * <code>.google.type.Date start_date = 1;</code>
@@ -79,7 +43,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -90,7 +53,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -101,7 +63,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date of the employment.
    * </pre>
    *
@@ -113,10 +74,9 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The name of the employer company/organization.
    * For example, "Google", "Alphabet", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string employer_name = 3;</code>
@@ -126,10 +86,9 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The name of the employer company/organization.
    * For example, "Google", "Alphabet", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string employer_name = 3;</code>
@@ -140,7 +99,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The division name of the employment.
    * For example, division, department, client, and so on.
    * Number of characters allowed is 100.
@@ -153,7 +111,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The division name of the employment.
    * For example, division, department, client, and so on.
    * Number of characters allowed is 100.
@@ -167,7 +124,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -178,7 +134,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -189,7 +144,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The physical address of the employer.
    * </pre>
    *
@@ -201,10 +155,9 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The job title of the employment.
    * For example, "Software Engineer", "Data Scientist", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string job_title = 6;</code>
@@ -214,10 +167,9 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The job title of the employment.
    * For example, "Software Engineer", "Data Scientist", and so on.
-   * Number of characters allowed is 100.
+   * Number of characters allowed is 250.
    * </pre>
    *
    * <code>string job_title = 6;</code>
@@ -228,7 +180,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The description of job content.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -240,7 +191,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The description of job content.
    * Number of characters allowed is 100,000.
    * </pre>
@@ -253,7 +203,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -264,7 +213,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -275,7 +223,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If the jobs is a supervisor position.
    * </pre>
    *
@@ -287,7 +234,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -298,7 +244,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -309,7 +254,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is self-employed.
    * </pre>
    *
@@ -321,7 +265,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -332,7 +275,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -343,7 +285,6 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If this employment is current.
    * </pre>
    *
@@ -355,24 +296,28 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-   * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-   * search query.
+   * Output only. The job title snippet shows how the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+   * related to a search query. It's empty if the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string job_title_snippet = 11;</code>
+   * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getJobTitleSnippet();
   /**
    *
    *
    * <pre>
-   * Output only. The job title snippet shows how the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is related
-   * to a search query. It's empty if the [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't related to the
-   * search query.
+   * Output only. The job title snippet shows how the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] is
+   * related to a search query. It's empty if the
+   * [job_title][google.cloud.talent.v4beta1.EmploymentRecord.job_title] isn't
+   * related to the search query.
    * </pre>
    *
-   * <code>string job_title_snippet = 11;</code>
+   * <code>string job_title_snippet = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getJobTitleSnippetBytes();
 
@@ -380,24 +325,28 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-   * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-   * related to the search query.
+   * Output only. The job description snippet shows how the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * is related to a search query. It's empty if the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string job_description_snippet = 12;</code>
+   * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getJobDescriptionSnippet();
   /**
    *
    *
    * <pre>
-   * Output only. The job description snippet shows how the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
-   * is related to a search query. It's empty if the [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description] isn't
-   * related to the search query.
+   * Output only. The job description snippet shows how the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * is related to a search query. It's empty if the
+   * [job_description][google.cloud.talent.v4beta1.EmploymentRecord.job_description]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string job_description_snippet = 12;</code>
+   * <code>string job_description_snippet = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getJobDescriptionSnippetBytes();
 
@@ -405,24 +354,28 @@ public interface EmploymentRecordOrBuilder
    *
    *
    * <pre>
-   * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-   * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-   * related to the search query.
+   * Output only. The employer name snippet shows how the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * is related to a search query. It's empty if the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string employer_name_snippet = 13;</code>
+   * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   java.lang.String getEmployerNameSnippet();
   /**
    *
    *
    * <pre>
-   * Output only. The employer name snippet shows how the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] is
-   * related to a search query. It's empty if the [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name] isn't
-   * related to the search query.
+   * Output only. The employer name snippet shows how the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * is related to a search query. It's empty if the
+   * [employer_name][google.cloud.talent.v4beta1.EmploymentRecord.employer_name]
+   * isn't related to the search query.
    * </pre>
    *
-   * <code>string employer_name_snippet = 13;</code>
+   * <code>string employer_name_snippet = 13 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   com.google.protobuf.ByteString getEmployerNameSnippetBytes();
 }

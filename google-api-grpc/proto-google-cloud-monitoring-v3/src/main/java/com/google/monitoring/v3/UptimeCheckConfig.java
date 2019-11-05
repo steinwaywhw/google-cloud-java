@@ -281,8 +281,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The group of resources being monitored. Should be only the
-     * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+     * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+     * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
      * </pre>
      *
      * <code>string group_id = 1;</code>
@@ -292,8 +292,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The group of resources being monitored. Should be only the
-     * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+     * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+     * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
      * </pre>
      *
      * <code>string group_id = 1;</code>
@@ -424,8 +424,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The group of resources being monitored. Should be only the
-     * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+     * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+     * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
      * </pre>
      *
      * <code>string group_id = 1;</code>
@@ -445,8 +445,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The group of resources being monitored. Should be only the
-     * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+     * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+     * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
      * </pre>
      *
      * <code>string group_id = 1;</code>
@@ -839,8 +839,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The group of resources being monitored. Should be only the
-       * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+       * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+       * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
        * </pre>
        *
        * <code>string group_id = 1;</code>
@@ -860,8 +860,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The group of resources being monitored. Should be only the
-       * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+       * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+       * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
        * </pre>
        *
        * <code>string group_id = 1;</code>
@@ -881,8 +881,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The group of resources being monitored. Should be only the
-       * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+       * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+       * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
        * </pre>
        *
        * <code>string group_id = 1;</code>
@@ -900,8 +900,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The group of resources being monitored. Should be only the
-       * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+       * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+       * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
        * </pre>
        *
        * <code>string group_id = 1;</code>
@@ -916,8 +916,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The group of resources being monitored. Should be only the
-       * group_id, not projects/&lt;project_id&gt;/groups/&lt;group_id&gt;.
+       * The group of resources being monitored. Should be only the `[GROUP_ID]`,
+       * and not the full-path `projects/[PROJECT_ID]/groups/[GROUP_ID]`.
        * </pre>
        *
        * <code>string group_id = 1;</code>
@@ -1070,7 +1070,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * If true, use HTTPS instead of HTTP to run the check.
+     * If `true`, use HTTPS instead of HTTP to run the check.
      * </pre>
      *
      * <code>bool use_ssl = 1;</code>
@@ -1081,9 +1081,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The path to the page to run the check against. Will be combined with the
-     * host (specified within the MonitoredResource) and port to construct the
-     * full URL. Optional (defaults to "/").
+     * Optional (defaults to "/"). The path to the page against which to run
+     * the check. Will be combined with the `host` (specified within the
+     * `monitored_resource`) and `port` to construct the full URL. If the
+     * provided path does not begin with "/", a "/" will be prepended
+     * automatically.
      * </pre>
      *
      * <code>string path = 2;</code>
@@ -1093,9 +1095,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The path to the page to run the check against. Will be combined with the
-     * host (specified within the MonitoredResource) and port to construct the
-     * full URL. Optional (defaults to "/").
+     * Optional (defaults to "/"). The path to the page against which to run
+     * the check. Will be combined with the `host` (specified within the
+     * `monitored_resource`) and `port` to construct the full URL. If the
+     * provided path does not begin with "/", a "/" will be prepended
+     * automatically.
      * </pre>
      *
      * <code>string path = 2;</code>
@@ -1106,9 +1110,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The port to the page to run the check against. Will be combined with host
-     * (specified within the MonitoredResource) and path to construct the full
-     * URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+     * Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+     * `use_ssl` is `true`). The TCP port on the HTTP server against which to
+     * run the check. Will be combined with host (specified within the
+     * `monitored_resource`) and `path` to construct the full URL.
      * </pre>
      *
      * <code>int32 port = 3;</code>
@@ -1161,8 +1166,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * Encryption should be specified for any headers related to authentication
      * that you do not wish to be seen when retrieving the configuration. The
      * server will be responsible for encrypting the headers.
-     * On Get/List calls, if mask_headers is set to True then the headers
-     * will be obscured with ******.
+     * On Get/List calls, if `mask_headers` is set to `true` then the headers
+     * will be obscured with `******.`
      * </pre>
      *
      * <code>bool mask_headers = 5;</code>
@@ -1173,7 +1178,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -1190,7 +1195,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -1210,7 +1215,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -1227,7 +1232,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -1244,7 +1249,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -1257,12 +1262,26 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <code>map&lt;string, string&gt; headers = 6;</code>
      */
     java.lang.String getHeadersOrThrow(java.lang.String key);
+
+    /**
+     *
+     *
+     * <pre>
+     * Boolean specifying whether to include SSL certificate validation as a
+     * part of the Uptime check. Only applies to checks where
+     * `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+     * setting `validate_ssl` to `true` has no effect.
+     * </pre>
+     *
+     * <code>bool validate_ssl = 7;</code>
+     */
+    boolean getValidateSsl();
   }
   /**
    *
    *
    * <pre>
-   * Information involved in an HTTP/HTTPS uptime check request.
+   * Information involved in an HTTP/HTTPS Uptime check request.
    * </pre>
    *
    * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.HttpCheck}
@@ -1361,6 +1380,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
                 headers_.getMutableMap().put(headers__.getKey(), headers__.getValue());
                 break;
               }
+            case 56:
+              {
+                validateSsl_ = input.readBool();
+                break;
+              }
             default:
               {
                 if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -1415,7 +1439,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The username to authenticate.
+       * The username to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string username = 1;</code>
@@ -1425,7 +1449,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The username to authenticate.
+       * The username to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string username = 1;</code>
@@ -1436,7 +1460,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The password to authenticate.
+       * The password to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string password = 2;</code>
@@ -1446,7 +1470,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The password to authenticate.
+       * The password to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string password = 2;</code>
@@ -1457,9 +1481,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A type of authentication to perform against the specified resource or URL
-     * that uses username and password.
-     * Currently, only Basic authentication is supported in Uptime Monitoring.
+     * The authentication parameters to provide to the specified resource or
+     * URL that requires a username and password. Currently, only
+     * [Basic HTTP authentication](https://tools.ietf.org/html/rfc7617) is
+     * supported in Uptime checks.
      * </pre>
      *
      * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.HttpCheck.BasicAuthentication}
@@ -1559,7 +1584,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The username to authenticate.
+       * The username to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string username = 1;</code>
@@ -1579,7 +1604,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The username to authenticate.
+       * The username to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string username = 1;</code>
@@ -1602,7 +1627,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The password to authenticate.
+       * The password to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string password = 2;</code>
@@ -1622,7 +1647,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The password to authenticate.
+       * The password to use when authenticating with the HTTP server.
        * </pre>
        *
        * <code>string password = 2;</code>
@@ -1822,9 +1847,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * A type of authentication to perform against the specified resource or URL
-       * that uses username and password.
-       * Currently, only Basic authentication is supported in Uptime Monitoring.
+       * The authentication parameters to provide to the specified resource or
+       * URL that requires a username and password. Currently, only
+       * [Basic HTTP authentication](https://tools.ietf.org/html/rfc7617) is
+       * supported in Uptime checks.
        * </pre>
        *
        * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.HttpCheck.BasicAuthentication}
@@ -2006,7 +2032,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The username to authenticate.
+         * The username to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string username = 1;</code>
@@ -2026,7 +2052,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The username to authenticate.
+         * The username to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string username = 1;</code>
@@ -2046,7 +2072,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The username to authenticate.
+         * The username to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string username = 1;</code>
@@ -2064,7 +2090,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The username to authenticate.
+         * The username to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string username = 1;</code>
@@ -2079,7 +2105,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The username to authenticate.
+         * The username to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string username = 1;</code>
@@ -2100,7 +2126,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The password to authenticate.
+         * The password to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string password = 2;</code>
@@ -2120,7 +2146,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The password to authenticate.
+         * The password to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string password = 2;</code>
@@ -2140,7 +2166,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The password to authenticate.
+         * The password to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string password = 2;</code>
@@ -2158,7 +2184,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The password to authenticate.
+         * The password to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string password = 2;</code>
@@ -2173,7 +2199,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
          *
          *
          * <pre>
-         * The password to authenticate.
+         * The password to use when authenticating with the HTTP server.
          * </pre>
          *
          * <code>string password = 2;</code>
@@ -2252,7 +2278,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * If true, use HTTPS instead of HTTP to run the check.
+     * If `true`, use HTTPS instead of HTTP to run the check.
      * </pre>
      *
      * <code>bool use_ssl = 1;</code>
@@ -2267,9 +2293,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The path to the page to run the check against. Will be combined with the
-     * host (specified within the MonitoredResource) and port to construct the
-     * full URL. Optional (defaults to "/").
+     * Optional (defaults to "/"). The path to the page against which to run
+     * the check. Will be combined with the `host` (specified within the
+     * `monitored_resource`) and `port` to construct the full URL. If the
+     * provided path does not begin with "/", a "/" will be prepended
+     * automatically.
      * </pre>
      *
      * <code>string path = 2;</code>
@@ -2289,9 +2317,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The path to the page to run the check against. Will be combined with the
-     * host (specified within the MonitoredResource) and port to construct the
-     * full URL. Optional (defaults to "/").
+     * Optional (defaults to "/"). The path to the page against which to run
+     * the check. Will be combined with the `host` (specified within the
+     * `monitored_resource`) and `port` to construct the full URL. If the
+     * provided path does not begin with "/", a "/" will be prepended
+     * automatically.
      * </pre>
      *
      * <code>string path = 2;</code>
@@ -2314,9 +2344,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The port to the page to run the check against. Will be combined with host
-     * (specified within the MonitoredResource) and path to construct the full
-     * URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+     * Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+     * `use_ssl` is `true`). The TCP port on the HTTP server against which to
+     * run the check. Will be combined with host (specified within the
+     * `monitored_resource`) and `path` to construct the full URL.
      * </pre>
      *
      * <code>int32 port = 3;</code>
@@ -2384,8 +2415,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * Encryption should be specified for any headers related to authentication
      * that you do not wish to be seen when retrieving the configuration. The
      * server will be responsible for encrypting the headers.
-     * On Get/List calls, if mask_headers is set to True then the headers
-     * will be obscured with ******.
+     * On Get/List calls, if `mask_headers` is set to `true` then the headers
+     * will be obscured with `******.`
      * </pre>
      *
      * <code>bool mask_headers = 5;</code>
@@ -2423,7 +2454,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -2450,7 +2481,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -2469,7 +2500,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -2493,7 +2524,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The list of headers to send as part of the uptime check request.
+     * The list of headers to send as part of the Uptime check request.
      * If two headers have the same key and different values, they should
      * be entered as a single header, with the value being a comma-separated
      * list of all the desired values as described at
@@ -2514,6 +2545,24 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         throw new java.lang.IllegalArgumentException();
       }
       return map.get(key);
+    }
+
+    public static final int VALIDATE_SSL_FIELD_NUMBER = 7;
+    private boolean validateSsl_;
+    /**
+     *
+     *
+     * <pre>
+     * Boolean specifying whether to include SSL certificate validation as a
+     * part of the Uptime check. Only applies to checks where
+     * `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+     * setting `validate_ssl` to `true` has no effect.
+     * </pre>
+     *
+     * <code>bool validate_ssl = 7;</code>
+     */
+    public boolean getValidateSsl() {
+      return validateSsl_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2547,6 +2596,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       }
       com.google.protobuf.GeneratedMessageV3.serializeStringMapTo(
           output, internalGetHeaders(), HeadersDefaultEntryHolder.defaultEntry, 6);
+      if (validateSsl_ != false) {
+        output.writeBool(7, validateSsl_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2581,6 +2633,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
                 .build();
         size += com.google.protobuf.CodedOutputStream.computeMessageSize(6, headers__);
       }
+      if (validateSsl_ != false) {
+        size += com.google.protobuf.CodedOutputStream.computeBoolSize(7, validateSsl_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2606,6 +2661,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       }
       if (getMaskHeaders() != other.getMaskHeaders()) return false;
       if (!internalGetHeaders().equals(other.internalGetHeaders())) return false;
+      if (getValidateSsl() != other.getValidateSsl()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2633,6 +2689,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         hash = (37 * hash) + HEADERS_FIELD_NUMBER;
         hash = (53 * hash) + internalGetHeaders().hashCode();
       }
+      hash = (37 * hash) + VALIDATE_SSL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(getValidateSsl());
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2739,7 +2797,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Information involved in an HTTP/HTTPS uptime check request.
+     * Information involved in an HTTP/HTTPS Uptime check request.
      * </pre>
      *
      * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.HttpCheck}
@@ -2816,6 +2874,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         maskHeaders_ = false;
 
         internalGetMutableHeaders().clear();
+        validateSsl_ = false;
+
         return this;
       }
 
@@ -2856,6 +2916,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         result.maskHeaders_ = maskHeaders_;
         result.headers_ = internalGetHeaders();
         result.headers_.makeImmutable();
+        result.validateSsl_ = validateSsl_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2926,6 +2987,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
           setMaskHeaders(other.getMaskHeaders());
         }
         internalGetMutableHeaders().mergeFrom(other.internalGetHeaders());
+        if (other.getValidateSsl() != false) {
+          setValidateSsl(other.getValidateSsl());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2963,7 +3027,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * If true, use HTTPS instead of HTTP to run the check.
+       * If `true`, use HTTPS instead of HTTP to run the check.
        * </pre>
        *
        * <code>bool use_ssl = 1;</code>
@@ -2975,7 +3039,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * If true, use HTTPS instead of HTTP to run the check.
+       * If `true`, use HTTPS instead of HTTP to run the check.
        * </pre>
        *
        * <code>bool use_ssl = 1;</code>
@@ -2990,7 +3054,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * If true, use HTTPS instead of HTTP to run the check.
+       * If `true`, use HTTPS instead of HTTP to run the check.
        * </pre>
        *
        * <code>bool use_ssl = 1;</code>
@@ -3007,9 +3071,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The path to the page to run the check against. Will be combined with the
-       * host (specified within the MonitoredResource) and port to construct the
-       * full URL. Optional (defaults to "/").
+       * Optional (defaults to "/"). The path to the page against which to run
+       * the check. Will be combined with the `host` (specified within the
+       * `monitored_resource`) and `port` to construct the full URL. If the
+       * provided path does not begin with "/", a "/" will be prepended
+       * automatically.
        * </pre>
        *
        * <code>string path = 2;</code>
@@ -3029,9 +3095,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The path to the page to run the check against. Will be combined with the
-       * host (specified within the MonitoredResource) and port to construct the
-       * full URL. Optional (defaults to "/").
+       * Optional (defaults to "/"). The path to the page against which to run
+       * the check. Will be combined with the `host` (specified within the
+       * `monitored_resource`) and `port` to construct the full URL. If the
+       * provided path does not begin with "/", a "/" will be prepended
+       * automatically.
        * </pre>
        *
        * <code>string path = 2;</code>
@@ -3051,9 +3119,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The path to the page to run the check against. Will be combined with the
-       * host (specified within the MonitoredResource) and port to construct the
-       * full URL. Optional (defaults to "/").
+       * Optional (defaults to "/"). The path to the page against which to run
+       * the check. Will be combined with the `host` (specified within the
+       * `monitored_resource`) and `port` to construct the full URL. If the
+       * provided path does not begin with "/", a "/" will be prepended
+       * automatically.
        * </pre>
        *
        * <code>string path = 2;</code>
@@ -3071,9 +3141,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The path to the page to run the check against. Will be combined with the
-       * host (specified within the MonitoredResource) and port to construct the
-       * full URL. Optional (defaults to "/").
+       * Optional (defaults to "/"). The path to the page against which to run
+       * the check. Will be combined with the `host` (specified within the
+       * `monitored_resource`) and `port` to construct the full URL. If the
+       * provided path does not begin with "/", a "/" will be prepended
+       * automatically.
        * </pre>
        *
        * <code>string path = 2;</code>
@@ -3088,9 +3160,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The path to the page to run the check against. Will be combined with the
-       * host (specified within the MonitoredResource) and port to construct the
-       * full URL. Optional (defaults to "/").
+       * Optional (defaults to "/"). The path to the page against which to run
+       * the check. Will be combined with the `host` (specified within the
+       * `monitored_resource`) and `port` to construct the full URL. If the
+       * provided path does not begin with "/", a "/" will be prepended
+       * automatically.
        * </pre>
        *
        * <code>string path = 2;</code>
@@ -3111,9 +3185,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) and path to construct the full
-       * URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+       * Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+       * `use_ssl` is `true`). The TCP port on the HTTP server against which to
+       * run the check. Will be combined with host (specified within the
+       * `monitored_resource`) and `path` to construct the full URL.
        * </pre>
        *
        * <code>int32 port = 3;</code>
@@ -3125,9 +3200,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) and path to construct the full
-       * URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+       * Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+       * `use_ssl` is `true`). The TCP port on the HTTP server against which to
+       * run the check. Will be combined with host (specified within the
+       * `monitored_resource`) and `path` to construct the full URL.
        * </pre>
        *
        * <code>int32 port = 3;</code>
@@ -3142,9 +3218,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) and path to construct the full
-       * URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+       * Optional (defaults to 80 when `use_ssl` is `false`, and 443 when
+       * `use_ssl` is `true`). The TCP port on the HTTP server against which to
+       * run the check. Will be combined with host (specified within the
+       * `monitored_resource`) and `path` to construct the full URL.
        * </pre>
        *
        * <code>int32 port = 3;</code>
@@ -3375,8 +3452,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        * Encryption should be specified for any headers related to authentication
        * that you do not wish to be seen when retrieving the configuration. The
        * server will be responsible for encrypting the headers.
-       * On Get/List calls, if mask_headers is set to True then the headers
-       * will be obscured with ******.
+       * On Get/List calls, if `mask_headers` is set to `true` then the headers
+       * will be obscured with `******.`
        * </pre>
        *
        * <code>bool mask_headers = 5;</code>
@@ -3392,8 +3469,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        * Encryption should be specified for any headers related to authentication
        * that you do not wish to be seen when retrieving the configuration. The
        * server will be responsible for encrypting the headers.
-       * On Get/List calls, if mask_headers is set to True then the headers
-       * will be obscured with ******.
+       * On Get/List calls, if `mask_headers` is set to `true` then the headers
+       * will be obscured with `******.`
        * </pre>
        *
        * <code>bool mask_headers = 5;</code>
@@ -3412,8 +3489,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        * Encryption should be specified for any headers related to authentication
        * that you do not wish to be seen when retrieving the configuration. The
        * server will be responsible for encrypting the headers.
-       * On Get/List calls, if mask_headers is set to True then the headers
-       * will be obscured with ******.
+       * On Get/List calls, if `mask_headers` is set to `true` then the headers
+       * will be obscured with `******.`
        * </pre>
        *
        * <code>bool mask_headers = 5;</code>
@@ -3456,7 +3533,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3483,7 +3560,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3502,7 +3579,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3526,7 +3603,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3557,7 +3634,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3585,7 +3662,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3611,7 +3688,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The list of headers to send as part of the uptime check request.
+       * The list of headers to send as part of the Uptime check request.
        * If two headers have the same key and different values, they should
        * be entered as a single header, with the value being a comma-separated
        * list of all the desired values as described at
@@ -3625,6 +3702,59 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        */
       public Builder putAllHeaders(java.util.Map<java.lang.String, java.lang.String> values) {
         internalGetMutableHeaders().getMutableMap().putAll(values);
+        return this;
+      }
+
+      private boolean validateSsl_;
+      /**
+       *
+       *
+       * <pre>
+       * Boolean specifying whether to include SSL certificate validation as a
+       * part of the Uptime check. Only applies to checks where
+       * `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+       * setting `validate_ssl` to `true` has no effect.
+       * </pre>
+       *
+       * <code>bool validate_ssl = 7;</code>
+       */
+      public boolean getValidateSsl() {
+        return validateSsl_;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Boolean specifying whether to include SSL certificate validation as a
+       * part of the Uptime check. Only applies to checks where
+       * `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+       * setting `validate_ssl` to `true` has no effect.
+       * </pre>
+       *
+       * <code>bool validate_ssl = 7;</code>
+       */
+      public Builder setValidateSsl(boolean value) {
+
+        validateSsl_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * Boolean specifying whether to include SSL certificate validation as a
+       * part of the Uptime check. Only applies to checks where
+       * `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`,
+       * setting `validate_ssl` to `true` has no effect.
+       * </pre>
+       *
+       * <code>bool validate_ssl = 7;</code>
+       */
+      public Builder clearValidateSsl() {
+
+        validateSsl_ = false;
+        onChanged();
         return this;
       }
 
@@ -3689,9 +3819,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The port to the page to run the check against. Will be combined with host
-     * (specified within the MonitoredResource) to construct the full URL.
-     * Required.
+     * The TCP port on the server against which to run the check. Will be
+     * combined with host (specified within the `monitored_resource`) to
+     * construct the full URL. Required.
      * </pre>
      *
      * <code>int32 port = 1;</code>
@@ -3702,7 +3832,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * Information required for a TCP uptime check request.
+   * Information required for a TCP Uptime check request.
    * </pre>
    *
    * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.TcpCheck}
@@ -3788,9 +3918,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The port to the page to run the check against. Will be combined with host
-     * (specified within the MonitoredResource) to construct the full URL.
-     * Required.
+     * The TCP port on the server against which to run the check. Will be
+     * combined with host (specified within the `monitored_resource`) to
+     * construct the full URL. Required.
      * </pre>
      *
      * <code>int32 port = 1;</code>
@@ -3964,7 +4094,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * Information required for a TCP uptime check request.
+     * Information required for a TCP Uptime check request.
      * </pre>
      *
      * Protobuf type {@code google.monitoring.v3.UptimeCheckConfig.TcpCheck}
@@ -4126,9 +4256,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) to construct the full URL.
-       * Required.
+       * The TCP port on the server against which to run the check. Will be
+       * combined with host (specified within the `monitored_resource`) to
+       * construct the full URL. Required.
        * </pre>
        *
        * <code>int32 port = 1;</code>
@@ -4140,9 +4270,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) to construct the full URL.
-       * Required.
+       * The TCP port on the server against which to run the check. Will be
+       * combined with host (specified within the `monitored_resource`) to
+       * construct the full URL. Required.
        * </pre>
        *
        * <code>int32 port = 1;</code>
@@ -4157,9 +4287,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
        *
        *
        * <pre>
-       * The port to the page to run the check against. Will be combined with host
-       * (specified within the MonitoredResource) to construct the full URL.
-       * Required.
+       * The TCP port on the server against which to run the check. Will be
+       * combined with host (specified within the `monitored_resource`) to
+       * construct the full URL. Required.
        * </pre>
        *
        * <code>int32 port = 1;</code>
@@ -4248,6 +4378,33 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <code>string content = 1;</code>
      */
     com.google.protobuf.ByteString getContentBytes();
+
+    /**
+     *
+     *
+     * <pre>
+     * The type of content matcher that will be applied to the server output,
+     * compared to the `content` string when the check is run.
+     * </pre>
+     *
+     * <code>
+     * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+     * </code>
+     */
+    int getMatcherValue();
+    /**
+     *
+     *
+     * <pre>
+     * The type of content matcher that will be applied to the server output,
+     * compared to the `content` string when the check is run.
+     * </pre>
+     *
+     * <code>
+     * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+     * </code>
+     */
+    com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption getMatcher();
   }
   /**
    *
@@ -4271,6 +4428,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
 
     private ContentMatcher() {
       content_ = "";
+      matcher_ = 0;
     }
 
     @java.lang.Override
@@ -4302,6 +4460,13 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
                 java.lang.String s = input.readStringRequireUtf8();
 
                 content_ = s;
+                break;
+              }
+            case 16:
+              {
+                int rawValue = input.readEnum();
+
+                matcher_ = rawValue;
                 break;
               }
             default:
@@ -4336,6 +4501,219 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
           .ensureFieldAccessorsInitialized(
               com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.class,
               com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.Builder.class);
+    }
+
+    /**
+     *
+     *
+     * <pre>
+     * Options to perform content matching.
+     * </pre>
+     *
+     * Protobuf enum {@code
+     * google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption}
+     */
+    public enum ContentMatcherOption implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       *
+       *
+       * <pre>
+       * No content matcher type specified (maintained for backward
+       * compatibility, but deprecated for future use).
+       * Treated as `CONTAINS_STRING`.
+       * </pre>
+       *
+       * <code>CONTENT_MATCHER_OPTION_UNSPECIFIED = 0;</code>
+       */
+      CONTENT_MATCHER_OPTION_UNSPECIFIED(0),
+      /**
+       *
+       *
+       * <pre>
+       * Selects substring matching (there is a match if the output contains
+       * the `content` string).  This is the default value for checks without
+       * a `matcher` option, or where the value of `matcher` is
+       * `CONTENT_MATCHER_OPTION_UNSPECIFIED`.
+       * </pre>
+       *
+       * <code>CONTAINS_STRING = 1;</code>
+       */
+      CONTAINS_STRING(1),
+      /**
+       *
+       *
+       * <pre>
+       * Selects negation of substring matching (there is a match if the output
+       * does NOT contain the `content` string).
+       * </pre>
+       *
+       * <code>NOT_CONTAINS_STRING = 2;</code>
+       */
+      NOT_CONTAINS_STRING(2),
+      /**
+       *
+       *
+       * <pre>
+       * Selects regular expression matching (there is a match of the output
+       * matches the regular expression specified in the `content` string).
+       * </pre>
+       *
+       * <code>MATCHES_REGEX = 3;</code>
+       */
+      MATCHES_REGEX(3),
+      /**
+       *
+       *
+       * <pre>
+       * Selects negation of regular expression matching (there is a match if
+       * the output does NOT match the regular expression specified in the
+       * `content` string).
+       * </pre>
+       *
+       * <code>NOT_MATCHES_REGEX = 4;</code>
+       */
+      NOT_MATCHES_REGEX(4),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       *
+       *
+       * <pre>
+       * No content matcher type specified (maintained for backward
+       * compatibility, but deprecated for future use).
+       * Treated as `CONTAINS_STRING`.
+       * </pre>
+       *
+       * <code>CONTENT_MATCHER_OPTION_UNSPECIFIED = 0;</code>
+       */
+      public static final int CONTENT_MATCHER_OPTION_UNSPECIFIED_VALUE = 0;
+      /**
+       *
+       *
+       * <pre>
+       * Selects substring matching (there is a match if the output contains
+       * the `content` string).  This is the default value for checks without
+       * a `matcher` option, or where the value of `matcher` is
+       * `CONTENT_MATCHER_OPTION_UNSPECIFIED`.
+       * </pre>
+       *
+       * <code>CONTAINS_STRING = 1;</code>
+       */
+      public static final int CONTAINS_STRING_VALUE = 1;
+      /**
+       *
+       *
+       * <pre>
+       * Selects negation of substring matching (there is a match if the output
+       * does NOT contain the `content` string).
+       * </pre>
+       *
+       * <code>NOT_CONTAINS_STRING = 2;</code>
+       */
+      public static final int NOT_CONTAINS_STRING_VALUE = 2;
+      /**
+       *
+       *
+       * <pre>
+       * Selects regular expression matching (there is a match of the output
+       * matches the regular expression specified in the `content` string).
+       * </pre>
+       *
+       * <code>MATCHES_REGEX = 3;</code>
+       */
+      public static final int MATCHES_REGEX_VALUE = 3;
+      /**
+       *
+       *
+       * <pre>
+       * Selects negation of regular expression matching (there is a match if
+       * the output does NOT match the regular expression specified in the
+       * `content` string).
+       * </pre>
+       *
+       * <code>NOT_MATCHES_REGEX = 4;</code>
+       */
+      public static final int NOT_MATCHES_REGEX_VALUE = 4;
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /** @deprecated Use {@link #forNumber(int)} instead. */
+      @java.lang.Deprecated
+      public static ContentMatcherOption valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static ContentMatcherOption forNumber(int value) {
+        switch (value) {
+          case 0:
+            return CONTENT_MATCHER_OPTION_UNSPECIFIED;
+          case 1:
+            return CONTAINS_STRING;
+          case 2:
+            return NOT_CONTAINS_STRING;
+          case 3:
+            return MATCHES_REGEX;
+          case 4:
+            return NOT_MATCHES_REGEX;
+          default:
+            return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<ContentMatcherOption>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+
+      private static final com.google.protobuf.Internal.EnumLiteMap<ContentMatcherOption>
+          internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<ContentMatcherOption>() {
+                public ContentMatcherOption findValueByNumber(int number) {
+                  return ContentMatcherOption.forNumber(number);
+                }
+              };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+
+      public final com.google.protobuf.Descriptors.EnumDescriptor getDescriptorForType() {
+        return getDescriptor();
+      }
+
+      public static final com.google.protobuf.Descriptors.EnumDescriptor getDescriptor() {
+        return com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.getDescriptor()
+            .getEnumTypes()
+            .get(0);
+      }
+
+      private static final ContentMatcherOption[] VALUES = values();
+
+      public static ContentMatcherOption valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException("EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private ContentMatcherOption(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption)
     }
 
     public static final int CONTENT_FIELD_NUMBER = 1;
@@ -4381,6 +4759,47 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       }
     }
 
+    public static final int MATCHER_FIELD_NUMBER = 2;
+    private int matcher_;
+    /**
+     *
+     *
+     * <pre>
+     * The type of content matcher that will be applied to the server output,
+     * compared to the `content` string when the check is run.
+     * </pre>
+     *
+     * <code>
+     * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+     * </code>
+     */
+    public int getMatcherValue() {
+      return matcher_;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The type of content matcher that will be applied to the server output,
+     * compared to the `content` string when the check is run.
+     * </pre>
+     *
+     * <code>
+     * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+     * </code>
+     */
+    public com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+        getMatcher() {
+      @SuppressWarnings("deprecation")
+      com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption result =
+          com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption.valueOf(
+              matcher_);
+      return result == null
+          ? com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+              .UNRECOGNIZED
+          : result;
+    }
+
     private byte memoizedIsInitialized = -1;
 
     @java.lang.Override
@@ -4398,6 +4817,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       if (!getContentBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
       }
+      if (matcher_
+          != com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+              .CONTENT_MATCHER_OPTION_UNSPECIFIED
+              .getNumber()) {
+        output.writeEnum(2, matcher_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4409,6 +4834,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       size = 0;
       if (!getContentBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
+      }
+      if (matcher_
+          != com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+              .CONTENT_MATCHER_OPTION_UNSPECIFIED
+              .getNumber()) {
+        size += com.google.protobuf.CodedOutputStream.computeEnumSize(2, matcher_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4427,6 +4858,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
           (com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher) obj;
 
       if (!getContent().equals(other.getContent())) return false;
+      if (matcher_ != other.matcher_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4440,6 +4872,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CONTENT_FIELD_NUMBER;
       hash = (53 * hash) + getContent().hashCode();
+      hash = (37 * hash) + MATCHER_FIELD_NUMBER;
+      hash = (53 * hash) + matcher_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4591,6 +5025,8 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         super.clear();
         content_ = "";
 
+        matcher_ = 0;
+
         return this;
       }
 
@@ -4619,6 +5055,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher result =
             new com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher(this);
         result.content_ = content_;
+        result.matcher_ = matcher_;
         onBuilt();
         return result;
       }
@@ -4674,6 +5111,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         if (!other.getContent().isEmpty()) {
           content_ = other.content_;
           onChanged();
+        }
+        if (other.matcher_ != 0) {
+          setMatcherValue(other.getMatcherValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4795,6 +5235,103 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
         checkByteStringIsUtf8(value);
 
         content_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int matcher_ = 0;
+      /**
+       *
+       *
+       * <pre>
+       * The type of content matcher that will be applied to the server output,
+       * compared to the `content` string when the check is run.
+       * </pre>
+       *
+       * <code>
+       * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+       * </code>
+       */
+      public int getMatcherValue() {
+        return matcher_;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of content matcher that will be applied to the server output,
+       * compared to the `content` string when the check is run.
+       * </pre>
+       *
+       * <code>
+       * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+       * </code>
+       */
+      public Builder setMatcherValue(int value) {
+        matcher_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of content matcher that will be applied to the server output,
+       * compared to the `content` string when the check is run.
+       * </pre>
+       *
+       * <code>
+       * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+       * </code>
+       */
+      public com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+          getMatcher() {
+        @SuppressWarnings("deprecation")
+        com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption result =
+            com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption.valueOf(
+                matcher_);
+        return result == null
+            ? com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption
+                .UNRECOGNIZED
+            : result;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of content matcher that will be applied to the server output,
+       * compared to the `content` string when the check is run.
+       * </pre>
+       *
+       * <code>
+       * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+       * </code>
+       */
+      public Builder setMatcher(
+          com.google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+
+        matcher_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       *
+       *
+       * <pre>
+       * The type of content matcher that will be applied to the server output,
+       * compared to the `content` string when the check is run.
+       * </pre>
+       *
+       * <code>
+       * .google.monitoring.v3.UptimeCheckConfig.ContentMatcher.ContentMatcherOption matcher = 2;
+       * </code>
+       */
+      public Builder clearMatcher() {
+
+        matcher_ = 0;
         onChanged();
         return this;
       }
@@ -4938,9 +5475,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * A unique resource name for this UptimeCheckConfig. The format is:
+   * A unique resource name for this Uptime check configuration. The format is:
    *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-   * This field should be omitted when creating the uptime check configuration;
+   * This field should be omitted when creating the Uptime check configuration;
    * on create, the resource name is assigned by the server and included in the
    * response.
    * </pre>
@@ -4962,9 +5499,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * A unique resource name for this UptimeCheckConfig. The format is:
+   * A unique resource name for this Uptime check configuration. The format is:
    *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-   * This field should be omitted when creating the uptime check configuration;
+   * This field should be omitted when creating the Uptime check configuration;
    * on create, the resource name is assigned by the server and included in the
    * response.
    * </pre>
@@ -4989,7 +5526,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * A human-friendly name for the uptime check configuration. The display name
+   * A human-friendly name for the Uptime check configuration. The display name
    * should be unique within a Stackdriver Workspace in order to make it easier
    * to identify; however, uniqueness is not enforced. Required.
    * </pre>
@@ -5011,7 +5548,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * A human-friendly name for the uptime check configuration. The display name
+   * A human-friendly name for the Uptime check configuration. The display name
    * should be unique within a Stackdriver Workspace in order to make it easier
    * to identify; however, uniqueness is not enforced. Required.
    * </pre>
@@ -5038,12 +5575,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * The [monitored
    * resource](https://cloud.google.com/monitoring/api/resources) associated
    * with the configuration.
-   * The following monitored resource types are supported for uptime checks:
-   *   uptime_url
-   *   gce_instance
-   *   gae_app
-   *   aws_ec2_instance
-   *   aws_elb_load_balancer
+   * The following monitored resource types are supported for Uptime checks:
+   *   `uptime_url`,
+   *   `gce_instance`,
+   *   `gae_app`,
+   *   `aws_ec2_instance`,
+   *   `aws_elb_load_balancer`
    * </pre>
    *
    * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -5058,12 +5595,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * The [monitored
    * resource](https://cloud.google.com/monitoring/api/resources) associated
    * with the configuration.
-   * The following monitored resource types are supported for uptime checks:
-   *   uptime_url
-   *   gce_instance
-   *   gae_app
-   *   aws_ec2_instance
-   *   aws_elb_load_balancer
+   * The following monitored resource types are supported for Uptime checks:
+   *   `uptime_url`,
+   *   `gce_instance`,
+   *   `gae_app`,
+   *   `aws_ec2_instance`,
+   *   `aws_elb_load_balancer`
    * </pre>
    *
    * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -5081,12 +5618,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * The [monitored
    * resource](https://cloud.google.com/monitoring/api/resources) associated
    * with the configuration.
-   * The following monitored resource types are supported for uptime checks:
-   *   uptime_url
-   *   gce_instance
-   *   gae_app
-   *   aws_ec2_instance
-   *   aws_elb_load_balancer
+   * The following monitored resource types are supported for Uptime checks:
+   *   `uptime_url`,
+   *   `gce_instance`,
+   *   `gae_app`,
+   *   `aws_ec2_instance`,
+   *   `aws_elb_load_balancer`
    * </pre>
    *
    * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -5237,10 +5774,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * How often, in seconds, the uptime check is performed.
+   * How often, in seconds, the Uptime check is performed.
    * Currently, the only supported values are `60s` (1 minute), `300s`
    * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-   * defaults to `300s`.
+   * defaults to `60s`.
    * </pre>
    *
    * <code>.google.protobuf.Duration period = 7;</code>
@@ -5252,10 +5789,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * How often, in seconds, the uptime check is performed.
+   * How often, in seconds, the Uptime check is performed.
    * Currently, the only supported values are `60s` (1 minute), `300s`
    * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-   * defaults to `300s`.
+   * defaults to `60s`.
    * </pre>
    *
    * <code>.google.protobuf.Duration period = 7;</code>
@@ -5267,10 +5804,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * How often, in seconds, the uptime check is performed.
+   * How often, in seconds, the Uptime check is performed.
    * Currently, the only supported values are `60s` (1 minute), `300s`
    * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-   * defaults to `300s`.
+   * defaults to `60s`.
    * </pre>
    *
    * <code>.google.protobuf.Duration period = 7;</code>
@@ -5328,11 +5865,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * The expected content on the page the check is run against.
-   * Currently, only the first entry in the list is supported, and other entries
-   * will be ignored. The server will look for an exact match of the string in
-   * the page response's content. This field is optional and should only be
-   * specified if a content match is required.
+   * The content that is expected to appear in the data returned by the target
+   * server against which the check is run.  Currently, only the first entry
+   * in the `content_matchers` list is supported, and additional entries will
+   * be ignored. This field is optional and should only be specified if a
+   * content match is required as part of the/ Uptime check.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -5346,11 +5883,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * The expected content on the page the check is run against.
-   * Currently, only the first entry in the list is supported, and other entries
-   * will be ignored. The server will look for an exact match of the string in
-   * the page response's content. This field is optional and should only be
-   * specified if a content match is required.
+   * The content that is expected to appear in the data returned by the target
+   * server against which the check is run.  Currently, only the first entry
+   * in the `content_matchers` list is supported, and additional entries will
+   * be ignored. This field is optional and should only be specified if a
+   * content match is required as part of the/ Uptime check.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -5365,11 +5902,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * The expected content on the page the check is run against.
-   * Currently, only the first entry in the list is supported, and other entries
-   * will be ignored. The server will look for an exact match of the string in
-   * the page response's content. This field is optional and should only be
-   * specified if a content match is required.
+   * The content that is expected to appear in the data returned by the target
+   * server against which the check is run.  Currently, only the first entry
+   * in the `content_matchers` list is supported, and additional entries will
+   * be ignored. This field is optional and should only be specified if a
+   * content match is required as part of the/ Uptime check.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -5382,11 +5919,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * The expected content on the page the check is run against.
-   * Currently, only the first entry in the list is supported, and other entries
-   * will be ignored. The server will look for an exact match of the string in
-   * the page response's content. This field is optional and should only be
-   * specified if a content match is required.
+   * The content that is expected to appear in the data returned by the target
+   * server against which the check is run.  Currently, only the first entry
+   * in the `content_matchers` list is supported, and additional entries will
+   * be ignored. This field is optional and should only be specified if a
+   * content match is required as part of the/ Uptime check.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -5399,11 +5936,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * The expected content on the page the check is run against.
-   * Currently, only the first entry in the list is supported, and other entries
-   * will be ignored. The server will look for an exact match of the string in
-   * the page response's content. This field is optional and should only be
-   * specified if a content match is required.
+   * The content that is expected to appear in the data returned by the target
+   * server against which the check is run.  Currently, only the first entry
+   * in the `content_matchers` list is supported, and additional entries will
+   * be ignored. This field is optional and should only be specified if a
+   * content match is required as part of the/ Uptime check.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -5436,10 +5973,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * <pre>
    * The list of regions from which the check will be run.
    * Some regions contain one location, and others contain more than one.
-   * If this field is specified, enough regions to include a minimum of
-   * 3 locations must be provided, or an error message is returned.
-   * Not specifying this field will result in uptime checks running from all
-   * regions.
+   * If this field is specified, enough regions must be provided to include a
+   * minimum of 3 locations.  Not specifying this field will result in Uptime
+   * checks running from all available regions.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -5455,10 +5991,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * <pre>
    * The list of regions from which the check will be run.
    * Some regions contain one location, and others contain more than one.
-   * If this field is specified, enough regions to include a minimum of
-   * 3 locations must be provided, or an error message is returned.
-   * Not specifying this field will result in uptime checks running from all
-   * regions.
+   * If this field is specified, enough regions must be provided to include a
+   * minimum of 3 locations.  Not specifying this field will result in Uptime
+   * checks running from all available regions.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -5472,10 +6007,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * <pre>
    * The list of regions from which the check will be run.
    * Some regions contain one location, and others contain more than one.
-   * If this field is specified, enough regions to include a minimum of
-   * 3 locations must be provided, or an error message is returned.
-   * Not specifying this field will result in uptime checks running from all
-   * regions.
+   * If this field is specified, enough regions must be provided to include a
+   * minimum of 3 locations.  Not specifying this field will result in Uptime
+   * checks running from all available regions.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -5489,10 +6023,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * <pre>
    * The list of regions from which the check will be run.
    * Some regions contain one location, and others contain more than one.
-   * If this field is specified, enough regions to include a minimum of
-   * 3 locations must be provided, or an error message is returned.
-   * Not specifying this field will result in uptime checks running from all
-   * regions.
+   * If this field is specified, enough regions must be provided to include a
+   * minimum of 3 locations.  Not specifying this field will result in Uptime
+   * checks running from all available regions.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -5506,10 +6039,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    * <pre>
    * The list of regions from which the check will be run.
    * Some regions contain one location, and others contain more than one.
-   * If this field is specified, enough regions to include a minimum of
-   * 3 locations must be provided, or an error message is returned.
-   * Not specifying this field will result in uptime checks running from all
-   * regions.
+   * If this field is specified, enough regions must be provided to include a
+   * minimum of 3 locations.  Not specifying this field will result in Uptime
+   * checks running from all available regions.
    * </pre>
    *
    * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -5526,14 +6058,15 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    *
    * <pre>
-   * If this is true, then checks are made only from the 'internal_checkers'.
-   * If it is false, then checks are made only from the 'selected_regions'.
-   * It is an error to provide 'selected_regions' when is_internal is true,
-   * or to provide 'internal_checkers' when is_internal is false.
+   * If this is `true`, then checks are made only from the 'internal_checkers'.
+   * If it is `false`, then checks are made only from the 'selected_regions'.
+   * It is an error to provide 'selected_regions' when is_internal is `true`,
+   * or to provide 'internal_checkers' when is_internal is `false`.
    * </pre>
    *
-   * <code>bool is_internal = 15;</code>
+   * <code>bool is_internal = 15 [deprecated = true];</code>
    */
+  @java.lang.Deprecated
   public boolean getIsInternal() {
     return isInternal_;
   }
@@ -5545,12 +6078,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * The internal checkers that this check will egress from. If `is_internal` is
-   * true and this list is empty, the check will egress from all the
-   * InternalCheckers configured for the project that owns this CheckConfig.
+   * `true` and this list is empty, the check will egress from all the
+   * InternalCheckers configured for the project that owns this
+   * `UptimeCheckConfig`.
    * </pre>
    *
-   * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+   * <code>
+   * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+   * </code>
    */
+  @java.lang.Deprecated
   public java.util.List<com.google.monitoring.v3.InternalChecker> getInternalCheckersList() {
     return internalCheckers_;
   }
@@ -5559,12 +6096,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * The internal checkers that this check will egress from. If `is_internal` is
-   * true and this list is empty, the check will egress from all the
-   * InternalCheckers configured for the project that owns this CheckConfig.
+   * `true` and this list is empty, the check will egress from all the
+   * InternalCheckers configured for the project that owns this
+   * `UptimeCheckConfig`.
    * </pre>
    *
-   * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+   * <code>
+   * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+   * </code>
    */
+  @java.lang.Deprecated
   public java.util.List<? extends com.google.monitoring.v3.InternalCheckerOrBuilder>
       getInternalCheckersOrBuilderList() {
     return internalCheckers_;
@@ -5574,12 +6115,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * The internal checkers that this check will egress from. If `is_internal` is
-   * true and this list is empty, the check will egress from all the
-   * InternalCheckers configured for the project that owns this CheckConfig.
+   * `true` and this list is empty, the check will egress from all the
+   * InternalCheckers configured for the project that owns this
+   * `UptimeCheckConfig`.
    * </pre>
    *
-   * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+   * <code>
+   * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+   * </code>
    */
+  @java.lang.Deprecated
   public int getInternalCheckersCount() {
     return internalCheckers_.size();
   }
@@ -5588,12 +6133,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * The internal checkers that this check will egress from. If `is_internal` is
-   * true and this list is empty, the check will egress from all the
-   * InternalCheckers configured for the project that owns this CheckConfig.
+   * `true` and this list is empty, the check will egress from all the
+   * InternalCheckers configured for the project that owns this
+   * `UptimeCheckConfig`.
    * </pre>
    *
-   * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+   * <code>
+   * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+   * </code>
    */
+  @java.lang.Deprecated
   public com.google.monitoring.v3.InternalChecker getInternalCheckers(int index) {
     return internalCheckers_.get(index);
   }
@@ -5602,12 +6151,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
    *
    * <pre>
    * The internal checkers that this check will egress from. If `is_internal` is
-   * true and this list is empty, the check will egress from all the
-   * InternalCheckers configured for the project that owns this CheckConfig.
+   * `true` and this list is empty, the check will egress from all the
+   * InternalCheckers configured for the project that owns this
+   * `UptimeCheckConfig`.
    * </pre>
    *
-   * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+   * <code>
+   * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+   * </code>
    */
+  @java.lang.Deprecated
   public com.google.monitoring.v3.InternalCheckerOrBuilder getInternalCheckersOrBuilder(int index) {
     return internalCheckers_.get(index);
   }
@@ -6353,9 +6906,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A unique resource name for this UptimeCheckConfig. The format is:
+     * A unique resource name for this Uptime check configuration. The format is:
      *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-     * This field should be omitted when creating the uptime check configuration;
+     * This field should be omitted when creating the Uptime check configuration;
      * on create, the resource name is assigned by the server and included in the
      * response.
      * </pre>
@@ -6377,9 +6930,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A unique resource name for this UptimeCheckConfig. The format is:
+     * A unique resource name for this Uptime check configuration. The format is:
      *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-     * This field should be omitted when creating the uptime check configuration;
+     * This field should be omitted when creating the Uptime check configuration;
      * on create, the resource name is assigned by the server and included in the
      * response.
      * </pre>
@@ -6401,9 +6954,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A unique resource name for this UptimeCheckConfig. The format is:
+     * A unique resource name for this Uptime check configuration. The format is:
      *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-     * This field should be omitted when creating the uptime check configuration;
+     * This field should be omitted when creating the Uptime check configuration;
      * on create, the resource name is assigned by the server and included in the
      * response.
      * </pre>
@@ -6423,9 +6976,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A unique resource name for this UptimeCheckConfig. The format is:
+     * A unique resource name for this Uptime check configuration. The format is:
      *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-     * This field should be omitted when creating the uptime check configuration;
+     * This field should be omitted when creating the Uptime check configuration;
      * on create, the resource name is assigned by the server and included in the
      * response.
      * </pre>
@@ -6442,9 +6995,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A unique resource name for this UptimeCheckConfig. The format is:
+     * A unique resource name for this Uptime check configuration. The format is:
      *   `projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID]`.
-     * This field should be omitted when creating the uptime check configuration;
+     * This field should be omitted when creating the Uptime check configuration;
      * on create, the resource name is assigned by the server and included in the
      * response.
      * </pre>
@@ -6467,7 +7020,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A human-friendly name for the uptime check configuration. The display name
+     * A human-friendly name for the Uptime check configuration. The display name
      * should be unique within a Stackdriver Workspace in order to make it easier
      * to identify; however, uniqueness is not enforced. Required.
      * </pre>
@@ -6489,7 +7042,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A human-friendly name for the uptime check configuration. The display name
+     * A human-friendly name for the Uptime check configuration. The display name
      * should be unique within a Stackdriver Workspace in order to make it easier
      * to identify; however, uniqueness is not enforced. Required.
      * </pre>
@@ -6511,7 +7064,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A human-friendly name for the uptime check configuration. The display name
+     * A human-friendly name for the Uptime check configuration. The display name
      * should be unique within a Stackdriver Workspace in order to make it easier
      * to identify; however, uniqueness is not enforced. Required.
      * </pre>
@@ -6531,7 +7084,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A human-friendly name for the uptime check configuration. The display name
+     * A human-friendly name for the Uptime check configuration. The display name
      * should be unique within a Stackdriver Workspace in order to make it easier
      * to identify; however, uniqueness is not enforced. Required.
      * </pre>
@@ -6548,7 +7101,7 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * A human-friendly name for the uptime check configuration. The display name
+     * A human-friendly name for the Uptime check configuration. The display name
      * should be unique within a Stackdriver Workspace in order to make it easier
      * to identify; however, uniqueness is not enforced. Required.
      * </pre>
@@ -6578,12 +7131,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6598,12 +7151,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6628,12 +7181,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6658,12 +7211,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6685,12 +7238,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6724,12 +7277,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6757,12 +7310,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6777,12 +7330,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -6804,12 +7357,12 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * The [monitored
      * resource](https://cloud.google.com/monitoring/api/resources) associated
      * with the configuration.
-     * The following monitored resource types are supported for uptime checks:
-     *   uptime_url
-     *   gce_instance
-     *   gae_app
-     *   aws_ec2_instance
-     *   aws_elb_load_balancer
+     * The following monitored resource types are supported for Uptime checks:
+     *   `uptime_url`,
+     *   `gce_instance`,
+     *   `gae_app`,
+     *   `aws_ec2_instance`,
+     *   `aws_elb_load_balancer`
      * </pre>
      *
      * <code>.google.api.MonitoredResource monitored_resource = 3;</code>
@@ -7462,10 +8015,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7477,10 +8030,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7496,10 +8049,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7521,10 +8074,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7543,10 +8096,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7570,10 +8123,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7593,10 +8146,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7610,10 +8163,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7629,10 +8182,10 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * How often, in seconds, the uptime check is performed.
+     * How often, in seconds, the Uptime check is performed.
      * Currently, the only supported values are `60s` (1 minute), `300s`
      * (5 minutes), `600s` (10 minutes), and `900s` (15 minutes). Optional,
-     * defaults to `300s`.
+     * defaults to `60s`.
      * </pre>
      *
      * <code>.google.protobuf.Duration period = 7;</code>
@@ -7860,11 +8413,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -7882,11 +8435,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -7903,11 +8456,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -7924,11 +8477,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -7952,11 +8505,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -7978,11 +8531,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8006,11 +8559,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8034,11 +8587,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8059,11 +8612,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8085,11 +8638,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8111,11 +8664,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8135,11 +8688,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8159,11 +8712,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8177,11 +8730,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8199,11 +8752,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8222,11 +8775,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8242,11 +8795,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8263,11 +8816,11 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * The expected content on the page the check is run against.
-     * Currently, only the first entry in the list is supported, and other entries
-     * will be ignored. The server will look for an exact match of the string in
-     * the page response's content. This field is optional and should only be
-     * specified if a content match is required.
+     * The content that is expected to appear in the data returned by the target
+     * server against which the check is run.  Currently, only the first entry
+     * in the `content_matchers` list is supported, and additional entries will
+     * be ignored. This field is optional and should only be specified if a
+     * content match is required as part of the/ Uptime check.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckConfig.ContentMatcher content_matchers = 9;
@@ -8312,10 +8865,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8331,10 +8883,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8348,10 +8899,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8365,10 +8915,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8388,10 +8937,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8411,10 +8959,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8434,10 +8981,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8454,10 +9000,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8471,10 +9016,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8488,10 +9032,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8508,10 +9051,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8528,10 +9070,9 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      * <pre>
      * The list of regions from which the check will be run.
      * Some regions contain one location, and others contain more than one.
-     * If this field is specified, enough regions to include a minimum of
-     * 3 locations must be provided, or an error message is returned.
-     * Not specifying this field will result in uptime checks running from all
-     * regions.
+     * If this field is specified, enough regions must be provided to include a
+     * minimum of 3 locations.  Not specifying this field will result in Uptime
+     * checks running from all available regions.
      * </pre>
      *
      * <code>repeated .google.monitoring.v3.UptimeCheckRegion selected_regions = 10;</code>
@@ -8550,14 +9091,15 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * If this is true, then checks are made only from the 'internal_checkers'.
-     * If it is false, then checks are made only from the 'selected_regions'.
-     * It is an error to provide 'selected_regions' when is_internal is true,
-     * or to provide 'internal_checkers' when is_internal is false.
+     * If this is `true`, then checks are made only from the 'internal_checkers'.
+     * If it is `false`, then checks are made only from the 'selected_regions'.
+     * It is an error to provide 'selected_regions' when is_internal is `true`,
+     * or to provide 'internal_checkers' when is_internal is `false`.
      * </pre>
      *
-     * <code>bool is_internal = 15;</code>
+     * <code>bool is_internal = 15 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public boolean getIsInternal() {
       return isInternal_;
     }
@@ -8565,14 +9107,15 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * If this is true, then checks are made only from the 'internal_checkers'.
-     * If it is false, then checks are made only from the 'selected_regions'.
-     * It is an error to provide 'selected_regions' when is_internal is true,
-     * or to provide 'internal_checkers' when is_internal is false.
+     * If this is `true`, then checks are made only from the 'internal_checkers'.
+     * If it is `false`, then checks are made only from the 'selected_regions'.
+     * It is an error to provide 'selected_regions' when is_internal is `true`,
+     * or to provide 'internal_checkers' when is_internal is `false`.
      * </pre>
      *
-     * <code>bool is_internal = 15;</code>
+     * <code>bool is_internal = 15 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public Builder setIsInternal(boolean value) {
 
       isInternal_ = value;
@@ -8583,14 +9126,15 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      *
      * <pre>
-     * If this is true, then checks are made only from the 'internal_checkers'.
-     * If it is false, then checks are made only from the 'selected_regions'.
-     * It is an error to provide 'selected_regions' when is_internal is true,
-     * or to provide 'internal_checkers' when is_internal is false.
+     * If this is `true`, then checks are made only from the 'internal_checkers'.
+     * If it is `false`, then checks are made only from the 'selected_regions'.
+     * It is an error to provide 'selected_regions' when is_internal is `true`,
+     * or to provide 'internal_checkers' when is_internal is `false`.
      * </pre>
      *
-     * <code>bool is_internal = 15;</code>
+     * <code>bool is_internal = 15 [deprecated = true];</code>
      */
+    @java.lang.Deprecated
     public Builder clearIsInternal() {
 
       isInternal_ = false;
@@ -8620,12 +9164,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public java.util.List<com.google.monitoring.v3.InternalChecker> getInternalCheckersList() {
       if (internalCheckersBuilder_ == null) {
         return java.util.Collections.unmodifiableList(internalCheckers_);
@@ -8638,12 +9186,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public int getInternalCheckersCount() {
       if (internalCheckersBuilder_ == null) {
         return internalCheckers_.size();
@@ -8656,12 +9208,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public com.google.monitoring.v3.InternalChecker getInternalCheckers(int index) {
       if (internalCheckersBuilder_ == null) {
         return internalCheckers_.get(index);
@@ -8674,12 +9230,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder setInternalCheckers(int index, com.google.monitoring.v3.InternalChecker value) {
       if (internalCheckersBuilder_ == null) {
         if (value == null) {
@@ -8698,12 +9258,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder setInternalCheckers(
         int index, com.google.monitoring.v3.InternalChecker.Builder builderForValue) {
       if (internalCheckersBuilder_ == null) {
@@ -8720,12 +9284,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder addInternalCheckers(com.google.monitoring.v3.InternalChecker value) {
       if (internalCheckersBuilder_ == null) {
         if (value == null) {
@@ -8744,12 +9312,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder addInternalCheckers(int index, com.google.monitoring.v3.InternalChecker value) {
       if (internalCheckersBuilder_ == null) {
         if (value == null) {
@@ -8768,12 +9340,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder addInternalCheckers(
         com.google.monitoring.v3.InternalChecker.Builder builderForValue) {
       if (internalCheckersBuilder_ == null) {
@@ -8790,12 +9366,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder addInternalCheckers(
         int index, com.google.monitoring.v3.InternalChecker.Builder builderForValue) {
       if (internalCheckersBuilder_ == null) {
@@ -8812,12 +9392,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder addAllInternalCheckers(
         java.lang.Iterable<? extends com.google.monitoring.v3.InternalChecker> values) {
       if (internalCheckersBuilder_ == null) {
@@ -8834,12 +9418,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder clearInternalCheckers() {
       if (internalCheckersBuilder_ == null) {
         internalCheckers_ = java.util.Collections.emptyList();
@@ -8855,12 +9443,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public Builder removeInternalCheckers(int index) {
       if (internalCheckersBuilder_ == null) {
         ensureInternalCheckersIsMutable();
@@ -8876,12 +9468,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public com.google.monitoring.v3.InternalChecker.Builder getInternalCheckersBuilder(int index) {
       return getInternalCheckersFieldBuilder().getBuilder(index);
     }
@@ -8890,12 +9486,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public com.google.monitoring.v3.InternalCheckerOrBuilder getInternalCheckersOrBuilder(
         int index) {
       if (internalCheckersBuilder_ == null) {
@@ -8909,12 +9509,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public java.util.List<? extends com.google.monitoring.v3.InternalCheckerOrBuilder>
         getInternalCheckersOrBuilderList() {
       if (internalCheckersBuilder_ != null) {
@@ -8928,12 +9532,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public com.google.monitoring.v3.InternalChecker.Builder addInternalCheckersBuilder() {
       return getInternalCheckersFieldBuilder()
           .addBuilder(com.google.monitoring.v3.InternalChecker.getDefaultInstance());
@@ -8943,12 +9551,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public com.google.monitoring.v3.InternalChecker.Builder addInternalCheckersBuilder(int index) {
       return getInternalCheckersFieldBuilder()
           .addBuilder(index, com.google.monitoring.v3.InternalChecker.getDefaultInstance());
@@ -8958,12 +9570,16 @@ public final class UptimeCheckConfig extends com.google.protobuf.GeneratedMessag
      *
      * <pre>
      * The internal checkers that this check will egress from. If `is_internal` is
-     * true and this list is empty, the check will egress from all the
-     * InternalCheckers configured for the project that owns this CheckConfig.
+     * `true` and this list is empty, the check will egress from all the
+     * InternalCheckers configured for the project that owns this
+     * `UptimeCheckConfig`.
      * </pre>
      *
-     * <code>repeated .google.monitoring.v3.InternalChecker internal_checkers = 14;</code>
+     * <code>
+     * repeated .google.monitoring.v3.InternalChecker internal_checkers = 14 [deprecated = true];
+     * </code>
      */
+    @java.lang.Deprecated
     public java.util.List<com.google.monitoring.v3.InternalChecker.Builder>
         getInternalCheckersBuilderList() {
       return getInternalCheckersFieldBuilder().getBuilderList();

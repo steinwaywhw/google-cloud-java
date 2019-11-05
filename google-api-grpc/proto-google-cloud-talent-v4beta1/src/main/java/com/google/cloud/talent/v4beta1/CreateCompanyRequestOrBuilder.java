@@ -12,30 +12,26 @@ public interface CreateCompanyRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the tenant under which the company is created.
+   * Required. Resource name of the tenant under which the company is created.
    * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and a default tenant is created if unspecified, for
-   * example, "projects/api-test-project".
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created, for example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the tenant under which the company is created.
+   * Required. Resource name of the tenant under which the company is created.
    * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and a default tenant is created if unspecified, for
-   * example, "projects/api-test-project".
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created, for example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -43,33 +39,36 @@ public interface CreateCompanyRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasCompany();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.talent.v4beta1.Company getCompany();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.talent.v4beta1.CompanyOrBuilder getCompanyOrBuilder();
 }

@@ -17,6 +17,7 @@ package com.google.cloud.talent.v4beta1;
 
 import com.google.api.core.BetaApi;
 import com.google.cloud.talent.v4beta1.JobServiceGrpc.JobServiceImplBase;
+import com.google.longrunning.Operation;
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.Empty;
 import io.grpc.stub.StreamObserver;
@@ -72,6 +73,21 @@ public class MockJobServiceImpl extends JobServiceImplBase {
   }
 
   @Override
+  public void batchCreateJobs(
+      BatchCreateJobsRequest request, StreamObserver<Operation> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof Operation) {
+      requests.add(request);
+      responseObserver.onNext((Operation) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
   public void getJob(GetJobRequest request, StreamObserver<Job> responseObserver) {
     Object response = responses.remove();
     if (response instanceof Job) {
@@ -100,7 +116,37 @@ public class MockJobServiceImpl extends JobServiceImplBase {
   }
 
   @Override
+  public void batchUpdateJobs(
+      BatchUpdateJobsRequest request, StreamObserver<Operation> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof Operation) {
+      requests.add(request);
+      responseObserver.onNext((Operation) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
   public void deleteJob(DeleteJobRequest request, StreamObserver<Empty> responseObserver) {
+    Object response = responses.remove();
+    if (response instanceof Empty) {
+      requests.add(request);
+      responseObserver.onNext((Empty) response);
+      responseObserver.onCompleted();
+    } else if (response instanceof Exception) {
+      responseObserver.onError((Exception) response);
+    } else {
+      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
+    }
+  }
+
+  @Override
+  public void batchDeleteJobs(
+      BatchDeleteJobsRequest request, StreamObserver<Empty> responseObserver) {
     Object response = responses.remove();
     if (response instanceof Empty) {
       requests.add(request);
@@ -119,21 +165,6 @@ public class MockJobServiceImpl extends JobServiceImplBase {
     if (response instanceof ListJobsResponse) {
       requests.add(request);
       responseObserver.onNext((ListJobsResponse) response);
-      responseObserver.onCompleted();
-    } else if (response instanceof Exception) {
-      responseObserver.onError((Exception) response);
-    } else {
-      responseObserver.onError(new IllegalArgumentException("Unrecognized response type"));
-    }
-  }
-
-  @Override
-  public void batchDeleteJobs(
-      BatchDeleteJobsRequest request, StreamObserver<Empty> responseObserver) {
-    Object response = responses.remove();
-    if (response instanceof Empty) {
-      requests.add(request);
-      responseObserver.onNext((Empty) response);
       responseObserver.onCompleted();
     } else if (response instanceof Exception) {
       responseObserver.onError((Exception) response);

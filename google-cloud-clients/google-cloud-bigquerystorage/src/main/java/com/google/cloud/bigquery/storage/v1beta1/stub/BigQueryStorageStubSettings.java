@@ -64,8 +64,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createReadSession to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of createReadSession to 30 seconds:
  *
  * <pre>
  * <code>
@@ -84,6 +85,7 @@ public class BigQueryStorageStubSettings extends StubSettings<BigQueryStorageStu
   private static final ImmutableList<String> DEFAULT_SERVICE_SCOPES =
       ImmutableList.<String>builder()
           .add("https://www.googleapis.com/auth/bigquery")
+          .add("https://www.googleapis.com/auth/bigquery.readonly")
           .add("https://www.googleapis.com/auth/cloud-platform")
           .build();
 
@@ -158,7 +160,8 @@ public class BigQueryStorageStubSettings extends StubSettings<BigQueryStorageStu
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -227,6 +230,9 @@ public class BigQueryStorageStubSettings extends StubSettings<BigQueryStorageStu
               Lists.<StatusCode.Code>newArrayList(
                   StatusCode.Code.DEADLINE_EXCEEDED, StatusCode.Code.UNAVAILABLE)));
       definitions.put("non_idempotent", ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList()));
+      definitions.put(
+          "unary_streaming",
+          ImmutableSet.copyOf(Lists.<StatusCode.Code>newArrayList(StatusCode.Code.UNAVAILABLE)));
       RETRYABLE_CODE_DEFINITIONS = definitions.build();
     }
 
@@ -257,6 +263,17 @@ public class BigQueryStorageStubSettings extends StubSettings<BigQueryStorageStu
               .setTotalTimeout(Duration.ofMillis(600000L))
               .build();
       definitions.put("create_read_session", settings);
+      settings =
+          RetrySettings.newBuilder()
+              .setInitialRetryDelay(Duration.ofMillis(100L))
+              .setRetryDelayMultiplier(1.3)
+              .setMaxRetryDelay(Duration.ofMillis(60000L))
+              .setInitialRpcTimeout(Duration.ofMillis(86400000L))
+              .setRpcTimeoutMultiplier(1.0)
+              .setMaxRpcTimeout(Duration.ofMillis(86400000L))
+              .setTotalTimeout(Duration.ofMillis(86400000L))
+              .build();
+      definitions.put("read_rows", settings);
       RETRY_PARAM_DEFINITIONS = definitions.build();
     }
 
@@ -305,8 +322,8 @@ public class BigQueryStorageStubSettings extends StubSettings<BigQueryStorageStu
 
       builder
           .readRowsSettings()
-          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("unary_streaming"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("read_rows"));
 
       builder
           .batchCreateReadSessionStreamsSettings()

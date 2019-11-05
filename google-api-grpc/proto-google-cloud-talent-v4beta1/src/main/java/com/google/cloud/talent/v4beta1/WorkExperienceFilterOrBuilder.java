@@ -12,7 +12,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The minimum duration of the work experience (inclusive).
    * </pre>
    *
@@ -23,7 +22,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The minimum duration of the work experience (inclusive).
    * </pre>
    *
@@ -34,7 +32,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The minimum duration of the work experience (inclusive).
    * </pre>
    *
@@ -46,7 +43,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The maximum duration of the work experience (exclusive).
    * </pre>
    *
@@ -57,7 +53,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The maximum duration of the work experience (exclusive).
    * </pre>
    *
@@ -68,7 +63,6 @@ public interface WorkExperienceFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The maximum duration of the work experience (exclusive).
    * </pre>
    *

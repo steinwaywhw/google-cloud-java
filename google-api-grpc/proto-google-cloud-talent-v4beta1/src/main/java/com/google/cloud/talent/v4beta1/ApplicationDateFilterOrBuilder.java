@@ -12,7 +12,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date. If it's missing, The API matches profiles with application date
    * not after the end date.
    * </pre>
@@ -24,7 +23,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date. If it's missing, The API matches profiles with application date
    * not after the end date.
    * </pre>
@@ -36,7 +34,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Start date. If it's missing, The API matches profiles with application date
    * not after the end date.
    * </pre>
@@ -49,7 +46,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date. If it's missing, The API matches profiles with application date
    * not before the start date.
    * </pre>
@@ -61,7 +57,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date. If it's missing, The API matches profiles with application date
    * not before the start date.
    * </pre>
@@ -73,7 +68,6 @@ public interface ApplicationDateFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * End date. If it's missing, The API matches profiles with application date
    * not before the start date.
    * </pre>

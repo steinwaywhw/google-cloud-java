@@ -102,12 +102,9 @@ public interface TopicOrBuilder
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -117,12 +114,9 @@ public interface TopicOrBuilder
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -132,15 +126,37 @@ public interface TopicOrBuilder
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
    */
   com.google.pubsub.v1.MessageStoragePolicyOrBuilder getMessageStoragePolicyOrBuilder();
+
+  /**
+   *
+   *
+   * <pre>
+   * The resource name of the Cloud KMS CryptoKey to be used to protect access
+   * to messages published on this topic.
+   * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+   * </pre>
+   *
+   * <code>string kms_key_name = 5;</code>
+   */
+  java.lang.String getKmsKeyName();
+  /**
+   *
+   *
+   * <pre>
+   * The resource name of the Cloud KMS CryptoKey to be used to protect access
+   * to messages published on this topic.
+   * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+   * </pre>
+   *
+   * <code>string kms_key_name = 5;</code>
+   */
+  com.google.protobuf.ByteString getKmsKeyNameBytes();
 }

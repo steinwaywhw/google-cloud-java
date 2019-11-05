@@ -16,7 +16,7 @@ public interface UpdateClusterRequestOrBuilder
    * cluster belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getProjectId();
   /**
@@ -27,7 +27,7 @@ public interface UpdateClusterRequestOrBuilder
    * cluster belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getProjectIdBytes();
 
@@ -38,7 +38,7 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 5;</code>
+   * <code>string region = 5 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getRegion();
   /**
@@ -48,7 +48,7 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 5;</code>
+   * <code>string region = 5 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getRegionBytes();
 
@@ -59,7 +59,7 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The cluster name.
    * </pre>
    *
-   * <code>string cluster_name = 2;</code>
+   * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getClusterName();
   /**
@@ -69,7 +69,7 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The cluster name.
    * </pre>
    *
-   * <code>string cluster_name = 2;</code>
+   * <code>string cluster_name = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getClusterNameBytes();
 
@@ -80,7 +80,9 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The changes to the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.Cluster cluster = 3;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.Cluster cluster = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasCluster();
   /**
@@ -90,7 +92,9 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The changes to the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.Cluster cluster = 3;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.Cluster cluster = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dataproc.v1beta2.Cluster getCluster();
   /**
@@ -100,7 +104,9 @@ public interface UpdateClusterRequestOrBuilder
    * Required. The changes to the cluster.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1beta2.Cluster cluster = 3;</code>
+   * <code>
+   * .google.cloud.dataproc.v1beta2.Cluster cluster = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dataproc.v1beta2.ClusterOrBuilder getClusterOrBuilder();
 
@@ -117,7 +123,9 @@ public interface UpdateClusterRequestOrBuilder
    * Only supported on Dataproc image versions 1.2 and higher.
    * </pre>
    *
-   * <code>.google.protobuf.Duration graceful_decommission_timeout = 6;</code>
+   * <code>
+   * .google.protobuf.Duration graceful_decommission_timeout = 6 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasGracefulDecommissionTimeout();
   /**
@@ -133,7 +141,9 @@ public interface UpdateClusterRequestOrBuilder
    * Only supported on Dataproc image versions 1.2 and higher.
    * </pre>
    *
-   * <code>.google.protobuf.Duration graceful_decommission_timeout = 6;</code>
+   * <code>
+   * .google.protobuf.Duration graceful_decommission_timeout = 6 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.protobuf.Duration getGracefulDecommissionTimeout();
   /**
@@ -149,7 +159,9 @@ public interface UpdateClusterRequestOrBuilder
    * Only supported on Dataproc image versions 1.2 and higher.
    * </pre>
    *
-   * <code>.google.protobuf.Duration graceful_decommission_timeout = 6;</code>
+   * <code>
+   * .google.protobuf.Duration graceful_decommission_timeout = 6 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.protobuf.DurationOrBuilder getGracefulDecommissionTimeoutOrBuilder();
 
@@ -208,10 +220,15 @@ public interface UpdateClusterRequestOrBuilder
    * &lt;td&gt;config.lifecycle_config.idle_delete_ttl&lt;/td&gt;&lt;td&gt;Update Idle TTL
    * duration&lt;/td&gt;
    * &lt;/tr&gt;
+   * &lt;tr&gt;
+   * &lt;td&gt;config.autoscaling_config.policy_uri&lt;/td&gt;&lt;td&gt;Use, stop using, or change
+   * autoscaling policies&lt;/td&gt;
+   * &lt;/tr&gt;
    * &lt;/table&gt;
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasUpdateMask();
   /**
@@ -269,10 +286,15 @@ public interface UpdateClusterRequestOrBuilder
    * &lt;td&gt;config.lifecycle_config.idle_delete_ttl&lt;/td&gt;&lt;td&gt;Update Idle TTL
    * duration&lt;/td&gt;
    * &lt;/tr&gt;
+   * &lt;tr&gt;
+   * &lt;td&gt;config.autoscaling_config.policy_uri&lt;/td&gt;&lt;td&gt;Use, stop using, or change
+   * autoscaling policies&lt;/td&gt;
+   * &lt;/tr&gt;
    * &lt;/table&gt;
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.protobuf.FieldMask getUpdateMask();
   /**
@@ -330,10 +352,15 @@ public interface UpdateClusterRequestOrBuilder
    * &lt;td&gt;config.lifecycle_config.idle_delete_ttl&lt;/td&gt;&lt;td&gt;Update Idle TTL
    * duration&lt;/td&gt;
    * &lt;/tr&gt;
+   * &lt;tr&gt;
+   * &lt;td&gt;config.autoscaling_config.policy_uri&lt;/td&gt;&lt;td&gt;Use, stop using, or change
+   * autoscaling policies&lt;/td&gt;
+   * &lt;/tr&gt;
    * &lt;/table&gt;
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 4;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 4 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder();
 
@@ -342,18 +369,17 @@ public interface UpdateClusterRequestOrBuilder
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [UpdateClusterRequest][google.cloud.dataproc.v1beta2.UpdateClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [UpdateClusterRequest][google.cloud.dataproc.v1beta2.UpdateClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+   * backend is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 7;</code>
+   * <code>string request_id = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getRequestId();
   /**
@@ -361,18 +387,17 @@ public interface UpdateClusterRequestOrBuilder
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [UpdateClusterRequest][google.cloud.dataproc.v1beta2.UpdateClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [UpdateClusterRequest][google.cloud.dataproc.v1beta2.UpdateClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the
+   * backend is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 7;</code>
+   * <code>string request_id = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getRequestIdBytes();
 }

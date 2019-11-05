@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <artifactId>google-cloud-nio</artifactId>
-  <version>0.90.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-nio:current} -->
+  <version>0.117.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-nio:current} -->
   <packaging>jar</packaging>
   <name>Google Cloud NIO</name>
   <url>https://github.com/googleapis/google-cloud-java/tree/master/google-cloud-clients/google-cloud-contrib/google-cloud-nio</url>
@@ -12,7 +12,7 @@
   <parent>
     <groupId>com.google.cloud</groupId>
     <artifactId>google-cloud-contrib</artifactId>
-    <version>0.90.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-clients:current} -->
+    <version>0.117.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-clients:current} -->
   </parent>
   <properties>
     <site.installationModule>google-cloud-nio</site.installationModule>
@@ -21,14 +21,6 @@
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>google-cloud-storage</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.google.guava</groupId>
-      <artifactId>guava</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>jsr305</artifactId>
     </dependency>
     <dependency>
       <groupId>javax.inject</groupId>
@@ -65,7 +57,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>1.9.5</version>
+      <version>2.28.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -92,7 +84,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.2.1</version>
         <configuration>
           <shadedArtifactAttached>true</shadedArtifactAttached>
           <relocations>
@@ -104,7 +96,7 @@
                 <include>com.fasterxml.**</include>
               </includes>
               <excludes>
-                <exclude>com.google.cloud.**</exclude>
+                <exclude>com.google.cloud.storage.**</exclude>
                 <exclude>com.google.auto.**</exclude>
               </excludes>
             </relocation>

@@ -22,13 +22,10 @@ public final class BatchProto {
     java.lang.String[] descriptorData = {
       "\n\'google/cloud/talent/v4beta1/batch.prot"
           + "o\022\033google.cloud.talent.v4beta1\032\034google/a"
-          + "pi/annotations.proto\032%google/cloud/talen"
-          + "t/v4beta1/job.proto\032\037google/protobuf/tim"
-          + "estamp.proto\032\027google/rpc/status.protoBx\n"
-          + "\037com.google.cloud.talent.v4beta1B\nBatchP"
-          + "rotoP\001ZAgoogle.golang.org/genproto/googl"
-          + "eapis/cloud/talent/v4beta1;talent\242\002\003CTSb"
-          + "\006proto3"
+          + "pi/annotations.protoBx\n\037com.google.cloud"
+          + ".talent.v4beta1B\nBatchProtoP\001ZAgoogle.go"
+          + "lang.org/genproto/googleapis/cloud/talen"
+          + "t/v4beta1;talent\242\002\003CTSb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -42,15 +39,9 @@ public final class BatchProto {
         descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.api.AnnotationsProto.getDescriptor(),
-          com.google.cloud.talent.v4beta1.JobResourceProto.getDescriptor(),
-          com.google.protobuf.TimestampProto.getDescriptor(),
-          com.google.rpc.StatusProto.getDescriptor(),
         },
         assigner);
     com.google.api.AnnotationsProto.getDescriptor();
-    com.google.cloud.talent.v4beta1.JobResourceProto.getDescriptor();
-    com.google.protobuf.TimestampProto.getDescriptor();
-    com.google.rpc.StatusProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

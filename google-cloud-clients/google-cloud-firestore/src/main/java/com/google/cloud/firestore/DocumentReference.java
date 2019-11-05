@@ -22,6 +22,7 @@ import com.google.api.core.ApiFutures;
 import com.google.api.gax.rpc.ApiException;
 import com.google.api.gax.rpc.ApiExceptions;
 import com.google.cloud.firestore.v1.FirestoreClient.ListCollectionIdsPagedResponse;
+import com.google.common.util.concurrent.MoreExecutors;
 import com.google.firestore.v1.ListCollectionIdsRequest;
 import java.util.Iterator;
 import java.util.List;
@@ -130,7 +131,8 @@ public class DocumentReference {
           public T apply(List<T> results) {
             return results.isEmpty() ? null : results.get(0);
           }
-        });
+        },
+        MoreExecutors.directExecutor());
   }
 
   /**
@@ -358,6 +360,7 @@ public class DocumentReference {
    * @throws FirestoreException if the Iterable could not be initialized.
    * @return An Iterable that can be used to fetch all subcollections.
    */
+  @Nonnull
   public Iterable<CollectionReference> listCollections() {
     ListCollectionIdsRequest.Builder request = ListCollectionIdsRequest.newBuilder();
     request.setParent(path.toString());
@@ -400,10 +403,12 @@ public class DocumentReference {
   /**
    * Fetches the subcollections that are direct children of this document.
    *
-   * @deprecated Use `listCollections()`.
+   * @deprecated Use {@link #listCollections()}.
    * @throws FirestoreException if the Iterable could not be initialized.
    * @return An Iterable that can be used to fetch all subcollections.
    */
+  @Deprecated
+  @Nonnull
   public Iterable<CollectionReference> getCollections() {
     return listCollections();
   }

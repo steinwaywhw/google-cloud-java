@@ -12,26 +12,30 @@ public interface CreateTransferConfigRequestOrBuilder
    *
    *
    * <pre>
-   * The BigQuery project id where the transfer configuration should be created.
-   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * Required. The BigQuery project id where the transfer configuration should be created.
+   * Must be in the format projects/{project_id}/locations/{location_id}
    * If specified location and location of the destination bigquery dataset
    * do not match - the request will fail.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * The BigQuery project id where the transfer configuration should be created.
-   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * Required. The BigQuery project id where the transfer configuration should be created.
+   * Must be in the format projects/{project_id}/locations/{location_id}
    * If specified location and location of the destination bigquery dataset
    * do not match - the request will fail.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -39,30 +43,36 @@ public interface CreateTransferConfigRequestOrBuilder
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasTransferConfig();
   /**
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.bigquery.datatransfer.v1.TransferConfig getTransferConfig();
   /**
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.bigquery.datatransfer.v1.TransferConfigOrBuilder getTransferConfigOrBuilder();
 
@@ -114,4 +124,35 @@ public interface CreateTransferConfigRequestOrBuilder
    * <code>string authorization_code = 3;</code>
    */
   com.google.protobuf.ByteString getAuthorizationCodeBytes();
+
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  java.lang.String getVersionInfo();
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  com.google.protobuf.ByteString getVersionInfoBytes();
 }

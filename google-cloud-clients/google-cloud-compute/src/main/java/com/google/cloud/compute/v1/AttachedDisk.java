@@ -237,6 +237,7 @@ public final class AttachedDisk implements ApiMessage {
    * default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt
    * to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or
    * SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+   * TODO(b/131765817): Update documentation when NVME is supported.
    */
   public String getInterface() {
     return interface2;
@@ -262,8 +263,8 @@ public final class AttachedDisk implements ApiMessage {
 
   /**
    * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a
-   * new instance, one of initializeParams.sourceImage or disks.source is required except for local
-   * SSD.
+   * new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+   * disks.source is required except for local SSD.
    *
    * <p>If desired, you can also attach existing non-root persistent disks using this property. This
    * field is only applicable for persistent disks.
@@ -568,6 +569,7 @@ public final class AttachedDisk implements ApiMessage {
      * The default is SCSI. Persistent disks must always use SCSI and the request will fail if you
      * attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either
      * NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+     * TODO(b/131765817): Update documentation when NVME is supported.
      */
     public String getInterface() {
       return interface2;
@@ -578,6 +580,7 @@ public final class AttachedDisk implements ApiMessage {
      * The default is SCSI. Persistent disks must always use SCSI and the request will fail if you
      * attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either
      * NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+     * TODO(b/131765817): Update documentation when NVME is supported.
      */
     public Builder setInterface(String interface2) {
       this.interface2 = interface2;
@@ -637,8 +640,8 @@ public final class AttachedDisk implements ApiMessage {
 
     /**
      * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating
-     * a new instance, one of initializeParams.sourceImage or disks.source is required except for
-     * local SSD.
+     * a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+     * disks.source is required except for local SSD.
      *
      * <p>If desired, you can also attach existing non-root persistent disks using this property.
      * This field is only applicable for persistent disks.
@@ -651,8 +654,8 @@ public final class AttachedDisk implements ApiMessage {
 
     /**
      * Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating
-     * a new instance, one of initializeParams.sourceImage or disks.source is required except for
-     * local SSD.
+     * a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or
+     * disks.source is required except for local SSD.
      *
      * <p>If desired, you can also attach existing non-root persistent disks using this property.
      * This field is only applicable for persistent disks.

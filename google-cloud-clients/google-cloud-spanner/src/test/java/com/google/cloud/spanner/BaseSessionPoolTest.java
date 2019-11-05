@@ -52,12 +52,12 @@ abstract class BaseSessionPoolTest {
 
     @Override
     public void release(ScheduledExecutorService executor) {
-      // do nothing
+      executor.shutdown();
     }
   }
 
-  Session mockSession() {
-    Session session = mock(Session.class);
+  SessionImpl mockSession() {
+    SessionImpl session = mock(SessionImpl.class);
     when(session.getName())
         .thenReturn(
             "projects/dummy/instances/dummy/database/dummy/sessions/session" + sessionIndex);

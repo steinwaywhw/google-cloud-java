@@ -105,7 +105,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -118,7 +117,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
    * </pre>
    *
@@ -137,7 +135,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Email address.
    * Number of characters allowed is 4,000.
    * </pre>
@@ -159,7 +156,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Optional.
    * Email address.
    * Number of characters allowed is 4,000.
    * </pre>
@@ -516,7 +512,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -529,7 +524,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -544,7 +538,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -562,7 +555,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -581,7 +573,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * The usage of the email address. For example, SCHOOL, WORK, PERSONAL.
      * </pre>
      *
@@ -599,7 +590,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Email address.
      * Number of characters allowed is 4,000.
      * </pre>
@@ -621,7 +611,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Email address.
      * Number of characters allowed is 4,000.
      * </pre>
@@ -643,7 +632,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Email address.
      * Number of characters allowed is 4,000.
      * </pre>
@@ -663,7 +651,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Email address.
      * Number of characters allowed is 4,000.
      * </pre>
@@ -680,7 +667,6 @@ public final class Email extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Optional.
      * Email address.
      * Number of characters allowed is 4,000.
      * </pre>

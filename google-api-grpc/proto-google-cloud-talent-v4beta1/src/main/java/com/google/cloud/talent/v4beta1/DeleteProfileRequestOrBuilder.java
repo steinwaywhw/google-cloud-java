@@ -12,28 +12,26 @@ public interface DeleteProfileRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the profile to be deleted.
+   * Required. Resource name of the profile to be deleted.
    * The format is
-   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
-   * for example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   * example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   java.lang.String getName();
   /**
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the profile to be deleted.
+   * Required. Resource name of the profile to be deleted.
    * The format is
-   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}",
-   * for example, "projects/api-test-project/tenants/foo/profiles/bar".
+   * "projects/{project_id}/tenants/{tenant_id}/profiles/{profile_id}". For
+   * example, "projects/foo/tenants/bar/profiles/baz".
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   com.google.protobuf.ByteString getNameBytes();
 }

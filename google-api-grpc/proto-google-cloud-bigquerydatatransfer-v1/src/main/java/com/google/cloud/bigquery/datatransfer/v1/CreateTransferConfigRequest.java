@@ -30,6 +30,7 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
   private CreateTransferConfigRequest() {
     parent_ = "";
     authorizationCode_ = "";
+    versionInfo_ = "";
   }
 
   @java.lang.Override
@@ -87,6 +88,13 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
               authorizationCode_ = s;
               break;
             }
+          case 42:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              versionInfo_ = s;
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -127,13 +135,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * The BigQuery project id where the transfer configuration should be created.
-   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * Required. The BigQuery project id where the transfer configuration should be created.
+   * Must be in the format projects/{project_id}/locations/{location_id}
    * If specified location and location of the destination bigquery dataset
    * do not match - the request will fail.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -150,13 +160,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * The BigQuery project id where the transfer configuration should be created.
-   * Must be in the format /projects/{project_id}/locations/{location_id}
+   * Required. The BigQuery project id where the transfer configuration should be created.
+   * Must be in the format projects/{project_id}/locations/{location_id}
    * If specified location and location of the destination bigquery dataset
    * do not match - the request will fail.
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -176,10 +188,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasTransferConfig() {
     return transferConfig_ != null;
@@ -188,10 +202,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.bigquery.datatransfer.v1.TransferConfig getTransferConfig() {
     return transferConfig_ == null
@@ -202,10 +218,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
    *
    *
    * <pre>
-   * Data transfer configuration to create.
+   * Required. Data transfer configuration to create.
    * </pre>
    *
-   * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+   * <code>
+   * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.bigquery.datatransfer.v1.TransferConfigOrBuilder
       getTransferConfigOrBuilder() {
@@ -283,6 +301,59 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
     }
   }
 
+  public static final int VERSION_INFO_FIELD_NUMBER = 5;
+  private volatile java.lang.Object versionInfo_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  public java.lang.String getVersionInfo() {
+    java.lang.Object ref = versionInfo_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      versionInfo_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional version info. If users want to find a very recent access token,
+   * that is, immediately after approving access, users have to set the
+   * version_info claim in the token request. To obtain the version_info, users
+   * must use the "none+gsession" response type. which be return a
+   * version_info back in the authorization response which be be put in a JWT
+   * claim in the token request.
+   * </pre>
+   *
+   * <code>string version_info = 5;</code>
+   */
+  public com.google.protobuf.ByteString getVersionInfoBytes() {
+    java.lang.Object ref = versionInfo_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      versionInfo_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -306,6 +377,9 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
     if (!getAuthorizationCodeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, authorizationCode_);
     }
+    if (!getVersionInfoBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, versionInfo_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -323,6 +397,9 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
     }
     if (!getAuthorizationCodeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, authorizationCode_);
+    }
+    if (!getVersionInfoBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, versionInfo_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -346,6 +423,7 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
       if (!getTransferConfig().equals(other.getTransferConfig())) return false;
     }
     if (!getAuthorizationCode().equals(other.getAuthorizationCode())) return false;
+    if (!getVersionInfo().equals(other.getVersionInfo())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -365,6 +443,8 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
     }
     hash = (37 * hash) + AUTHORIZATION_CODE_FIELD_NUMBER;
     hash = (53 * hash) + getAuthorizationCode().hashCode();
+    hash = (37 * hash) + VERSION_INFO_FIELD_NUMBER;
+    hash = (53 * hash) + getVersionInfo().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -528,6 +608,8 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
       }
       authorizationCode_ = "";
 
+      versionInfo_ = "";
+
       return this;
     }
 
@@ -564,6 +646,7 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
         result.transferConfig_ = transferConfigBuilder_.build();
       }
       result.authorizationCode_ = authorizationCode_;
+      result.versionInfo_ = versionInfo_;
       onBuilt();
       return result;
     }
@@ -628,6 +711,10 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
         authorizationCode_ = other.authorizationCode_;
         onChanged();
       }
+      if (!other.getVersionInfo().isEmpty()) {
+        versionInfo_ = other.versionInfo_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -664,13 +751,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * The BigQuery project id where the transfer configuration should be created.
-     * Must be in the format /projects/{project_id}/locations/{location_id}
+     * Required. The BigQuery project id where the transfer configuration should be created.
+     * Must be in the format projects/{project_id}/locations/{location_id}
      * If specified location and location of the destination bigquery dataset
      * do not match - the request will fail.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -687,13 +776,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * The BigQuery project id where the transfer configuration should be created.
-     * Must be in the format /projects/{project_id}/locations/{location_id}
+     * Required. The BigQuery project id where the transfer configuration should be created.
+     * Must be in the format projects/{project_id}/locations/{location_id}
      * If specified location and location of the destination bigquery dataset
      * do not match - the request will fail.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -710,13 +801,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * The BigQuery project id where the transfer configuration should be created.
-     * Must be in the format /projects/{project_id}/locations/{location_id}
+     * Required. The BigQuery project id where the transfer configuration should be created.
+     * Must be in the format projects/{project_id}/locations/{location_id}
      * If specified location and location of the destination bigquery dataset
      * do not match - the request will fail.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -731,13 +824,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * The BigQuery project id where the transfer configuration should be created.
-     * Must be in the format /projects/{project_id}/locations/{location_id}
+     * Required. The BigQuery project id where the transfer configuration should be created.
+     * Must be in the format projects/{project_id}/locations/{location_id}
      * If specified location and location of the destination bigquery dataset
      * do not match - the request will fail.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder clearParent() {
 
@@ -749,13 +844,15 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * The BigQuery project id where the transfer configuration should be created.
-     * Must be in the format /projects/{project_id}/locations/{location_id}
+     * Required. The BigQuery project id where the transfer configuration should be created.
+     * Must be in the format projects/{project_id}/locations/{location_id}
      * If specified location and location of the destination bigquery dataset
      * do not match - the request will fail.
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>
+     * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+     * </code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -778,10 +875,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasTransferConfig() {
       return transferConfigBuilder_ != null || transferConfig_ != null;
@@ -790,10 +889,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfig getTransferConfig() {
       if (transferConfigBuilder_ == null) {
@@ -808,10 +909,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig value) {
@@ -831,10 +934,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig.Builder builderForValue) {
@@ -851,10 +956,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeTransferConfig(
         com.google.cloud.bigquery.datatransfer.v1.TransferConfig value) {
@@ -878,10 +985,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearTransferConfig() {
       if (transferConfigBuilder_ == null) {
@@ -898,10 +1007,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfig.Builder
         getTransferConfigBuilder() {
@@ -913,10 +1024,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.bigquery.datatransfer.v1.TransferConfigOrBuilder
         getTransferConfigOrBuilder() {
@@ -932,10 +1045,12 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
      *
      *
      * <pre>
-     * Data transfer configuration to create.
+     * Required. Data transfer configuration to create.
      * </pre>
      *
-     * <code>.google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2;</code>
+     * <code>
+     * .google.cloud.bigquery.datatransfer.v1.TransferConfig transfer_config = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.bigquery.datatransfer.v1.TransferConfig,
@@ -1114,6 +1229,125 @@ public final class CreateTransferConfigRequest extends com.google.protobuf.Gener
       checkByteStringIsUtf8(value);
 
       authorizationCode_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object versionInfo_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public java.lang.String getVersionInfo() {
+      java.lang.Object ref = versionInfo_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        versionInfo_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public com.google.protobuf.ByteString getVersionInfoBytes() {
+      java.lang.Object ref = versionInfo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        versionInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder setVersionInfo(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      versionInfo_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder clearVersionInfo() {
+
+      versionInfo_ = getDefaultInstance().getVersionInfo();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional version info. If users want to find a very recent access token,
+     * that is, immediately after approving access, users have to set the
+     * version_info claim in the token request. To obtain the version_info, users
+     * must use the "none+gsession" response type. which be return a
+     * version_info back in the authorization response which be be put in a JWT
+     * claim in the token request.
+     * </pre>
+     *
+     * <code>string version_info = 5;</code>
+     */
+    public Builder setVersionInfoBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      versionInfo_ = value;
       onChanged();
       return this;
     }

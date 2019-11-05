@@ -76,8 +76,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of getDocument to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of getDocument to 30 seconds:
  *
  * <pre>
  * <code>
@@ -110,6 +111,8 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
   private final OperationCallSettings<DeleteDocumentRequest, Empty, KnowledgeOperationMetadata>
       deleteDocumentOperationSettings;
   private final UnaryCallSettings<UpdateDocumentRequest, Operation> updateDocumentSettings;
+  private final OperationCallSettings<UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+      updateDocumentOperationSettings;
   private final UnaryCallSettings<ReloadDocumentRequest, Operation> reloadDocumentSettings;
 
   /** Returns the object with the settings used for calls to listDocuments. */
@@ -152,6 +155,13 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
     return updateDocumentSettings;
   }
 
+  /** Returns the object with the settings used for calls to updateDocument. */
+  @BetaApi("The surface for use by generated code is not stable yet and may change in the future.")
+  public OperationCallSettings<UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+      updateDocumentOperationSettings() {
+    return updateDocumentOperationSettings;
+  }
+
   /** Returns the object with the settings used for calls to reloadDocument. */
   public UnaryCallSettings<ReloadDocumentRequest, Operation> reloadDocumentSettings() {
     return reloadDocumentSettings;
@@ -191,7 +201,8 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -231,6 +242,7 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
     deleteDocumentSettings = settingsBuilder.deleteDocumentSettings().build();
     deleteDocumentOperationSettings = settingsBuilder.deleteDocumentOperationSettings().build();
     updateDocumentSettings = settingsBuilder.updateDocumentSettings().build();
+    updateDocumentOperationSettings = settingsBuilder.updateDocumentOperationSettings().build();
     reloadDocumentSettings = settingsBuilder.reloadDocumentSettings().build();
   }
 
@@ -307,6 +319,9 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
         deleteDocumentOperationSettings;
     private final UnaryCallSettings.Builder<UpdateDocumentRequest, Operation>
         updateDocumentSettings;
+    private final OperationCallSettings.Builder<
+            UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+        updateDocumentOperationSettings;
     private final UnaryCallSettings.Builder<ReloadDocumentRequest, Operation>
         reloadDocumentSettings;
 
@@ -364,6 +379,8 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
       deleteDocumentOperationSettings = OperationCallSettings.newBuilder();
 
       updateDocumentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      updateDocumentOperationSettings = OperationCallSettings.newBuilder();
 
       reloadDocumentSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
@@ -424,7 +441,7 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
           .setInitialCallSettings(
               UnaryCallSettings
                   .<CreateDocumentRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
-                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
                   .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
                   .build())
           .setResponseTransformer(
@@ -467,6 +484,30 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
                       .setMaxRpcTimeout(Duration.ZERO) // ignored
                       .setTotalTimeout(Duration.ofMillis(300000L))
                       .build()));
+      builder
+          .updateDocumentOperationSettings()
+          .setInitialCallSettings(
+              UnaryCallSettings
+                  .<UpdateDocumentRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .build())
+          .setResponseTransformer(
+              ProtoOperationTransformers.ResponseTransformer.create(Document.class))
+          .setMetadataTransformer(
+              ProtoOperationTransformers.MetadataTransformer.create(
+                  KnowledgeOperationMetadata.class))
+          .setPollingAlgorithm(
+              OperationTimedPollAlgorithm.create(
+                  RetrySettings.newBuilder()
+                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setRetryDelayMultiplier(1.5)
+                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setInitialRpcTimeout(Duration.ZERO) // ignored
+                      .setRpcTimeoutMultiplier(1.0) // ignored
+                      .setMaxRpcTimeout(Duration.ZERO) // ignored
+                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .build()));
 
       return builder;
     }
@@ -481,6 +522,7 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
       deleteDocumentSettings = settings.deleteDocumentSettings.toBuilder();
       deleteDocumentOperationSettings = settings.deleteDocumentOperationSettings.toBuilder();
       updateDocumentSettings = settings.updateDocumentSettings.toBuilder();
+      updateDocumentOperationSettings = settings.updateDocumentOperationSettings.toBuilder();
       reloadDocumentSettings = settings.reloadDocumentSettings.toBuilder();
 
       unaryMethodSettingsBuilders =
@@ -551,6 +593,15 @@ public class DocumentsStubSettings extends StubSettings<DocumentsStubSettings> {
     /** Returns the builder for the settings used for calls to updateDocument. */
     public UnaryCallSettings.Builder<UpdateDocumentRequest, Operation> updateDocumentSettings() {
       return updateDocumentSettings;
+    }
+
+    /** Returns the builder for the settings used for calls to updateDocument. */
+    @BetaApi(
+        "The surface for use by generated code is not stable yet and may change in the future.")
+    public OperationCallSettings.Builder<
+            UpdateDocumentRequest, Document, KnowledgeOperationMetadata>
+        updateDocumentOperationSettings() {
+      return updateDocumentOperationSettings;
     }
 
     /** Returns the builder for the settings used for calls to reloadDocument. */

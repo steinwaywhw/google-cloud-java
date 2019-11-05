@@ -12,24 +12,26 @@ public interface ListTasksRequestOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The queue name. For example:
+   * Required. The queue name. For example:
    * `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   java.lang.String getParent();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The queue name. For example:
+   * Required. The queue name. For example:
    * `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>
+   * string parent = 1 [(.google.api.field_behavior) = REQUIRED, (.google.api.resource_reference) = { ... }
+   * </code>
    */
   com.google.protobuf.ByteString getParentBytes();
 
@@ -76,12 +78,12 @@ public interface ListTasksRequestOrBuilder
    *
    *
    * <pre>
-   * Requested page size. Fewer tasks than requested might be returned.
-   * The maximum page size is 1000. If unspecified, the page size will
-   * be the maximum. Fewer tasks than requested might be returned,
-   * even if more tasks exist; use
-   * [next_page_token][google.cloud.tasks.v2.ListTasksResponse.next_page_token] in the
-   * response to determine if more tasks exist.
+   * Maximum page size.
+   * Fewer tasks than requested might be returned, even if more tasks exist; use
+   * [next_page_token][google.cloud.tasks.v2.ListTasksResponse.next_page_token] in the response to
+   * determine if more tasks exist.
+   * The maximum page size is 1000. If unspecified, the page size will be the
+   * maximum.
    * </pre>
    *
    * <code>int32 page_size = 3;</code>

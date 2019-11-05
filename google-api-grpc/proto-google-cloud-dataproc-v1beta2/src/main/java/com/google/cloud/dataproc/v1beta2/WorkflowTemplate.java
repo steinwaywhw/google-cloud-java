@@ -218,9 +218,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). Cannot begin or end with underscore
    * or hyphen. Must consist of between 3 and 50 characters.
+   * .
    * </pre>
    *
-   * <code>string id = 2;</code>
+   * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getId() {
     java.lang.Object ref = id_;
@@ -241,9 +242,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). Cannot begin or end with underscore
    * or hyphen. Must consist of between 3 and 50 characters.
+   * .
    * </pre>
    *
-   * <code>string id = 2;</code>
+   * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getIdBytes() {
     java.lang.Object ref = id_;
@@ -263,12 +265,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The "resource name" of the template, as described
-   * in https://cloud.google.com/apis/design/resource_names of the form
-   * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+   * Output only. The resource name of the workflow template, as described
+   * in https://cloud.google.com/apis/design/resource_names.
+   * * For `projects.regions.workflowTemplates`, the resource name of the
+   *   template has the following format:
+   *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+   * * For `projects.locations.workflowTemplates`, the resource name of the
+   *   template has the following format:
+   *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public java.lang.String getName() {
     java.lang.Object ref = name_;
@@ -285,12 +292,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    *
    *
    * <pre>
-   * Output only. The "resource name" of the template, as described
-   * in https://cloud.google.com/apis/design/resource_names of the form
-   * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+   * Output only. The resource name of the workflow template, as described
+   * in https://cloud.google.com/apis/design/resource_names.
+   * * For `projects.regions.workflowTemplates`, the resource name of the
+   *   template has the following format:
+   *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+   * * For `projects.locations.workflowTemplates`, the resource name of the
+   *   template has the following format:
+   *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
    * </pre>
    *
-   * <code>string name = 1;</code>
+   * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
    */
   public com.google.protobuf.ByteString getNameBytes() {
     java.lang.Object ref = name_;
@@ -320,7 +332,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * then returns it as part of the `UpdateWorkflowTemplate` request.
    * </pre>
    *
-   * <code>int32 version = 3;</code>
+   * <code>int32 version = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public int getVersion() {
     return version_;
@@ -335,7 +347,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 4;</code>
+   * <code>.google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public boolean hasCreateTime() {
     return createTime_ != null;
@@ -347,7 +360,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 4;</code>
+   * <code>.google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.Timestamp getCreateTime() {
     return createTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createTime_;
@@ -359,7 +373,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was created.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp create_time = 4;</code>
+   * <code>.google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.TimestampOrBuilder getCreateTimeOrBuilder() {
     return getCreateTime();
@@ -374,7 +389,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was last updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 5;</code>
+   * <code>.google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public boolean hasUpdateTime() {
     return updateTime_ != null;
@@ -386,7 +402,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was last updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 5;</code>
+   * <code>.google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.Timestamp getUpdateTime() {
     return updateTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updateTime_;
@@ -398,7 +415,8 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * Output only. The time template was last updated.
    * </pre>
    *
-   * <code>.google.protobuf.Timestamp update_time = 5;</code>
+   * <code>.google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+   * </code>
    */
   public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
     return getUpdateTime();
@@ -444,7 +462,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * No more than 32 labels can be associated with a template.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; labels = 6;</code>
+   * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public boolean containsLabels(java.lang.String key) {
     if (key == null) {
@@ -472,7 +490,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * No more than 32 labels can be associated with a template.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; labels = 6;</code>
+   * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.util.Map<java.lang.String, java.lang.String> getLabelsMap() {
     return internalGetLabels().getMap();
@@ -492,7 +510,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * No more than 32 labels can be associated with a template.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; labels = 6;</code>
+   * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getLabelsOrDefault(java.lang.String key, java.lang.String defaultValue) {
     if (key == null) {
@@ -516,7 +534,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * No more than 32 labels can be associated with a template.
    * </pre>
    *
-   * <code>map&lt;string, string&gt; labels = 6;</code>
+   * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getLabelsOrThrow(java.lang.String key) {
     if (key == null) {
@@ -646,7 +664,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * instantiated.
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+   * <code>
+   * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.util.List<com.google.cloud.dataproc.v1beta2.TemplateParameter> getParametersList() {
     return parameters_;
@@ -660,7 +680,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * instantiated.
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+   * <code>
+   * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.util.List<? extends com.google.cloud.dataproc.v1beta2.TemplateParameterOrBuilder>
       getParametersOrBuilderList() {
@@ -675,7 +697,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * instantiated.
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+   * <code>
+   * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public int getParametersCount() {
     return parameters_.size();
@@ -689,7 +713,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * instantiated.
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+   * <code>
+   * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1beta2.TemplateParameter getParameters(int index) {
     return parameters_.get(index);
@@ -703,7 +729,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
    * instantiated.
    * </pre>
    *
-   * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+   * <code>
+   * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.cloud.dataproc.v1beta2.TemplateParameterOrBuilder getParametersOrBuilder(
       int index) {
@@ -1307,9 +1335,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). Cannot begin or end with underscore
      * or hyphen. Must consist of between 3 and 50 characters.
+     * .
      * </pre>
      *
-     * <code>string id = 2;</code>
+     * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getId() {
       java.lang.Object ref = id_;
@@ -1330,9 +1359,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). Cannot begin or end with underscore
      * or hyphen. Must consist of between 3 and 50 characters.
+     * .
      * </pre>
      *
-     * <code>string id = 2;</code>
+     * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getIdBytes() {
       java.lang.Object ref = id_;
@@ -1353,9 +1383,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). Cannot begin or end with underscore
      * or hyphen. Must consist of between 3 and 50 characters.
+     * .
      * </pre>
      *
-     * <code>string id = 2;</code>
+     * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setId(java.lang.String value) {
       if (value == null) {
@@ -1374,9 +1405,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). Cannot begin or end with underscore
      * or hyphen. Must consist of between 3 and 50 characters.
+     * .
      * </pre>
      *
-     * <code>string id = 2;</code>
+     * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearId() {
 
@@ -1392,9 +1424,10 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). Cannot begin or end with underscore
      * or hyphen. Must consist of between 3 and 50 characters.
+     * .
      * </pre>
      *
-     * <code>string id = 2;</code>
+     * <code>string id = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1412,12 +1445,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The "resource name" of the template, as described
-     * in https://cloud.google.com/apis/design/resource_names of the form
-     * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * Output only. The resource name of the workflow template, as described
+     * in https://cloud.google.com/apis/design/resource_names.
+     * * For `projects.regions.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * * For `projects.locations.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1434,12 +1472,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The "resource name" of the template, as described
-     * in https://cloud.google.com/apis/design/resource_names of the form
-     * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * Output only. The resource name of the workflow template, as described
+     * in https://cloud.google.com/apis/design/resource_names.
+     * * For `projects.regions.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * * For `projects.locations.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public com.google.protobuf.ByteString getNameBytes() {
       java.lang.Object ref = name_;
@@ -1456,12 +1499,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The "resource name" of the template, as described
-     * in https://cloud.google.com/apis/design/resource_names of the form
-     * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * Output only. The resource name of the workflow template, as described
+     * in https://cloud.google.com/apis/design/resource_names.
+     * * For `projects.regions.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * * For `projects.locations.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setName(java.lang.String value) {
       if (value == null) {
@@ -1476,12 +1524,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The "resource name" of the template, as described
-     * in https://cloud.google.com/apis/design/resource_names of the form
-     * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * Output only. The resource name of the workflow template, as described
+     * in https://cloud.google.com/apis/design/resource_names.
+     * * For `projects.regions.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * * For `projects.locations.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder clearName() {
 
@@ -1493,12 +1546,17 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      *
      *
      * <pre>
-     * Output only. The "resource name" of the template, as described
-     * in https://cloud.google.com/apis/design/resource_names of the form
-     * `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * Output only. The resource name of the workflow template, as described
+     * in https://cloud.google.com/apis/design/resource_names.
+     * * For `projects.regions.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}`
+     * * For `projects.locations.workflowTemplates`, the resource name of the
+     *   template has the following format:
+     *   `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
      * </pre>
      *
-     * <code>string name = 1;</code>
+     * <code>string name = 1 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     public Builder setNameBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1526,7 +1584,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * then returns it as part of the `UpdateWorkflowTemplate` request.
      * </pre>
      *
-     * <code>int32 version = 3;</code>
+     * <code>int32 version = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public int getVersion() {
       return version_;
@@ -1545,7 +1603,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * then returns it as part of the `UpdateWorkflowTemplate` request.
      * </pre>
      *
-     * <code>int32 version = 3;</code>
+     * <code>int32 version = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setVersion(int value) {
 
@@ -1567,7 +1625,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * then returns it as part of the `UpdateWorkflowTemplate` request.
      * </pre>
      *
-     * <code>int32 version = 3;</code>
+     * <code>int32 version = 3 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearVersion() {
 
@@ -1589,7 +1647,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public boolean hasCreateTime() {
       return createTimeBuilder_ != null || createTime_ != null;
@@ -1601,7 +1661,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp getCreateTime() {
       if (createTimeBuilder_ == null) {
@@ -1619,7 +1681,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setCreateTime(com.google.protobuf.Timestamp value) {
       if (createTimeBuilder_ == null) {
@@ -1641,7 +1705,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setCreateTime(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (createTimeBuilder_ == null) {
@@ -1660,7 +1726,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder mergeCreateTime(com.google.protobuf.Timestamp value) {
       if (createTimeBuilder_ == null) {
@@ -1684,7 +1752,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearCreateTime() {
       if (createTimeBuilder_ == null) {
@@ -1704,7 +1774,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getCreateTimeBuilder() {
 
@@ -1718,7 +1790,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getCreateTimeOrBuilder() {
       if (createTimeBuilder_ != null) {
@@ -1736,7 +1810,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was created.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp create_time = 4;</code>
+     * <code>
+     * .google.protobuf.Timestamp create_time = 4 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Timestamp,
@@ -1768,7 +1844,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public boolean hasUpdateTime() {
       return updateTimeBuilder_ != null || updateTime_ != null;
@@ -1780,7 +1858,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp getUpdateTime() {
       if (updateTimeBuilder_ == null) {
@@ -1798,7 +1878,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setUpdateTime(com.google.protobuf.Timestamp value) {
       if (updateTimeBuilder_ == null) {
@@ -1820,7 +1902,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder setUpdateTime(com.google.protobuf.Timestamp.Builder builderForValue) {
       if (updateTimeBuilder_ == null) {
@@ -1839,7 +1923,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder mergeUpdateTime(com.google.protobuf.Timestamp value) {
       if (updateTimeBuilder_ == null) {
@@ -1863,7 +1949,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public Builder clearUpdateTime() {
       if (updateTimeBuilder_ == null) {
@@ -1883,7 +1971,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.Timestamp.Builder getUpdateTimeBuilder() {
 
@@ -1897,7 +1987,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     public com.google.protobuf.TimestampOrBuilder getUpdateTimeOrBuilder() {
       if (updateTimeBuilder_ != null) {
@@ -1915,7 +2007,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * Output only. The time template was last updated.
      * </pre>
      *
-     * <code>.google.protobuf.Timestamp update_time = 5;</code>
+     * <code>
+     * .google.protobuf.Timestamp update_time = 5 [(.google.api.field_behavior) = OUTPUT_ONLY];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.protobuf.Timestamp,
@@ -1974,7 +2068,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public boolean containsLabels(java.lang.String key) {
       if (key == null) {
@@ -2002,7 +2096,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.util.Map<java.lang.String, java.lang.String> getLabelsMap() {
       return internalGetLabels().getMap();
@@ -2022,7 +2116,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getLabelsOrDefault(
         java.lang.String key, java.lang.String defaultValue) {
@@ -2047,7 +2141,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getLabelsOrThrow(java.lang.String key) {
       if (key == null) {
@@ -2079,7 +2173,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder removeLabels(java.lang.String key) {
       if (key == null) {
@@ -2108,7 +2202,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder putLabels(java.lang.String key, java.lang.String value) {
       if (key == null) {
@@ -2135,7 +2229,7 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * No more than 32 labels can be associated with a template.
      * </pre>
      *
-     * <code>map&lt;string, string&gt; labels = 6;</code>
+     * <code>map&lt;string, string&gt; labels = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder putAllLabels(java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableLabels().getMutableMap().putAll(values);
@@ -2703,7 +2797,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.util.List<com.google.cloud.dataproc.v1beta2.TemplateParameter> getParametersList() {
       if (parametersBuilder_ == null) {
@@ -2721,7 +2817,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public int getParametersCount() {
       if (parametersBuilder_ == null) {
@@ -2739,7 +2837,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1beta2.TemplateParameter getParameters(int index) {
       if (parametersBuilder_ == null) {
@@ -2757,7 +2857,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setParameters(
         int index, com.google.cloud.dataproc.v1beta2.TemplateParameter value) {
@@ -2782,7 +2884,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setParameters(
         int index, com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder builderForValue) {
@@ -2804,7 +2908,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addParameters(com.google.cloud.dataproc.v1beta2.TemplateParameter value) {
       if (parametersBuilder_ == null) {
@@ -2828,7 +2934,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addParameters(
         int index, com.google.cloud.dataproc.v1beta2.TemplateParameter value) {
@@ -2853,7 +2961,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addParameters(
         com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder builderForValue) {
@@ -2875,7 +2985,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addParameters(
         int index, com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder builderForValue) {
@@ -2897,7 +3009,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addAllParameters(
         java.lang.Iterable<? extends com.google.cloud.dataproc.v1beta2.TemplateParameter> values) {
@@ -2919,7 +3033,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearParameters() {
       if (parametersBuilder_ == null) {
@@ -2940,7 +3056,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder removeParameters(int index) {
       if (parametersBuilder_ == null) {
@@ -2961,7 +3079,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder getParametersBuilder(
         int index) {
@@ -2976,7 +3096,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1beta2.TemplateParameterOrBuilder getParametersOrBuilder(
         int index) {
@@ -2995,7 +3117,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.util.List<? extends com.google.cloud.dataproc.v1beta2.TemplateParameterOrBuilder>
         getParametersOrBuilderList() {
@@ -3014,7 +3138,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder addParametersBuilder() {
       return getParametersFieldBuilder()
@@ -3029,7 +3155,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder addParametersBuilder(
         int index) {
@@ -3046,7 +3174,9 @@ public final class WorkflowTemplate extends com.google.protobuf.GeneratedMessage
      * instantiated.
      * </pre>
      *
-     * <code>repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9;</code>
+     * <code>
+     * repeated .google.cloud.dataproc.v1beta2.TemplateParameter parameters = 9 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.util.List<com.google.cloud.dataproc.v1beta2.TemplateParameter.Builder>
         getParametersBuilderList() {

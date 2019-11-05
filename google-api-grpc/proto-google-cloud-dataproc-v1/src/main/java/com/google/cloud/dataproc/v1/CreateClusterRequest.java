@@ -133,7 +133,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getProjectId() {
     java.lang.Object ref = projectId_;
@@ -154,7 +154,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * belongs to.
    * </pre>
    *
-   * <code>string project_id = 1;</code>
+   * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getProjectIdBytes() {
     java.lang.Object ref = projectId_;
@@ -177,7 +177,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 3;</code>
+   * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getRegion() {
     java.lang.Object ref = region_;
@@ -197,7 +197,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The Cloud Dataproc region in which to handle the request.
    * </pre>
    *
-   * <code>string region = 3;</code>
+   * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getRegionBytes() {
     java.lang.Object ref = region_;
@@ -220,7 +220,8 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The cluster to create.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasCluster() {
     return cluster_ != null;
@@ -232,7 +233,8 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The cluster to create.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.Cluster getCluster() {
     return cluster_ == null ? com.google.cloud.dataproc.v1.Cluster.getDefaultInstance() : cluster_;
@@ -244,7 +246,8 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    * Required. The cluster to create.
    * </pre>
    *
-   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+   * <code>.google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.dataproc.v1.ClusterOrBuilder getClusterOrBuilder() {
     return getCluster();
@@ -257,18 +260,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+   * is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 4;</code>
+   * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getRequestId() {
     java.lang.Object ref = requestId_;
@@ -286,18 +288,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
    *
    * <pre>
    * Optional. A unique id used to identify the request. If the server
-   * receives two
-   * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-   * requests  with the same id, then the second request will be ignored and the
-   * first [google.longrunning.Operation][google.longrunning.Operation] created
-   * and stored in the backend is returned.
+   * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+   * id, then the second request will be ignored and the
+   * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+   * is returned.
    * It is recommended to always set this value to a
    * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
    * The id must contain only letters (a-z, A-Z), numbers (0-9),
    * underscores (_), and hyphens (-). The maximum length is 40 characters.
    * </pre>
    *
-   * <code>string request_id = 4;</code>
+   * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getRequestIdBytes() {
     java.lang.Object ref = requestId_;
@@ -698,7 +699,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getProjectId() {
       java.lang.Object ref = projectId_;
@@ -719,7 +720,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getProjectIdBytes() {
       java.lang.Object ref = projectId_;
@@ -740,7 +741,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setProjectId(java.lang.String value) {
       if (value == null) {
@@ -759,7 +760,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearProjectId() {
 
@@ -775,7 +776,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * belongs to.
      * </pre>
      *
-     * <code>string project_id = 1;</code>
+     * <code>string project_id = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setProjectIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -796,7 +797,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getRegion() {
       java.lang.Object ref = region_;
@@ -816,7 +817,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getRegionBytes() {
       java.lang.Object ref = region_;
@@ -836,7 +837,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setRegion(java.lang.String value) {
       if (value == null) {
@@ -854,7 +855,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearRegion() {
 
@@ -869,7 +870,7 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The Cloud Dataproc region in which to handle the request.
      * </pre>
      *
-     * <code>string region = 3;</code>
+     * <code>string region = 3 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setRegionBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -895,7 +896,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasCluster() {
       return clusterBuilder_ != null || cluster_ != null;
@@ -907,7 +910,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.Cluster getCluster() {
       if (clusterBuilder_ == null) {
@@ -925,7 +930,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setCluster(com.google.cloud.dataproc.v1.Cluster value) {
       if (clusterBuilder_ == null) {
@@ -947,7 +954,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setCluster(com.google.cloud.dataproc.v1.Cluster.Builder builderForValue) {
       if (clusterBuilder_ == null) {
@@ -966,7 +975,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeCluster(com.google.cloud.dataproc.v1.Cluster value) {
       if (clusterBuilder_ == null) {
@@ -992,7 +1003,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearCluster() {
       if (clusterBuilder_ == null) {
@@ -1012,7 +1025,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.Cluster.Builder getClusterBuilder() {
 
@@ -1026,7 +1041,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.dataproc.v1.ClusterOrBuilder getClusterOrBuilder() {
       if (clusterBuilder_ != null) {
@@ -1044,7 +1061,9 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      * Required. The cluster to create.
      * </pre>
      *
-     * <code>.google.cloud.dataproc.v1.Cluster cluster = 2;</code>
+     * <code>
+     * .google.cloud.dataproc.v1.Cluster cluster = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.dataproc.v1.Cluster,
@@ -1069,18 +1088,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+     * is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 4;</code>
+     * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getRequestId() {
       java.lang.Object ref = requestId_;
@@ -1098,18 +1116,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+     * is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 4;</code>
+     * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getRequestIdBytes() {
       java.lang.Object ref = requestId_;
@@ -1127,18 +1144,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+     * is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 4;</code>
+     * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRequestId(java.lang.String value) {
       if (value == null) {
@@ -1154,18 +1170,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+     * is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 4;</code>
+     * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearRequestId() {
 
@@ -1178,18 +1193,17 @@ public final class CreateClusterRequest extends com.google.protobuf.GeneratedMes
      *
      * <pre>
      * Optional. A unique id used to identify the request. If the server
-     * receives two
-     * [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest]
-     * requests  with the same id, then the second request will be ignored and the
-     * first [google.longrunning.Operation][google.longrunning.Operation] created
-     * and stored in the backend is returned.
+     * receives two [CreateClusterRequest][google.cloud.dataproc.v1.CreateClusterRequest] requests  with the same
+     * id, then the second request will be ignored and the
+     * first [google.longrunning.Operation][google.longrunning.Operation] created and stored in the backend
+     * is returned.
      * It is recommended to always set this value to a
      * [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier).
      * The id must contain only letters (a-z, A-Z), numbers (0-9),
      * underscores (_), and hyphens (-). The maximum length is 40 characters.
      * </pre>
      *
-     * <code>string request_id = 4;</code>
+     * <code>string request_id = 4 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setRequestIdBytes(com.google.protobuf.ByteString value) {
       if (value == null) {

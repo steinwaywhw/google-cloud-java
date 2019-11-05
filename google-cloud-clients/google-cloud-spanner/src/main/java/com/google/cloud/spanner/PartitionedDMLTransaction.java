@@ -29,10 +29,10 @@ import com.google.spanner.v1.TransactionOptions;
 import com.google.spanner.v1.TransactionSelector;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import org.threeten.bp.Duration;
 
 /** Partitioned DML transaction for bulk updates and deletes. */
 class PartitionedDMLTransaction implements SessionTransaction {
-  private final ByteString transactionId;
   private final SessionImpl session;
   private final SpannerRpc rpc;
   private volatile boolean isValid = true;
@@ -40,7 +40,6 @@ class PartitionedDMLTransaction implements SessionTransaction {
   PartitionedDMLTransaction(SessionImpl session, SpannerRpc rpc) {
     this.session = session;
     this.rpc = rpc;
-    this.transactionId = initTransaction();
   }
 
   private ByteString initTransaction() {
@@ -51,14 +50,7 @@ class PartitionedDMLTransaction implements SessionTransaction {
                 TransactionOptions.newBuilder()
                     .setPartitionedDml(TransactionOptions.PartitionedDml.getDefaultInstance()))
             .build();
-    Transaction txn =
-        SpannerImpl.runWithRetries(
-            new Callable<Transaction>() {
-              @Override
-              public Transaction call() throws Exception {
-                return rpc.beginTransaction(request, session.getOptions());
-              }
-            });
+    Transaction txn = rpc.beginTransaction(request, session.getOptions());
     if (txn.getId().isEmpty()) {
       throw SpannerExceptionFactory.newSpannerException(
           ErrorCode.INTERNAL,
@@ -67,30 +59,36 @@ class PartitionedDMLTransaction implements SessionTransaction {
     return txn.getId();
   }
 
-  long executePartitionedUpdate(Statement statement) {
+  /**
+   * Executes the {@link Statement} using a partitioned dml transaction with automatic retry if the
+   * transaction was aborted.
+   */
+  long executePartitionedUpdate(final Statement statement, final Duration timeout) {
     checkState(isValid, "Partitioned DML has been invalidated by a new operation on the session");
-    final ExecuteSqlRequest.Builder builder =
-        ExecuteSqlRequest.newBuilder()
-            .setSql(statement.getSql())
-            .setQueryMode(QueryMode.NORMAL)
-            .setSession(session.getName())
-            .setTransaction(TransactionSelector.newBuilder().setId(transactionId).build());
-    Map<String, Value> stmtParameters = statement.getParameters();
-    if (!stmtParameters.isEmpty()) {
-      com.google.protobuf.Struct.Builder paramsBuilder = builder.getParamsBuilder();
-      for (Map.Entry<String, Value> param : stmtParameters.entrySet()) {
-        paramsBuilder.putFields(param.getKey(), param.getValue().toProto());
-        builder.putParamTypes(param.getKey(), param.getValue().getType().toProto());
-      }
-    }
-    com.google.spanner.v1.ResultSet resultSet =
-        SpannerImpl.runWithRetries(
-            new Callable<com.google.spanner.v1.ResultSet>() {
-              @Override
-              public com.google.spanner.v1.ResultSet call() throws Exception {
-                return rpc.executeQuery(builder.build(), session.getOptions());
+    Callable<com.google.spanner.v1.ResultSet> callable =
+        new Callable<com.google.spanner.v1.ResultSet>() {
+          @Override
+          public com.google.spanner.v1.ResultSet call() throws Exception {
+            ByteString transactionId = initTransaction();
+            final ExecuteSqlRequest.Builder builder =
+                ExecuteSqlRequest.newBuilder()
+                    .setSql(statement.getSql())
+                    .setQueryMode(QueryMode.NORMAL)
+                    .setSession(session.getName())
+                    .setTransaction(TransactionSelector.newBuilder().setId(transactionId).build());
+            Map<String, Value> stmtParameters = statement.getParameters();
+            if (!stmtParameters.isEmpty()) {
+              com.google.protobuf.Struct.Builder paramsBuilder = builder.getParamsBuilder();
+              for (Map.Entry<String, Value> param : stmtParameters.entrySet()) {
+                paramsBuilder.putFields(param.getKey(), param.getValue().toProto());
+                builder.putParamTypes(param.getKey(), param.getValue().getType().toProto());
               }
-            });
+            }
+            return rpc.executePartitionedDml(builder.build(), session.getOptions(), timeout);
+          }
+        };
+    com.google.spanner.v1.ResultSet resultSet =
+        SpannerRetryHelper.runTxWithRetriesOnAborted(callable);
     if (!resultSet.hasStats()) {
       throw new IllegalArgumentException(
           "Partitioned DML response missing stats possibly due to non-DML statement as input");

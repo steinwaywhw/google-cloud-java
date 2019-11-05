@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Input only.
  * Outcome Notes Filter.
  * </pre>
  *
@@ -103,12 +102,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
    *
    *
    * <pre>
-   * Required.
-   * User entered or selected outcome reason. The API does an exact match on the
-   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+   * Required. User entered or selected outcome reason. The API does an exact
+   * match on the
+   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+   * in profiles.
    * </pre>
    *
-   * <code>string outcome_notes = 1;</code>
+   * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getOutcomeNotes() {
     java.lang.Object ref = outcomeNotes_;
@@ -125,12 +125,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
    *
    *
    * <pre>
-   * Required.
-   * User entered or selected outcome reason. The API does an exact match on the
-   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+   * Required. User entered or selected outcome reason. The API does an exact
+   * match on the
+   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+   * in profiles.
    * </pre>
    *
-   * <code>string outcome_notes = 1;</code>
+   * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getOutcomeNotesBytes() {
     java.lang.Object ref = outcomeNotes_;
@@ -150,10 +151,9 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
    *
    *
    * <pre>
-   * Optional.
    * If true, The API excludes all candidates with any
-   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] matching the outcome reason specified in
-   * the filter.
+   * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+   * matching the outcome reason specified in the filter.
    * </pre>
    *
    * <code>bool negated = 2;</code>
@@ -335,7 +335,6 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
    *
    *
    * <pre>
-   * Input only.
    * Outcome Notes Filter.
    * </pre>
    *
@@ -505,12 +504,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Required.
-     * User entered or selected outcome reason. The API does an exact match on the
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+     * Required. User entered or selected outcome reason. The API does an exact
+     * match on the
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * in profiles.
      * </pre>
      *
-     * <code>string outcome_notes = 1;</code>
+     * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getOutcomeNotes() {
       java.lang.Object ref = outcomeNotes_;
@@ -527,12 +527,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Required.
-     * User entered or selected outcome reason. The API does an exact match on the
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+     * Required. User entered or selected outcome reason. The API does an exact
+     * match on the
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * in profiles.
      * </pre>
      *
-     * <code>string outcome_notes = 1;</code>
+     * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getOutcomeNotesBytes() {
       java.lang.Object ref = outcomeNotes_;
@@ -549,12 +550,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Required.
-     * User entered or selected outcome reason. The API does an exact match on the
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+     * Required. User entered or selected outcome reason. The API does an exact
+     * match on the
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * in profiles.
      * </pre>
      *
-     * <code>string outcome_notes = 1;</code>
+     * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setOutcomeNotes(java.lang.String value) {
       if (value == null) {
@@ -569,12 +571,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Required.
-     * User entered or selected outcome reason. The API does an exact match on the
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+     * Required. User entered or selected outcome reason. The API does an exact
+     * match on the
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * in profiles.
      * </pre>
      *
-     * <code>string outcome_notes = 1;</code>
+     * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearOutcomeNotes() {
 
@@ -586,12 +589,13 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Required.
-     * User entered or selected outcome reason. The API does an exact match on the
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] in profiles.
+     * Required. User entered or selected outcome reason. The API does an exact
+     * match on the
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * in profiles.
      * </pre>
      *
-     * <code>string outcome_notes = 1;</code>
+     * <code>string outcome_notes = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setOutcomeNotesBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -609,10 +613,9 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Optional.
      * If true, The API excludes all candidates with any
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] matching the outcome reason specified in
-     * the filter.
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * matching the outcome reason specified in the filter.
      * </pre>
      *
      * <code>bool negated = 2;</code>
@@ -624,10 +627,9 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Optional.
      * If true, The API excludes all candidates with any
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] matching the outcome reason specified in
-     * the filter.
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * matching the outcome reason specified in the filter.
      * </pre>
      *
      * <code>bool negated = 2;</code>
@@ -642,10 +644,9 @@ public final class ApplicationOutcomeNotesFilter extends com.google.protobuf.Gen
      *
      *
      * <pre>
-     * Optional.
      * If true, The API excludes all candidates with any
-     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes] matching the outcome reason specified in
-     * the filter.
+     * [Application.outcome_notes][google.cloud.talent.v4beta1.Application.outcome_notes]
+     * matching the outcome reason specified in the filter.
      * </pre>
      *
      * <code>bool negated = 2;</code>

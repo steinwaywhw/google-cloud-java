@@ -15,7 +15,10 @@
 
 set -eo pipefail
 
-cd github/google-cloud-java/
+## Get the directory of the build script
+scriptDir=$(realpath $(dirname "${BASH_SOURCE[0]}"))
+## cd to the parent directory, i.e. the root of the git repo
+cd ${scriptDir}/..
 
 function client_has_changes() {
   CLIENT_NAME=$1
@@ -51,10 +54,13 @@ if [[ "${SKIP_INTEGRATION_TESTS_IF_NO_CHANGES}" == "true" ]] &&
   fi
 fi
 
-mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgcloud.download.skip=true -B -V
+mvn install -B -V \
+  -DskipTests=true \
+  -Dmaven.javadoc.skip=true \
+  -Dgcloud.download.skip=true
 
-# prepend Kokoro root directory onto GOOGLE_APPLICATION_CREDENTIALS path
-if [[ ! -z "${GOOGLE_APPLICATION_CREDENTIALS}" ]]; then
+# if GOOGLE_APPLICATION_CREDIENTIALS is specified as a relative path prepend Kokoro root directory onto it
+if [[ ! -z "${GOOGLE_APPLICATION_CREDENTIALS}" && "${GOOGLE_APPLICATION_CREDENTIALS}" != /* ]]; then
     export GOOGLE_APPLICATION_CREDENTIALS=$(realpath ${KOKORO_ROOT}/src/${GOOGLE_APPLICATION_CREDENTIALS})
 fi
 

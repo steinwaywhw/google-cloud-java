@@ -113,15 +113,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the tenant under which the company is created.
+   * Required. Resource name of the tenant under which the company is created.
    * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and a default tenant is created if unspecified, for
-   * example, "projects/api-test-project".
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created, for example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -138,15 +136,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * Resource name of the tenant under which the company is created.
+   * Required. Resource name of the tenant under which the company is created.
    * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and a default tenant is created if unspecified, for
-   * example, "projects/api-test-project".
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created, for example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -166,11 +162,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public boolean hasCompany() {
     return company_ != null;
@@ -179,11 +176,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.Company getCompany() {
     return company_ == null
@@ -194,11 +192,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
    *
    *
    * <pre>
-   * Required.
-   * The company to be created.
+   * Required. The company to be created.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   public com.google.cloud.talent.v4beta1.CompanyOrBuilder getCompanyOrBuilder() {
     return getCompany();
@@ -555,15 +554,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * Resource name of the tenant under which the company is created.
+     * Required. Resource name of the tenant under which the company is created.
      * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and a default tenant is created if unspecified, for
-     * example, "projects/api-test-project".
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created, for example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -580,15 +577,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * Resource name of the tenant under which the company is created.
+     * Required. Resource name of the tenant under which the company is created.
      * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and a default tenant is created if unspecified, for
-     * example, "projects/api-test-project".
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created, for example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -605,15 +600,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * Resource name of the tenant under which the company is created.
+     * Required. Resource name of the tenant under which the company is created.
      * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and a default tenant is created if unspecified, for
-     * example, "projects/api-test-project".
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created, for example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -628,15 +621,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * Resource name of the tenant under which the company is created.
+     * Required. Resource name of the tenant under which the company is created.
      * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and a default tenant is created if unspecified, for
-     * example, "projects/api-test-project".
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created, for example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearParent() {
 
@@ -648,15 +639,13 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * Resource name of the tenant under which the company is created.
+     * Required. Resource name of the tenant under which the company is created.
      * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and a default tenant is created if unspecified, for
-     * example, "projects/api-test-project".
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created, for example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -679,11 +668,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public boolean hasCompany() {
       return companyBuilder_ != null || company_ != null;
@@ -692,11 +682,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.Company getCompany() {
       if (companyBuilder_ == null) {
@@ -711,11 +702,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setCompany(com.google.cloud.talent.v4beta1.Company value) {
       if (companyBuilder_ == null) {
@@ -734,11 +726,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder setCompany(com.google.cloud.talent.v4beta1.Company.Builder builderForValue) {
       if (companyBuilder_ == null) {
@@ -754,11 +747,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder mergeCompany(com.google.cloud.talent.v4beta1.Company value) {
       if (companyBuilder_ == null) {
@@ -781,11 +775,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public Builder clearCompany() {
       if (companyBuilder_ == null) {
@@ -802,11 +797,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.Company.Builder getCompanyBuilder() {
 
@@ -817,11 +813,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     public com.google.cloud.talent.v4beta1.CompanyOrBuilder getCompanyOrBuilder() {
       if (companyBuilder_ != null) {
@@ -836,11 +833,12 @@ public final class CreateCompanyRequest extends com.google.protobuf.GeneratedMes
      *
      *
      * <pre>
-     * Required.
-     * The company to be created.
+     * Required. The company to be created.
      * </pre>
      *
-     * <code>.google.cloud.talent.v4beta1.Company company = 2;</code>
+     * <code>
+     * .google.cloud.talent.v4beta1.Company company = 2 [(.google.api.field_behavior) = REQUIRED];
+     * </code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
             com.google.cloud.talent.v4beta1.Company,

@@ -69,6 +69,11 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
+import com.google.iam.v1.GetIamPolicyRequest;
+import com.google.iam.v1.Policy;
+import com.google.iam.v1.SetIamPolicyRequest;
+import com.google.iam.v1.TestIamPermissionsRequest;
+import com.google.iam.v1.TestIamPermissionsResponse;
 import com.google.longrunning.Operation;
 import com.google.protobuf.Empty;
 import java.io.IOException;
@@ -89,8 +94,9 @@ import org.threeten.bp.Duration;
  * </ul>
  *
  * <p>The builder of this class is recursive, so contained classes are themselves builders. When
- * build() is called, the tree of builders is called to create the complete settings object. For
- * example, to set the total timeout of createTable to 30 seconds:
+ * build() is called, the tree of builders is called to create the complete settings object.
+ *
+ * <p>For example, to set the total timeout of createTable to 30 seconds:
  *
  * <pre>
  * <code>
@@ -135,6 +141,10 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
       generateConsistencyTokenSettings;
   private final UnaryCallSettings<CheckConsistencyRequest, CheckConsistencyResponse>
       checkConsistencySettings;
+  private final UnaryCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings;
+  private final UnaryCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings;
+  private final UnaryCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
+      testIamPermissionsSettings;
   private final UnaryCallSettings<SnapshotTableRequest, Operation> snapshotTableSettings;
   private final OperationCallSettings<SnapshotTableRequest, Snapshot, SnapshotTableMetadata>
       snapshotTableOperationSettings;
@@ -201,6 +211,22 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
     return checkConsistencySettings;
   }
 
+  /** Returns the object with the settings used for calls to getIamPolicy. */
+  public UnaryCallSettings<GetIamPolicyRequest, Policy> getIamPolicySettings() {
+    return getIamPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to setIamPolicy. */
+  public UnaryCallSettings<SetIamPolicyRequest, Policy> setIamPolicySettings() {
+    return setIamPolicySettings;
+  }
+
+  /** Returns the object with the settings used for calls to testIamPermissions. */
+  public UnaryCallSettings<TestIamPermissionsRequest, TestIamPermissionsResponse>
+      testIamPermissionsSettings() {
+    return testIamPermissionsSettings;
+  }
+
   /** Returns the object with the settings used for calls to snapshotTable. */
   public UnaryCallSettings<SnapshotTableRequest, Operation> snapshotTableSettings() {
     return snapshotTableSettings;
@@ -263,7 +289,8 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
 
   /** Returns a builder for the default ChannelProvider for this service. */
   public static InstantiatingGrpcChannelProvider.Builder defaultGrpcTransportProviderBuilder() {
-    return InstantiatingGrpcChannelProvider.newBuilder();
+    return InstantiatingGrpcChannelProvider.newBuilder()
+        .setMaxInboundMessageSize(Integer.MAX_VALUE);
   }
 
   public static TransportChannelProvider defaultTransportChannelProvider() {
@@ -308,6 +335,9 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
     dropRowRangeSettings = settingsBuilder.dropRowRangeSettings().build();
     generateConsistencyTokenSettings = settingsBuilder.generateConsistencyTokenSettings().build();
     checkConsistencySettings = settingsBuilder.checkConsistencySettings().build();
+    getIamPolicySettings = settingsBuilder.getIamPolicySettings().build();
+    setIamPolicySettings = settingsBuilder.setIamPolicySettings().build();
+    testIamPermissionsSettings = settingsBuilder.testIamPermissionsSettings().build();
     snapshotTableSettings = settingsBuilder.snapshotTableSettings().build();
     snapshotTableOperationSettings = settingsBuilder.snapshotTableOperationSettings().build();
     getSnapshotSettings = settingsBuilder.getSnapshotSettings().build();
@@ -447,6 +477,10 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
         generateConsistencyTokenSettings;
     private final UnaryCallSettings.Builder<CheckConsistencyRequest, CheckConsistencyResponse>
         checkConsistencySettings;
+    private final UnaryCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings;
+    private final UnaryCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings;
+    private final UnaryCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
+        testIamPermissionsSettings;
     private final UnaryCallSettings.Builder<SnapshotTableRequest, Operation> snapshotTableSettings;
     private final OperationCallSettings.Builder<
             SnapshotTableRequest, Snapshot, SnapshotTableMetadata>
@@ -479,15 +513,42 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
       RetrySettings settings = null;
       settings =
           RetrySettings.newBuilder()
-              .setInitialRetryDelay(Duration.ofMillis(100L))
-              .setRetryDelayMultiplier(1.3)
+              .setInitialRetryDelay(Duration.ofMillis(1000L))
+              .setRetryDelayMultiplier(2.0)
               .setMaxRetryDelay(Duration.ofMillis(60000L))
-              .setInitialRpcTimeout(Duration.ofMillis(20000L))
+              .setInitialRpcTimeout(Duration.ofMillis(60000L))
               .setRpcTimeoutMultiplier(1.0)
-              .setMaxRpcTimeout(Duration.ofMillis(20000L))
+              .setMaxRpcTimeout(Duration.ofMillis(60000L))
               .setTotalTimeout(Duration.ofMillis(600000L))
               .build();
-      definitions.put("default", settings);
+      definitions.put("idempotent_params", settings);
+      settings =
+          RetrySettings.newBuilder()
+              .setRetryDelayMultiplier(1.0)
+              .setInitialRpcTimeout(Duration.ofMillis(60000L))
+              .setRpcTimeoutMultiplier(1.0)
+              .setMaxRpcTimeout(Duration.ofMillis(60000L))
+              .setTotalTimeout(Duration.ofMillis(60000L))
+              .build();
+      definitions.put("non_idempotent_params", settings);
+      settings =
+          RetrySettings.newBuilder()
+              .setRetryDelayMultiplier(1.0)
+              .setInitialRpcTimeout(Duration.ofMillis(300000L))
+              .setRpcTimeoutMultiplier(1.0)
+              .setMaxRpcTimeout(Duration.ofMillis(300000L))
+              .setTotalTimeout(Duration.ofMillis(300000L))
+              .build();
+      definitions.put("non_idempotent_heavy_params", settings);
+      settings =
+          RetrySettings.newBuilder()
+              .setRetryDelayMultiplier(1.0)
+              .setInitialRpcTimeout(Duration.ofMillis(3600000L))
+              .setRpcTimeoutMultiplier(1.0)
+              .setMaxRpcTimeout(Duration.ofMillis(3600000L))
+              .setTotalTimeout(Duration.ofMillis(3600000L))
+              .build();
+      definitions.put("drop_row_range_params", settings);
       RETRY_PARAM_DEFINITIONS = definitions.build();
     }
 
@@ -518,6 +579,12 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
 
       checkConsistencySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
+      getIamPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      setIamPolicySettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
+      testIamPermissionsSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
+
       snapshotTableSettings = UnaryCallSettings.newUnaryCallSettingsBuilder();
 
       snapshotTableOperationSettings = OperationCallSettings.newBuilder();
@@ -539,6 +606,9 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
               dropRowRangeSettings,
               generateConsistencyTokenSettings,
               checkConsistencySettings,
+              getIamPolicySettings,
+              setIamPolicySettings,
+              testIamPermissionsSettings,
               snapshotTableSettings,
               getSnapshotSettings,
               listSnapshotsSettings,
@@ -561,74 +631,89 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
       builder
           .createTableSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_heavy_params"));
 
       builder
           .createTableFromSnapshotSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"));
 
       builder
           .listTablesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .getTableSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .deleteTableSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"));
 
       builder
           .modifyColumnFamiliesSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_heavy_params"));
 
       builder
           .dropRowRangeSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("drop_row_range_params"));
 
       builder
           .generateConsistencyTokenSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .checkConsistencySettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
+
+      builder
+          .getIamPolicySettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
+
+      builder
+          .setIamPolicySettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"));
+
+      builder
+          .testIamPermissionsSettings()
+          .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .snapshotTableSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"));
 
       builder
           .getSnapshotSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .listSnapshotsSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("idempotent_params"));
 
       builder
           .deleteSnapshotSettings()
           .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
-          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"));
+          .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"));
       builder
           .createTableFromSnapshotOperationSettings()
           .setInitialCallSettings(
               UnaryCallSettings
                   .<CreateTableFromSnapshotRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
-                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"))
                   .build())
           .setResponseTransformer(
               ProtoOperationTransformers.ResponseTransformer.create(Table.class))
@@ -638,21 +723,21 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
           .setPollingAlgorithm(
               OperationTimedPollAlgorithm.create(
                   RetrySettings.newBuilder()
-                      .setInitialRetryDelay(Duration.ofMillis(500L))
+                      .setInitialRetryDelay(Duration.ofMillis(5000L))
                       .setRetryDelayMultiplier(1.5)
-                      .setMaxRetryDelay(Duration.ofMillis(5000L))
+                      .setMaxRetryDelay(Duration.ofMillis(60000L))
                       .setInitialRpcTimeout(Duration.ZERO) // ignored
                       .setRpcTimeoutMultiplier(1.0) // ignored
                       .setMaxRpcTimeout(Duration.ZERO) // ignored
-                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .setTotalTimeout(Duration.ofMillis(3600000L))
                       .build()));
       builder
           .snapshotTableOperationSettings()
           .setInitialCallSettings(
               UnaryCallSettings
                   .<SnapshotTableRequest, OperationSnapshot>newUnaryCallSettingsBuilder()
-                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("idempotent"))
-                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("default"))
+                  .setRetryableCodes(RETRYABLE_CODE_DEFINITIONS.get("non_idempotent"))
+                  .setRetrySettings(RETRY_PARAM_DEFINITIONS.get("non_idempotent_params"))
                   .build())
           .setResponseTransformer(
               ProtoOperationTransformers.ResponseTransformer.create(Snapshot.class))
@@ -667,7 +752,7 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
                       .setInitialRpcTimeout(Duration.ZERO) // ignored
                       .setRpcTimeoutMultiplier(1.0) // ignored
                       .setMaxRpcTimeout(Duration.ZERO) // ignored
-                      .setTotalTimeout(Duration.ofMillis(300000L))
+                      .setTotalTimeout(Duration.ofMillis(600000L))
                       .build()));
 
       return builder;
@@ -687,6 +772,9 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
       dropRowRangeSettings = settings.dropRowRangeSettings.toBuilder();
       generateConsistencyTokenSettings = settings.generateConsistencyTokenSettings.toBuilder();
       checkConsistencySettings = settings.checkConsistencySettings.toBuilder();
+      getIamPolicySettings = settings.getIamPolicySettings.toBuilder();
+      setIamPolicySettings = settings.setIamPolicySettings.toBuilder();
+      testIamPermissionsSettings = settings.testIamPermissionsSettings.toBuilder();
       snapshotTableSettings = settings.snapshotTableSettings.toBuilder();
       snapshotTableOperationSettings = settings.snapshotTableOperationSettings.toBuilder();
       getSnapshotSettings = settings.getSnapshotSettings.toBuilder();
@@ -704,6 +792,9 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
               dropRowRangeSettings,
               generateConsistencyTokenSettings,
               checkConsistencySettings,
+              getIamPolicySettings,
+              setIamPolicySettings,
+              testIamPermissionsSettings,
               snapshotTableSettings,
               getSnapshotSettings,
               listSnapshotsSettings,
@@ -784,6 +875,22 @@ public class BigtableTableAdminStubSettings extends StubSettings<BigtableTableAd
     public UnaryCallSettings.Builder<CheckConsistencyRequest, CheckConsistencyResponse>
         checkConsistencySettings() {
       return checkConsistencySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to getIamPolicy. */
+    public UnaryCallSettings.Builder<GetIamPolicyRequest, Policy> getIamPolicySettings() {
+      return getIamPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to setIamPolicy. */
+    public UnaryCallSettings.Builder<SetIamPolicyRequest, Policy> setIamPolicySettings() {
+      return setIamPolicySettings;
+    }
+
+    /** Returns the builder for the settings used for calls to testIamPermissions. */
+    public UnaryCallSettings.Builder<TestIamPermissionsRequest, TestIamPermissionsResponse>
+        testIamPermissionsSettings() {
+      return testIamPermissionsSettings;
     }
 
     /** Returns the builder for the settings used for calls to snapshotTable. */

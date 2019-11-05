@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.google.cloud</groupId>
   <artifactId>google-cloud-testing</artifactId>
-  <version>0.90.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-testing:current} -->
+  <version>0.117.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-testing:current} -->
   <packaging>pom</packaging>
 
   <name>Google Cloud Testing</name>
@@ -15,7 +15,7 @@
   </description>
   <properties>
     <site.installationModule>google-cloud-testing</site.installationModule>
-    <appengine.sdk.version>1.9.51</appengine.sdk.version>
+    <appengine.sdk.version>1.9.75</appengine.sdk.version>
   </properties>
 
   <modules>
@@ -24,22 +24,20 @@
     <module>google-cloud-appengineflexjava</module>
     <module>google-cloud-appenginejava8</module>
     <module>google-cloud-managedtest</module>
-    <module>google-cloud-gcloud-maven-plugin</module>
-    <module>google-cloud-bigtable-emulator</module>
   </modules>
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-bom</artifactId>
-        <version>0.90.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-bom:current} -->
+        <version>0.117.1-alpha-SNAPSHOT</version><!-- {x-version-update:google-cloud-bom:current} -->
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.google.cloud</groupId>
         <artifactId>google-cloud-core</artifactId>
-        <version>1.72.1-SNAPSHOT</version><!-- {x-version-update:google-cloud-core:current} -->
+        <version>1.90.0</version>
         <type>test-jar</type>
       </dependency>
       <dependency>
@@ -58,7 +56,7 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava-testlib</artifactId>
         <!-- We are currently using the *-android version to support JDK7. -->
-        <version>26.0-android</version>
+        <version>28.1-android</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
@@ -73,12 +71,12 @@
       <dependency>
         <groupId>com.google.truth</groupId>
         <artifactId>truth</artifactId>
-        <version>0.30</version>
+        <version>1.0</version>
       </dependency>
       <dependency>
         <groupId>org.easymock</groupId>
         <artifactId>easymock</artifactId>
-        <version>3.4</version>
+        <version>3.6</version>
         <exclusions>
           <exclusion>
             <groupId>org.objenesis</groupId>
@@ -105,7 +103,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.4</version>
+        <version>3.8.2</version>
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -113,7 +111,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-deploy-plugin</artifactId>
-        <version>2.7</version>
+        <version>2.8.2</version>
         <configuration>
           <skip>true</skip>
         </configuration>
@@ -121,7 +119,7 @@
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
-        <version>1.6.6</version>
+        <version>1.6.8</version>
         <configuration>
           <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
         </configuration>

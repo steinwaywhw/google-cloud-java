@@ -26,10 +26,11 @@ import com.google.api.core.InternalApi;
 import com.google.api.gax.batching.FlowControlSettings;
 import com.google.api.gax.batching.FlowController;
 import com.google.api.gax.batching.FlowController.LimitExceededBehavior;
+import com.google.api.gax.core.BackgroundResource;
 import com.google.api.gax.core.CredentialsProvider;
 import com.google.api.gax.core.Distribution;
+import com.google.api.gax.core.ExecutorAsBackgroundResource;
 import com.google.api.gax.core.ExecutorProvider;
-import com.google.api.gax.core.FixedExecutorProvider;
 import com.google.api.gax.core.InstantiatingExecutorProvider;
 import com.google.api.gax.rpc.HeaderProvider;
 import com.google.api.gax.rpc.NoHeaderProvider;
@@ -41,12 +42,15 @@ import com.google.cloud.pubsub.v1.stub.SubscriberStub;
 import com.google.cloud.pubsub.v1.stub.SubscriberStubSettings;
 import com.google.common.base.Optional;
 import com.google.common.base.Preconditions;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.pubsub.v1.ProjectSubscriptionName;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Nullable;
@@ -115,7 +119,7 @@ public class Subscriber extends AbstractApiService {
   private final MessageReceiver receiver;
   private final List<StreamingSubscriberConnection> streamingSubscriberConnections;
   private final ApiClock clock;
-  private final List<AutoCloseable> closeables = new ArrayList<>();
+  private final List<BackgroundResource> backgroundResources = new ArrayList<>();
 
   private Subscriber(Builder builder) {
     receiver = builder.receiver;
@@ -138,21 +142,10 @@ public class Subscriber extends AbstractApiService {
     executorProvider = builder.executorProvider;
 
     ExecutorProvider systemExecutorProvider = builder.systemExecutorProvider;
-    if (systemExecutorProvider == null) {
-      systemExecutorProvider =
-          FixedExecutorProvider.create(
-              Executors.newScheduledThreadPool(Math.max(6, 2 * numPullers)));
-    }
-
     alarmsExecutor = systemExecutorProvider.getExecutor();
+
     if (systemExecutorProvider.shouldAutoClose()) {
-      closeables.add(
-          new AutoCloseable() {
-            @Override
-            public void close() {
-              alarmsExecutor.shutdown();
-            }
-          });
+      backgroundResources.add(new ExecutorAsBackgroundResource((alarmsExecutor)));
     }
 
     TransportChannelProvider channelProvider = builder.channelProvider;
@@ -167,6 +160,7 @@ public class Subscriber extends AbstractApiService {
               .setCredentialsProvider(builder.credentialsProvider)
               .setTransportChannelProvider(channelProvider)
               .setHeaderProvider(builder.headerProvider)
+              .setEndpoint(builder.endpoint)
               .applyToAllUnaryMethods(
                   new ApiFunction<UnaryCallSettings.Builder<?, ?>, Void>() {
                     @Override
@@ -301,8 +295,8 @@ public class Subscriber extends AbstractApiService {
                 try {
                   // stop connection is no-op if connections haven't been started.
                   stopAllStreamingConnections();
-                  for (AutoCloseable closeable : closeables) {
-                    closeable.close();
+                  for (BackgroundResource resource : backgroundResources) {
+                    resource.shutdown();
                   }
                   notifyStopped();
                 } catch (Exception e) {
@@ -318,13 +312,7 @@ public class Subscriber extends AbstractApiService {
       for (int i = 0; i < numPullers; i++) {
         final ScheduledExecutorService executor = executorProvider.getExecutor();
         if (executorProvider.shouldAutoClose()) {
-          closeables.add(
-              new AutoCloseable() {
-                @Override
-                public void close() {
-                  executor.shutdown();
-                }
-              });
+          backgroundResources.add(new ExecutorAsBackgroundResource((executor)));
         }
 
         streamingSubscriberConnections.add(
@@ -405,6 +393,7 @@ public class Subscriber extends AbstractApiService {
         InstantiatingExecutorProvider.newBuilder()
             .setExecutorThreadCount(THREADS_PER_CHANNEL)
             .build();
+    private static final AtomicInteger SYSTEM_EXECUTOR_COUNTER = new AtomicInteger();
 
     private String subscriptionName;
     private MessageReceiver receiver;
@@ -426,6 +415,7 @@ public class Subscriber extends AbstractApiService {
         SubscriptionAdminSettings.defaultCredentialsProviderBuilder().build();
     private Optional<ApiClock> clock = Optional.absent();
     private int parallelPullCount = 1;
+    private String endpoint = SubscriberStubSettings.getDefaultEndpoint();
 
     Builder(String subscriptionName, MessageReceiver receiver) {
       this.subscriptionName = subscriptionName;
@@ -536,6 +526,12 @@ public class Subscriber extends AbstractApiService {
       return this;
     }
 
+    /** Gives the ability to override the gRPC endpoint. */
+    public Builder setEndpoint(String endpoint) {
+      this.endpoint = endpoint;
+      return this;
+    }
+
     /** Gives the ability to set a custom clock. */
     Builder setClock(ApiClock clock) {
       this.clock = Optional.of(clock);
@@ -543,6 +539,28 @@ public class Subscriber extends AbstractApiService {
     }
 
     public Subscriber build() {
+      if (systemExecutorProvider == null) {
+        ThreadFactory threadFactory =
+            new ThreadFactoryBuilder()
+                .setDaemon(true)
+                .setNameFormat("Subscriber-SE-" + SYSTEM_EXECUTOR_COUNTER.incrementAndGet() + "-%d")
+                .build();
+        int threadCount = Math.max(6, 2 * parallelPullCount);
+        final ScheduledExecutorService executor =
+            Executors.newScheduledThreadPool(threadCount, threadFactory);
+        systemExecutorProvider =
+            new ExecutorProvider() {
+              @Override
+              public boolean shouldAutoClose() {
+                return true;
+              }
+
+              @Override
+              public ScheduledExecutorService getExecutor() {
+                return executor;
+              }
+            };
+      }
       return new Subscriber(this);
     }
   }

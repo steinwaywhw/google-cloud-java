@@ -20,13 +20,18 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
+import static org.mockito.Mockito.when;
 
+import com.google.api.core.NanoClock;
+import com.google.api.gax.retrying.RetrySettings;
+import com.google.cloud.NoCredentials;
+import com.google.cloud.ServiceRpc;
 import com.google.cloud.grpc.GrpcTransportOptions;
 import com.google.cloud.spanner.spi.v1.SpannerRpc;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.Callable;
-import javax.net.ssl.SSLHandshakeException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,31 +54,17 @@ public class SpannerImplTest {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    impl = new SpannerImpl(rpc, 1, spannerOptions);
+    when(spannerOptions.getNumChannels()).thenReturn(4);
+    when(spannerOptions.getPrefetchChunks()).thenReturn(1);
+    when(spannerOptions.getRetrySettings()).thenReturn(RetrySettings.newBuilder().build());
+    when(spannerOptions.getClock()).thenReturn(NanoClock.getDefaultClock());
+    when(spannerOptions.getSessionLabels()).thenReturn(Collections.<String, String>emptyMap());
+    impl = new SpannerImpl(rpc, spannerOptions);
   }
 
-  @Test
-  public void createAndCloseSession() {
-    Map<String, String> labels = new HashMap<>();
-    labels.put("env", "dev");
-    Mockito.when(spannerOptions.getSessionLabels()).thenReturn(labels);
-    String dbName = "projects/p1/instances/i1/databases/d1";
-    String sessionName = dbName + "/sessions/s1";
-    DatabaseId db = DatabaseId.of(dbName);
-
-    com.google.spanner.v1.Session sessionProto =
-        com.google.spanner.v1.Session.newBuilder()
-            .setName(sessionName)
-            .putAllLabels(labels)
-            .build();
-    Mockito.when(rpc.createSession(Mockito.eq(dbName), Mockito.eq(labels), options.capture()))
-        .thenReturn(sessionProto);
-    Session session = impl.createSession(db);
-    assertThat(session.getName()).isEqualTo(sessionName);
-
-    session.close();
-    // The same channelHint is passed for deleteSession (contained in "options").
-    Mockito.verify(rpc).deleteSession(sessionName, options.getValue());
+  @After
+  public void teardown() {
+    impl.close();
   }
 
   @Test
@@ -87,19 +78,19 @@ public class SpannerImplTest {
     Mockito.when(spannerOptions.getTransportOptions())
         .thenReturn(GrpcTransportOptions.newBuilder().build());
     Mockito.when(spannerOptions.getSessionPoolOptions())
-        .thenReturn(SessionPoolOptions.newBuilder().build());
+        .thenReturn(SessionPoolOptions.newBuilder().setMinSessions(0).build());
 
     DatabaseClient databaseClient = impl.getDatabaseClient(db);
 
     // Get db client again
     DatabaseClient databaseClient1 = impl.getDatabaseClient(db);
 
-    assertThat(databaseClient1).isSameAs(databaseClient);
+    assertThat(databaseClient1).isSameInstanceAs(databaseClient);
   }
 
   @Test
   public void getDbclientAfterCloseThrows() {
-    SpannerImpl imp = new SpannerImpl(rpc, 1, spannerOptions);
+    SpannerImpl imp = new SpannerImpl(rpc, spannerOptions);
     Map<String, String> labels = new HashMap<>();
     labels.put("env", "dev");
     Mockito.when(spannerOptions.getSessionLabels()).thenReturn(labels);
@@ -122,63 +113,40 @@ public class SpannerImplTest {
   }
 
   @Test
-  public void exceptionIsTranslated() {
-    try {
-      SpannerImpl.runWithRetries(
-          new Callable<Object>() {
-            @Override
-            public Void call() throws Exception {
-              throw new Exception("Should be translated to SpannerException");
-            }
-          });
-    } catch (SpannerException e) {
-      assertThat(e.getErrorCode()).isEqualTo(ErrorCode.INTERNAL);
-      assertThat(e.getMessage().contains("Unexpected exception thrown"));
-    }
+  public void testSpannerClosed() throws InterruptedException {
+    SpannerOptions options = createSpannerOptions();
+    Spanner spanner1 = options.getService();
+    Spanner spanner2 = options.getService();
+    ServiceRpc rpc1 = options.getRpc();
+    ServiceRpc rpc2 = options.getRpc();
+    // The SpannerOptions object should return the same instance.
+    assertThat(spanner1 == spanner2, is(true));
+    assertThat(rpc1 == rpc2, is(true));
+    spanner1.close();
+    // A new instance should be returned as the Spanner instance has been closed.
+    Spanner spanner3 = options.getService();
+    assertThat(spanner1 == spanner3, is(false));
+    // A new instance should be returned as the Spanner instance has been closed.
+    ServiceRpc rpc3 = options.getRpc();
+    assertThat(rpc1 == rpc3, is(false));
+    // Creating a copy of the SpannerOptions should result in new instances.
+    options = options.toBuilder().build();
+    Spanner spanner4 = options.getService();
+    ServiceRpc rpc4 = options.getRpc();
+    assertThat(spanner4 == spanner3, is(false));
+    assertThat(rpc4 == rpc3, is(false));
+    Spanner spanner5 = options.getService();
+    ServiceRpc rpc5 = options.getRpc();
+    assertThat(spanner4 == spanner5, is(true));
+    assertThat(rpc4 == rpc5, is(true));
+    spanner3.close();
+    spanner4.close();
   }
 
-  @Test
-  public void sslHandshakeExceptionIsNotRetryable() {
-    // Verify that a SpannerException with code UNAVAILABLE and cause SSLHandshakeException is not
-    // retryable.
-    boolean gotExpectedException = false;
-    try {
-      SpannerImpl.runWithRetries(
-          new Callable<Object>() {
-            @Override
-            public Void call() throws Exception {
-              throw SpannerExceptionFactory.newSpannerException(
-                  ErrorCode.UNAVAILABLE,
-                  "This exception should not be retryable",
-                  new SSLHandshakeException("some SSL handshake exception"));
-            }
-          });
-    } catch (SpannerException e) {
-      gotExpectedException = true;
-      assertThat(e.isRetryable(), is(false));
-      assertThat(e.getErrorCode()).isEqualTo(ErrorCode.UNAVAILABLE);
-      assertThat(e.getMessage().contains("This exception should not be retryable"));
-    }
-    assertThat(gotExpectedException, is(true));
-
-    // Verify that any other SpannerException with code UNAVAILABLE is retryable.
-    SpannerImpl.runWithRetries(
-        new Callable<Object>() {
-          private boolean firstTime = true;
-
-          @Override
-          public Void call() throws Exception {
-            // Keep track of whethr this is the first call or a subsequent call to avoid an infinite
-            // loop.
-            if (firstTime) {
-              firstTime = false;
-              throw SpannerExceptionFactory.newSpannerException(
-                  ErrorCode.UNAVAILABLE,
-                  "This exception should be retryable",
-                  new Exception("some other exception"));
-            }
-            return null;
-          }
-        });
+  private SpannerOptions createSpannerOptions() {
+    return SpannerOptions.newBuilder()
+        .setProjectId("[PROJECT]")
+        .setCredentials(NoCredentials.getInstance())
+        .build();
   }
 }

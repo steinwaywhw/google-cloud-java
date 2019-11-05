@@ -24,6 +24,7 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
 
   private Topic() {
     name_ = "";
+    kmsKeyName_ = "";
   }
 
   @java.lang.Override
@@ -84,6 +85,13 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
                 messageStoragePolicy_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+          case 42:
+            {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              kmsKeyName_ = s;
               break;
             }
           default:
@@ -286,12 +294,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -303,12 +308,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -322,18 +324,62 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
    *
    *
    * <pre>
-   * Policy constraining how messages published to the topic may be stored. It
-   * is determined when the topic is created based on the policy configured at
-   * the project level. It must not be set by the caller in the request to
-   * CreateTopic or to UpdateTopic. This field will be populated in the
-   * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-   * response, then no constraints are in effect.
+   * Policy constraining the set of Google Cloud Platform regions where messages
+   * published to the topic may be stored. If not present, then no constraints
+   * are in effect.
    * </pre>
    *
    * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
    */
   public com.google.pubsub.v1.MessageStoragePolicyOrBuilder getMessageStoragePolicyOrBuilder() {
     return getMessageStoragePolicy();
+  }
+
+  public static final int KMS_KEY_NAME_FIELD_NUMBER = 5;
+  private volatile java.lang.Object kmsKeyName_;
+  /**
+   *
+   *
+   * <pre>
+   * The resource name of the Cloud KMS CryptoKey to be used to protect access
+   * to messages published on this topic.
+   * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+   * </pre>
+   *
+   * <code>string kms_key_name = 5;</code>
+   */
+  public java.lang.String getKmsKeyName() {
+    java.lang.Object ref = kmsKeyName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      kmsKeyName_ = s;
+      return s;
+    }
+  }
+  /**
+   *
+   *
+   * <pre>
+   * The resource name of the Cloud KMS CryptoKey to be used to protect access
+   * to messages published on this topic.
+   * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+   * </pre>
+   *
+   * <code>string kms_key_name = 5;</code>
+   */
+  public com.google.protobuf.ByteString getKmsKeyNameBytes() {
+    java.lang.Object ref = kmsKeyName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+      kmsKeyName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -357,6 +403,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
         output, internalGetLabels(), LabelsDefaultEntryHolder.defaultEntry, 2);
     if (messageStoragePolicy_ != null) {
       output.writeMessage(3, getMessageStoragePolicy());
+    }
+    if (!getKmsKeyNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, kmsKeyName_);
     }
     unknownFields.writeTo(output);
   }
@@ -384,6 +433,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
       size +=
           com.google.protobuf.CodedOutputStream.computeMessageSize(3, getMessageStoragePolicy());
     }
+    if (!getKmsKeyNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, kmsKeyName_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -405,6 +457,7 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
     if (hasMessageStoragePolicy()) {
       if (!getMessageStoragePolicy().equals(other.getMessageStoragePolicy())) return false;
     }
+    if (!getKmsKeyName().equals(other.getKmsKeyName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -426,6 +479,8 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
       hash = (37 * hash) + MESSAGE_STORAGE_POLICY_FIELD_NUMBER;
       hash = (53 * hash) + getMessageStoragePolicy().hashCode();
     }
+    hash = (37 * hash) + KMS_KEY_NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getKmsKeyName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -597,6 +652,8 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
         messageStoragePolicy_ = null;
         messageStoragePolicyBuilder_ = null;
       }
+      kmsKeyName_ = "";
+
       return this;
     }
 
@@ -632,6 +689,7 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
       } else {
         result.messageStoragePolicy_ = messageStoragePolicyBuilder_.build();
       }
+      result.kmsKeyName_ = kmsKeyName_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -689,6 +747,10 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
       internalGetMutableLabels().mergeFrom(other.internalGetLabels());
       if (other.hasMessageStoragePolicy()) {
         mergeMessageStoragePolicy(other.getMessageStoragePolicy());
+      }
+      if (!other.getKmsKeyName().isEmpty()) {
+        kmsKeyName_ = other.kmsKeyName_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1009,12 +1071,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1026,12 +1085,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1049,12 +1105,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1076,12 +1129,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1101,12 +1151,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1132,12 +1179,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1157,12 +1201,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1176,12 +1217,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1199,12 +1237,9 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
      *
      *
      * <pre>
-     * Policy constraining how messages published to the topic may be stored. It
-     * is determined when the topic is created based on the policy configured at
-     * the project level. It must not be set by the caller in the request to
-     * CreateTopic or to UpdateTopic. This field will be populated in the
-     * responses for GetTopic, CreateTopic, and UpdateTopic: if not present in the
-     * response, then no constraints are in effect.
+     * Policy constraining the set of Google Cloud Platform regions where messages
+     * published to the topic may be stored. If not present, then no constraints
+     * are in effect.
      * </pre>
      *
      * <code>.google.pubsub.v1.MessageStoragePolicy message_storage_policy = 3;</code>
@@ -1224,6 +1259,110 @@ public final class Topic extends com.google.protobuf.GeneratedMessageV3
         messageStoragePolicy_ = null;
       }
       return messageStoragePolicyBuilder_;
+    }
+
+    private java.lang.Object kmsKeyName_ = "";
+    /**
+     *
+     *
+     * <pre>
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic.
+     * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+     * </pre>
+     *
+     * <code>string kms_key_name = 5;</code>
+     */
+    public java.lang.String getKmsKeyName() {
+      java.lang.Object ref = kmsKeyName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs = (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        kmsKeyName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic.
+     * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+     * </pre>
+     *
+     * <code>string kms_key_name = 5;</code>
+     */
+    public com.google.protobuf.ByteString getKmsKeyNameBytes() {
+      java.lang.Object ref = kmsKeyName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString.copyFromUtf8((java.lang.String) ref);
+        kmsKeyName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic.
+     * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+     * </pre>
+     *
+     * <code>string kms_key_name = 5;</code>
+     */
+    public Builder setKmsKeyName(java.lang.String value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+
+      kmsKeyName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic.
+     * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+     * </pre>
+     *
+     * <code>string kms_key_name = 5;</code>
+     */
+    public Builder clearKmsKeyName() {
+
+      kmsKeyName_ = getDefaultInstance().getKmsKeyName();
+      onChanged();
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * The resource name of the Cloud KMS CryptoKey to be used to protect access
+     * to messages published on this topic.
+     * The expected format is `projects/&#42;&#47;locations/&#42;&#47;keyRings/&#42;&#47;cryptoKeys/&#42;`.
+     * </pre>
+     *
+     * <code>string kms_key_name = 5;</code>
+     */
+    public Builder setKmsKeyNameBytes(com.google.protobuf.ByteString value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      checkByteStringIsUtf8(value);
+
+      kmsKeyName_ = value;
+      onChanged();
+      return this;
     }
 
     @java.lang.Override

@@ -12,22 +12,24 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The method of transportation for which to calculate the commute time.
+   * Required. The method of transportation to calculate the commute time for.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.CommuteMethod commute_method = 1;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.CommuteMethod commute_method = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   int getCommuteMethodValue();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The method of transportation for which to calculate the commute time.
+   * Required. The method of transportation to calculate the commute time for.
    * </pre>
    *
-   * <code>.google.cloud.talent.v4beta1.CommuteMethod commute_method = 1;</code>
+   * <code>
+   * .google.cloud.talent.v4beta1.CommuteMethod commute_method = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.talent.v4beta1.CommuteMethod getCommuteMethod();
 
@@ -35,36 +37,36 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The latitude and longitude of the location from which to calculate the
-   * commute time.
+   * Required. The latitude and longitude of the location to calculate the
+   * commute time from.
    * </pre>
    *
-   * <code>.google.type.LatLng start_coordinates = 2;</code>
+   * <code>.google.type.LatLng start_coordinates = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasStartCoordinates();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The latitude and longitude of the location from which to calculate the
-   * commute time.
+   * Required. The latitude and longitude of the location to calculate the
+   * commute time from.
    * </pre>
    *
-   * <code>.google.type.LatLng start_coordinates = 2;</code>
+   * <code>.google.type.LatLng start_coordinates = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.type.LatLng getStartCoordinates();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The latitude and longitude of the location from which to calculate the
-   * commute time.
+   * Required. The latitude and longitude of the location to calculate the
+   * commute time from.
    * </pre>
    *
-   * <code>.google.type.LatLng start_coordinates = 2;</code>
+   * <code>.google.type.LatLng start_coordinates = 2 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.type.LatLngOrBuilder getStartCoordinatesOrBuilder();
 
@@ -72,36 +74,36 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Required.
-   * The maximum travel time in seconds. The maximum allowed value is `3600s`
-   * (one hour). Format is `123s`.
+   * Required. The maximum travel time in seconds. The maximum allowed value is
+   * `3600s` (one hour). Format is `123s`.
    * </pre>
    *
-   * <code>.google.protobuf.Duration travel_duration = 3;</code>
+   * <code>.google.protobuf.Duration travel_duration = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasTravelDuration();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The maximum travel time in seconds. The maximum allowed value is `3600s`
-   * (one hour). Format is `123s`.
+   * Required. The maximum travel time in seconds. The maximum allowed value is
+   * `3600s` (one hour). Format is `123s`.
    * </pre>
    *
-   * <code>.google.protobuf.Duration travel_duration = 3;</code>
+   * <code>.google.protobuf.Duration travel_duration = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.protobuf.Duration getTravelDuration();
   /**
    *
    *
    * <pre>
-   * Required.
-   * The maximum travel time in seconds. The maximum allowed value is `3600s`
-   * (one hour). Format is `123s`.
+   * Required. The maximum travel time in seconds. The maximum allowed value is
+   * `3600s` (one hour). Format is `123s`.
    * </pre>
    *
-   * <code>.google.protobuf.Duration travel_duration = 3;</code>
+   * <code>.google.protobuf.Duration travel_duration = 3 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.protobuf.DurationOrBuilder getTravelDurationOrBuilder();
 
@@ -109,7 +111,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * If `true`, jobs without street level addresses may also be returned.
    * For city level addresses, the city center is used. For state and coarser
    * level addresses, text matching is used.
@@ -125,7 +126,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Specifies the traffic density to use when calculating commute time.
    * </pre>
    *
@@ -136,7 +136,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * Specifies the traffic density to use when calculating commute time.
    * </pre>
    *
@@ -148,7 +147,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The departure time used to calculate traffic impact, represented as
    * [google.type.TimeOfDay][google.type.TimeOfDay] in local time zone.
    * Currently traffic model is restricted to hour level resolution.
@@ -161,7 +159,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The departure time used to calculate traffic impact, represented as
    * [google.type.TimeOfDay][google.type.TimeOfDay] in local time zone.
    * Currently traffic model is restricted to hour level resolution.
@@ -174,7 +171,6 @@ public interface CommuteFilterOrBuilder
    *
    *
    * <pre>
-   * Optional.
    * The departure time used to calculate traffic impact, represented as
    * [google.type.TimeOfDay][google.type.TimeOfDay] in local time zone.
    * Currently traffic model is restricted to hour level resolution.

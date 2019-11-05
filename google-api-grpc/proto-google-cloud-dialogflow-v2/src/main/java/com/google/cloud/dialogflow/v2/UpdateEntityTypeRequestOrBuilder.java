@@ -15,7 +15,9 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Required. The entity type to update.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.EntityType entity_type = 1;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.EntityType entity_type = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   boolean hasEntityType();
   /**
@@ -25,7 +27,9 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Required. The entity type to update.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.EntityType entity_type = 1;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.EntityType entity_type = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dialogflow.v2.EntityType getEntityType();
   /**
@@ -35,7 +39,9 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Required. The entity type to update.
    * </pre>
    *
-   * <code>.google.cloud.dialogflow.v2.EntityType entity_type = 1;</code>
+   * <code>
+   * .google.cloud.dialogflow.v2.EntityType entity_type = 1 [(.google.api.field_behavior) = REQUIRED];
+   * </code>
    */
   com.google.cloud.dialogflow.v2.EntityTypeOrBuilder getEntityTypeOrBuilder();
 
@@ -46,12 +52,12 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Optional. The language of entity synonyms defined in `entity_type`. If not
    * specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   java.lang.String getLanguageCode();
   /**
@@ -61,12 +67,12 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Optional. The language of entity synonyms defined in `entity_type`. If not
    * specified, the agent's default language is used.
    * [Many
-   * languages](https://cloud.google.com/dialogflow-enterprise/docs/reference/language)
+   * languages](https://cloud.google.com/dialogflow/docs/reference/language)
    * are supported. Note: languages must be enabled in the agent before they can
    * be used.
    * </pre>
    *
-   * <code>string language_code = 2;</code>
+   * <code>string language_code = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   com.google.protobuf.ByteString getLanguageCodeBytes();
 
@@ -77,7 +83,8 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 3;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   boolean hasUpdateMask();
   /**
@@ -87,7 +94,8 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 3;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.protobuf.FieldMask getUpdateMask();
   /**
@@ -97,7 +105,8 @@ public interface UpdateEntityTypeRequestOrBuilder
    * Optional. The mask to control which fields get updated.
    * </pre>
    *
-   * <code>.google.protobuf.FieldMask update_mask = 3;</code>
+   * <code>.google.protobuf.FieldMask update_mask = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   com.google.protobuf.FieldMaskOrBuilder getUpdateMaskOrBuilder();
 }

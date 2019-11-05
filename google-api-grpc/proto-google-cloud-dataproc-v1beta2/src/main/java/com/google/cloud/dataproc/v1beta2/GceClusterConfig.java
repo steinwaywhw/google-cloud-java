@@ -124,6 +124,23 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
               serviceAccount_ = s;
               break;
             }
+          case 90:
+            {
+              com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder subBuilder = null;
+              if (reservationAffinity_ != null) {
+                subBuilder = reservationAffinity_.toBuilder();
+              }
+              reservationAffinity_ =
+                  input.readMessage(
+                      com.google.cloud.dataproc.v1beta2.ReservationAffinity.parser(),
+                      extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(reservationAffinity_);
+                reservationAffinity_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
           default:
             {
               if (!parseUnknownField(input, unknownFields, extensionRegistry, tag)) {
@@ -193,7 +210,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * `us-central1-f`
    * </pre>
    *
-   * <code>string zone_uri = 1;</code>
+   * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getZoneUri() {
     java.lang.Object ref = zoneUri_;
@@ -221,7 +238,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * `us-central1-f`
    * </pre>
    *
-   * <code>string zone_uri = 1;</code>
+   * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getZoneUriBytes() {
     java.lang.Object ref = zoneUri_;
@@ -252,7 +269,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * `default`
    * </pre>
    *
-   * <code>string network_uri = 2;</code>
+   * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getNetworkUri() {
     java.lang.Object ref = networkUri_;
@@ -280,7 +297,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * `default`
    * </pre>
    *
-   * <code>string network_uri = 2;</code>
+   * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getNetworkUriBytes() {
     java.lang.Object ref = networkUri_;
@@ -303,12 +320,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * Optional. The Compute Engine subnetwork to be used for machine
    * communications. Cannot be specified with network_uri.
    * A full URL, partial URI, or short name are valid. Examples:
-   * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-   * * `projects/[project_id]/regions/us-east1/sub0`
+   * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+   * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
    * * `sub0`
    * </pre>
    *
-   * <code>string subnetwork_uri = 6;</code>
+   * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getSubnetworkUri() {
     java.lang.Object ref = subnetworkUri_;
@@ -328,12 +345,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * Optional. The Compute Engine subnetwork to be used for machine
    * communications. Cannot be specified with network_uri.
    * A full URL, partial URI, or short name are valid. Examples:
-   * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-   * * `projects/[project_id]/regions/us-east1/sub0`
+   * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+   * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
    * * `sub0`
    * </pre>
    *
-   * <code>string subnetwork_uri = 6;</code>
+   * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getSubnetworkUriBytes() {
     java.lang.Object ref = subnetworkUri_;
@@ -361,7 +378,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * configured to be accessible without external IP addresses.
    * </pre>
    *
-   * <code>bool internal_ip_only = 7;</code>
+   * <code>bool internal_ip_only = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public boolean getInternalIpOnly() {
     return internalIpOnly_;
@@ -384,7 +401,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
    * </pre>
    *
-   * <code>string service_account = 8;</code>
+   * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public java.lang.String getServiceAccount() {
     java.lang.Object ref = serviceAccount_;
@@ -412,7 +429,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
    * </pre>
    *
-   * <code>string service_account = 8;</code>
+   * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
    */
   public com.google.protobuf.ByteString getServiceAccountBytes() {
     java.lang.Object ref = serviceAccount_;
@@ -445,7 +462,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * https://www.googleapis.com/auth/devstorage.full_control
    * </pre>
    *
-   * <code>repeated string service_account_scopes = 3;</code>
+   * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.protobuf.ProtocolStringList getServiceAccountScopesList() {
     return serviceAccountScopes_;
@@ -467,7 +485,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * https://www.googleapis.com/auth/devstorage.full_control
    * </pre>
    *
-   * <code>repeated string service_account_scopes = 3;</code>
+   * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public int getServiceAccountScopesCount() {
     return serviceAccountScopes_.size();
@@ -489,7 +508,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * https://www.googleapis.com/auth/devstorage.full_control
    * </pre>
    *
-   * <code>repeated string service_account_scopes = 3;</code>
+   * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public java.lang.String getServiceAccountScopes(int index) {
     return serviceAccountScopes_.get(index);
@@ -511,7 +531,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
    * * https://www.googleapis.com/auth/devstorage.full_control
    * </pre>
    *
-   * <code>repeated string service_account_scopes = 3;</code>
+   * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
    */
   public com.google.protobuf.ByteString getServiceAccountScopesBytes(int index) {
     return serviceAccountScopes_.getByteString(index);
@@ -674,6 +695,54 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     return map.get(key);
   }
 
+  public static final int RESERVATION_AFFINITY_FIELD_NUMBER = 11;
+  private com.google.cloud.dataproc.v1beta2.ReservationAffinity reservationAffinity_;
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Reservation Affinity for consuming Zonal reservation.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public boolean hasReservationAffinity() {
+    return reservationAffinity_ != null;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Reservation Affinity for consuming Zonal reservation.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1beta2.ReservationAffinity getReservationAffinity() {
+    return reservationAffinity_ == null
+        ? com.google.cloud.dataproc.v1beta2.ReservationAffinity.getDefaultInstance()
+        : reservationAffinity_;
+  }
+  /**
+   *
+   *
+   * <pre>
+   * Optional. Reservation Affinity for consuming Zonal reservation.
+   * </pre>
+   *
+   * <code>
+   * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+   * </code>
+   */
+  public com.google.cloud.dataproc.v1beta2.ReservationAffinityOrBuilder
+      getReservationAffinityOrBuilder() {
+    return getReservationAffinity();
+  }
+
   private byte memoizedIsInitialized = -1;
 
   @java.lang.Override
@@ -711,6 +780,9 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     }
     if (!getServiceAccountBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 8, serviceAccount_);
+    }
+    if (reservationAffinity_ != null) {
+      output.writeMessage(11, getReservationAffinity());
     }
     unknownFields.writeTo(output);
   }
@@ -762,6 +834,10 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     if (!getServiceAccountBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, serviceAccount_);
     }
+    if (reservationAffinity_ != null) {
+      size +=
+          com.google.protobuf.CodedOutputStream.computeMessageSize(11, getReservationAffinity());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -786,6 +862,10 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     if (!getServiceAccountScopesList().equals(other.getServiceAccountScopesList())) return false;
     if (!getTagsList().equals(other.getTagsList())) return false;
     if (!internalGetMetadata().equals(other.internalGetMetadata())) return false;
+    if (hasReservationAffinity() != other.hasReservationAffinity()) return false;
+    if (hasReservationAffinity()) {
+      if (!getReservationAffinity().equals(other.getReservationAffinity())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -818,6 +898,10 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     if (!internalGetMetadata().getMap().isEmpty()) {
       hash = (37 * hash) + METADATA_FIELD_NUMBER;
       hash = (53 * hash) + internalGetMetadata().hashCode();
+    }
+    if (hasReservationAffinity()) {
+      hash = (37 * hash) + RESERVATION_AFFINITY_FIELD_NUMBER;
+      hash = (53 * hash) + getReservationAffinity().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -1000,6 +1084,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
       tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       bitField0_ = (bitField0_ & ~0x00000040);
       internalGetMutableMetadata().clear();
+      if (reservationAffinityBuilder_ == null) {
+        reservationAffinity_ = null;
+      } else {
+        reservationAffinity_ = null;
+        reservationAffinityBuilder_ = null;
+      }
       return this;
     }
 
@@ -1046,6 +1136,11 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
       result.tags_ = tags_;
       result.metadata_ = internalGetMetadata();
       result.metadata_.makeImmutable();
+      if (reservationAffinityBuilder_ == null) {
+        result.reservationAffinity_ = reservationAffinity_;
+      } else {
+        result.reservationAffinity_ = reservationAffinityBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -1137,6 +1232,9 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
         onChanged();
       }
       internalGetMutableMetadata().mergeFrom(other.internalGetMetadata());
+      if (other.hasReservationAffinity()) {
+        mergeReservationAffinity(other.getReservationAffinity());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1185,7 +1283,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `us-central1-f`
      * </pre>
      *
-     * <code>string zone_uri = 1;</code>
+     * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getZoneUri() {
       java.lang.Object ref = zoneUri_;
@@ -1213,7 +1311,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `us-central1-f`
      * </pre>
      *
-     * <code>string zone_uri = 1;</code>
+     * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getZoneUriBytes() {
       java.lang.Object ref = zoneUri_;
@@ -1241,7 +1339,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `us-central1-f`
      * </pre>
      *
-     * <code>string zone_uri = 1;</code>
+     * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setZoneUri(java.lang.String value) {
       if (value == null) {
@@ -1267,7 +1365,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `us-central1-f`
      * </pre>
      *
-     * <code>string zone_uri = 1;</code>
+     * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearZoneUri() {
 
@@ -1290,7 +1388,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `us-central1-f`
      * </pre>
      *
-     * <code>string zone_uri = 1;</code>
+     * <code>string zone_uri = 1 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setZoneUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1319,7 +1417,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `default`
      * </pre>
      *
-     * <code>string network_uri = 2;</code>
+     * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getNetworkUri() {
       java.lang.Object ref = networkUri_;
@@ -1347,7 +1445,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `default`
      * </pre>
      *
-     * <code>string network_uri = 2;</code>
+     * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getNetworkUriBytes() {
       java.lang.Object ref = networkUri_;
@@ -1375,7 +1473,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `default`
      * </pre>
      *
-     * <code>string network_uri = 2;</code>
+     * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setNetworkUri(java.lang.String value) {
       if (value == null) {
@@ -1401,7 +1499,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `default`
      * </pre>
      *
-     * <code>string network_uri = 2;</code>
+     * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearNetworkUri() {
 
@@ -1424,7 +1522,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * `default`
      * </pre>
      *
-     * <code>string network_uri = 2;</code>
+     * <code>string network_uri = 2 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setNetworkUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1445,12 +1543,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Optional. The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network_uri.
      * A full URL, partial URI, or short name are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-     * * `projects/[project_id]/regions/us-east1/sub0`
+     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * * `sub0`
      * </pre>
      *
-     * <code>string subnetwork_uri = 6;</code>
+     * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getSubnetworkUri() {
       java.lang.Object ref = subnetworkUri_;
@@ -1470,12 +1568,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Optional. The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network_uri.
      * A full URL, partial URI, or short name are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-     * * `projects/[project_id]/regions/us-east1/sub0`
+     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * * `sub0`
      * </pre>
      *
-     * <code>string subnetwork_uri = 6;</code>
+     * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getSubnetworkUriBytes() {
       java.lang.Object ref = subnetworkUri_;
@@ -1495,12 +1593,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Optional. The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network_uri.
      * A full URL, partial URI, or short name are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-     * * `projects/[project_id]/regions/us-east1/sub0`
+     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * * `sub0`
      * </pre>
      *
-     * <code>string subnetwork_uri = 6;</code>
+     * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setSubnetworkUri(java.lang.String value) {
       if (value == null) {
@@ -1518,12 +1616,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Optional. The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network_uri.
      * A full URL, partial URI, or short name are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-     * * `projects/[project_id]/regions/us-east1/sub0`
+     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * * `sub0`
      * </pre>
      *
-     * <code>string subnetwork_uri = 6;</code>
+     * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearSubnetworkUri() {
 
@@ -1538,12 +1636,12 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Optional. The Compute Engine subnetwork to be used for machine
      * communications. Cannot be specified with network_uri.
      * A full URL, partial URI, or short name are valid. Examples:
-     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0`
-     * * `projects/[project_id]/regions/us-east1/sub0`
+     * * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0`
+     * * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
      * * `sub0`
      * </pre>
      *
-     * <code>string subnetwork_uri = 6;</code>
+     * <code>string subnetwork_uri = 6 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setSubnetworkUriBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1569,7 +1667,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * configured to be accessible without external IP addresses.
      * </pre>
      *
-     * <code>bool internal_ip_only = 7;</code>
+     * <code>bool internal_ip_only = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public boolean getInternalIpOnly() {
       return internalIpOnly_;
@@ -1586,7 +1684,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * configured to be accessible without external IP addresses.
      * </pre>
      *
-     * <code>bool internal_ip_only = 7;</code>
+     * <code>bool internal_ip_only = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setInternalIpOnly(boolean value) {
 
@@ -1606,7 +1704,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * configured to be accessible without external IP addresses.
      * </pre>
      *
-     * <code>bool internal_ip_only = 7;</code>
+     * <code>bool internal_ip_only = 7 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearInternalIpOnly() {
 
@@ -1631,7 +1729,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
      * </pre>
      *
-     * <code>string service_account = 8;</code>
+     * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public java.lang.String getServiceAccount() {
       java.lang.Object ref = serviceAccount_;
@@ -1659,7 +1757,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
      * </pre>
      *
-     * <code>string service_account = 8;</code>
+     * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public com.google.protobuf.ByteString getServiceAccountBytes() {
       java.lang.Object ref = serviceAccount_;
@@ -1687,7 +1785,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
      * </pre>
      *
-     * <code>string service_account = 8;</code>
+     * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setServiceAccount(java.lang.String value) {
       if (value == null) {
@@ -1713,7 +1811,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
      * </pre>
      *
-     * <code>string service_account = 8;</code>
+     * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder clearServiceAccount() {
 
@@ -1736,7 +1834,7 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * Example: `[account_id]&#64;[project_id].iam.gserviceaccount.com`
      * </pre>
      *
-     * <code>string service_account = 8;</code>
+     * <code>string service_account = 8 [(.google.api.field_behavior) = OPTIONAL];</code>
      */
     public Builder setServiceAccountBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1775,7 +1873,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.ProtocolStringList getServiceAccountScopesList() {
       return serviceAccountScopes_.getUnmodifiableView();
@@ -1797,7 +1896,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public int getServiceAccountScopesCount() {
       return serviceAccountScopes_.size();
@@ -1819,7 +1919,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public java.lang.String getServiceAccountScopes(int index) {
       return serviceAccountScopes_.get(index);
@@ -1841,7 +1942,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public com.google.protobuf.ByteString getServiceAccountScopesBytes(int index) {
       return serviceAccountScopes_.getByteString(index);
@@ -1863,7 +1965,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder setServiceAccountScopes(int index, java.lang.String value) {
       if (value == null) {
@@ -1891,7 +1994,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addServiceAccountScopes(java.lang.String value) {
       if (value == null) {
@@ -1919,7 +2023,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addAllServiceAccountScopes(java.lang.Iterable<java.lang.String> values) {
       ensureServiceAccountScopesIsMutable();
@@ -1944,7 +2049,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder clearServiceAccountScopes() {
       serviceAccountScopes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
@@ -1969,7 +2075,8 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
      * * https://www.googleapis.com/auth/devstorage.full_control
      * </pre>
      *
-     * <code>repeated string service_account_scopes = 3;</code>
+     * <code>repeated string service_account_scopes = 3 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
      */
     public Builder addServiceAccountScopesBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -2299,6 +2406,210 @@ public final class GceClusterConfig extends com.google.protobuf.GeneratedMessage
     public Builder putAllMetadata(java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableMetadata().getMutableMap().putAll(values);
       return this;
+    }
+
+    private com.google.cloud.dataproc.v1beta2.ReservationAffinity reservationAffinity_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1beta2.ReservationAffinity,
+            com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder,
+            com.google.cloud.dataproc.v1beta2.ReservationAffinityOrBuilder>
+        reservationAffinityBuilder_;
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public boolean hasReservationAffinity() {
+      return reservationAffinityBuilder_ != null || reservationAffinity_ != null;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1beta2.ReservationAffinity getReservationAffinity() {
+      if (reservationAffinityBuilder_ == null) {
+        return reservationAffinity_ == null
+            ? com.google.cloud.dataproc.v1beta2.ReservationAffinity.getDefaultInstance()
+            : reservationAffinity_;
+      } else {
+        return reservationAffinityBuilder_.getMessage();
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setReservationAffinity(
+        com.google.cloud.dataproc.v1beta2.ReservationAffinity value) {
+      if (reservationAffinityBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        reservationAffinity_ = value;
+        onChanged();
+      } else {
+        reservationAffinityBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder setReservationAffinity(
+        com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder builderForValue) {
+      if (reservationAffinityBuilder_ == null) {
+        reservationAffinity_ = builderForValue.build();
+        onChanged();
+      } else {
+        reservationAffinityBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder mergeReservationAffinity(
+        com.google.cloud.dataproc.v1beta2.ReservationAffinity value) {
+      if (reservationAffinityBuilder_ == null) {
+        if (reservationAffinity_ != null) {
+          reservationAffinity_ =
+              com.google.cloud.dataproc.v1beta2.ReservationAffinity.newBuilder(reservationAffinity_)
+                  .mergeFrom(value)
+                  .buildPartial();
+        } else {
+          reservationAffinity_ = value;
+        }
+        onChanged();
+      } else {
+        reservationAffinityBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public Builder clearReservationAffinity() {
+      if (reservationAffinityBuilder_ == null) {
+        reservationAffinity_ = null;
+        onChanged();
+      } else {
+        reservationAffinity_ = null;
+        reservationAffinityBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder
+        getReservationAffinityBuilder() {
+
+      onChanged();
+      return getReservationAffinityFieldBuilder().getBuilder();
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    public com.google.cloud.dataproc.v1beta2.ReservationAffinityOrBuilder
+        getReservationAffinityOrBuilder() {
+      if (reservationAffinityBuilder_ != null) {
+        return reservationAffinityBuilder_.getMessageOrBuilder();
+      } else {
+        return reservationAffinity_ == null
+            ? com.google.cloud.dataproc.v1beta2.ReservationAffinity.getDefaultInstance()
+            : reservationAffinity_;
+      }
+    }
+    /**
+     *
+     *
+     * <pre>
+     * Optional. Reservation Affinity for consuming Zonal reservation.
+     * </pre>
+     *
+     * <code>
+     * .google.cloud.dataproc.v1beta2.ReservationAffinity reservation_affinity = 11 [(.google.api.field_behavior) = OPTIONAL];
+     * </code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+            com.google.cloud.dataproc.v1beta2.ReservationAffinity,
+            com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder,
+            com.google.cloud.dataproc.v1beta2.ReservationAffinityOrBuilder>
+        getReservationAffinityFieldBuilder() {
+      if (reservationAffinityBuilder_ == null) {
+        reservationAffinityBuilder_ =
+            new com.google.protobuf.SingleFieldBuilderV3<
+                com.google.cloud.dataproc.v1beta2.ReservationAffinity,
+                com.google.cloud.dataproc.v1beta2.ReservationAffinity.Builder,
+                com.google.cloud.dataproc.v1beta2.ReservationAffinityOrBuilder>(
+                getReservationAffinity(), getParentForChildren(), isClean());
+        reservationAffinity_ = null;
+      }
+      return reservationAffinityBuilder_;
     }
 
     @java.lang.Override

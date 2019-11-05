@@ -7,7 +7,6 @@ package com.google.cloud.talent.v4beta1;
  *
  *
  * <pre>
- * Input only.
  * List jobs request.
  * </pre>
  *
@@ -127,15 +126,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project".
+   * Required. The resource name of the tenant under which the job is created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created. For example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getParent() {
     java.lang.Object ref = parent_;
@@ -152,15 +149,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Required.
-   * The resource name of the tenant under which the job is created.
-   * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-   * "projects/api-test-project/tenant/foo".
-   * Tenant id is optional and the default tenant is used if unspecified, for
-   * example, "projects/api-test-project".
+   * Required. The resource name of the tenant under which the job is created.
+   * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+   * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+   * is created. For example, "projects/foo".
    * </pre>
    *
-   * <code>string parent = 1;</code>
+   * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getParentBytes() {
     java.lang.Object ref = parent_;
@@ -180,23 +175,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Required.
-   * The filter string specifies the jobs to be enumerated.
+   * Required. The filter string specifies the jobs to be enumerated.
    * Supported operator: =, AND
    * The fields eligible for filtering are:
    * * `companyName` (Required)
-   * * `requisitionId` (Optional)
-   * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+   * * `requisitionId`
+   * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
    * OPEN if no value is specified.
    * Sample Query:
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+   * * companyName = "projects/foo/tenants/bar/companies/baz"
+   * * companyName = "projects/foo/tenants/bar/companies/baz" AND
    * requisitionId = "req-1"
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+   * * companyName = "projects/foo/tenants/bar/companies/baz" AND
    * status = "EXPIRED"
    * </pre>
    *
-   * <code>string filter = 2;</code>
+   * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public java.lang.String getFilter() {
     java.lang.Object ref = filter_;
@@ -213,23 +207,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Required.
-   * The filter string specifies the jobs to be enumerated.
+   * Required. The filter string specifies the jobs to be enumerated.
    * Supported operator: =, AND
    * The fields eligible for filtering are:
    * * `companyName` (Required)
-   * * `requisitionId` (Optional)
-   * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+   * * `requisitionId`
+   * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
    * OPEN if no value is specified.
    * Sample Query:
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+   * * companyName = "projects/foo/tenants/bar/companies/baz"
+   * * companyName = "projects/foo/tenants/bar/companies/baz" AND
    * requisitionId = "req-1"
-   * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+   * * companyName = "projects/foo/tenants/bar/companies/baz" AND
    * status = "EXPIRED"
    * </pre>
    *
-   * <code>string filter = 2;</code>
+   * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
    */
   public com.google.protobuf.ByteString getFilterBytes() {
     java.lang.Object ref = filter_;
@@ -249,7 +242,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The starting point of a query result.
    * </pre>
    *
@@ -270,7 +262,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The starting point of a query result.
    * </pre>
    *
@@ -294,10 +285,12 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The maximum number of jobs to be returned per page of results.
-   * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set to [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY], the maximum allowed
-   * page size is 1000. Otherwise, the maximum allowed page size is 100.
+   * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set
+   * to
+   * [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY],
+   * the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+   * size is 100.
    * Default is 100 if empty or a number &lt; 1 is specified.
    * </pre>
    *
@@ -313,10 +306,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The desired job attributes returned for jobs in the
-   * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-   * specified.
+   * search response. Defaults to
+   * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+   * if no value is specified.
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -328,10 +321,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Optional.
    * The desired job attributes returned for jobs in the
-   * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-   * specified.
+   * search response. Defaults to
+   * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+   * if no value is specified.
    * </pre>
    *
    * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -542,7 +535,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
    *
    *
    * <pre>
-   * Input only.
    * List jobs request.
    * </pre>
    *
@@ -728,15 +720,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project".
+     * Required. The resource name of the tenant under which the job is created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created. For example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getParent() {
       java.lang.Object ref = parent_;
@@ -753,15 +743,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project".
+     * Required. The resource name of the tenant under which the job is created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created. For example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getParentBytes() {
       java.lang.Object ref = parent_;
@@ -778,15 +766,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project".
+     * Required. The resource name of the tenant under which the job is created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created. For example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParent(java.lang.String value) {
       if (value == null) {
@@ -801,15 +787,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project".
+     * Required. The resource name of the tenant under which the job is created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created. For example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearParent() {
 
@@ -821,15 +805,13 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The resource name of the tenant under which the job is created.
-     * The format is "projects/{project_id}/tenants/{tenant_id}", for example,
-     * "projects/api-test-project/tenant/foo".
-     * Tenant id is optional and the default tenant is used if unspecified, for
-     * example, "projects/api-test-project".
+     * Required. The resource name of the tenant under which the job is created.
+     * The format is "projects/{project_id}/tenants/{tenant_id}". For example,
+     * "projects/foo/tenant/bar". If tenant id is unspecified, a default tenant
+     * is created. For example, "projects/foo".
      * </pre>
      *
-     * <code>string parent = 1;</code>
+     * <code>string parent = 1 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setParentBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -847,23 +829,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The filter string specifies the jobs to be enumerated.
+     * Required. The filter string specifies the jobs to be enumerated.
      * Supported operator: =, AND
      * The fields eligible for filtering are:
      * * `companyName` (Required)
-     * * `requisitionId` (Optional)
-     * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+     * * `requisitionId`
+     * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
      * OPEN if no value is specified.
      * Sample Query:
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz"
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * requisitionId = "req-1"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * status = "EXPIRED"
      * </pre>
      *
-     * <code>string filter = 2;</code>
+     * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public java.lang.String getFilter() {
       java.lang.Object ref = filter_;
@@ -880,23 +861,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The filter string specifies the jobs to be enumerated.
+     * Required. The filter string specifies the jobs to be enumerated.
      * Supported operator: =, AND
      * The fields eligible for filtering are:
      * * `companyName` (Required)
-     * * `requisitionId` (Optional)
-     * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+     * * `requisitionId`
+     * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
      * OPEN if no value is specified.
      * Sample Query:
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz"
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * requisitionId = "req-1"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * status = "EXPIRED"
      * </pre>
      *
-     * <code>string filter = 2;</code>
+     * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public com.google.protobuf.ByteString getFilterBytes() {
       java.lang.Object ref = filter_;
@@ -913,23 +893,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The filter string specifies the jobs to be enumerated.
+     * Required. The filter string specifies the jobs to be enumerated.
      * Supported operator: =, AND
      * The fields eligible for filtering are:
      * * `companyName` (Required)
-     * * `requisitionId` (Optional)
-     * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+     * * `requisitionId`
+     * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
      * OPEN if no value is specified.
      * Sample Query:
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz"
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * requisitionId = "req-1"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * status = "EXPIRED"
      * </pre>
      *
-     * <code>string filter = 2;</code>
+     * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setFilter(java.lang.String value) {
       if (value == null) {
@@ -944,23 +923,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The filter string specifies the jobs to be enumerated.
+     * Required. The filter string specifies the jobs to be enumerated.
      * Supported operator: =, AND
      * The fields eligible for filtering are:
      * * `companyName` (Required)
-     * * `requisitionId` (Optional)
-     * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+     * * `requisitionId`
+     * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
      * OPEN if no value is specified.
      * Sample Query:
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz"
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * requisitionId = "req-1"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * status = "EXPIRED"
      * </pre>
      *
-     * <code>string filter = 2;</code>
+     * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder clearFilter() {
 
@@ -972,23 +950,22 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Required.
-     * The filter string specifies the jobs to be enumerated.
+     * Required. The filter string specifies the jobs to be enumerated.
      * Supported operator: =, AND
      * The fields eligible for filtering are:
      * * `companyName` (Required)
-     * * `requisitionId` (Optional)
-     * * `status` (Optional) Available values: OPEN, EXPIRED, ALL. Defaults to
+     * * `requisitionId`
+     * * `status` Available values: OPEN, EXPIRED, ALL. Defaults to
      * OPEN if no value is specified.
      * Sample Query:
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz"
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * requisitionId = "req-1"
-     * * companyName = "projects/api-test-project/tenants/foo/companies/bar" AND
+     * * companyName = "projects/foo/tenants/bar/companies/baz" AND
      * status = "EXPIRED"
      * </pre>
      *
-     * <code>string filter = 2;</code>
+     * <code>string filter = 2 [(.google.api.field_behavior) = REQUIRED];</code>
      */
     public Builder setFilterBytes(com.google.protobuf.ByteString value) {
       if (value == null) {
@@ -1006,7 +983,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The starting point of a query result.
      * </pre>
      *
@@ -1027,7 +1003,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The starting point of a query result.
      * </pre>
      *
@@ -1048,7 +1023,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The starting point of a query result.
      * </pre>
      *
@@ -1067,7 +1041,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The starting point of a query result.
      * </pre>
      *
@@ -1083,7 +1056,6 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The starting point of a query result.
      * </pre>
      *
@@ -1105,10 +1077,12 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of jobs to be returned per page of results.
-     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set to [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY], the maximum allowed
-     * page size is 1000. Otherwise, the maximum allowed page size is 100.
+     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set
+     * to
+     * [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY],
+     * the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+     * size is 100.
      * Default is 100 if empty or a number &lt; 1 is specified.
      * </pre>
      *
@@ -1121,10 +1095,12 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of jobs to be returned per page of results.
-     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set to [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY], the maximum allowed
-     * page size is 1000. Otherwise, the maximum allowed page size is 100.
+     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set
+     * to
+     * [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY],
+     * the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+     * size is 100.
      * Default is 100 if empty or a number &lt; 1 is specified.
      * </pre>
      *
@@ -1140,10 +1116,12 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The maximum number of jobs to be returned per page of results.
-     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set to [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY], the maximum allowed
-     * page size is 1000. Otherwise, the maximum allowed page size is 100.
+     * If [job_view][google.cloud.talent.v4beta1.ListJobsRequest.job_view] is set
+     * to
+     * [JobView.JOB_VIEW_ID_ONLY][google.cloud.talent.v4beta1.JobView.JOB_VIEW_ID_ONLY],
+     * the maximum allowed page size is 1000. Otherwise, the maximum allowed page
+     * size is 100.
      * Default is 100 if empty or a number &lt; 1 is specified.
      * </pre>
      *
@@ -1161,10 +1139,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The desired job attributes returned for jobs in the
-     * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-     * specified.
+     * search response. Defaults to
+     * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+     * if no value is specified.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -1176,10 +1154,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The desired job attributes returned for jobs in the
-     * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-     * specified.
+     * search response. Defaults to
+     * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+     * if no value is specified.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -1193,10 +1171,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The desired job attributes returned for jobs in the
-     * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-     * specified.
+     * search response. Defaults to
+     * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+     * if no value is specified.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -1211,10 +1189,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The desired job attributes returned for jobs in the
-     * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-     * specified.
+     * search response. Defaults to
+     * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+     * if no value is specified.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
@@ -1232,10 +1210,10 @@ public final class ListJobsRequest extends com.google.protobuf.GeneratedMessageV
      *
      *
      * <pre>
-     * Optional.
      * The desired job attributes returned for jobs in the
-     * search response. Defaults to [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL] if no value is
-     * specified.
+     * search response. Defaults to
+     * [JobView.JOB_VIEW_FULL][google.cloud.talent.v4beta1.JobView.JOB_VIEW_FULL]
+     * if no value is specified.
      * </pre>
      *
      * <code>.google.cloud.talent.v4beta1.JobView job_view = 5;</code>
