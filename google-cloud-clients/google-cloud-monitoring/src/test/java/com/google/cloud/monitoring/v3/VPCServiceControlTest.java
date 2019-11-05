@@ -44,10 +44,10 @@ public class VPCServiceControlTest {
     try {
       callable.call();
     } catch (PermissionDeniedException e) {
-      logger.log(Level.INFO, e);
+      logger.log(Level.INFO, e.getMessage());
       return e.getMessage().contains("Request is prohibited by organization's policy");
     } catch (Exception e) {
-      logger.log(Level.INFO, e);
+      logger.log(Level.INFO, e.getMessage());
     }
     return false;
   }
