@@ -1019,11 +1019,12 @@ public class VPCServiceControlTest {
           public Object call() throws Exception {
             UptimeCheckConfigName nameInside =
                 UptimeCheckConfigName.of(PROJECT_INSIDE, "MockUptimeCheckConfig");
-            client.updateUptimeCheckConfig(
+            UptimeCheckConfig resp = client.updateUptimeCheckConfig(
                 UpdateUptimeCheckConfigRequest.newBuilder()
                     .setUptimeCheckConfig(
                         UptimeCheckConfig.newBuilder().setName(nameInside.toString()).build())
                     .build());
+            System.out.println(resp);
             return null;
           }
         };
@@ -1042,6 +1043,8 @@ public class VPCServiceControlTest {
         };
     try {
       doTest(delayedInside, delayedOutside);
+    } catch (Exception e) {
+      System.out.println(e);
     } finally {
       client.close();
     }
